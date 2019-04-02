@@ -1,6 +1,6 @@
 module.exports = {
     title: 'Pragmatias Documentation',
-    description: 'Wiki / Documentation / Project / Stuff',
+    description: 'Wiki / Documentation / Stuff',
     base: '/',
 
     themeConfig: {
@@ -12,6 +12,7 @@ module.exports = {
         sidebar: [
             ['/wiki/','Wiki'],
             ['/wiki/opensuse','OpenSuse'],
+            ['/wiki/clusterhadoop','Cluster Hadoop'],
         ],
         search: true,
         searchMaxSuggestions: 20,
