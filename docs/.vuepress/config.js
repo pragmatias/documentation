@@ -13,7 +13,26 @@ module.exports = {
         ],
         sidebar: [
             ['/wiki/todolist','Todo List'],
-            ['/wiki/opensuse','OpenSuse'],
+            {
+                title: 'Linux',
+                collapsable: false,
+                children: [
+                    ['/wiki/opensuse','OpenSuse']
+                ]
+            },
+            {
+                title: 'Hadoop',
+                children: [ 
+                    ['/wiki/docker','Docker'],
+                    ['/wiki/clusterhadoop','Cluster Hadoop']
+                ]
+            },
+            {
+                title: 'Teradata',
+                children: [
+                    ['/wiki/teradata','Tips Teradata']
+                ]
+            }
         ],
         search: true,
         searchMaxSuggestions: 20,
