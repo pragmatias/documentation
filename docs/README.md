@@ -1,9 +1,12 @@
 ---
 home: true
-actionText: Wiki →
-actionLink: /wiki/
-actionText: Nextcloud →
-actionLink: https://pragmatias.synologie.me
+features:
+- title: Wiki
+  details: All kind of technical information.
+- title: Nextcloud
+  details: Link to my private cloud service.
+- title: Github
+  details: Source of all my project on github.
 footer: WTF Licensed | Copyright © 2019
 ---
 

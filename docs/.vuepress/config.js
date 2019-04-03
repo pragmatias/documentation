@@ -6,13 +6,14 @@ module.exports = {
     themeConfig: {
         nav: [
             { text: 'Home', link: '/' },
+            { text: 'Wiki', link: '/wiki/' },
             { text: 'Contact', link: '/contact/' },
-            { text: 'Repository', link: 'https://github.com/pragmatias' }
+            { text: 'Nextcloud', link: 'https://pragmatias.synology.me' },
+            { text: 'Github', link: 'https://github.com/pragmatias' }
         ],
         sidebar: [
-            ['/wiki/','Wiki'],
+            ['/wiki/todolist','Todo List'],
             ['/wiki/opensuse','OpenSuse'],
-            ['/wiki/clusterhadoop','Cluster Hadoop'],
         ],
         search: true,
         searchMaxSuggestions: 20,
