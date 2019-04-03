@@ -12,7 +12,13 @@ module.exports = {
             { text: 'Github', link: 'https://github.com/pragmatias' }
         ],
         sidebar: [
-            ['/wiki/todolist','Todo List'],
+            {
+                title: 'Stuff',
+                collapsable: false,
+                children: [
+                    ['/wiki/todolist','Todo List']
+                ]
+            },
             {
                 title: 'Linux',
                 collapsable: false,
@@ -22,6 +28,7 @@ module.exports = {
             },
             {
                 title: 'Hadoop',
+                collapsable: false,
                 children: [ 
                     ['/wiki/docker','Docker'],
                     ['/wiki/clusterhadoop','Cluster Hadoop']
@@ -29,6 +36,7 @@ module.exports = {
             },
             {
                 title: 'Teradata',
+                collapsable: false,
                 children: [
                     ['/wiki/teradata','Tips Teradata']
                 ]
@@ -36,7 +44,7 @@ module.exports = {
         ],
         search: true,
         searchMaxSuggestions: 20,
-        lastUpdated: 'string',
+        lastUpdated: 'Last Updated',
     }
 
 };
