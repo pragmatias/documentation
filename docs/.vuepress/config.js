@@ -1,6 +1,6 @@
 module.exports = {
-    title: 'Pragmatias Documentation',
-    description: 'Wiki / Documentation / Stuff',
+    title: 'Documentation',
+    description: 'All kind of technical stuff & more',
     base: '/',
 
     themeConfig: {
