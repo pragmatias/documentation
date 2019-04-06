@@ -1,4 +1,4 @@
-baseURL = "http://localhost/"
+baseURL = "/"
 languageCode = "en-us"
 title = "Pragmatias Docs"
 theme = "gohugoio_pragmatias"
