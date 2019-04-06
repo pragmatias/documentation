@@ -3,7 +3,7 @@
 # https://docs.travis-ci.com/user/languages/go/
 # https://docs.travis-ci.com/user/customizing-the-build/
 
-dist: xenial
+dist: trusty
 language: go
 go:
     - master
