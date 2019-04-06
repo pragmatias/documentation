@@ -11,7 +11,7 @@ go:
 # before_install
 # install - install any dependencies required
 install:
-    - go get github.com/gohugoio/hugo
+    - sudo apt-get install hugo
 
 before_script:
     - rm -rf public 2> /dev/null
