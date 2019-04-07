@@ -4,14 +4,16 @@
 # https://docs.travis-ci.com/user/customizing-the-build/
 
 dist: trusty
-language: go
-go:
-    - master
+#language: go
+#go:
+#    - master
 
 # before_install
 # install - install any dependencies required
+
 install:
-    - sudo apt-get install hugo
+  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.deb
+  - sudo dpkg -i /tmp/hugo.deb
 
 before_script:
     - rm -rf public 2> /dev/null
