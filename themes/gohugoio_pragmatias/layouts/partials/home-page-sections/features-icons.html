@@ -13,7 +13,6 @@
                 <img src="{{ . }}" alt="icon depicting {{ $e.heading }}" class="h3 o-80 v-mid center w-100">
               {{ end }}
             </div>
-
             <div class="flex-auto tc tl-ns w-100 w-80-ns">
               <h3 class="lh-title gray o-80 f4 f5-ns mb2 fw8 bmt1 mt0-l">
                  {{ .heading }}
@@ -23,6 +22,10 @@
                 <div class="lh-copy">
                   {{ .copy }}
                 </div>
+                <p class="f4 lh-copy nested-linksTK">
+                <a class="f5 db link grow tc v-mid bg-primary-color-dark white ba b--dark ph3 pv2 br1" href="{{ .link | absURL }}">Go to {{ .heading }}</a>
+              </p>
+
               </div>
             </div>
           </div>

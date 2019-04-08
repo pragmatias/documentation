@@ -16,11 +16,17 @@
 </header>
 
 <aside class="bt bw1 pt3 mt2 mid-gray b--mid-gray fn w-100">
+  <div class="tr f6 fw6 lh-solid">
+  last update: {{ .Lastmod.Format "January 2, 2006" }}
+  </div>
+
+<!--
   {{ with .Params.description }}
     <div class="f4 fw4 lh-copy">
       {{ . | markdownify }}
     </div>
   {{ end }}
+-->
 
   <!--
   NOTE: Removed to test builds without it.

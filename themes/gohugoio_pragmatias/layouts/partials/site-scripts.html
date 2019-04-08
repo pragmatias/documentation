@@ -1,4 +1,5 @@
 <!-- scripts -->
+
 {{ $scripts := resources.Get "output/js/app.js" | fingerprint }}
 {{ with $scripts }}    
   <script type="text/javascript" src="{{ .Permalink | relURL }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
@@ -6,5 +7,8 @@
 {{end}} 
 
 
+
 <!-- Place this tag in your head or just before your close body tag. -->
+<!--
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+-->
