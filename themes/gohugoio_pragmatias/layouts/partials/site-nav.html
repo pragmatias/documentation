@@ -23,6 +23,7 @@
     </ul>
 
 
+
     <div class="db dib-ns pl3">
       {{- partial "site-search.html" . -}}
     </div>
@@ -56,6 +57,15 @@
         <a href="https://www.linkedin.com" title="Linkedin" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
           {{ partial "svg/linkedin_round.svg" (dict "size" "24px") }}
         </a>
+        
+
+
+     {{ if .IsTranslated }}
+        {{ range .Translations }}
+          <a href="{{ .Permalink }}" class="nav-list link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2" >         
+            <img src="/images/Flag_of_{{ .Language }}.svg" alt="{{ .Language.LanguageName }}"> </a>
+         {{ end}}
+      {{ end }}
 
     </div>
 

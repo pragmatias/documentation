@@ -1,7 +1,7 @@
 ---
-title: hmmmm
-linktitle: hmmmmmmmmmmmmmmmmmm
-description: hmm
+title: Liste des tâches
+linktitle: Liste des tâches
+description: 
 date: 2017-02-01
 publishdate: 2017-02-01
 lastmod: 2017-02-01
@@ -9,10 +9,13 @@ categories: []
 keywords: []
 menu:
   docs:
-    parent: "teradata"
+    parent: "general"
     weight: 1
 weight: 1
-draft: false
-aliases: [/teradata/,/docs/]
+aliases: []
 toc: true
 ---
+
+Aucune tâche !
+
+

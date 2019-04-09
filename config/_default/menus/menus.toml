@@ -50,18 +50,18 @@
   url = "/docs/linux/"
 #  post = "break"
 
-[[docs]]
-  name = "Hadoop"
-  weight = 15
-  identifier = "hadoop"
-  url = "/docs/hadoop/"
+#[[docs]]
+#  name = "Hadoop"
+#  weight = 15
+#  identifier = "hadoop"
+#  url = "/docs/hadoop/"
 #  post = "break"
 
-[[docs]]
-  name = "Teradata"
-  weight = 20
-  identifier = "teradata"
-  url = "/docs/teradata/"
+#[[docs]]
+#  name = "Teradata"
+#  weight = 20
+#  identifier = "teradata"
+#  url = "/docs/teradata/"
 #  post = "break"
 
 

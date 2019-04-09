@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Pragmatias"
 theme = "gohugoio_pragmatias"
 paginate = 20
-copyright = "This work is licensed under a WTFPL license"
+
 enableEmoji = true
 defaultContentLanguage = "en"
 
@@ -27,8 +27,22 @@ taxonomy = [ "HTML" ]
 [params]
 flex_box_interior_classes = "flex-auto w-100 w-40-l mr3 mb3 bg-white ba b--moon-gray nested-copy-line-height"
 
-[params.blog]
-title = "Blog"
-description = ""
+	[params.blog]
+	title = "Blog"
+	description = ""
+	
+	[params.navigation]
+    help = "Help"
 
+[languages]
+  [languages.en]
+    weight = 1
+	copyright = "This work is licensed under a WTFPL license"
+	languageName = "English"
+	contentDir= "content/en"
 
+  [languages.fr]
+    weight = 2
+    copyright = "Ce site est sous license WTFPL"
+    languageName = "Français"
+    contentDir = "content/fr"
