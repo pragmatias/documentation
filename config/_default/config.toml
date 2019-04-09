@@ -1,12 +1,15 @@
 baseURL = "/"
 languageCode = "en-us"
-title = "Pragmatias Docs"
+title = "Pragmatias"
 theme = "gohugoio_pragmatias"
 paginate = 20
-
+copyright = "This work is licensed under a WTFPL license"
 enableEmoji = true
 defaultContentLanguage = "en"
 
+
+[author]
+name = "Pragmatias"
 
 #disableKinds = ["taxonomy", "taxonomyTerm"]
 [taxonomies]
@@ -15,15 +18,17 @@ category = "categories"
 
 
 [outputs]
-home = [ "HTML", "RSS" ]
-section = [ "HTML", "RSS"]
+home = [ "HTML" ]
+section = [ "HTML", "RSS" ]
+page = [ "HTML" ]
+taxonomy = [ "HTML" ]
 
 
 [params]
 flex_box_interior_classes = "flex-auto w-100 w-40-l mr3 mb3 bg-white ba b--moon-gray nested-copy-line-height"
 
 [params.blog]
-title = "Pragmatias Blog"
-description = "Just a life time ..."
+title = "Blog"
+description = ""
 
 

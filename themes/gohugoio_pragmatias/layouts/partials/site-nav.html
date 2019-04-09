@@ -1,7 +1,8 @@
 {{ $currentPage := . }}
+
 <nav class="bg-primary-color-dark pv2 w-100" role="navigation">
 
-  <div class="flex-ns flex-wrap items-center justify-start mw9">
+  <div class="flex-ns flex-wrap items-center justify-start">
   
     <h1 class="left dim f3 lh-solid ml0-ns mr0 mr4-l mv0 pl3 pl4-ns">
       <a href="{{ .Site.BaseURL }}" class="link white">
@@ -11,20 +12,14 @@
 
     <ul class="center list ma0 pa0 dn dib-l">
       {{ range .Site.Menus.global }}
-        <li class="f5 dib mr4" role="menuitem">
-            {{/* TODO: Create an "Global" active class to show which site one is currently at */}}
-          <a href="{{ .URL }}" class="dim link{{ if $currentPage.IsMenuCurrent "global" . }} gray {{else}} light-silver{{ end }}">
-            {{ .Name }}
-              {{/* using ".Post" from the menu system to determine if we should show an icon for external links */}}
-            {{ $post_status := printf "%s" .Post }}
-            {{ if eq $post_status "external" }}
-              <span class="pl1">
-                {{ partial "svg/link-ext.svg" (dict "size" "10") }}
-              </span>
-            {{ end }}
-          </a>
+        <li class="f3 dib mr4" role="menuitem">
+
+        <a href="{{ .URL }}" class="dim link">
+          <img src="/images/test_logo_{{ .Identifier }}.svg" alt="{{ .Name }}" />
+           </a>
         </li>
       {{ end }}
+
     </ul>
 
 
@@ -32,6 +27,37 @@
       {{- partial "site-search.html" . -}}
     </div>
 
+
+    <div class="fl pl3">
+
+         {{ with .OutputFormats.Get "rss" -}}
+            {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+          <a href="{{ .Permalink | safeHTML }}" title="{{$.Site.Title}}" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
+            {{ partial "svg/social-rss-circle-internet.svg" (dict "size" "24px") }}
+          </a>
+        {{ end -}}
+
+        <a href="" title="Mail" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
+          {{ partial "svg/email.svg" (dict "size" "24px") }}
+        </a>
+
+        <a href="https://www.github.com/pragmatias" title="github" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
+          {{ partial "svg/github-logo.svg" (dict "size" "24px") }}
+        </a>
+
+        <a href="https://twitter.com" title="Twitter" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
+          {{ partial "svg/twitter.svg" (dict "size" "24px") }}
+        </a>
+
+        <a href="https://framapiaf.org" title="Mastodon" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
+          {{ partial "svg/mastodon.svg" (dict "size" "24px") }}
+        </a>
+
+        <a href="https://www.linkedin.com" title="Linkedin" class="link-transition pragmatias_svg link dib z-999 pt3 pt0-l mr2">
+          {{ partial "svg/linkedin_round.svg" (dict "size" "24px") }}
+        </a>
+
+    </div>
 
 <!--
     <span class="absolute mt1 mt2-l pr3 right-0 top-0">

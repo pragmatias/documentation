@@ -777,7 +777,7 @@ img { max-width: 100%; }
 .b--black-05 {   border-color: rgba(0, 0, 0, .05); }
 .b--black-025 {   border-color: rgba(0, 0, 0, .025); }
 .b--black-0125 {   border-color: rgba(0, 0, 0, .0125); }
-.b--dark-red { border-color: #e7040f; }
+.b--dark-red { border-color: #CF121B; }
 .b--red { border-color: #ff4136; }
 .b--light-red { border-color: #ff725c; }
 .b--orange { border-color: #ff6300; }
@@ -2343,7 +2343,7 @@ img { max-width: 100%; }
 .light-gray {    color: #eee; }
 .near-white {    color: #f4f4f4; }
 .white {         color: #fff; }
-.dark-red { color: #e7040f; }
+.dark-red { color: #CF121B; }
 .red { color: #ff4136; }
 .light-red { color: #ff725c; }
 .orange { color: #ff6300; }
@@ -2401,7 +2401,7 @@ img { max-width: 100%; }
 .bg-near-white {    background-color: #f4f4f4; }
 .bg-white {         background-color: #fff; }
 .bg-transparent {   background-color: transparent; }
-.bg-dark-red { background-color: #e7040f; }
+.bg-dark-red { background-color: #CF121B; }
 .bg-red { background-color: #ff4136; }
 .bg-light-red { background-color: #ff725c; }
 .bg-orange { background-color: #ff6300; }
@@ -2556,7 +2556,7 @@ img { max-width: 100%; }
 .hover-bg-white-10:hover,
 .hover-bg-white-10:focus { background-color: rgba(255, 255, 255, .1); }
 .hover-dark-red:hover,
-.hover-dark-red:focus { color: #e7040f; }
+.hover-dark-red:focus { color: #CF121B; }
 .hover-red:hover,
 .hover-red:focus { color: #ff4136; }
 .hover-light-red:hover,
@@ -2606,7 +2606,7 @@ img { max-width: 100%; }
 .hover-washed-red:hover,
 .hover-washed-red:focus { color: #ffdfdf; }
 .hover-bg-dark-red:hover,
-.hover-bg-dark-red:focus { background-color: #e7040f; }
+.hover-bg-dark-red:focus { background-color: #CF121B; }
 .hover-bg-red:hover,
 .hover-bg-red:focus { background-color: #ff4136; }
 .hover-bg-light-red:hover,
@@ -5128,6 +5128,15 @@ code, .code, pre code, .highlight pre  {
 .youtube:hover {
   fill: #bb0000;
 }
+
+.pragmatias_svg {
+  fill: #CF121B;
+}
+
+.pragmatias_svg:hover {
+  fill: #CF121B;
+}
+
 @media (min-width: 75em) {
   
   [data-scrolldir="down"] .sticky {
