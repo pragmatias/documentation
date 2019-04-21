@@ -2,7 +2,7 @@
 Author : ""
 Description : ""
 Categories : [""]
-Tags : ["Linux","OpenSuse","Tips"]
+Tags : ["Linux","OpenSuse","Astuces"]
 title : "Astuces pour OpenSUSE (Tumbleweed)"
 date : 2019-04-20
 draft : false
@@ -151,7 +151,7 @@ Pour restaurer la configuration de plasma (panneau) :
  4. `plasmashell &`
 
 
-# WMware tips
+# Astuces WMware
 [Répertoire partagé](https://en.opensuse.org/SDB:VMware_Tools) :
 
 - Lister les répertoires partagés : `vmware-hgfsclient`
@@ -159,7 +159,7 @@ Pour restaurer la configuration de plasma (panneau) :
 - Démonter un répertoire partagé : `fusermount -uz /mnt/`or `umount -f /mnt/`
 
 
-# VirtualBox tips
+# Astuces VirtualBox
 
 Installation de VBoxGuestAdditions :
 
