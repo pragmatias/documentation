@@ -1,0 +1,46 @@
+[readingTime]
+one = "Une seule belle minute de plaisir"
+other = "{{.Count}} minutes de plaisir"
+
+[more_read]
+other = "Read more"
+
+[build]
+other = "Build With"
+
+[goto]
+other = "Go to"
+
+[lastUpd]
+other = "Last update"
+
+[rss_content]
+other = "Recent content in"
+
+[summary]
+other = "Summary"
+
+[January]
+other = "January"
+[February]
+other = "February"
+[March]
+other = "March"
+[April]
+other = "April"
+[May]
+other = "May"
+[June]
+other = "June"
+[July]
+other = "July"
+[August]
+other = "August"
+[September]
+other = "September"
+[October]
+other = "October"
+[November]
+other = "November"
+[December]
+other = "December"

@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="container">
+    {{ $v1 := where .Site.RegularPages "Type" "blog" }}
+    {{ range ($v1.GroupByDate "2006") }}
+    <div class="arch-posts-group">
+        <div class="arch-post-year">{{ .Key }}</div>
+        <ul class="arch-post-list">
+            {{ range (where .Pages "Type" "blog") }}
+            <li class="arch-post-item">
+                <a href="{{ .RelPermalink }}">
+                    <span class="arch-post-title">{{ .Title }}</span>
+                    <span class="arch-post-day">
+                        <!-- truncate the month -->
+                        {{.PublishDate.Day}} {{ printf "%.3s" (i18n .PublishDate.Month) }}
+                    </span>
+                </a>
+                <div class="arch-post-tags">
+                   {{ range .Params.tags }}
+                     <a href="{{ "tags" | absLangURL }}/{{ . | urlize }}"> {{ . }}</a>
+                   {{ end}}
+                </div>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+</div>
+
+{{ end }}

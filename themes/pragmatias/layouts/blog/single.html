@@ -1,0 +1,35 @@
+{{ define "main" }}
+<div class="container">
+	<article class="blog-post {{ if .Params.toc }} blog-post-with-toc {{end}}">
+	    <header>
+			<div class="blog-post-tags">
+			<strong>Tags:</strong>
+			    {{ range .Params.tags }}
+			        <a href="{{ "tags" | absLangURL }}/{{ . | urlize }}"> {{ . }}</a>
+			    {{ end }}
+			</div>
+	        <h2 class="blog-post-title">
+	            {{ .Title }}
+	        </h2>
+	        <div class="blog-post-date">
+	            <span>{{ i18n "lastUpd" }} : {{.PublishDate.Day}} {{i18n .PublishDate.Month}} {{.PublishDate.Year}}
+	            </span>
+	        </div>
+	    </header>
+
+{{ if .Params.toc }}
+	  	<aside class="prag-toc">
+		<h1 class="prag-toc-head">{{ i18n "summary" }}</h1>
+		<div class="prag-toc-body">
+		{{ .TableOfContents }}
+		</div>
+		</aside>
+{{ end }}
+
+	    <main class="blog-post-main">
+	    	{{ .Content }}
+	  	</main>
+
+	</article>
+</div>
+{{ end }}

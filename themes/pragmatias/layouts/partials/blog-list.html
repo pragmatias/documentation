@@ -1,0 +1,33 @@
+{{ range (where (.Paginator).Pages "Type" "blog") }}
+<article class="list-blog-post">
+    
+    <header>
+        <h2 class="list-blog-post-title">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h2>
+
+        <div class="list-blog-post-date">
+            <span>{{.PublishDate.Day}} {{i18n .PublishDate.Month}} {{.PublishDate.Year}}
+            </span>
+        </div>
+        
+        <div class="list-blog-post-tags">
+            <strong>Tags:</strong>
+                {{ range .Params.tags }}
+                  <a href="{{ "tags" | absLangURL }}/{{ . | urlize }}"> {{ . }}</a>
+                {{ end}}
+        </div>
+    </header>
+    
+    <div class="list-blog-post-summary">
+        {{ .Summary | safeHTML }}
+    </div>
+    
+    <div class="list-blog-post-readmore">
+        <a href="{{ .RelPermalink }}">{{ i18n "more_read" }} →</a>
+    </div>
+
+</article>
+{{ end}}
+
+{{- partial "pagination.html" . -}}

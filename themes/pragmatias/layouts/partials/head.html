@@ -1,0 +1,28 @@
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    {{ .Hugo.Generator }} 
+
+    <!-- Font Google ... -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/pragmatias.css">
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ .Site.BaseURL }}js/jquery-3.4.0.slim.min.js"></script>
+    <script src="{{ .Site.BaseURL }}js/popper.min.js"></script>
+    <script src="{{ .Site.BaseURL }}js/bootstrap.bundle.min.js"></script>
+
+    {{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end -}}
+
+    <title>{{ .Title }}</title>

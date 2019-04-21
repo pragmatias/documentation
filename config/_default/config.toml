@@ -1,48 +1,66 @@
-baseURL = "/"
-languageCode = "en-us"
-title = "Pragmatias"
-theme = "gohugoio_pragmatias"
-paginate = 20
 
-enableEmoji = true
-defaultContentLanguage = "en"
+languageCode = "fr"
+DefaultContentLanguage = "fr"
+title = "Pragmatias Blog"
+theme = "pragmatias"
+Paginate = 5
+copyright = "WTFPL license"
 
-
-[author]
-name = "Pragmatias"
-
-#disableKinds = ["taxonomy", "taxonomyTerm"]
-[taxonomies]
-category = "categories"
-
-
+[permalinks]
+	blog = "/:year/:month/:day/:title/"
 
 [outputs]
-home = [ "HTML" ]
-section = [ "HTML", "RSS" ]
-page = [ "HTML" ]
-taxonomy = [ "HTML" ]
+	home = [ "HTML", "RSS" ]
+	section = [ "HTML", "RSS" ] 
+	taxonomy = [ "HTML", "RSS" ]
 
 
-[params]
-flex_box_interior_classes = "flex-auto w-100 w-40-l mr3 mb3 bg-white ba b--moon-gray nested-copy-line-height"
+[outputFormats]
+	[outputFormats.RSS]
+  		mediatype = "application/rss"
+  		baseName = "feed"
 
-	[params.blog]
-	title = "Blog"
-	description = ""
-	
-	[params.navigation]
-    help = "Help"
+
+[taxonomies]
+  tag = "tags"
+
+[author]
+    name = "pragmatias"
+
+[[menus]]
+
+	[[menu.global]]
+		name = "Blog"
+		weight = 5
+		identifier = "blog"
+		url = "/blog/"
+
+	[[menu.global]]
+		name = "Tags"
+		weight = 10
+		identifier = "tags"
+		url = "/tags/"
+
+	[[menu.global]]
+		name = "Archives"
+		weight = 15
+		identifier = "archives"
+		url = "/archives/"
 
 [languages]
-  [languages.en]
-    weight = 1
-	copyright = "This work is licensed under a WTFPL license"
-	languageName = "English"
-	contentDir= "content/en"
+	[languages.fr]
+    	weight = 10
+    	languageName = "Français"
+    	contentDir = "content/fr"
+    	languageCode = "fr"
+    	[languages.fr.params]
+    	imagePNG = "france-flag-round-xs.png"
 
-  [languages.fr]
-    weight = 2
-    copyright = "Ce site est sous license WTFPL"
-    languageName = "Français"
-    contentDir = "content/fr"
+  [languages.en]
+		weight = 20
+		languageName = "English"
+		contentDir = "content/en"
+		languageCode = "en"
+		[languages.en.params]
+		imagePNG = "united-kingdom-flag-round-xs.png"
+
