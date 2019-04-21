@@ -26,6 +26,11 @@
 		</aside>
 {{ end }}
 
+		<!-- go on top of the page (mobile navigation) -->
+		<a href="#" class="prag-sticky-bot">
+			{{ partial "svg/up-arrow.svg" (dict "size" "24px") }}
+		</a>
+
 	    <main class="blog-post-main">
 	    	{{ .Content }}
 	  	</main>
