@@ -1,4 +1,4 @@
-
+baseURL = "/"
 languageCode = "fr"
 DefaultContentLanguage = "fr"
 title = "Pragmatias Blog"
