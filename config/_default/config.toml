@@ -1,6 +1,6 @@
 baseURL = "https://pragmatias.fr"
-languageCode = "fr"
-DefaultContentLanguage = "fr"
+languageCode = "en"
+DefaultContentLanguage = "en"
 title = "Pragmatias Blog"
 theme = "pragmatias"
 Paginate = 5
@@ -28,7 +28,6 @@ copyright = "WTFPL license"
     name = "pragmatias"
 
 [[menus]]
-
 	[[menu.global]]
 		name = "Blog"
 		weight = 5
@@ -48,19 +47,21 @@ copyright = "WTFPL license"
 		url = "/archives/"
 
 [languages]
+  [languages.en]
+		weight = 10
+		languageName = "English"
+		contentDir = "content/en"
+		languageCode = "en"
+		[languages.en.params]
+		imagePNG = "united-kingdom-flag-round-xs.png"
+
 	[languages.fr]
-    	weight = 10
+    	weight = 20
     	languageName = "Français"
     	contentDir = "content/fr"
     	languageCode = "fr"
     	[languages.fr.params]
     	imagePNG = "france-flag-round-xs.png"
 
-  [languages.en]
-		weight = 20
-		languageName = "English"
-		contentDir = "content/en"
-		languageCode = "en"
-		[languages.en.params]
-		imagePNG = "united-kingdom-flag-round-xs.png"
+
 

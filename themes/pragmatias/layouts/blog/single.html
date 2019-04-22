@@ -2,12 +2,6 @@
 <div class="container">
 	<article class="blog-post {{ if .Params.toc }} blog-post-with-toc {{end}}">
 	    <header>
-			<div class="blog-post-tags">
-			<strong>Tags:</strong>
-			    {{ range .Params.tags }}
-			        <a href="{{ "tags" | absLangURL }}/{{ . | urlize }}"> {{ . }}</a>
-			    {{ end }}
-			</div>
 	        <h2 class="blog-post-title">
 	            {{ .Title }}
 	        </h2>
@@ -15,6 +9,12 @@
 	            <span>{{ i18n "lastUpd" }} : {{.PublishDate.Day}} {{i18n .PublishDate.Month}} {{.PublishDate.Year}}
 	            </span>
 	        </div>
+			<div class="blog-post-tags">
+			<strong>Tags:</strong>
+			    {{ range .Params.tags }}
+			        <a href="{{ "tags" | absLangURL }}/{{ . | urlize }}"> {{ . }}</a>
+			    {{ end }}
+			</div>
 	    </header>
 
 {{ if .Params.toc }}
