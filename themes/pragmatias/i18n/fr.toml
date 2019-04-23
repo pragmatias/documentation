@@ -20,6 +20,9 @@ other = "Contenu récent dans "
 [summary]
 other = "Sommaire"
 
+[404]
+other = "Cette page n'existe pas"
+
 [January]
 other = "Janvier"
 [February]

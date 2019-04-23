@@ -20,6 +20,10 @@ other = "Recent content in"
 [summary]
 other = "Summary"
 
+[404]
+other = "Wrong url"
+
+
 [January]
 other = "January"
 [February]
