@@ -1,7 +1,7 @@
     <div class="navbar navbar-expand-md prag-bg-primary prag-header" role="navigation">
         <div class="container-fluid  justify-content-center">
             <div class="navbar-brand">
-                <a href="{{ .Site.BaseURL }}{{ .LanguagePrefix }}">
+                <a href="{{ "/index.html" | absLangURL }}">
                     <img src="/images/logo_pragmatias.svg" alt="pragmatias">
                 </a>
             </div>
@@ -38,14 +38,12 @@
                          {{ end}}
                       {{ end }}
 
-                     {{ with .OutputFormats.Get "rss" -}}
                     <li class="nav-item">
-                        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
-                      <a href="{{ .Permalink | safeHTML }}" title="{{$.Site.Title}}" class="prag_header_svg mr-1 ml-1">
+                        <link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absLangURL }}" title="{{ .Site.Title }}" />
+                      <a href="{{ "/feed.xml" | absLangURL }}" title="{{ .Site.Title}}" class="prag_header_svg mr-1 ml-1">
                         {{ partial "svg/social-rss-circle-internet.svg" (dict "size" "24px") }}
                       </a>
-                  </li>
-                    {{ end -}}
+                    </li>
 
                     <li class="nav-item">
                         <a href="" title="Mail" class="prag_header_svg mr-1 ml-1">

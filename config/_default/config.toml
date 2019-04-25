@@ -11,8 +11,8 @@ copyright = "WTFPL license"
 
 [outputs]
 	home = [ "HTML", "RSS" ]
-	section = [ "HTML", "RSS" ] 
-	taxonomy = [ "HTML", "RSS" ]
+	section = [ "HTML"] 
+	taxonomy = [ "HTML"]
 
 
 [outputFormats]
