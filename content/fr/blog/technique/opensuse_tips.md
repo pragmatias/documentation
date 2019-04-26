@@ -5,7 +5,7 @@ Categories : [""]
 Tags : ["Linux","OpenSuse","Astuces"]
 title : "Astuces pour OpenSUSE (Tumbleweed)"
 date : 2019-04-20
-draft : false
+draft : true
 toc: true
 ---
 

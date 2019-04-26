@@ -5,7 +5,7 @@ Categories : [""]
 Tags : ["Linux","OpenSuse"]
 title : "Install of OpenSUSE (Tumbleweed)"
 date : 2019-02-05
-draft : false
+draft : true
 toc: true
 ---
 

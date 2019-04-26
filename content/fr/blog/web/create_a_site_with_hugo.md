@@ -44,12 +44,16 @@ L'ensemble du code source de ce site se trouve sur mon [dépôt github](https://
 ## Recupération de l'outil
 
 J'ai principalement travaillé avec la version 0.55.4.
+
 Les exécutables peuvent être récupérés sur le dépôt [officiel des releases](https://github.com/gohugoio/hugo/releases).
+
 Pour Windows10 (en 64bit), l'exécutable se trouve [ici](https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Windows-64bit.zip)
+
 
 ## 1er pas avec Hugo
 
 Pour créer le socle, vous pouvez suivre la [documentation officielle](https://gohugo.io/getting-started/quick-start/).
+
 Les étapes sont relativements simples et bien expliquées
 
 
@@ -111,7 +115,6 @@ Les répertoires importants sont :
 Création du fichier `baseof.html` dans le répertoire `/themes/pragmatias/layouts/_default`
 
 ```html 
-<!DOCTYPE html>
 <html lang="{{ with $.Site.LanguageCode }}{{ . }}{{ else }}fr{{ end }}">
     {{- partial "head.html" . -}}
     <body>
