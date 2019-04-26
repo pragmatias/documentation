@@ -29,7 +29,7 @@ La [documentation](https://gohugo.io/documentation/) est très bien faite pour p
 
 Pour mettre en place ce premier site, je me suis fixé les objectifs suivants :
 
-- Avoir un système de blog lié avec des tags permettant de naviguer sur les sujets et avoir un esprit "documentation" sans être un "wiki"
+- Avoir un système de **blog** lié avec des tags permettant de naviguer sur les sujets et avoir un esprit **documentation** sans être un **wiki**
 - Ne pas avoir de dépendance inutile avec des ressources extérieurs (google,facebook,javascript,...)
 - Ne pas récupérer/gérer d'information des visiteurs (trackers,cookies,commentaires,...)
 - Mettre en place l'ensemble des sources de manière publique
@@ -54,10 +54,14 @@ Pour Windows10 (en 64bit), l'exécutable se trouve [ici](https://github.com/gohu
 
 Pour créer le socle, vous pouvez suivre la [documentation officielle](https://gohugo.io/getting-started/quick-start/).
 
-Les étapes sont relativements simples et bien expliquées
+Les étapes sont relativements simples et bien expliquées.
+
+Il existe un grand nombre de choix de [theme](https://themes.gohugo.io) pour commencer à manipuler Hugo et partir d'un visuel existant.
 
 
 # Structuration du site
+
+Quelques informations concernant l'architecture des répertoires pour Hugo.
 
 ## Définition des répertoires du socle
 
@@ -81,9 +85,7 @@ Hugo gère les répertoires de la manière suivante :
 
 ## Définition des répertoires d'un thème
 
-J'ai voulu créer un thème spécifique (et simple) pour mon besoin.
-
-Pour se faire, j'ai créé l'architecture suivantes dans le répertoire "themes" :
+Les répertoires possibles pour un theme *(en prenant example sur mon propre theme)* :
 ```html
 /themes
   +-- /pragmatias
@@ -103,9 +105,10 @@ Pour se faire, j'ai créé l'architecture suivantes dans le répertoire "themes"
 ```
 
 Le theme se nomme "pragmatias" et les informations se trouve dans le fichier "theme.toml"
-Un exemple de contenu du fichier "theme.toml" peut être trouvé [ici](https://github.com/gohugoio/hugoThemes#themetoml)
+Un exemple de contenu pour le fichier "theme.toml" peut être récupéré sur le [site officiel](https://github.com/gohugoio/hugoThemes#themetoml)
 
 Les répertoires importants sont :
+
 - i18n : permettant gérer la partie multi-langue (vocabulaire)
 - layouts : permettant de gérer l'affichage du site
 - static : permettant de stocker l'ensemble des ressources (js,fonts,css,images)
@@ -127,46 +130,244 @@ Création du fichier `baseof.html` dans le répertoire `/themes/pragmatias/layou
 </html>
 ```
 
-
-
 Cette page est le squelette par défaut de chaque page du site.
 
-Elle nécessite la création des fichiers suivants dans le répertoire `/themes/pragmatias/layouts/partial` :
+Elle nécessite la création des fichiers suivants dans le répertoire `/themes/pragmatias/layouts/partial` : 
+(le fichier html est invoqué par la syntaxe `{{- partial "*.html" . -}}`)
+
 - head.html : permet de définir l'entête de chaque page HTML (les balises meta, javascript, css, etc ...)
 - header.html : permet de définir le menu de navigation en haut du site
 - footer.html : permet de définir le pied de page du site
 
+Pour le corps du site **block "main"**, le fonctionnement est expliqué plus bas avec la création de la section blog.
+
 ## Gestion du menu de navigation
 
-Utilisation de bootstrap pour gérer le multiecran pour le site et spécifiquement le menu
-Ajout du javascript dans le head.html
-Ajout de la navbar dans header.html
-Gestion des liens dans le fichier de configuration
+Pour gérer facilement un menu de navigation en haut du site et pouvoir adapté l'affichage en fonction de la taille de l'écran (mobile/desktop),
+j'ai récupéré la librairie javascript **bootstrap**.
+
+Les étapes de mise en place sont les suivantes :
+
+1/ Télécharger les fichiers javascript [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/),[jquery](https://jquery.com/download/) et [popper](https://popper.js.org) dans les répertoires `/themes/pragmatias/static/js` et `/themes/pragmatias/static/css`
+
+  - js/bootstrap.min.js
+  - js/bootstrap.min.js.map
+  -	js/jquery-3.4.0.slim.min.js
+  -	js/jquery-3.4.0.slim.min.js.map
+  -	js/popper.min.js
+  -	js/popper.min.js.map
+  - css/bootstrap.min.css
+  - css/bootstrap.min.css.map
+
+
+
+2/ Ajout des informations suivantes dans le fichier `/themes/pragmatias/layouts/partial/head.html` pour charger les fichiers JS et CSS nécessaires
+```html
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/bootstrap.min.css">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{{ .Site.BaseURL }}/js/jquery-3.4.0.slim.min.js"></script>
+    <script src="{{ .Site.BaseURL }}/js/popper.min.js"></script>
+    <script src="{{ .Site.BaseURL }}/js/bootstrap.bundle.min.js"></script>
+```
+
+
+3/ Ajout de la bar de navigation dans le fichier `themes/pragmatias/layouts/partial/header.html`
+```html
+	<div class="navbar navbar-expand-md prag-bg-primary prag-header" role="navigation">
+        <div class="container-fluid  justify-content-center">
+
+            <button class="navbar-toggler justify-content-end prag-navbar" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav text-center">
+                    {{ $currentPage := . }}
+                    {{ range .Site.Menus.global }}
+                    <li class="nav-item{{ if or ($currentPage.IsMenuCurrent "global" .) ($currentPage.HasMenuCurrent "global" .) }} prag-header-active {{end}}">
+                        <a class="nav-link" href="{{ .URL | absLangURL }}">{{ .Name }}</a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+```
+
+4/ Ajout des liens du menu global dans le fichier de configuration principal `config\_default\config.toml`
+```makefile
+[[menus]]
+	[[menu.global]]
+		name = "Test"
+		weight = 0
+		identifier = "test"
+		url = "/test"
+
+```
+
 
 
 # Définition d'une section /blog
 
-Ajout d'un lien dans config
+Afin de pouvoir créer des articles, il faut mettre en place le système de blog.
 
-Creation d'une page "list.html"
-Creation d'une page "Single.html"
+1) Création d'une entrée **blog** dans le menu global du fichier de configuration principal `config\_default\config.toml`
 
-Creation d'un repertoire "blog" dans "content" 
+```makefile
+[[menus]]
+	[[menu.global]]
+		name = "Blog"
+		weight = 1
+		identifier = "blog"
+		url = "/blog"
+
+```
+
+2) Définition de la section **blog** en créant le répertoire `content\blog`
+
+Cela permet de définir une section du site nommé **blog**
+Exemple du contenu d'un fichier \*.md définissant un article du blog :
+Création du fichier article_du_jour.md avec le contenu suivant :
+```makefile
+---
+Categories : [""]
+Tags : [""]
+title : "Premier article avec hugo"
+date : 2019-01-01
+draft : false
+---
+
+Aucun contenu pour le moment
+```
+
+3) Création d'une page "list.html" 
+
+Cette page sera celle appelé par défaut par le fichier baseof.html pour la partie "main"
+Exemple de contenu de la page :
+```html
+{{ define "main" }}
+<div class="container">
+
+	{{ range (where .Site.Pages "Type" "blog") }}
+	<article class="list-blog-post">
+	    
+	    <header>
+	        <h2 class="list-blog-post-title">
+	            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+	        </h2>
+
+	    </header>
+	    
+	    <div class="list-blog-post-summary">
+	        {{ .Summary | safeHTML }}
+	    </div>
+	    
+	</article>
+	{{ end}}
+
+</div>
+{{ end }}
+```
+
+
+4) Création d'une page "single.html"
+
+Cette page sera appelée par défaut par le fichier baseof.html pour la partie "main" lorsqu'il faudra afficher le contenu d'un article (un fichier \*.md dans le répertoire content/blog)
+```html
+{{ define "main" }}
+<div class="container">
+	<article class="blog-post">
+	    <header>
+	        <h2 class="blog-post-title">
+	            {{ .Title }}
+	        </h2>
+	    </header>
+	    <main class="blog-post-main">
+	    	{{ .Content }}
+	  	</main>
+
+	</article>
+</div>
+{{ end }}
+```
 
 
 
 # Définition d'une section /tags
 
-Modification du fichier de configuration
+Afin de pouvoir lister les articles par **tags**, il faut activer la gestion des tags dans Hugo.
+
+1) Ajout des informations suivantes Création d'une entrée **archives** dans le menu global du fichier de configuration principal `config\_default\config.toml`
+
+```makefile
+[[menus]]
+	[[menu.global]]
+		name = "Archives"
+		weight = 3
+		identifier = "archives"
+		url = "/archives"
+
+```
 
 Creation des fichiers Layout
 
 
 # Définition d'une section /Archive
 
-Modification du fichier de configuration
+Afin de pouvoir lister les articles pour voir les archives, j'ai créé une section **archives** spécifique.
 
-Creation des fichiers Layout
+1) Création d'une entrée **archives** dans le menu global du fichier de configuration principal `config\_default\config.toml`
+
+```makefile
+[[menus]]
+	[[menu.global]]
+		name = "Archives"
+		weight = 3
+		identifier = "archives"
+		url = "/archives"
+
+```
+
+2) Création du répertoire `content\archives` et d'un fichier **_index.md** avec le contenu suivant
+
+```makefile
+---
+Title : "Archives"
+date : 2019-01-01
+---
+```
+
+3) Création d'une page "list.html" 
+
+Cette page sera celle appelé par défaut par le fichier baseof.html pour la partie "main"
+Exemple de contenu de la page :
+```html
+{{ define "main" }}
+<div class="container">
+    {{ $v1 := where .Site.RegularPages "Type" "blog" }}
+    {{ range ($v1.GroupByDate "2006") }}
+    <div class="arch-posts-group">
+        <div class="arch-post-year">{{ .Key }}</div>
+        <ul class="arch-post-list">
+            {{ range (where .Pages "Type" "blog") }}
+            <li class="arch-post-item">
+                <a href="{{ .RelPermalink }}">
+                    <span class="arch-post-title">{{ .Title }}</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ end }}
+</div>
+{{ end }}
+```
+
+
 
 
 # Mise en place du multilingue
