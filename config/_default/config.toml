@@ -1,6 +1,6 @@
 baseURL = "https://pragmatias.fr"
-languageCode = "en"
-DefaultContentLanguage = "en"
+languageCode = "fr"
+DefaultContentLanguage = "fr"
 title = "Pragmatias Blog"
 theme = "pragmatias"
 Paginate = 5
