@@ -32,14 +32,13 @@
                         {{ range .Translations }}
                         <li class="nav-item">
                             <a href="{{ .Permalink }}" class="prag_header_svg mr-1 ml-1" >         
-                                <img src="/images/{{ .Language.Params.ImagePNG }}" alt="{{ .Language.LanguageName }}" witdh="24px" height="24px"> 
+                                <img src="/images/{{ .Language.Params.ImagePNG }}" alt="{{ .Language.LanguageName }}"> 
                             </a>
                         </li>
                          {{ end}}
                       {{ end }}
 
                     <li class="nav-item">
-                        <link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absLangURL }}" title="{{ .Site.Title }}" />
                       <a href="{{ "/feed.xml" | absLangURL }}" title="{{ .Site.Title}}" class="prag_header_svg mr-1 ml-1">
                         {{ partial "svg/social-rss-circle-internet.svg" (dict "size" "24px") }}
                       </a>

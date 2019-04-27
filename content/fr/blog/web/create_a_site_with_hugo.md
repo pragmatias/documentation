@@ -30,10 +30,11 @@ La [documentation](https://gohugo.io/documentation/) est très bien faite pour p
 Pour mettre en place ce premier site, je me suis fixé les objectifs suivants :
 
 - Avoir un système de **blog** lié avec des tags permettant de naviguer sur les sujets et avoir un esprit **documentation** sans être un **wiki**
-- Ne pas avoir de dépendance inutile avec des ressources extérieurs (google,facebook,javascript,...)
-- Ne pas récupérer/gérer d'information des visiteurs (trackers,cookies,commentaires,...)
-- Mettre en place l'ensemble des sources de manière publique
+- Ne pas avoir de dépendance inutile avec des ressources extérieurs *(google,facebook,javascript,...)*
+- Ne pas récupérer/gérer d'information des visiteurs *(trackers,cookies,commentaires,...)*
+- Mettre en place l'ensemble des sources sur github
 - Faire le maximum de chose par moi même
+- Générer automatiquement les pages html
 
 # Code source
 
@@ -43,26 +44,17 @@ L'ensemble du code source de ce site se trouve sur mon [dépôt github](https://
 
 ## Recupération de l'outil
 
-J'ai principalement travaillé avec la version 0.55.4.
-
-Les exécutables peuvent être récupérés sur le dépôt [officiel des releases](https://github.com/gohugoio/hugo/releases).
-
+J'ai principalement travaillé avec la version 0.55.4, en récupérant l'exécutable sur le dépôt [officiel des releases](https://github.com/gohugoio/hugo/releases).
 Pour Windows10 (en 64bit), l'exécutable se trouve [ici](https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Windows-64bit.zip)
 
 
-## 1er pas avec Hugo
+## Découverte d'Hugo
 
-Pour créer le socle, vous pouvez suivre la [documentation officielle](https://gohugo.io/getting-started/quick-start/).
-
-Les étapes sont relativements simples et bien expliquées.
-
-Il existe un grand nombre de choix de [theme](https://themes.gohugo.io) pour commencer à manipuler Hugo et partir d'un visuel existant.
+Pour créer un premier site, vous pouvez suivre la [documentation officielle](https://gohugo.io/getting-started/quick-start/).
+Les étapes sont bien expliquées et il existe un grand nombre de choix de [theme](https://themes.gohugo.io) pour commencer à manipuler l'outil et partir d'un visuel existant.
 
 
 # Structuration du site
-
-Quelques informations concernant l'architecture des répertoires pour Hugo.
-
 ## Définition des répertoires du socle
 
 Hugo gère les répertoires de la manière suivante :
@@ -139,7 +131,7 @@ Elle nécessite la création des fichiers suivants dans le répertoire `/themes/
 - header.html : permet de définir le menu de navigation en haut du site
 - footer.html : permet de définir le pied de page du site
 
-Pour le corps du site **block "main"**, le fonctionnement est expliqué plus bas avec la création de la section blog.
+Pour le corps du site **block main**, le fonctionnement est expliqué plus bas avec la création de la section blog.
 
 ## Gestion du menu de navigation
 
@@ -201,12 +193,18 @@ Les étapes de mise en place sont les suivantes :
 4/ Ajout des liens du menu global dans le fichier de configuration principal `config\_default\config.toml`
 ```makefile
 [[menus]]
+
 	[[menu.global]]
 		name = "Test"
-		weight = 0
+		weight = 1
 		identifier = "test"
 		url = "/test"
-
+  
+  [[menu.global]]
+    name = "Test2"
+    weight = 2
+    identifier = "test2"
+    url = "/test2"
 ```
 
 
@@ -218,13 +216,11 @@ Afin de pouvoir créer des articles, il faut mettre en place le système de blog
 1) Création d'une entrée **blog** dans le menu global du fichier de configuration principal `config\_default\config.toml`
 
 ```makefile
-[[menus]]
 	[[menu.global]]
 		name = "Blog"
 		weight = 1
 		identifier = "blog"
 		url = "/blog"
-
 ```
 
 2) Définition de la section **blog** en créant le répertoire `content\blog`
@@ -246,29 +242,23 @@ Aucun contenu pour le moment
 
 3) Création d'une page "list.html" 
 
-Cette page sera celle appelé par défaut par le fichier baseof.html pour la partie "main"
+Cette page sera celle appelée par défaut par le fichier **baseof.html** pour la partie **main**
 Exemple de contenu de la page :
 ```html
 {{ define "main" }}
 <div class="container">
-
 	{{ range (where .Site.Pages "Type" "blog") }}
 	<article class="list-blog-post">
-	    
 	    <header>
 	        <h2 class="list-blog-post-title">
 	            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
 	        </h2>
-
 	    </header>
-	    
 	    <div class="list-blog-post-summary">
 	        {{ .Summary | safeHTML }}
 	    </div>
-	    
 	</article>
 	{{ end}}
-
 </div>
 {{ end }}
 ```
@@ -289,7 +279,6 @@ Cette page sera appelée par défaut par le fichier baseof.html pour la partie "
 	    <main class="blog-post-main">
 	    	{{ .Content }}
 	  	</main>
-
 	</article>
 </div>
 {{ end }}
@@ -304,16 +293,65 @@ Afin de pouvoir lister les articles par **tags**, il faut activer la gestion des
 1) Ajout des informations suivantes Création d'une entrée **archives** dans le menu global du fichier de configuration principal `config\_default\config.toml`
 
 ```makefile
-[[menus]]
 	[[menu.global]]
-		name = "Archives"
-		weight = 3
-		identifier = "archives"
-		url = "/archives"
-
+		name = "Tags"
+		weight = 2
+		identifier = "tags"
+		url = "/tags"
 ```
 
-Creation des fichiers Layout
+2) Activation des tags en ajoutant le parametre suivant dans le fichier de configuration principal `config\_default\config.toml`
+
+```makefile
+[taxonomies]
+  tag = "tags"
+```
+
+3) Renseigner dans les fichiers "\*.md" du répertoire "content/blog" le paramètre **tags** avec les mots clés voulus :
+
+```makefile
+Tags : ["Tags1","Tags2"]
+```
+
+4) Création du fichier `themes\pragmatias\layouts\_default\terms.html` pour gérer l'affichage de l'url "/tags"
+```html
+{{ define "main" }}
+<div class="container prag-tags">
+  {{ $type := .Type }}
+  {{ range $key, $value := .Data.Terms.ByCount }}
+    {{ $name := .Name }}
+    {{ $count := .Count }}
+    {{ with $.Site.GetPage (printf "/%s/%s" $type $name) }}
+    <p>
+      <a class="" href="{{ .Permalink }}">
+        {{ $name | humanize }}
+      </a>
+    </p>
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}
+```
+
+5) Création du fichier `themes\pragmatias\layouts\_default\taxonomy.html` pour gérer l'affichage du contenu d'un tag
+```html
+{{ define "main" }}
+<div class="container">
+  {{ range (where .Site.Pages "Type" "blog") }}
+  <article class="list-blog-post">
+      <header>
+          <h2 class="list-blog-post-title">
+              <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          </h2>
+      </header>
+      <div class="list-blog-post-summary">
+          {{ .Summary | safeHTML }}
+      </div>
+  </article>
+  {{ end}}
+</div>
+{{ end }}
+```
 
 
 # Définition d'une section /Archive
@@ -371,10 +409,118 @@ Exemple de contenu de la page :
 
 
 # Mise en place du multilingue
+
 Modification du fichier de configuration
-Creation des fichiers i18n
-Modification des dates
-Modification des textes
+
+Ajouter les parametres suivants au début du fichier 
+```makefile
+languageCode = "en"
+DefaultContentLanguage = "en"
+```
+
+Ajouter les parametres suivants à la fin du fichier
+```makefile
+[languages]
+  [languages.en]
+    weight = 10
+    languageName = "English"
+    contentDir = "content/en"
+    languageCode = "en"
+    [languages.en.params]
+    imagePNG = "united-kingdom-flag-round-xs.png"
+
+  [languages.fr]
+      weight = 20
+      languageName = "Français"
+      contentDir = "content/fr"
+      languageCode = "fr"
+      [languages.fr.params]
+      imagePNG = "france-flag-round-xs.png"
+```
+
+
+Creation du fichiers **en.toml** pour l'anglais dans le répertoire `themes/pragmatias/i18n`
+
+```makefile
+[more_read]
+other = "Read more"
+```
+
+Creation du fichier **fr.toml** pour le français dans le répertoire `themes/pragmatias/i18n`
+
+```makefile
+[more_read]
+other = "Continer la lecture"
+```
+
+
+Utilisation des informations des fichiers dans les pages layouts avec la syntaxe suivantes :
+```makefile
+{{ i18n "more_read" }}
+```
+
+
+Gestion des mois en fonction de la langue
+Ajout dans le fichier en
+```makefile
+[January]
+other = "January"
+[February]
+other = "February"
+[March]
+other = "March"
+[April]
+other = "April"
+[May]
+other = "May"
+[June]
+other = "June"
+[July]
+other = "July"
+[August]
+other = "August"
+[September]
+other = "September"
+[October]
+other = "October"
+[November]
+other = "November"
+[December]
+other = "December"
+```
+
+Ajout dans le fichier fr
+```makefile
+[January]
+other = "Janvier"
+[February]
+other = "Février"
+[March]
+other = "Mars"
+[April]
+other = "Avril"
+[May]
+other = "Mai"
+[June]
+other = "Juin"
+[July]
+other = "Juillet"
+[August]
+other = "Aout"
+[September]
+other = "Septembre"
+[October]
+other = "Octobre"
+[November]
+other = "Novembre"
+[December]
+other = "Décembre"
+```
+
+Remplacement des dates dans les pages "layouts"
+```html
+{{.Date.Day}} {{i18n .Date.Month}} {{.Date.Year}}
+```
 
 *Note : pas de gestion de la page 404 par pays*
 
@@ -383,14 +529,154 @@ Modification des textes
 # Ajout d'un RSS concernant les articles uniquements
  
 Modification du fichier de configuration
+```makefile
+[outputs]
+  home = [ "HTML", "RSS" ]
+  section = [ "HTML"] 
+  taxonomy = [ "HTML"]
+```
 
-Creation/modification des fichiers Layout
+Creation du fichier rss.xml des fichiers Layout
+```xml
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ .Site.Title }}</title>
+    <link>{{ "/blog" | absLangURL }}</link>
+    <description>{{ i18n "rss_content" }} {{ .Site.Title }}</description>
+    <generator>Hugo {{ .Hugo.Version }}</generator>
+    {{ with .Site.LanguageCode }}
+      <language>{{.}}</language>
+    {{end}}
+    {{ with $.Site.Author.name }}
+      <webMaster>{{.}}</webMaster>
+    {{end}}
+    {{ with .Site.Copyright }}
+      <copyright>{{.}}</copyright>
+    {{end}}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    <atom:link href="{{ "/feed.xml" | absLangURL }}" rel="self" type="application/rss+xml" />
+    {{ range first 10 (where .Data.Pages "Type" "blog") }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>
+          {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}
+      </pubDate>
+      <lastModDate>
+          {{ .Lastmod.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}
+      </lastModDate>
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | html }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>
+```
+
+
+Ajout des informations dans le fichier head.html :
+```html
+    <!-- Flux RSS -->
+    <link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absLangURL }}" />
+```
+
+
+Ajout d'une icone dans la bar de navigation :
+```html
+   <li class="nav-item">
+        <link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absLangURL }}" title="{{ .Site.Title }}" />
+      <a href="{{ "/feed.xml" | absLangURL }}" title="{{ .Site.Title}}" class="prag_header_svg mr-1 ml-1">
+        {{ partial "svg/social-rss-circle-internet.svg" (dict "size" "24px") }}
+      </a>
+    </li>
+```
+
 
 
 # Gestion du fichier CSS principal
 
 Gestion des variables pour la couleur
-Gestion des fonts
+```css
+:root {
+  --color-bg-primary:#fdfaee;
+  --color-fg-head-titre:#03416d;
+}
+```
+
+Pour utilier cette couleur
+```css
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-fg-blog-texte);
+}
+```
+
+
+# Gestion des fonts
+
+Si vous voulez utiliser une font spécifique.
+
+Copie des fichiers au format woff et woff2 dans le répertoire `static/...`
+
+- OpenSans-Regular.woff
+- OpenSans-Regular.woff2
+- OpenSans-Bold.woff
+- OpenSans-Bold.woff2
+- OpenSans-Italic.woff
+- OpenSans-Italic.woff2
+- OpenSans-BoldItalic.woff
+- OpenSans-BoldItalic.woff2
+
+
+Ajout dans le fichier css 
+```css
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/OpenSans-Regular.woff2') format('woff2'), url('/fonts/OpenSans-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/OpenSans-Bold.woff2') format('woff2'), url('/fonts/OpenSans-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/OpenSans-Italic.woff2') format('woff2'), url('/fonts/OpenSans-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/OpenSans-BoldItalic.woff2') format('woff2'), url('/fonts/OpenSans-BoldItalic.woff') format('woff');
+  font-weight: 700;
+  font-style: italic;
+}
+```
+
+
+Utiliser le nom de la font dans les propriétés du css :
+```css
+body {
+  font-family: 'OpenSans';
+}
+```
+
+# Mise en place de travis
+
+Creation du fichier travis
+
+Ajout des informations sur le domaine existant
+
+Configuration de travis
+
+
+
 
 
 

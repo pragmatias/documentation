@@ -5,6 +5,7 @@ title = "Pragmatias Blog"
 theme = "pragmatias"
 Paginate = 5
 copyright = "WTFPL license"
+enableRobotsTXT = true
 
 [permalinks]
 	blog = "/:year/:month/:day/:title/"
@@ -53,7 +54,7 @@ copyright = "WTFPL license"
 		contentDir = "content/en"
 		languageCode = "en"
 		[languages.en.params]
-		imagePNG = "united-kingdom-flag-round-xs.png"
+		imagePNG = "united-kingdom-flag-round-xs-24.png"
 
 	[languages.fr]
     	weight = 20
@@ -61,7 +62,7 @@ copyright = "WTFPL license"
     	contentDir = "content/fr"
     	languageCode = "fr"
     	[languages.fr.params]
-    	imagePNG = "france-flag-round-xs.png"
+    	imagePNG = "france-flag-round-xs-24.png"
 
 
 
