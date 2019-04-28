@@ -1,17 +1,13 @@
 ---
 Categories : ["Web"]
 Tags : ["Web"]
-title : "Mise en place d'un site avec Hugo"
+title : "Création d'un site avec Hugo"
 date : 2019-04-25
 draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre en place un site web static en se basant sur les outils suivants :
-
-- [Hugo](https://gohugo.io) : Générateur de site web static
-- [Github](https://github.com) : Service web d'hébergement et de gestion des sources de développements (utilisant l'outil [Git](https://en.wikipedia.org/wiki/Git)) 
-- [Travis CI](https://travis-ci.com) : Service web permettant de tester et deployer les développements
+Vous trouverez dans cet article, l'ensemble des éléments permettant de créer un site web static en se basant sur le générateur [Hugo](https://gohugo.io)
 
 Les sujets abordés sont la structuration du site, la création d'un thème, la gestion d'un flux rss, la mise en place du multi-langue, ...
 
@@ -25,12 +21,9 @@ La [documentation](https://gohugo.io/documentation/) est très bien faite pour p
 
 # Objectif
 
-Pour mettre en place ce premier site, je me suis fixé les objectifs suivants :
-
 - Avoir un système de **blog** lié avec des tags permettant de naviguer sur les sujets et avoir un esprit **documentation** sans être un **wiki**
 - Ne pas avoir de dépendance inutile avec des ressources extérieurs *(google,facebook,javascript,...)*
 - Ne pas récupérer/gérer d'information des visiteurs *(trackers,cookies,commentaires,...)*
-- Mettre en place l'ensemble des sources sur github
 - Faire le maximum de chose par moi même
 - Générer automatiquement les pages html
 
@@ -574,8 +567,23 @@ other = "Décembre"
 
 # Gestion du fichier CSS principal
 
+## Utilisation d'un fichier CSS
+
+1\. Creer le fichier CSS souhaité dans le répertoire `/themes/pragmatias/static/css`
+```css
+html {}
+
+body {}
+```
+
+
+2\. Ajouter l'utilisation du fichier CSS dans le fichier `/themes/pragmatias/layouts/partials/head.html`
+```html
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/pragmatias.css">
+```
+
 ## Gestion des couleurs
-Afin de pouvoir gérer plus facilement les couleurs.
+Pour pouvoir gérer les couleurs de l'ensemble du site à un seul endroit.
 
 1\. Définir l'ensemble des variables nécessaire au début du fichier CSS
 ```css
@@ -596,7 +604,7 @@ body {
 
 ## Gestion des fonts
 
-Pour ajouter une font spécifique.
+Pour pouvoir utiliser une font spécifique sans passer par un webservice externe.
 
 1\. Copier les fichiers de la font choisie au format woff et woff2 dans le répertoire `/themes/pragmatias/static/fonts`
 
@@ -648,14 +656,3 @@ body {
   font-family: 'OpenSans';
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
