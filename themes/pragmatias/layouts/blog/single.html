@@ -32,7 +32,7 @@
 		</a>
 
 		<!-- gestion de l'apparition de la puce pour aller en haut du document -->
-		<script type="text/javascript">
+		<script>
 		$(document).ready(function(){
 
 			$('#showTopBtn').removeClass("prag-sticky-bot");
@@ -53,9 +53,9 @@
 
 		</script>
 
-	    <main class="blog-post-main">
+	    <div class="blog-post-main">
 	    	{{ .Content }}
-	  	</main>
+	  	</div>
 
 	</article>
 </div>
