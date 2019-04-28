@@ -12,7 +12,7 @@
 			<div class="blog-post-tags">
 			<strong>Tags:</strong>
 			    {{ range .Params.tags }}
-			        <a href="{{ "tags" | absLangURL }}/{{ . | urlize }}"> {{ . }}</a>
+			        <a href="{{ "tags/" | absLangURL }}{{ . | urlize }}/"> {{ . }}</a>
 			    {{ end }}
 			</div>
 	    </header>
