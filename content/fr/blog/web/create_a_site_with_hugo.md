@@ -42,10 +42,9 @@ L'ensemble du code source de ce site se trouve sur mon [dépôt github](https://
 
 ## Téléchargement
 
-J'ai principalement travaillé avec la version 0.55.4, en récupérant l'exécutable sur le dépôt [officiel des releases](https://github.com/gohugoio/hugo/releases).
+J'ai principalement travaillé avec la version 0.54.0, en récupérant l'exécutable sur le dépôt [officiel des releases](https://github.com/gohugoio/hugo/releases).
 
-Pour Windows10 (en 64bit), l'exécutable se trouve [ici](https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Windows-64bit.zip)
-
+Lien direct vers la version [Windows10 (en 64bit)](https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Windows-64bit.zip) ou la version [Linux (en 64bit)](https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.deb)
 
 ## Découverte d'Hugo
 
