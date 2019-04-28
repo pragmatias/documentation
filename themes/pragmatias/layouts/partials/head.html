@@ -2,7 +2,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnipper, noodp, noydir">
+    <meta name="google" content="notranslate, noimageindex"> <!--google -->
+    <meta name="slurp" content="notranslate, noimageindex"> <!--yahoo-->
+    <meta name="msnbot" content="notranslate, noimageindex"> <!--bing-->
+    <meta name="bingbot" content="notranslate, noimageindex"> <!--bing-->
+    <meta name="description" content="{{ .Site.Description }}" />
     {{ .Hugo.Generator }} 
 
     <!-- Bootstrap CSS -->
@@ -20,4 +25,7 @@
 
     <!-- Flux RSS -->
     <link rel="alternate" type="application/rss+xml" href="{{ "/feed.xml" | absLangURL }}" />
+    <!-- URL canonique - SEO -->
+    <link rel="canonical" href="{{ .URL | absLangURL }}" />
+
     <title>{{ .Title }}</title>

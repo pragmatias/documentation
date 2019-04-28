@@ -2,6 +2,7 @@ baseURL = "https://pragmatias.fr"
 languageCode = "fr"
 DefaultContentLanguage = "fr"
 title = "Pragmatias Blog"
+description = "Blog"
 theme = "pragmatias"
 Paginate = 5
 copyright = "WTFPL license"
@@ -27,6 +28,11 @@ enableRobotsTXT = true
 
 [author]
     name = "pragmatias"
+
+[sitemap]
+  changefreq = "monthly"
+  filename = "sitemap.xml"
+  priority = 0.5
 
 [[menus]]
 	[[menu.global]]
