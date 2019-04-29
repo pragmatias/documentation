@@ -1,6 +1,5 @@
 # https://docs.travis-ci.com/user/deployment/pages/
-# https://docs.travis-ci.com/user/reference/xenial/
-# https://docs.travis-ci.com/user/languages/go/
+# https://docs.travis-ci.com/user/reference/trusty/
 # https://docs.travis-ci.com/user/customizing-the-build/
 
 dist: trusty

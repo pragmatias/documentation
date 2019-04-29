@@ -1,6 +1,6 @@
 ---
-Categories : ["Web"]
-Tags : ["Web"]
+Categories : ["Web","Hugo"]
+Tags : ["Web","Hugo"]
 title : "Création d'un site avec Hugo"
 date : 2019-04-25
 draft : false
