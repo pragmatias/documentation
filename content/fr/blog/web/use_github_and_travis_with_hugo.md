@@ -2,7 +2,7 @@
 Categories : ["Web","Hugo"]
 Tags : ["Web","Hugo"]
 title : "Mise en place d'un site avec Hugo, Github et Travis"
-date : 2019-04-29
+date : 2019-04-28
 draft : false
 toc: true
 ---
