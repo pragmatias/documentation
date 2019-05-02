@@ -9,12 +9,20 @@
 	            <span>{{ i18n "lastUpd" }} : {{.PublishDate.Day}} {{i18n .PublishDate.Month}} {{.PublishDate.Year}}
 	            </span>
 	        </div>
+
+			<div class="blog-post-date">
+			{{ i18n "lecture_time" }} : {{.ReadingTime}} {{ i18n "minute" }} - {{.WordCount}} {{ i18n "word" }}
+			</div>
+
 			<div class="blog-post-tags">
 			<strong>Tags:</strong>
 			    {{ range .Params.tags }}
 			        <a href="{{ "tags/" | absLangURL }}{{ . | urlize }}/"> {{ . }}</a>
 			    {{ end }}
 			</div>
+
+
+			
 	    </header>
 
 {{ if .Params.toc }}
@@ -56,6 +64,8 @@
 	    <div class="blog-post-main">
 	    	{{ .Content }}
 	  	</div>
+
+
 
 	</article>
 </div>

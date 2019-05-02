@@ -2,7 +2,7 @@
 Categories : ["Linux","OpenSuse","Astuces"]
 Tags : ["Linux","OpenSuse","Astuces"]
 title : "Astuces pour OpenSUSE (Tumbleweed)"
-date : 2019-04-29
+date : 2018-04-29
 draft : false
 toc: true
 ---
@@ -33,7 +33,9 @@ Les astuces portent sur :
 
 > Note: remplacez **package** par le nom du package
 
+
 Quelques liens utiles :
+
 - [Zypper Cheat Sheet 1](https://en.opensuse.org/images/1/17/Zypper-cheat-sheet-1.pdf)
 - [Zypper Cheat Sheet 2](https://en.opensuse.org/images/3/30/Zypper-cheat-sheet-2.pdf)
 

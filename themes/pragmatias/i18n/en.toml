@@ -20,6 +20,15 @@ other = "Recent content in"
 [summary]
 other = "Summary"
 
+[lecture_time]
+other = "Reading time"
+
+[minute]
+other = "minute(s)"
+
+[word]
+other = "words"
+
 [404]
 other = "Wrong url"
 

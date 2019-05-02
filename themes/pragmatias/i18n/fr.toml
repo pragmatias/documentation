@@ -20,6 +20,15 @@ other = "Contenu récent dans "
 [summary]
 other = "Sommaire"
 
+[lecture_time]
+other = "Temps de lecture"
+
+[minute]
+other = "minute(s)"
+
+[word]
+other = "mots"
+
 [404]
 other = "Cette page n'existe pas"
 
