@@ -54,7 +54,7 @@ Il faut faire les mêmes étapes que pour la création du dépôt **documentatio
 
 Il faut créer au moins un fichier dans le dépôt **pragmatias.github.io** pour la suite de la configuration du dépôt.
 
-Vous trouverez plus d'information sur le systeme **Pages** de Github sur le [site officiel](https://pages.github.com)
+Vous trouverez plus d'information sur le systeme **Pages** de Github sur le [site officiel](https://pages.github.com).
 
 Si vous voulez modifier la configuration par défaut :
 
@@ -86,7 +86,7 @@ Si vous voulez modifier la configuration par défaut :
 
 # Configuration des actions de Travis CI sur les dépôts Github
 
-## Gestion d'un tocken Github
+## Gestion d'un jeton Github
 Il faut commencer par créer un jeton Github permettant de donner le droit à [Travis CI](https://travis-ci.com) de faire la mise à jour du dépot cible.
 
 1\. Connectez vous sur votre compte [Github](https://github.com), allez dans **settings** et cliquez sur **Developer settings**

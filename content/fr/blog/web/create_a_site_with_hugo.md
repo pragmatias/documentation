@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, l'ensemble des éléments permettant de créer un site web static en se basant sur le générateur [Hugo](https://gohugo.io)
+Vous trouverez dans cet article, l'ensemble des éléments permettant de créer un site web static en se basant sur le générateur [Hugo](https://gohugo.io).
 
 Les sujets abordés sont la structuration du site, la création d'un thème, la gestion d'un flux rss, la mise en place du multi-langue, ...
 
@@ -15,7 +15,7 @@ Les sujets abordés sont la structuration du site, la création d'un thème, la 
 
 # Qu'est ce que Hugo  
 
-[Hugo](https://gohugo.io) est un générateur de site web static écrit en Go et créé par Steve Francia en 2013 ([wikipedia](https://en.wikipedia.org/wiki/Hugo_\(software\)))
+[Hugo](https://gohugo.io) est un générateur de site web static écrit en Go et créé par Steve Francia en 2013 ([wikipedia](https://en.wikipedia.org/wiki/Hugo_\(software\))).
 
 La [documentation](https://gohugo.io/documentation/) est très bien faite pour prendre en main rapidement les bases de l'outil.
 
@@ -37,7 +37,7 @@ L'ensemble du code source de ce site se trouve sur mon [dépôt github](https://
 
 J'ai principalement travaillé avec la version 0.54.0, en récupérant l'exécutable sur le dépôt [officiel des releases](https://github.com/gohugoio/hugo/releases).
 
-Lien direct vers la version [Windows10 (en 64bit)](https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Windows-64bit.zip) ou la version [Linux (en 64bit)](https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.deb)
+Lien direct vers la version [Windows10 (en 64bit)](https://github.com/gohugoio/hugo/releases/download/v0.55.4/hugo_0.55.4_Windows-64bit.zip) ou la version [Linux (en 64bit)](https://github.com/gohugoio/hugo/releases/download/v0.54.0/hugo_0.54.0_Linux-64bit.deb).
 
 ## Découverte d'Hugo
 
@@ -60,7 +60,7 @@ Les étapes sont bien expliquées et il existe un grand nombre de choix de [them
 ```
 
 - Le répertoire "archetypes" permet de stocker le template des articles de blogs
-- Le répertoire "config" permet de stocket les fichiers de configurations
+- Le répertoire "config" permet de stocker les fichiers de configurations
 - Le répertoire "content" permet de stocker le contenant du site (articles du blog)
 - Le répertoire "ressources" permet de stocker l'ensemble des ressources générés (le site)
 - Le répertoire "themes" permet de stocker le theme utilisé
@@ -68,7 +68,7 @@ Les étapes sont bien expliquées et il existe un grand nombre de choix de [them
 
 ## Définition des répertoires d'un thème
 
-Les répertoires possibles pour un theme *(en prenant exemple sur mon propre theme)* :
+Les répertoires possibles pour un theme *(en prenant exemple sur mon theme)* :
 ```html
 /themes
   +-- /pragmatias
@@ -87,8 +87,8 @@ Les répertoires possibles pour un theme *(en prenant exemple sur mon propre the
   |   +-- theme.toml
 ```
 
-Le theme se nomme "pragmatias" et les metadonnées se trouvent dans le fichier "theme.toml"
-Un exemple de contenu pour le fichier "theme.toml" peut être récupéré sur le [site officiel](https://github.com/gohugoio/hugoThemes#themetoml)
+Le theme se nomme **pragmatias** et les metadonnées se trouvent dans le fichier **theme.toml**.
+Un exemple de contenu pour le fichier "theme.toml" peut être récupéré sur le [site officiel](https://github.com/gohugoio/hugoThemes#themetoml).
 
 Les répertoires importants sont :
 
@@ -127,7 +127,7 @@ Pour l'entête et le pied de page, l'invocation des fichiers **\*.html** se fait
 ```
 
 
-Pour le corps, l'invocation des fichiers \*.html se fait de manière plus complexe. Vous trouverez les informations dans les chapitres concernants la création des différentes section/pages du site. *(blog, tags, archives, ...)*
+Pour le corps, l'invocation des fichiers **\*.html** se fait de manière plus complexe. Vous trouverez les informations dans les chapitres concernants la création des différentes section/pages du site. *(blog, tags, archives, ...)*
 
 
 ## Gestion du menu de navigation
@@ -147,7 +147,7 @@ Les étapes de mise en place sont les suivantes :
   - css/bootstrap.min.css
   - css/bootstrap.min.css.map
 
-2\. Ajout des informations suivantes dans le fichier `/themes/pragmatias/layouts/partial/head.html` pour charger les fichiers JS et CSS nécessaires
+2\. Ajout des informations suivantes dans le fichier `/themes/pragmatias/layouts/partial/head.html` pour charger les fichiers Javascript et CSS nécessaires
 ```html
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ .Site.BaseURL }}/css/bootstrap.min.css">
@@ -319,7 +319,7 @@ Tags : ["Tags1","Tags2"]
 {{ end }}
 ```
 
-5\. Création du fichier `/themes/pragmatias/layouts/_default/taxonomy.html` pour gérer l'affichage du contenu d'un **Tags**
+5\. Création du fichier `/themes/pragmatias/layouts/_default/taxonomy.html` pour gérer l'affichage du contenu d'un **Tags** *(liste des articles)*
 ```html
 {{ define "main" }}
 <div class="container">
@@ -342,7 +342,7 @@ Tags : ["Tags1","Tags2"]
 
 # Définition d'une section Archives
 
-Afin de pouvoir lister les articles pour voir les archives, il faut créer une section **Archives**.
+Afin de pouvoir lister les articles par année, il faut créer une section **Archives**.
 
 1\. Ajouter une entrée **Archives** dans le menu global du fichier de configuration principal `config\_default\config.toml`
 ```makefile
