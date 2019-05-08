@@ -18,8 +18,6 @@ Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre 
 
 # Objectif
 
-Afin de mettre en place un site web static avec un nom de domaine personnel, j'ai mis en place les éléments suivants :
-
 - Création d'un dépôt [Github](https://github.com) pour stocker les sources permettant de générer le site web static (**documentation**)
 - Création d'un dépôt [Github](https://github.com) pour stocker les éléments du site web static (**pragmatias.github.io**)
 - Configurer [Travis CI](https://travis-ci.com) pour déclencher la génération du site web static dans le dépôt **pragmatias.github.io** lors d'un commit dans la branche **master** du dépôt **documentation**

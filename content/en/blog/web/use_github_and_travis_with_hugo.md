@@ -18,8 +18,6 @@ You'll find in this article, all the element to setting up a website based on th
 
 # Objective
 
-To set up a static website with a personal domain name, i have set up the following elements :
-
 - Create a [Github](https://github.com) repository to store the source code to generate the static website (**documentation**)
 - Create a [Github](https://github.com) repository to store the generated static website elements (**pragmatias.github.io**)
 - Configure [Travis CI](https://travis-ci.com) to trigger the static website generation in the repository **pragmatias.github.io** after a commit in the branch **master** from the repository **documentation**

@@ -23,7 +23,7 @@ The [documentation](https://gohugo.io/documentation/) is pretty complete and wel
 
 - Created a **blog** system linnked with a **tags** system allowing an eeasy navigation in a **documentation** spirit (wihtout using a **wiki**)
 - Do not use external ressource *(google,facebook,javascript,...)*
-- D not retrieve visitor information *(trackers,cookies,comments,...)*
+- Do not retrieve visitor information *(trackers,cookies,comments,...)*
 - Do as much as i can by myself
 - Automatically generate html pages
 
