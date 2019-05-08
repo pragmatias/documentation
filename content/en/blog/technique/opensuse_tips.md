@@ -2,7 +2,7 @@
 Categories : ["Linux","OpenSuse","Tips"]
 Tags : ["Linux","OpenSuse","Tips"]
 title : "Tips for OpenSUSE (Tumbleweed)"
-date : 2018-05-01
+date : 2019-05-01
 draft : false
 toc: true
 ---
