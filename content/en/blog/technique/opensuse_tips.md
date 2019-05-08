@@ -1,20 +1,28 @@
 ---
-Author : ""
-Description : ""
-Categories : [""]
+Categories : ["Linux","OpenSuse","Tips"]
 Tags : ["Linux","OpenSuse","Tips"]
 title : "Tips for OpenSUSE (Tumbleweed)"
-date : 2019-04-20
-draft : true
+date : 2018-05-01
+draft : false
 toc: true
 ---
 
-After few month to work with the [OpenSUSE Tumbleweed](https://www.opensuse.org/#Tumbleweed) Gnu/Linux distribution, first on virtual machines ([VirtualBox](https://www.virtualbox.org) / [VMWare](https:www.vmware.com)) then on my main computer, he was time to gather all the tips used.
+You'll find in this article, somes tips about the [OpenSUSE Tumbleweed](https://www.opensuse.org/#Tumbleweed) distribution.
 
-The tips are about zypper, btrfs, nfs, konsole, virtualbox, vmware, etc ...
+The tips cover :
+
+- [Zypper](https://en.opensuse.org/Portal:Zypper) : Command line package management
+- [KDE](https://en.wikipedia.org/wiki/KDE) : Desktop environment
+- [Btrfs](https://en.wikipedia.org/wiki/Btrfs) : OpenSuse default file system
+- [NFS](https://en.wikipedia.org/wiki/Network_File_System) : Network file system
+- [VirtualBox](https://en.wikipedia.org/wiki/VirtualBox) : Virtualization software
+- ...
+
  <!--more-->
 
-# Zypper
+# Tips about OpenSuse system
+
+## Zypper
 
  1. Install a package : ` sudo zypper in --no-recommend package`
  2. Remove a package : ` sudo zypper rm --clean-deps package`
@@ -25,36 +33,42 @@ The tips are about zypper, btrfs, nfs, konsole, virtualbox, vmware, etc ...
 
 > Note: replace **package** by the package name
 
+Some usefull links :
 
-# File system btrfs
+- [Zypper Cheat Sheet 1](https://en.opensuse.org/images/1/17/Zypper-cheat-sheet-1.pdf)
+- [Zypper Cheat Sheet 2](https://en.opensuse.org/images/3/30/Zypper-cheat-sheet-2.pdf)
 
-If btrfs-cleaner use 100% of your CPU and freeze your computer, 
-you can stop it with the following command : `sudo btrfs quota disable /`
 
-# Sound service (Pulseaudio)
+## File system btrfs
+
+If **btrfs-cleaner** use 100% of your CPU and freeze your computer, 
+you can stop it with the command : `sudo btrfs quota disable /`
+
+## Sound service (Pulseaudio)
 
 To restart pulseaudio, use : `pulseaudio -k`
 
-# Network service 
+## Network service 
 
 To restart network service use :` sudo rcnetwork restart network_interface`
 
 > Note: replace **network_interface** by your interface name (used `ifconfig`)
 
-# Configuration Fstab (with ntfs drive)
+## Configuration of the file fstab (with ntfs drive)
+
 For each drive :
 
  1. Create the following folder : `mkdir /mnt/<name>`
  2. change the folder owner : `chown anybody:wheel /mnt/<name>` 
  3. update the fstab file `sudo vi /etc/fstab` with the following line : `/dev/<drive>          /mnt/<name>          ntfs     rw,nosuid,nodev,relatime   0  0` 
 
-Tips :
+Some usefull command :
  - list partitions : `sudo fdisk -l`
  - list block devices : ` lsblk`
  - list uuid : `sudo blkid`
 
 
-# Configuration NFS client
+## Configuration of the NFS client
 
  - Discover the shared volumes on the NFS server : ` showmount -e <ip>`
  - Mount a shared volume from the NFS server (manually) : `sudo mount -t nfs <ip>:<repnfs> <replocal>`
@@ -66,43 +80,49 @@ Tips :
 > - **replocal** : path/folder on the NFS client
 
 
-# Configure Bind to Switch Desktop and Quick tile Window
+# Some tips about the desktop (KDE)
+
+## Configure Bind to Switch Desktop and Quick tile Window
 
 1. Go to System Settings > Shortcuts > Global Shortcuts > System Settings or Kwin
 
- >| Action | Global |
- >|--|--|
- >| Quick Tile Window to the Bottom | Meta+Num+2 |
- >| Quick Tile Window to the Bottom Left | Meta+Num+1 |
- >| Quick Tile Window to the Bottom Right | Meta+Num+3 |
- >| Quick Tile Window to the Left | Meta+Num+4 |
- >| Quick Tile Window to the Right | Meta+Num+6 |
- >| Quick Tile Window to the Top | Meta+Num+8 |
- >| Quick Tile Window to the Top Left | Meta+Num+7 |
- >| Quick Tile Window to the Top Right | Meta+Num+9 |
- >| Switch One Desktop Down | Meta+Down |
- >| Switch One Desktop to the Left | Meta+Left |
- >| Switch One Desktop to the Right | Meta+Right |
- >| Switch One Desktop Up | Meta+Up |
- >| Full screen Window | Meta+f |
+| Action | Global |
+|:--|:--|
+| Quick Tile Window to the Bottom | Meta+Num+2 |
+| Quick Tile Window to the Bottom Left | Meta+Num+1 |
+| Quick Tile Window to the Bottom Right | Meta+Num+3 |
+| Quick Tile Window to the Left | Meta+Num+4 |
+| Quick Tile Window to the Right | Meta+Num+6 |
+| Quick Tile Window to the Top | Meta+Num+8 |
+| Quick Tile Window to the Top Left | Meta+Num+7 |
+| Quick Tile Window to the Top Right | Meta+Num+9 |
+| Switch One Desktop Down | Meta+Down |
+| Switch One Desktop to the Left | Meta+Left |
+| Switch One Desktop to the Right | Meta+Right |
+| Switch One Desktop Up | Meta+Up |
+| Full screen Window | Meta+f |
 
 2. Right Click on the desktop wallpaper > Configure Desktop > Mouse Actions > Remove action "Switch Desktop" for "Vertical-Scroll"
 
 
-# Autostart (KDE)
-Copy a file **org.kde.*.desktop** in the folder **~/.config/autostart**
+## Autostart (KDE)
 
-> You could find them in the folder */usr/share/applications*
+- With command line : Copy a file **org.kde.\*.desktop** in the folder **~/.config/autostart**
 
-Or use System Settings > Startup and Shutdown > Autostart
+> You could find them in the folder `/usr/share/applications`
 
-# Reset KDE Session
+- With GUI : Go in System Settings > Startup and Shutdown > Autostart
+
+## Reset KDE Session
 Reset the current KDE session (kill all process & logout) : `pkill -kill -u username`
 
 > Note : replace **username** by the name of the choosen one
 
 
-# Konsole configuration
+# Some tips about software
+
+## Konsole config
+
 In Settings > Edit Current Profile
 
 1. General > Profile name > Users
@@ -111,8 +131,8 @@ In Settings > Edit Current Profile
 4. Keyboard > Linux console
 
 
-# Firefox configuration
-The file **places.sqlite** in **$HOME/.mozilla/firefox/%.default** contains bookmarks and history
+## Firefox configuration
+The file **places.sqlite** in **$HOME/.mozilla/firefox/%.default** contains bookmarks and history.
 
 List of interesting addons :
 
@@ -129,8 +149,9 @@ List of interesting addons :
  - No Coin
 
 
-# Latte Dock
-List of widgets :
+## Latte Dock configuration
+
+List of interesting widgets :
 
  - Application Menu
  - Pager
@@ -152,7 +173,9 @@ To restore plasma config (panel) :
  4. `plasmashell &`
 
 
-# WMware tips
+# Some tips about virtualization
+
+## WMware
 [Shared Folder](https://en.opensuse.org/SDB:VMware_Tools) :
 
 - Listing of shared folder : `vmware-hgfsclient`
@@ -160,7 +183,7 @@ To restore plasma config (panel) :
 - Unmount a shared folder : `fusermount -uz /mnt/`or `umount -f /mnt/`
 
 
-# VirtualBox tips
+## VirtualBox
 
 Install VBoxGuestAdditions :
 
