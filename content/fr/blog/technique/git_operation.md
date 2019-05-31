@@ -35,15 +35,16 @@ Sur Windows :
 Les différents états :
 
 - Untracked : Le fichier n'est pas pris en compte par Git
-- Unmodified : Le fichier a déjà était "commit" sur Git
-- Modified : Le fichier a déjà était "commit" sur Git et a été modifié (mais non)
-- Staged : L'état actuel du fichier est pris en compte dans Git mais n'a pas été "commit"
+- Unmodified : Le fichier a déjà était commit sur Git et n'a pas encore été modifié
+- Modified : Le fichier a déjà était commit sur Git et a été modifié
+- Staged : L'état actuel du fichier est pris en compte dans Git mais n'a pas été commit
 
 Schéma :
-
 [![schema](/blog/web/20190528_git_lifecycle.png)](/blog/web/20190528_git_lifecycle.png) 
 
 ## Configuration de Git
+
+Vous pourrez trouver plus d'information sur le [site officiel](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration).
 
 Recupération de la liste des paramètres de configuration :
 
@@ -53,8 +54,8 @@ Recupération de la liste des paramètres de configuration :
 
 Définition des paramètre utilisateurs :
 
-- Le nom de l'utilisateur : `$ git config --global user.name "pragmatias"`
-- L'adresse mail de l'utilisateur : `$ git config --global user.email "git@pragmatias.fr"`
+- Le nom de l'utilisateur : `$ git config --global user.name "user"`
+- L'adresse mail de l'utilisateur : `$ git config --global user.email "user@mail"`
 
 Définition des paramètres systèmes :
 
@@ -63,15 +64,14 @@ Définition des paramètres systèmes :
 
 # Mise en place d'un dépôt Git (Github)
 
-1/ Initialisation de Git dans un répertoire existant + lien du répertoire avec un dépôt git
-git init + git remote si besoin
+1/ [Initialisation](https://git-scm.com/docs/git-init) de Git dans un répertoire existant
 
 Pour initialiser Git dans un nouveau répertoire : `$ git init`
 Pour faire le lien avec un dépôt distant : `$ git remote add <remote_name> <remote_url>`
 
 
-2/ Clonage d'un dépot existant (exemple avec github)
-Pour récupérer un dépôt existant sur son espace personnel : `$ git clone <url> <folder>`
+2/ [Clonage](https://git-scm.com/docs/git-clone) d'un dépot existant (exemple avec github)
+Pour récupérer un dépôt distant sur son espace de travail : `$ git clone <url> <folder>`
 
 
 # Gestion des fichiers avec Git
@@ -81,36 +81,36 @@ Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir g�
 | Commande | Commentaire |
 |:--|:--|
 | `$ git status` | Analyse de l'état de l'ensemble des éléments |
-| `$ git status -s` | Analyse de l'état de l'ensemble des éléments avec l'option "short" |
+| `$ git status -s` | Analyse de l'état de l'ensemble des éléments avec un affichage synthétique |
 | `$ git add <fichier ou pattern>` | Ajout ou prise en compte des modifications d'un fichier |
 | `$ git add -A` | Ajout ou prise en compte des modifications de l'ensemble des fichiers |
-| `$ git commit -m "<message>"` | Enregistrement de l'ensemble des éléments se trouvant dans l'espace "staged" avec un message |
-| `$ git commit --amend"` | Ajout de l'ensemble des éléments se trouvant dans l'espace "staged" dans l'enregistrement précent |
-| `$ git rm <fichier ou pattern>` | Suppression d'un fichier dans le répertoire courant si il a déjà était "commit" |
-| `$ git rm --cached <fichier ou pattern>` | Suppression d'un fichier de l'espace "staged" mais pas du répertoire courant |
-| `$ git checkout -- <fichier ou pattern>` | Annulation des modifications d'un fichier non présent dans l'état "staged" |
+| `$ git commit -m "<message>"` | Enregistrement de l'ensemble des éléments se trouvant dans l'espace _staged_ avec un message |
+| `$ git commit --amend"` | Ajout de l'ensemble des éléments se trouvant dans l'espace _staged_ dans le _commit_ précent |
+| `$ git rm <fichier ou pattern>` | Suppression d'un fichier dans le répertoire courant si il a déjà était _commit_ |
+| `$ git rm --cached <fichier ou pattern>` | Suppression d'un fichier de l'espace _staged_ mais pas du répertoire courant |
+| `$ git checkout -- <fichier ou pattern>` | Annulation des modifications d'un fichier non présent dans l'état _staged_ |
 
 
-# Gestion des "remote"
+# Gestion d'un dépôt distant
 
-Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir gérer les remote avec Git
+Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir gérer un [dépôt distant](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches) avec Git
 
 | Commande | Commentaire |
 |:--|:--|
-| `$ git remote -v` | Lister les adresses remote |
-| `$ git remote add <remote_name> <remote_url>` | Ajout d'une adresse remote |
-| `$ git fetch <remote_name>` | Récupération des métadonnées d'une adresse remote |
-| `$ git chekout <remote_name>/<branch>` | Récupération des fichiers à partir d'une branche de l'adresse remote |
-| `$ git push <remote_name> <branhc>` | Enregistrement des informations vers l'adresse remote |
-| `$ git remote show <remote_name>` | Inspecter les adresses remotes |
-| `$ git remote rename <remote_name_old> <renomte_name_new>` | Modifier le nom d'une adresse remote |
-| `$ git remote remove <remote_name>` | Suppression d'une adresse remote |
+| `$ git remote -v` | Lister les dépôts distants |
+| `$ git remote add <remote_name> <remote_url>` | Ajout d'un dépôt distant |
+| `$ git fetch <remote_name>` | Récupération des métadonnées d'un dépôt distant |
+| `$ git chekout <remote_name>/<branch>` | Récupération de l'ensemble des éléments d'une branche d'un dépôt distant |
+| `$ git push <remote_name> <branhc>` | Envoi des nouveaux _commit_ sur une branche d'un dépôt distant |
+| `$ git remote show <remote_name>` | Inspecter un dépôt distant |
+| `$ git remote rename <remote_name_old> <renomte_name_new>` | Modifier le nom local utiliser pour définir un dépôt distant |
+| `$ git remote remove <remote_name>` | Suppression d'un dépôt distant |
 
 
 
 # Définision d'un fichier .gitignore
 
-Il est possible d'ignorer certain fichier/répertoire avec Git en utilisant un fichier ".gitignore".
+Il est possible d'ignorer certain fichier/répertoire avec Git en utilisant un fichier [.gitignore](https://git-scm.com/docs/gitignore).
 
 Exemple de contenu d'un fichier **.gitignore**
 
@@ -141,9 +141,46 @@ doc/**/*.pdf
 ```
 
 
-# Recherche des différences et des logs
-`$ git diff`
-`$ git diff --cached`
+# Récupération des différences et de l'historique des changements
+
+Quelques opérations possibles pour voir les [différences](https://git-scm.com/docs/git-diff) entre les _commit_ :
+
+| Commande | Commentaire |
+|:--|:--|
+| `$ git diff` | Différence entre le répertoire de travail et le dernier _commit_ |
+| `$ git diff --cached` | Différence entre les fichiers ajouter pour le prochain _commit_ et le dernier _commit_ |
+| `$ git diff <commit_1> <commit_2> <pattern>` | Liste des différences entre deux _commit_ pour l'ensemble des fichiers correspondants au pattern souhaité |
+
+
+Quelques opérations possibles pour lire [l'historique des _commit_](https://git-scm.com/docs/git-log) :
+
+| Commande | Commentaire |
+|:--|:--|
+| `$ git log` | Voir l'historique des _commit_ |
+| `$ git log -2` | Voir l'historique des deux derniers _commit_ |
+| `$ git log -p -1` | Voir l'historique du dernier _commit_ avec le détail des différences entre les _commit_ |
+| `$ git log -stat -1` | Voir l'historique du dernier _commit_ avec les statistiques sur les éléments |
+| `$ git log --pretty=format:"<format>"` | voir l'historique des _commit_ dans le format souhaité |
+
+Exemple des options pouvant être utilisés comme format :
+| Option | Description |
+|:--|:--|
+| %H | Commit hash |
+| %h | Abbreviated commit hash |
+| %T | Tree hash |
+| %t | Abbreviated tree hash |
+| %P | Parent hashes |
+| %p | Abbreviated parent hashes |
+| %an | Author name |
+| %ae | Author email |
+| %ad | Author date (format respects the --date=option) |
+| %ar | Author date, relative |
+| %cn | Committer name |
+| %ce | Committer email |
+| %cd | Committer date |
+| %cr | Committer date, relative |
+| %s | Subject |
+
 
 # Gestion des tags
 | Commande | Commentaire |
@@ -164,7 +201,7 @@ doc/**/*.pdf
 
 # Gestion des alias
 
-Vous pouvez définir des alias pour accéder aux commandes git.
+Vous pouvez définir des alias pour accéder aux commandes git plus rapidement.
 
 ```git
 $ git config --global alias.co checkout
@@ -179,24 +216,17 @@ $ git config --global alias.last 'log -1 HEAD'
 
 # Gestion des branches avec Git
 
-1/ Creation d'une branche
-2/ Suppression d'une branche
-3/ Merge de deux branches
-4/ Navigation dans une branche (checkout)
-5/ Recuperation des données d'une branche  (pull)
-6/ Mise a jour d'une branche (push)
+1. Creation d'une branche
+2. Suppression d'une branche
+3. Merge de deux branches
+4. Navigation dans une branche (checkout)
+5. Recuperation des données d'une branche (pull)
+6. Mise a jour d'une branche (push)
 
 
 
 # Commande wikipedia 
-git init​ crée un nouveau dépôt ;
-git clone​ clone un dépôt distant ;
-git add​ ajoute de nouveaux objets blobs dans la base des objets pour chaque fichier modifié depuis le dernier commit. Les objets précédents restent inchangés ;
-git commit​ intègre la somme de contrôle SHA-1 d'un objet tree et les sommes de contrôle des objets commits parents pour créer un nouvel objet commit ;
 git branch​ liste les branches ;
 git merge​ fusionne une branche dans une autre ;
 git rebase​ déplace les commits de la branche courante devant les nouveaux commits d’une autre branche ;
-git log​ affiche la liste des commits effectués sur une branche ;
-git push​ publie les nouvelles révisions sur le remote. (La commande prend différents paramètres) ;
-git pull​ récupère les dernières modifications distantes du projet (depuis le Remote) et les fusionner dans la branche courante ;
 git stash​ stocke de côté un état non commité afin d’effectuer d’autres tâches.
