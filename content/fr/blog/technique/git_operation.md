@@ -1,13 +1,13 @@
 ---
 Categories : ["Git"]
 Tags : ["Git"]
-title : "Git : Operations"
-date : 2019-05-23
-draft : true
+title : "Git : Opérations"
+date : 2019-06-24
+draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, les opérations utilent à connaitre pour travailler avec l'outil [Git](https://en.wikipedia.org/wiki/Git).
+Vous trouverez dans cet article, quelques opérations/commandes à connaitre pour travailler avec l'outil [Git](https://en.wikipedia.org/wiki/Git).
 
 <!--more-->
 
@@ -160,7 +160,10 @@ Quelques opérations possibles pour lire [l'historique des _commit_](https://git
 | `$ git log -2` | Voir l'historique des deux derniers _commit_ |
 | `$ git log -p -1` | Voir l'historique du dernier _commit_ avec le détail des différences entre les _commit_ |
 | `$ git log -stat -1` | Voir l'historique du dernier _commit_ avec les statistiques sur les éléments |
-| `$ git log --pretty=format:"<format>"` | voir l'historique des _commit_ dans le format souhaité |
+| `$ git log --pretty=format:"<format>"` | Voir l'historique des _commit_ dans le format souhaité |
+| `$ git log --oneline --decorate"` | Exemple de commande ... |
+| `$ git log --oneline --decorate --graph --all"` | Exemple de commande ... |
+
 
 Exemple des options pouvant être utilisés comme format :
 | Option | Description |
@@ -213,20 +216,20 @@ $ git config --global alias.last 'log -1 HEAD'
 ```
 
 
-
 # Gestion des branches avec Git
 
-1. Creation d'une branche
-2. Suppression d'une branche
-3. Merge de deux branches
-4. Navigation dans une branche (checkout)
-5. Recuperation des données d'une branche (pull)
-6. Mise a jour d'une branche (push)
+| Commande | Commentaire |
+|:--|:--|
+| `$ git branch` | Liste des branches |
+| `$ git branch -v` | Liste des branches avec le dernier _commit_ |
+| `$ git branch --merged` | Liste des branches fusionner avec la branche courante |
+| `$ git branch test` | Création d'une nouvelle branche nommée _test_ |
+| `$ git branch -d corf1` | Suppression de la branche _corf1_  |
+| `$ git checkout master` | Changer de branche (sur la branche _master_) |
+| `$ git checkout -b devf1` | Création de la branche _devf1_ et changement de branche sur _devf1_ |
+| `$ git merge corf1` | Fusionner la branche _corf1_ sur la branche courante |
 
 
+# Autres opérations 
 
-# Commande wikipedia 
-git branch​ liste les branches ;
-git merge​ fusionne une branche dans une autre ;
-git rebase​ déplace les commits de la branche courante devant les nouveaux commits d’une autre branche ;
-git stash​ stocke de côté un état non commité afin d’effectuer d’autres tâches.
+L'opération de **rebase** pour appliquer l'ensembler des modifications d'une branche en réécrivant l'historique : [documentation](https://git-scm.com/docs/git-rebase).
