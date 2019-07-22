@@ -81,6 +81,7 @@ You will find, below, a list of operations to know to manage files with Git.
 | `$ git status` | Analysis of the state of all elements |
 | `$ git status -s` | Analysis of the state of all elements with a synthetic display |
 | `$ git add <fichier ou pattern>` | Tracking a new file |
+| `$ git add -f <fichier ou pattern>` | Force the tracking of a new file (gitignore) |
 | `$ git add -A` | Tracking all the new files |
 | `$ git commit -m "<message>"` | Commit of all elements in the _staged_ space with a message |
 | `$ git commit --amend"` | Commit all elements in the _staged_ space in the preceding _commit_ |

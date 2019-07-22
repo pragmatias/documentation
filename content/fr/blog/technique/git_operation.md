@@ -83,6 +83,7 @@ Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir g�
 | `$ git status` | Analyse de l'état de l'ensemble des éléments |
 | `$ git status -s` | Analyse de l'état de l'ensemble des éléments avec un affichage synthétique |
 | `$ git add <fichier ou pattern>` | Ajout ou prise en compte des modifications d'un fichier |
+| `$ git add -f <fichier ou pattern>` | Force l'ajout ou la prise en compte des modifications d'un fichier (gitignore) |
 | `$ git add -A` | Ajout ou prise en compte des modifications de l'ensemble des fichiers |
 | `$ git commit -m "<message>"` | Enregistrement de l'ensemble des éléments se trouvant dans l'espace _staged_ avec un message |
 | `$ git commit --amend"` | Ajout de l'ensemble des éléments se trouvant dans l'espace _staged_ dans le _commit_ précent |
