@@ -30,9 +30,9 @@ Les astuces portent sur :
  4. Mise à jour des packages : `sudo zypper up`
  5. Mise à niveau de la distribution : `sudo zypper dup`
  6. Recherche d'un package : `sudo zypper se package` ou `sudo zypper se -is package`
+ 7. Verouillage d'un package : `sudo zypper al package`
 
 > Note: remplacez **package** par le nom du package
-
 
 Quelques liens utiles :
 
@@ -42,7 +42,12 @@ Quelques liens utiles :
 
 ## Système de fichier btrfs
 
-Si **btrfs-cleaner** utilise 100% du CPU and bloque votre pc, vous pouvez l'arrêter avec la commande : `sudo btrfs quota disable /`
+- Si **btrfs-cleaner** utilise 100% du CPU and bloque votre pc, vous pouvez l'arrêter avec la commande : `sudo btrfs quota disable /`
+- Pour desactiver le service de maintenance btrfs (si vous n'utilisez pas le système de fichier) : `systemctl disable btrfsmaintenance-refresh`
+
+## Service chrony
+
+Pour desactiver le démarrage du service chrony : `systemctl disable chrony-wait`
 
 ## Service son (Pulseaudio)
 
@@ -75,12 +80,17 @@ Quelques commandes utiles concernant les disques :
 - Monter le répertoire partagé à partir du server NFS (automatiquement) en modifiant le fichier fstab : `sudo vi /etc/fstab` et en ajoutant la ligne `<ip>:<repnfs> <replocal> nfs rw,noauto,_netdev 0 0`
 - Monter les répertoires connus dans le fichier fstab (rechargement) : `mount -a`
 
-> - ip : adresse du serveur NFS
-> - repnfs : chemin/repertoire sur le serveur NFS
-> - replocal : chemin/repertoire sur le client NFS
+> - **ip** : adresse du serveur NFS
+> - **repnfs** : chemin/repertoire sur le serveur NFS
+> - **replocal** : chemin/repertoire sur le client NFS
 
+## Supprimer l'écran de démarrage (plymouth)
+- Suppression et verouillage des paquets **plymouth** : `sudo zypper rm plymouth* && sudo zypper al plymouth*`
 
-# Quelques astuces concernant le bureau
+## Information sur systemd
+- Information concernant la durée du démarrage des services : `systemd-analyze blame`
+
+# Astuces concernant le bureau KDE
 
 ## Configuration des raccourcis pour changer de bureau (Quick tile Window)
 
@@ -102,12 +112,10 @@ Quelques commandes utiles concernant les disques :
 | Switch One Desktop Up | Meta+Up |
 | Full screen Window | Meta+f |
 
-
 2\. Clique droit sur le papier peint du bureau > Configure Desktop > Mouse Actions > Remove action "Switch Desktop" for "Vertical-Scroll"
 
 
 ## Autostart (KDE)
-
 
 - En ligne de commande : Copiez le fichier **org.kde.\*.desktop** dans le répertoire `~/.config/autostart`
 
@@ -135,7 +143,6 @@ Dans Settings > Edit Current Profile
 
 
 ## Configuration de Firefox
-
 Le fichier **places.sqlite** dans **$HOME/.mozilla/firefox/%.default** contient les favoris et l'historique.
 
 Liste des modules intéressant :
@@ -154,6 +161,7 @@ Liste des modules intéressant :
 
 
 ## Configuration de Latte Dock
+
 Liste des widgets intéressant :
 
  - Application Menu

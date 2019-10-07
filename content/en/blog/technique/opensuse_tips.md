@@ -30,6 +30,7 @@ The tips cover :
  4. Update packages : `sudo zypper up`
  5. Upgrade Distribution : `sudo zypper dup`
  6. Search packages : `sudo zypper se package` or `sudo zypper se -is package`
+ 7. Lock packages : `sudo zypper al package`
 
 > Note: replace **package** by the package name
 
@@ -41,8 +42,12 @@ Some usefull links :
 
 ## File system btrfs
 
-If **btrfs-cleaner** use 100% of your CPU and freeze your computer, 
-you can stop it with the command : `sudo btrfs quota disable /`
+- If **btrfs-cleaner** use 100% of your CPU and freeze your computer, you can stop it with the command : `sudo btrfs quota disable /`
+- To disable the btrfs service (if you don't use the filesystem) : `systemctl disable btrfsmaintenance-refresh`
+
+## Service chrony
+
+To disable chrony service startup : `systemctl disable chrony-wait`
 
 ## Sound service (Pulseaudio)
 
@@ -79,12 +84,17 @@ Some usefull command :
 > - **repnfs** : path/folder on the NFS server
 > - **replocal** : path/folder on the NFS client
 
+## Delete the boot screen (plymouth)
+- Remove and lock the package **plymouth** : `sudo zypper rm plymouth* && sudo zypper al plymouth*`
 
-# Some tips about the desktop (KDE)
+## Systemd information
+- Information on the duration of the start of services : `systemd-analyze blame`
+
+# Some tips about the KDE desktop
 
 ## Configure Bind to Switch Desktop and Quick tile Window
 
-1. Go to System Settings > Shortcuts > Global Shortcuts > System Settings or Kwin
+1\. Go to System Settings > Shortcuts > Global Shortcuts > System Settings or Kwin
 
 | Action | Global |
 |:--|:--|
@@ -102,7 +112,7 @@ Some usefull command :
 | Switch One Desktop Up | Meta+Up |
 | Full screen Window | Meta+f |
 
-2. Right Click on the desktop wallpaper > Configure Desktop > Mouse Actions > Remove action "Switch Desktop" for "Vertical-Scroll"
+2\. Right Click on the desktop wallpaper > Configure Desktop > Mouse Actions > Remove action "Switch Desktop" for "Vertical-Scroll"
 
 
 ## Autostart (KDE)
@@ -114,7 +124,8 @@ Some usefull command :
 - With GUI : Go in System Settings > Startup and Shutdown > Autostart
 
 ## Reset KDE Session
-Reset the current KDE session (kill all process & logout) : `pkill -kill -u username`
+
+- Reset the current KDE session (kill all process & logout) : `pkill -kill -u username`
 
 > Note : replace **username** by the name of the choosen one
 
