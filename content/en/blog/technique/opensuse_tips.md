@@ -39,6 +39,12 @@ Some usefull links :
 - [Zypper Cheat Sheet 1](https://en.opensuse.org/images/1/17/Zypper-cheat-sheet-1.pdf)
 - [Zypper Cheat Sheet 2](https://en.opensuse.org/images/3/30/Zypper-cheat-sheet-2.pdf)
 
+Message :
+```
+Removal of ***********(@System) failed :
+Error: Subprocess failed. Error: RPM failed: error: package ********** is not installed
+```
+You have to rebuild the RPM database : `sudo rpm --rebuilddb`
 
 ## File system btrfs
 
@@ -48,6 +54,10 @@ Some usefull links :
 ## Service chrony
 
 To disable chrony service startup : `systemctl disable chrony-wait`
+
+## Manage update manually (remove PackageKit)
+
+To remove PackageKit : `sudo zypper rm PackageKit* && sudo zypper al PackageKit*`
 
 ## Sound service (Pulseaudio)
 
