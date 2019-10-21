@@ -15,6 +15,12 @@ Vous trouverez dans cet article, l'ensemble des éléments/étapes pour mettre e
 
 [Nextcloud](https://fr.wikipedia.org/wiki/Nextcloud) est un logiciel (libre) offrant une plateforme de services de stockage et partage de fichiers et d'applications en ligne.
 
+# Objectif
+
+Installation de Nextcloud sur un NAS Synology dont l'ip interne est "192.168.51.54" et le rendre accessible depuis internet par le domaine "alpha.com" et plus spécifiquement par le sous domaine "nextcloud.alpha.com".
+
+Le compte administrateur du NAS se nomme "NasUser".
+
 
 # Installation des applications nécessaire sur le NAS
 
@@ -44,12 +50,10 @@ Pour activer l'accès, il faut suivre les étapes suivantes :
 Récupérez l'application [Putty](https://www.putty.org/) et suivez les étapes suivantes :
 
 1. Exécuter l'application [Putty](https://www.putty.org/)
-2. Remplir "Host Name" avec l'adresse du NAS
-3. Remplir "Port" avec le port défini sur le NAS
+2. Remplir "Host Name" avec l'adresse du NAS : `192.168.51.54`
+3. Remplir "Port" avec le port défini sur le NAS : `21`
 4. Cliquez sur "Open" pour vous connecter
-5. Entrez le nom du user (admin NAS)
-
-ecran résultat :
+5. Entrez le nom du user du NAS et son mot de passe : `NasUser`
 
 
 # Installation de Nextcloud sur le NAS
@@ -58,7 +62,7 @@ Une fois connecté en SSH sur le NAS, suivez les étapes suivantes :
 
 1. Passez en mode admin : `sudo -i` et entrez votre mot de passe
 2. Creer le dossier web pour l'application : `mkdir -p /volume1/web`
-2. Creer le dossier Nextcloud pour les données : `mkdir -p /volume1/Nextcloud`
+2. Creer le dossier Nextcloud pour les données : `mkdir -p /volume1/nextcloud`
 3. Déplacez vous dans le répertoire web : `cd /volume1/web`
 4. Téléchargé l'application nextcloud sur le [site officielle](https://nextcloud.com/install/#) : `wget https://download.nextcloud.com/server/releases/nextcloud-17.0.0.zip`
 5. Décompresser l'archive Nextcloud : `7z x nextcloud-17.0.0.zip`
@@ -66,23 +70,23 @@ Une fois connecté en SSH sur le NAS, suivez les étapes suivantes :
 7. Mettez le user "http" en tant que propriétaire des répertoires nécessaires 
 ```bash
 chown -R http:http /volume1/web/nextcloud/
-chown -R http:http /volume1/Nextcloud/
+chown -R http:http /volume1/nextcloud/
 chown http:http /volume1/web/nextcloud/.htaccess
 ```
 8. Changer les droits des repertoires et des fichiers :
 ```bash
 find /volume1/web/nextcloud/ -type f -print0 | xargs -0 chmod 777
 find /volume1/web/nextcloud/ -type d -print0 | xargs -0 chmod 777
-find /volume1/Nextcloud/ -type d -print0 | xargs -0 chmod 777
+find /volume1/nextcloud/ -type d -print0 | xargs -0 chmod 777
 chmod 777 /volume1/web/nextcloud/.htaccess
 ```
 
 
 
+# Configuration de l'application Web Station
 
 
-
-Configuration de Web Station :
+Pour configurer l'application Web Station, suivez les étapes suivantes :
 	- Parametètres généraux
 		- Apache HTTP Server 2.4
 		- Default Profile ( PHP 7.2 )
@@ -107,15 +111,46 @@ Configuration de Web Station :
 			- PHP : Default Profile (PHP 7.2)
 
 
+
+# Configuration de MariaDB :
+
 Configuration de phpMyAdmin :
 	- Réinitialiser la base de données / réinitialiser le mot de passe root
 	- port : 3307
 
+
+
+# Initialisation de Nextcloud
+
+Allez sur l'écran d'accueil :
+http://192.168.0.13/nextcloud/index.php
+
+Repertoire des donnees
+/volume1/NextCloud/data
+
+Configurer la base de données : mysql/MariaDB
+
+root
+PasswordMariaDB
+nextcloud
+127.0.0.1:3307
+
+
+# Configuration de l'acces à Nextcloud
 Fichier config : /volume1/web/Nextcloud/config/config.php
 
 
 
+# Rendre accessible votre cloud lorsque vous avez une adresse ip non fixe
+Configuration DNS :
+Prendre une adresse sur synology.me
 
+
+Mettre le "subdomain.domain.com 10800 IN CNAME domain.synology.me."
+
+
+
+# Configuration du certificat pour https
 
 Cerficat : (Securité > Certificat)
 
@@ -133,12 +168,7 @@ Configurer >
 	- Services = certificat ...
 
 
-# Rendre accessible votre cloud lorsque vous avez une adresse ip non fixe
-Configuration DNS :
-Prendre une adresse sur synology.me
 
-
-Mettre le "subdomain.domain.com 10800 IN CNAME domain.synology.me."
 
 
 
