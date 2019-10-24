@@ -3,7 +3,7 @@ Categories : ["Nextcloud","Cloud"]
 Tags : ["Nextcloud","Cloud"]
 title : "Installing Nextcloud on a Synology NAS"
 date : 2019-10-20
-draft : true
+draft : false
 toc: true
 ---
 
@@ -28,7 +28,7 @@ In the context of this installation, the following information should be taken i
 
 # Applications required on the Synology NAS
 
-On the Synology NAS, it's required to install the following applications by using the **centre de paquets** :
+On the Synology NAS, it's required to install the following applications by using the **Package Center** :
 
 - **PHP 7.2** : Programming language
 - **MariaDB 10** : Relational database
@@ -40,7 +40,7 @@ On the Synology NAS, it's required to install the following applications by usin
 
 # Enabling SSH access on the Synology NAS
 
-The [SSH](https://en.wikipedia.org/wiki/Secure_Shell) access  will allow to install the Nextcloud application from the command line.
+The [SSH](https://en.wikipedia.org/wiki/Secure_Shell) access will allow to install the Nextcloud application from the command line.
 
 To activate SSH access, the following steps must be followed :
 
@@ -75,20 +75,20 @@ Once connected in SSH on the NAS, follow these steps  :
 4. Download the **Nextcloud** application on the [official website](https://nextcloud.com/install/#) : `wget https://download.nextcloud.com/server/releases/nextcloud-17.0.0.zip`
 5. Unzip the **Nextcloud** application archive : `7z x nextcloud-17.0.0.zip`
 6. Check that the directory **web/nextcloud** exist : `/volume1/web/nextcloud`
-7. Renseignez l'utilisateur **http** en tant que propriétaire des répertoires créés 
+7. Change the user **http** as the owner of the created directories : 
 ```bash
 chown -R http:http /volume1/web/nextcloud/
 chown -R http:http /volume1/nextcloud/
 chown http:http /volume1/web/nextcloud/.htaccess
 ```
-8. Changez les droits des répertoires et des fichiers :
+8. Change the permissions of directories and files :
 ```bash
 find /volume1/web/nextcloud/ -type f -print0 | xargs -0 chmod 777
 find /volume1/web/nextcloud/ -type d -print0 | xargs -0 chmod 777
 find /volume1/nextcloud/ -type d -print0 | xargs -0 chmod 777
 chmod 777 /volume1/web/nextcloud/.htaccess
 ```
-9. Modifiez le fichier de configuration de l'application **Nextcloud** concernant les deux paramètres suivants : `/volume1/web/nextcloud/config/config.php`
+9. Modify the application configuration file **Nextcloud** regarding the following two parameters : `/volume1/web/nextcloud/config/config.php`
 ```bash
 'trusted_domains' =>
 	array (
@@ -99,111 +99,111 @@ chmod 777 /volume1/web/nextcloud/.htaccess
 ```
 
 
-# Configuration de l'application Web Station
+# Configuring the Web Station application
 
-Configurez l'application Web Station en suivant les étapes suivantes :
+Configure the Web Station application by following these steps :
 
-1. Ouvrir le **Centre des paquets**
-2. Selectionnez l'option **Installé**
-3. Selectionnez l'option **Open** pour l'application Web Station
-4. Selectionnez l'onglet **Paramètres généraux** et renseignez les éléments suivants :
-	- Serveur pincipal HTTP : `Apache HTTP Server 2.4`
+1. Open the **Package Center**
+2. Select **Installed**
+3. Select **Open** on Web Station application
+4. Select the tab **General Settings** and fill in the following information :
+	- HTTP back-end server : `Apache HTTP Server 2.4`
 	- PHP : `Default Profile ( PHP 7.2 )`
 
 [![Web Station Step 1](/blog/web/20191020_nextcloud_webstation_step1.png)](/blog/web/20191020_nextcloud_webstation_step1.png) 
 
-5. Sélectionnez l'onglet **Paramètre PHP** et cliquez sur le bouton **Créer**
-6. Sélectionnez l'onglet **Paramètres généraux** et renseignez les éléments suivants :
-	- Nom du profil : `Default Profile`
+5. Select the tab **PHP Settings** and click on the button **Create**
+6. Select the tab **General Settings** and fill in the following information :
+	- Profile Name : `Default Profile`
 	- Description : `Default PHP 7.2 Profile`
-	- Version PHP : `PHP 7.2`
-	- Cochez la case `Activer le cache PHP`
-	- Cochez la case `Personnaliser PHP open_basedir` et renseignez la valeur suivante `/tmp:/var/services/tmp:/var/services/web:/var/services/homes:/volume1/nextcloud`
-	- Selectionnez les extensions souhaitées
-	- Cliquez sur le bouton **OK**
+	- PHP Version : `PHP 7.2`
+	- Check the box `Enable PHP cache`
+	- Check the box `Customize PHP open_basedir` and fill in the following value `/tmp:/var/services/tmp:/var/services/web:/var/services/homes:/volume1/nextcloud`
+	- Select the desired extensions
+	- Click on the button **OK**
 
 [![Web Station Step 2](/blog/web/20191020_nextcloud_webstation_step2.png)](/blog/web/20191020_nextcloud_webstation_step2.png) 
 
-7. Sélectionnez l'onglet **Virtual Host**, cliquez sur le bouton **Créer** et renseignez les éléments suivants :
-	- Cliquez sur l'option `Basé sur le nom`
-	- Nom d'hote : `ncalpha.synology.me`
+7. Select the tab **Virtual Host**, click on the button **Create** and fill in the following elements :
+	- click on the button `Name-based`
+	- Hostname : `ncalpha.synology.me`
 	- Port : `HTTPS 444`
-	- Racine du document : `web/nextcloud`
-	- Serveur principal HTTP: `Apache HTTP Server 2.4`
+	- Document root : `web/nextcloud`
+	- HTTP back-end server: `Apache HTTP Server 2.4`
 	- PHP : `Default Profile (PHP 7.2)`
-	- Cliquez sur le bouton **OK**
+	- Click on the button **OK**
 
 [![Web Station Step 3](/blog/web/20191020_nextcloud_webstation_step3.png)](/blog/web/20191020_nextcloud_webstation_step3.png) 
 
-# Configuration de MariaDB :
+# MariaDB configuration :
 
-Configurez la base de données MariaDB en suivant les étapes suivantes :
+Configure the MariaDB database by following these steps :
 
-1. Ouvrir le **Centre des paquets**
-2. Selectionnez l'option **Installé**
-3. Selectionnez l'option **Open** pour l'application MariaDB
-4. Cliquez sur le bouton **Réinitialisez la base de données**
-5. Cliquez sur le bouton **Réinitialiser le mot de passe root** *(PasswordRootMariaDB)*
-6. Renseignez le port `3307`
+1. Open the **Package Center**
+2. Select **Installed**
+3. Select **Open** on the MariaDB application
+4. Click on the button **Reset Database**
+5. Click on the button **Reset root password** *(PasswordRootMariaDB)*
+6. Fill in the port `3307`
 
 
 [![MariaDB](/blog/web/20191020_nextcloud_mariaDB10_reinitialisation.png)](/blog/web/20191020_nextcloud_mariaDB10_reinitialisation.png) 
 
 
-# Initialisation de Nextcloud
+# Nextcloud application initialization
 
-1. Connectez vous à la page d'accueil en passant par le réseau local : `http://192.168.51.54/nextcloud/index.php`
-2. Renseignez les informations suivantes :
-	- Repertoire des donnees : `/volume1/nextcloud/data`
-	- Configurer la base de données : `mysql/MariaDB`
-	- User : `root`
-	- Password : `PasswordRootMariaDB`
-	- Base de données : `nextcloud`
-	- Adresse : `127.0.0.1:3307`
-
-
-# Lier l'adresse publique du NAS sur l'url souhaité
+1. Connect to the home page via the local network : `http://192.168.51.54/nextcloud/index.php`
+2. Fill in the following information :
+	- Data folder : `/volume1/nextcloud/data`
+	- Configure the database : `mysql/MariaDB`
+	- Database User : `root`
+	- Database Password : `PasswordRootMariaDB`
+	- Database Name : `nextcloud`
+	- Localhost : `127.0.0.1:3307`
 
 
-Configurez le DDNS sur le NAS Synology en suivant les étapes suivantes :
+# Link the public address of the NAS on a domain (dns)
 
-1. Ouvrir le **Panneau de configuration**
-2. Selectionnez le menu **Accès externe**
-3. Selectionnez l'option **DDNS**
-4. Cliquez sur le bouton **Ajouter**
-5. Cochez l'option **Activer la prise en charge DDNS** et renseignez les informations suivantes :
-	- Fournisseur de service : `Synology`
-	- Nom d'hôte : `ncalpha.synology.me`
+Configure the DDNS on the Synology NAS by following these steps :
+
+1. Open the **Control Panel**
+2. Select the menu **External Access**
+3. Select the tab **DDNS**
+4. Click on the button **Add**
+5. Check the box **Enable DDNS support** and fill in the following information :
+	- Service provider : `Synology`
+	- Hostname : `ncalpha.synology.me`
 	- Heartbeat : `Activer`
-	- Cliquez sur le bouton **OK**
+	- Click on the button **OK**
 
 [![DDNS](/blog/web/20191020_nextcloud_ddns_synology.png)](/blog/web/20191020_nextcloud_ddns_synology.png) 
 
 
-Configurez votre domaine "alpha.osf" pour utiliser le domaine "synology.me" :
+Configure your **alpha.osf** domain to use the **synology.me** domain :
 
-1. Ajoutez la ligne suivante dans l'enregistrement DNS du domaine `alpha.osf` :
+1. Add the following line to the **alpha.osf** domain's DNS record :
 	-  `nc 10800 IN CNAME ncalpha.synology.me.`
 
-*Note : cela peut mettre plusieurs heures avant prise en compte des modifications des enregistrements DNS*
+*Note: it can take several hours for DNS records to be propagated*
 
 
-# Configuration du certificat (https)
+# Certificate configuration (https)
 
-Configurez un certificat **Let's Encrypt** sur le NAS Synology en suivant les étapes suivantes :
+Configure a **Let's Encrypt** certificate on the Synology NAS by following these steps :
 
-1. Ouvrir le **Panneau de configuration**
-2. Selectionnez le menu **Sécurité**
-3. Selectionnez l'option **Certificat**
-4. Cliquez sur le bouton **Ajouter**
-5. Cliquez sur **Ajouter un certificat** et cliquez sur le bouton **Suivant**
-6. Selectionnez l'option **Procurez vous un certificat auprès de Let's Encrypt**
-7. Renseigner le champ **Description** : `nextcloud.alpha.osf`
-8. Cochez la case **Configurer comme certificat par défaut**
-9. Renseignez les informations suivantes et cliquez sur le bouton **Appliquer** :
-	- Nom de domaine: `nextcloud.alpha.osf`
-	- Courrier électronique : `admin@alpha.osf`
-10. Cliquez sur le bouton **Configurer** et associer le certificat `nextcloud.alpha.osf`sur les services nécessaires.
+1. Open the **Control Panel**
+2. Select the menu **Security**
+3. Select the tab **Certificate**
+4. Click on the button **Add**
+5. Click on **Add a new certificate** and click on the button **Next**
+6. Select **Get a certificate from Let's Encrypt**
+7. Fill in **Description** : `nextcloud.alpha.osf`
+8. Check the box **Set as default certificate**
+9. Fill in the following information and click on the button **Apply** :
+	- Domain name : `nextcloud.alpha.osf`
+	- Email : `admin@alpha.osf`
+10. Click on the button **Configure** and associate the `nextcloud.alpha.osf` certificate with the desired services.
+11. Click on the button **OK**
 
 
 

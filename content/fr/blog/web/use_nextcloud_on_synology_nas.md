@@ -3,7 +3,7 @@ Categories : ["Nextcloud","Cloud"]
 Tags : ["Nextcloud","Cloud"]
 title : "Mise en place de Nextcloud sur un NAS Synology"
 date : 2019-10-20
-draft : true
+draft : false
 toc: true
 ---
 
@@ -156,20 +156,19 @@ Configurez la base de données MariaDB en suivant les étapes suivantes :
 2. Renseignez les informations suivantes :
 	- Repertoire des donnees : `/volume1/nextcloud/data`
 	- Configurer la base de données : `mysql/MariaDB`
-	- User : `root`
-	- Password : `PasswordRootMariaDB`
-	- Base de données : `nextcloud`
-	- Adresse : `127.0.0.1:3307`
+	- Utilisateur de la base : `root`
+	- Mot de passe de la base : `PasswordRootMariaDB`
+	- Nom de la base : `nextcloud`
+	- Adresse de la base : `127.0.0.1:3307`
 
 
-# Lier l'adresse publique du NAS sur l'url souhaité
-
+# Lier l'adresse publique du NAS sur un domaine (dns)
 
 Configurez le DDNS sur le NAS Synology en suivant les étapes suivantes :
 
 1. Ouvrir le **Panneau de configuration**
 2. Selectionnez le menu **Accès externe**
-3. Selectionnez l'option **DDNS**
+3. Selectionnez l'onglet **DDNS**
 4. Cliquez sur le bouton **Ajouter**
 5. Cochez l'option **Activer la prise en charge DDNS** et renseignez les informations suivantes :
 	- Fournisseur de service : `Synology`
@@ -180,12 +179,12 @@ Configurez le DDNS sur le NAS Synology en suivant les étapes suivantes :
 [![DDNS](/blog/web/20191020_nextcloud_ddns_synology.png)](/blog/web/20191020_nextcloud_ddns_synology.png) 
 
 
-Configurez votre domaine "alpha.osf" pour utiliser le domaine "synology.me" :
+Configurez votre domaine **alpha.osf** pour utiliser le domaine **synology.me** :
 
-1. Ajoutez la ligne suivante dans l'enregistrement DNS du domaine `alpha.osf` :
+1. Ajoutez la ligne suivante dans l'enregistrement DNS du domaine **alpha.osf** :
 	-  `nc 10800 IN CNAME ncalpha.synology.me.`
 
-*Note : cela peut mettre plusieurs heures avant prise en compte des modifications des enregistrements DNS*
+*Note : cela peut mettre plusieurs heures avant que les enregistrements DNS soient propagés*
 
 
 # Configuration du certificat (https)
@@ -204,7 +203,7 @@ Configurez un certificat **Let's Encrypt** sur le NAS Synology en suivant les é
 	- Nom de domaine: `nextcloud.alpha.osf`
 	- Courrier électronique : `admin@alpha.osf`
 10. Cliquez sur le bouton **Configurer** et associer le certificat `nextcloud.alpha.osf`sur les services nécessaires.
-
+11. Cliquez sur le bouton **OK**
 
 
 
