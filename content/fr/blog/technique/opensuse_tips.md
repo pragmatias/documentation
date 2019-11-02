@@ -195,6 +195,15 @@ Pour restaurer la configuration de plasma (panneau) :
  4. `plasmashell &`
 
 
+## Erreur lors de l'installation de Polybar
+
+Si vous ne pouvez pas installer **Polybar** (erreur avec **libjsoncpp.so.19**), vous pouvez essayer les étapes suivantes :
+ 1. Installez la librairie **libjsoncpp21**  : `sudo zypper in libjsoncpp21`
+ 2. Cherchez l'emplacement du fichier **libjsoncpp.so.21** : `sudo find / -name "libjsoncpp.so.21"`
+ 3. Copiez le fichier **libjsoncpp.so.21** avec le nom **libjsoncpp.so.19** : `sudo cp /usr/lib64/libjsoncpp.so.21 /usr/lib64/libjsoncpp.so.19`
+ 4. Installez **Polybar** : `sudo zypper in polybar`
+
+
 # Astuces concernant les outils de virtualisation
 
 ## WMware
