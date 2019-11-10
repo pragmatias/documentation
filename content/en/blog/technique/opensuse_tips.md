@@ -163,6 +163,7 @@ List of interesting addons :
  - Cookie autodelete
  - Css exfil protection
  - DecentralEyes
+ - Firefox Containers
  - Redirector
  - Select context search
  - Awesome RSS
