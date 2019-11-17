@@ -228,6 +228,7 @@ Install VirtualBox package :
 
  1. `sudo zypper in virtualbox-guest-tools virtualbox-guest-x11`
 
+Cleaning of disk image **vdi** :
 
-
+ 1. `vboxmanage modifymedium disk "./opensuse.vdi" --compact`
 

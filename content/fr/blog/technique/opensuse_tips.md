@@ -230,6 +230,9 @@ Installation du package VirtualBox sur OpenSUSE :
 
  1. `sudo zypper in virtualbox-guest-tools virtualbox-guest-x11`
 
+Nettoyage de l'image disque **vdi** :
+
+ 1. `vboxmanage modifymedium disk "./opensuse.vdi" --compact`
 
 
 
