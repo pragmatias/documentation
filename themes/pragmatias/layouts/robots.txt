@@ -1,7 +1,5 @@
 User-agent: *
 
-Disallow: /
-
 {{range .Pages}}
 Allow: {{.RelPermalink}}
 {{end}}

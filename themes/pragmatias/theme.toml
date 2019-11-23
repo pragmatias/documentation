@@ -5,14 +5,14 @@ name = "Pragmatias"
 license = "MIT"
 licenselink = "https://github.com/pragmatias/documentation/blob/master/themes/pragmatias/LICENSE"
 description = ""
-homepage = "https://pragmatias.fr/"
+homepage = "http://pragmatias.fr/"
 tags = []
 features = []
 min_version = "0.41"
 
 [author]
   name = "pragmatias"
-  homepage = "https://pragmatias.fr/"
+  homepage = "http://pragmatias.fr/"
 
 # If porting an existing theme
 [original]
