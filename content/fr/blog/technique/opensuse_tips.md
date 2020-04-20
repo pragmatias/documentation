@@ -2,7 +2,7 @@
 Categories : ["Linux","OpenSuse","Astuces"]
 Tags : ["Linux","OpenSuse","Astuces"]
 title : "Astuces pour OpenSUSE (Tumbleweed)"
-date : 2019-05-01
+date : 2020-04-20
 draft : false
 toc: true
 ---
@@ -100,6 +100,17 @@ Quelques commandes utiles concernant les disques :
 
 ## Information sur systemd
 - Information concernant la durée du démarrage des services : `systemd-analyze blame`
+
+## Modification de la configuration de la souris
+
+- Rechercher la liste des périphériques : `xinput list`
+- Récupération de la configuration d'un périphérique : `xinput list-props <number>`
+- Modification d'une propriété d'un périphérique : `xinput set-prop <number> <prop> <values>`
+- Exemple pour ajuster la vitesse de la souris : `xinput set-prop 8 157 0.500000, 0.000000, 0.000000, 0.000000, 0.500000, 0.000000, 0.000000, 0.000000, 1.000000`
+
+> - **number** : Numero du périphérique
+> - **prop** : Numero ou nom  de la propriété
+> - **values** : Nouvelles valeurs
 
 # Astuces concernant le bureau KDE
 

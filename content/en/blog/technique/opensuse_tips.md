@@ -2,7 +2,7 @@
 Categories : ["Linux","OpenSuse","Tips"]
 Tags : ["Linux","OpenSuse","Tips"]
 title : "Tips for OpenSUSE (Tumbleweed)"
-date : 2019-05-01
+date : 2020-04-20
 draft : false
 toc: true
 ---
@@ -99,6 +99,18 @@ Some usefull command :
 
 ## Systemd information
 - Information on the duration of the start of services : `systemd-analyze blame`
+
+## Modify the mouse configuration
+
+- Search the list of devices : `xinput list`
+- Retrieving the configuration of a device : `xinput list-props <number>`
+- Modifying a device property : `xinput set-prop <number> <prop> <values>`
+- Example for adjusting the mouse speed : `xinput set-prop 8 157 0.500000, 0.000000, 0.000000, 0.000000, 0.500000, 0.000000, 0.000000, 0.000000, 1.000000`
+
+> - **number** : Device number
+> - **prop** : Property number or name
+> - **values** : New values
+
 
 # Some tips about the KDE desktop
 
