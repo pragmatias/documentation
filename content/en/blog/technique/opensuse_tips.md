@@ -51,6 +51,7 @@ You have to rebuild the RPM database : `sudo rpm --rebuilddb`
 ### Rollback
 
 To rollback from a bootable snapshot : 
+
  1. Start the system. In the startup menu, choose the "Bootable snapshots" option and select the snapshot you want to boot from.
  2. Log in. Check that everything is working as expected.
  3. If you want to perform the rollback, run `sudo snapper rollback` and then restart. 

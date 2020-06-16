@@ -52,6 +52,7 @@ Il faut reconstruire la base RPM : `sudo rpm --rebuilddb`
 ### Retour Arrière 
 
 Pour effectuer un retour en arrière à partir d'un snapshot "bootable" : 
+
  1. Démarrez le système. Dans le menu de démarrage, choisissez l'option "Bootable snapshots" et selectionnez le snapshot sur lequel vous voulez démarrer.
  2. Connectez-vous. Vérifiez si tout fonctionne comme prévu.
  3. Si vous voulez effectuer le rollback, exécutez `sudo snapper rollback` et redémarrez ensuite. 
