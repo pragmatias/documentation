@@ -48,6 +48,16 @@ You have to rebuild the RPM database : `sudo rpm --rebuilddb`
 
 ## File system btrfs
 
+### Rollback
+
+To rollback from a bootable snapshot : 
+ 1. Start the system. In the startup menu, choose the "Bootable snapshots" option and select the snapshot you want to boot from.
+ 2. Log in. Check that everything is working as expected.
+ 3. If you want to perform the rollback, run `sudo snapper rollback` and then restart. 
+ 4. On the boot screen, choose the default boot entry to reboot on the restored system. 
+
+### Issues
+
 - If **btrfs-cleaner** use 100% of your CPU and freeze your computer, you can stop it with the command : `sudo btrfs quota disable /`
 - To disable the btrfs service (if you don't use the filesystem) : `systemctl disable btrfsmaintenance-refresh`
 

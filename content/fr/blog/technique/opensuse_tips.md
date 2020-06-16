@@ -49,6 +49,16 @@ Il faut reconstruire la base RPM : `sudo rpm --rebuilddb`
 
 ## Système de fichier btrfs
 
+### Retour Arrière 
+
+Pour effectuer un retour en arrière à partir d'un snapshot "bootable" : 
+ 1. Démarrez le système. Dans le menu de démarrage, choisissez l'option "Bootable snapshots" et selectionnez le snapshot sur lequel vous voulez démarrer.
+ 2. Connectez-vous. Vérifiez si tout fonctionne comme prévu.
+ 3. Si vous voulez effectuer le rollback, exécutez `sudo snapper rollback` et redémarrez ensuite. 
+ 4. Sur l'écran de démarrage, choisissez l'entrée de démarrage par défaut pour redémarrer sur le système restauré. 
+
+### Problème
+
 - Si **btrfs-cleaner** utilise 100% du CPU and bloque votre pc, vous pouvez l'arrêter avec la commande : `sudo btrfs quota disable /`
 - Pour desactiver le service de maintenance btrfs (si vous n'utilisez pas le système de fichier) : `systemctl disable btrfsmaintenance-refresh`
 
