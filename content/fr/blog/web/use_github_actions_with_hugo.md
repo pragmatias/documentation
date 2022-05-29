@@ -169,7 +169,7 @@ Le contenu du fichier est le suivant :
 
 1\. Dans les paramètres du dépôt **pragmatias.github.io**, renseignez la section **Custom domain**
 
-[![parametre github](/blog/web/20190429_create_repository_step5.png)](/blog/web/20190429_create_repository_step5.png)
+[![parametre github](/blog/web/20220530_create_repository_step5.png.png)](/blog/web/20220530_create_repository_step5.png.png)
 
 > pour forcer l'utilisation du **https**, sélectionnez l'option **Enforce HTTPS**
 
