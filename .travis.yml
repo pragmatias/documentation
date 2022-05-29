@@ -1,8 +1,8 @@
 # https://docs.travis-ci.com/user/deployment/pages/
-# https://docs.travis-ci.com/user/reference/trusty/
+# https://docs.travis-ci.com/user/reference/focal/
 # https://docs.travis-ci.com/user/customizing-the-build/
 
-dist: trusty
+dist: focal
 #language: go
 #go:
 #    - master
@@ -11,7 +11,7 @@ dist: trusty
 # install - install any dependencies required
 
 install:
-  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.59.0/hugo_0.59.0_Linux-64bit.deb
+  - wget -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v0.99.1/hugo_0.99.1_Linux-64bit.deb
   - sudo dpkg -i /tmp/hugo.deb
 
 before_script:
@@ -20,7 +20,7 @@ before_script:
 # script - run the build script
 script:
     - hugo
-    - echo "pragmatias.fr" > public/CNAME
+    - echo "www.pragmatias.fr" > public/CNAME
 
 deploy:
   provider: pages

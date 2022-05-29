@@ -3,7 +3,7 @@
     <title>{{ .Site.Title }}</title>
     <link>{{ "/blog" | absLangURL }}</link>
     <description>{{ i18n "rss_content" }} {{ .Site.Title }}</description>
-    <generator>Hugo {{ .Hugo.Version }}</generator>
+    <generator>Hugo {{ hugo.Version }}</generator>
     {{ with .Site.LanguageCode }}
       <language>{{.}}</language>
     {{end}}

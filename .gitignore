@@ -1,3 +1,4 @@
 /public/
 hugo.exe
 _gen/
+.hugo_build.lock

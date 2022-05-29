@@ -15,6 +15,7 @@ enableRobotsTXT = true
 	home = [ "HTML", "RSS" ]
 	section = [ "HTML"] 
 	taxonomy = [ "HTML"]
+	term = [ "HTML"]
 
 
 [outputFormats]
