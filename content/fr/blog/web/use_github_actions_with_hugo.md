@@ -62,7 +62,7 @@ Si vous voulez modifier la configuration par défaut :
 
 2\. Allez dans la section **GitHub Pages** pour configurer les informations nécessaires *(custom domain, enforces HTTPS, ...)*
 
-[![5ème étape](/blog/web/20190429_create_repository_step5.png)](/blog/web/20190429_create_repository_step5.png)
+[![5ème étape](/blog/web/20220530_create_repository_step5.png.png)](/blog/web/20220530_create_repository_step5.png.png)
 
 
 
@@ -92,7 +92,7 @@ Il faut commencer par créer un jeton Github permettant de donner le droit à [G
 
 [![5ème étape](/blog/web/20220530_github_documentation_personal_token.png)](/blog/web/20220530_github_documentation_personal_token.png)
 
-6\. Cliquez sur le bouton  **New repository secret** et renseignez le champ **Name** avec la valeur `PERSONAL_TOKEN` et le champ **Value**  avec la valeur du jeton récupérée à l'étape 4
+6\. Cliquez sur le bouton  **New repository secret** et renseignez le champ **Name** avec la valeur `PERSONAL_TOKEN` et le champ **Value** avec la valeur du jeton récupéré à l'étape n°4
 
 [![6ème étape](/blog/web/20220530_github_documentation_personal_token_add.png)](/blog/web/20220530_github_documentation_personal_token_add.png)
 
