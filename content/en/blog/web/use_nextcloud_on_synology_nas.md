@@ -135,7 +135,7 @@ Configure the Web Station application by following these steps :
 
 [![Web Station Step 3](/blog/web/20191020_nextcloud_webstation_step3.png)](/blog/web/20191020_nextcloud_webstation_step3.png) 
 
-# MariaDB configuration :
+# MariaDB configuration
 
 Configure the MariaDB database by following these steps :
 
