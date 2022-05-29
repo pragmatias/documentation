@@ -72,5 +72,8 @@ enableRobotsTXT = true
     	[languages.fr.params]
     	imagePNG = "france-flag-round-xs-24.png"
 
-
-
+[markup]
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 3
+    ordered = true
