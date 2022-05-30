@@ -185,7 +185,7 @@ Les étapes de mise en place sont les suivantes :
 ```
 
 4\. Création des entrées dans le menu global, en ajoutant les informations suivantes dans le fichier de configuration principal `config\_default\config.toml`
-```makefile
+```toml
 [[menus]]
 	[[menu.global]]
 		name = "Test"
@@ -202,7 +202,7 @@ Afin de pouvoir créer des articles, il faut mettre en place la gestion de la se
 
 1\. Création d'une entrée **blog** dans le menu global du fichier de configuration principal `config\_default\config.toml`
 
-```makefile
+```toml
 	[[menu.global]]
 		name = "Blog"
 		weight = 1
@@ -215,7 +215,7 @@ Afin de pouvoir créer des articles, il faut mettre en place la gestion de la se
 Ce répertoire sera utilisé pour stocker l'ensemble des articles de la section **Blog** sous forme de fichier **\*.md**.
 
 Exemple du contenu d'un fichier \*.md définissant un article :
-```makefile
+```markdown
 ---
 Categories : [""]
 Tags : [""]
@@ -278,7 +278,7 @@ Un article étant défini par le contenu d'un fichier **\*.md** du répertoire `
 Pour pouvoir lister les articles par **Tags** avec Hugo.
 
 1\. Ajouter une entrée **Tags** dans le menu global du fichier de configuration principal `config\_default\config.toml`
-```makefile
+```toml
 	[[menu.global]]
 		name = "Tags"
 		weight = 2
@@ -287,13 +287,13 @@ Pour pouvoir lister les articles par **Tags** avec Hugo.
 ```
 
 2\. Ajouter le parametre suivant dans le fichier de configuration principal `config\_default\config.toml` pour activer la gestion des **Tags**
-```makefile
+```toml
 [taxonomies]
   tag = "tags"
 ```
 
 3\. Ajouter dans les fichiers **\*.md** du répertoire `content/blog` le paramètre **Tags** avec les mots clés souhaités
-```makefile
+```markdown
 ---
 Tags : ["Tags1","Tags2"]
 ---
@@ -345,7 +345,7 @@ Tags : ["Tags1","Tags2"]
 Afin de pouvoir lister les articles par année, il faut créer une section **Archives**.
 
 1\. Ajouter une entrée **Archives** dans le menu global du fichier de configuration principal `config\_default\config.toml`
-```makefile
+```toml
 [[menus]]
 	[[menu.global]]
 		name = "Archives"
@@ -356,7 +356,7 @@ Afin de pouvoir lister les articles par année, il faut créer une section **Arc
 ```
 
 2\. Création du répertoire `content\archives` et d'un fichier **_index.md** avec le contenu suivant
-```makefile
+```markdown
 ---
 Title : "Archives"
 date : 2019-01-01
@@ -392,13 +392,13 @@ date : 2019-01-01
 ## Mise en place de deux langues (fr/en)
 
 1\. Définir la langue par défaut en ajoutant les paramètres suivants au début du fichier de configuration principal `/config/_default/config.toml`
-```makefile
+```toml
 languageCode = "en"
 DefaultContentLanguage = "en"
 ```
 
 2\. Définir les différentes langues en ajoutant les paramètres suivants à la fin du fichier de configuration principal `/config/_default/config.toml`
-```makefile
+```toml
 [languages]
   [languages.en]
     weight = 10
@@ -418,19 +418,19 @@ DefaultContentLanguage = "en"
 ```
 
 3\. Définition du dictionnaire anglais en créant le fichier **en.toml** dans le répertoire `/themes/pragmatias/i18n`
-```makefile
+```toml
 [more_read]
 other = "Read more"
 ```
 
 4\. Définition du dictionnaire français en créant le fichier **fr.toml** dans le répertoire `/themes/pragmatias/i18n`
-```makefile
+```toml
 [more_read]
 other = "Continer la lecture"
 ```
 
 5\. Pour utiliser les termes des dictionnaries dans les fichiers html du répertoire `/themes/pragmatias/layouts`, il faut utiliser la syntaxe suivante :
-```makefile
+```toml
 {{ i18n "more_read" }}
 ```
 
@@ -439,7 +439,7 @@ other = "Continer la lecture"
 ## Gestion des mois en fonction de la langue
 
 1\. Ajouter la traduction des 12 mois dans le dictionnaire Anglais `/themes/pragmatias/i18n/en.toml`
-```makefile
+```toml
 [January]
 other = "January"
 [February]
@@ -467,7 +467,7 @@ other = "December"
 ```
 
 2\. Ajouter la traduction des 12 mois dans le dictionnaire Français `/themes/pragmatias/i18n/fr.toml`
-```makefile
+```toml
 [January]
 other = "Janvier"
 [February]
@@ -503,7 +503,7 @@ other = "Décembre"
 # Ajout d'un flux RSS concernant la section Blog
  
 1\. Ajout des informations de sortie dans le fichier de configuration principal `/config/_default/config.toml`
-```makefile
+```toml
 [outputs]
   home = [ "HTML", "RSS" ]
   section = [ "HTML"] 

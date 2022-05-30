@@ -113,7 +113,7 @@ First, you have to create a Github token allowing to give the right at [Travis C
 
 To be able to automatically deploy the website from the repository  **documentation** to the repository **pragmatias.github.com**, you must create a file **.travis.yml** at the root of the repository **documentation**
 
-```yml
+```yaml
 # https://docs.travis-ci.com/user/deployment/pages/
 # https://docs.travis-ci.com/user/reference/trusty/
 # https://docs.travis-ci.com/user/customizing-the-build/
@@ -169,7 +169,7 @@ The content of this file is :
 
 2\. Modify the **script** section of the **.travis.yml** file
 
-```yml
+```yaml
 # script - run the build script
 script:
     - hugo
@@ -189,7 +189,7 @@ script:
 
 3\.3\. Add the following DNS records *(to redirect between the Github Pages service and your domain name)*
 
-```makefile
+```plaintext
 @ 1800 IN A 185.199.108.153
 @ 1800 IN A 185.199.109.153
 @ 1800 IN A 185.199.110.153

@@ -115,7 +115,7 @@ Il est possible d'ignorer certain fichier/répertoire avec Git en utilisant un f
 
 Exemple de contenu d'un fichier **.gitignore**
 
-```git
+```bash
 # ignore all .a files
 *.a
 
@@ -207,7 +207,7 @@ Exemple des options pouvant être utilisés comme format :
 
 Vous pouvez définir des alias pour accéder aux commandes git plus rapidement.
 
-```git
+```bash
 $ git config --global alias.co checkout
 $ git config --global alias.br branch
 $ git config --global alias.ci commit

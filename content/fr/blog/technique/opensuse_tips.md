@@ -40,7 +40,7 @@ Quelques liens utiles :
 - [Zypper Cheat Sheet 2](https://en.opensuse.org/images/3/30/Zypper-cheat-sheet-2.pdf)
 
 Message :
-```
+```bash
 Removal of ***********(@System) failed :
 Error: Subprocess failed. Error: RPM failed: error: package ********** is not installed
 ```

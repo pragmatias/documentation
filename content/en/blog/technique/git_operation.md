@@ -113,7 +113,7 @@ It is possible to ignore some files/folders with Git using a [.gitignore](https:
 
 Example of a **.gitignore** file content
 
-```git
+```bash
 # ignore all .a files
 *.a
 
@@ -205,7 +205,7 @@ Example of options that can be used as a format :
 
 You can set aliases to access git command faster.
 
-```git
+```bash
 $ git config --global alias.co checkout
 $ git config --global alias.br branch
 $ git config --global alias.ci commit

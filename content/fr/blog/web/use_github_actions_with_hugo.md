@@ -186,7 +186,7 @@ Le contenu du fichier est le suivant :
 
 2\.3\. Ajouter les enregistrements DNS suivants *(pour faire la redirection entre le service Pages de Github et votre nom de domaine)*
 
-```makefile
+```plaintext
 www 10800 IN CNAME pragmatias.github.io
 ```
 

@@ -185,7 +185,7 @@ Implementation steps are :
 ```
 
 4\. Create entries in the global menu, by adding the following information to the main configuration file `config\_default\config.toml`
-```makefile
+```toml
 [[menus]]
 	[[menu.global]]
 		name = "Test"
@@ -202,7 +202,7 @@ To create articles, you need to define and manage a **blog** section.
 
 1\. Create a **blog** entrie in the global menu in the main configuration file `config\_default\config.toml`
 
-```makefile
+```toml
 	[[menu.global]]
 		name = "Blog"
 		weight = 1
@@ -215,7 +215,7 @@ To create articles, you need to define and manage a **blog** section.
 This folder will be used to store all the articles content of the **blog** section in the **\*.md** format.
 
 Example of a article content :
-```makefile
+```toml
 ---
 Categories : [""]
 Tags : [""]
@@ -278,7 +278,7 @@ Un article being defined by the content of a file **\*.md** in the folder `/cont
 To list the articles by **Tags** with Hugo.
 
 1\. Add an entrie **Tags** in the global menu in the main configuration file `config\_default\config.toml`
-```makefile
+```toml
 	[[menu.global]]
 		name = "Tags"
 		weight = 2
@@ -287,13 +287,13 @@ To list the articles by **Tags** with Hugo.
 ```
 
 2\. Add the following parameter in the main configuration file `config\_default\config.toml` to activate the **Tags** management
-```makefile
+```toml
 [taxonomies]
   tag = "tags"
 ```
 
 3\. Add in the **\*.md** files of the foler `content/blog`, the parameter **Tags** with the desired keywords
-```makefile
+```markdown
 ---
 Tags : ["Tags1","Tags2"]
 ---
@@ -345,7 +345,7 @@ Tags : ["Tags1","Tags2"]
 To list all the articles by year, you need to create an **Archives** section.
 
 1\. Add an entrie **Archives** in the global menu in the main configuration file `config\_default\config.toml`
-```makefile
+```toml
 [[menus]]
 	[[menu.global]]
 		name = "Archives"
@@ -356,7 +356,7 @@ To list all the articles by year, you need to create an **Archives** section.
 ```
 
 2\. Create the folder `content\archives` and the file **_index.md** with the following content
-```makefile
+```markdown
 ---
 Title : "Archives"
 date : 2019-01-01
@@ -392,13 +392,13 @@ date : 2019-01-01
 ## Definition of two language (fr/en)
 
 1\. Define the default language by adding the following parameter at the beginning of the main configuration file `/config/_default/config.toml`
-```makefile
+```toml
 languageCode = "en"
 DefaultContentLanguage = "en"
 ```
 
 2\. Define other language by adding the following parameters at the end of the main configuration file `/config/_default/config.toml`
-```makefile
+```toml
 [languages]
   [languages.en]
     weight = 10
@@ -418,19 +418,19 @@ DefaultContentLanguage = "en"
 ```
 
 3\. Define the english dictionary by creating the file **en.toml** in the folder `/themes/pragmatias/i18n`
-```makefile
+```toml
 [more_read]
 other = "Read more"
 ```
 
 4\. Define the french dictionary by creating the file **fr.toml** in the folder `/themes/pragmatias/i18n`
-```makefile
+```toml
 [more_read]
 other = "Continer la lecture"
 ```
 
 5\. To use the dictionary term in the html files of the folder `/themes/pragmatias/layouts`, you need to use the following syntax :
-```makefile
+```toml
 {{ i18n "more_read" }}
 ```
 
@@ -439,7 +439,7 @@ other = "Continer la lecture"
 ## Management of months according to language
 
 1\. Add the translation of the months in the english dictionary `/themes/pragmatias/i18n/en.toml`
-```makefile
+```toml
 [January]
 other = "January"
 [February]
@@ -467,7 +467,7 @@ other = "December"
 ```
 
 2\. Add the translation of the months in the french dictionary `/themes/pragmatias/i18n/fr.toml`
-```makefile
+```toml
 [January]
 other = "Janvier"
 [February]
@@ -503,7 +503,7 @@ other = "Décembre"
 # Added an RSS feed for the Blog section
  
 1\. Add output information in the main configuration file `/config/_default/config.toml`
-```makefile
+```toml
 [outputs]
   home = [ "HTML", "RSS" ]
   section = [ "HTML"] 
