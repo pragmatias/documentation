@@ -100,7 +100,7 @@ Il faut commencer par créer un jeton Github permettant de donner le droit à [G
 
 Pour pouvoir déployer automatiquement le site web à partir du dépôt **documentation** vers le dépôt **pragmatias.github.io**, il faut créer un fichier **main.yml** dans le répertoire **.github/workflows** du dépôt **documentation**
 
-```yml
+```yaml
 # This is a basic workflow to help you get started with Actions
 
 name: main
