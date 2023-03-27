@@ -17,12 +17,12 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
 
 # Installation
 
-### Sommaire
+## Sommaire
 1. [Pré-requis](#pré-requis)
 2. [Étapes](#étapes)
-3. [Actions manuelles après l'installation](#actions-manuelles-après-l-installation)
+3. [Actions manuelles après installation](#actions-manuelles-après-installation)
 
-### Pré-requis
+## Pré-requis
  1. Installez [OpenSUSE Tumbleweed](https://software.opensuse.org/distributions/tumbleweed) avec [KDE/Plasma Desktop](https://www.kde.org/plasma-desktop)
  2. Installez [GIT](https://git-scm.com/) : `sudo zypper in --no-recommend git`
  3. Récupérez ce [dépôt git](https://github.com/pragmatias/OpenSUSE) : `git clone https://github.com/pragmatias/OpenSUSE.git ~/tmp_install`
@@ -39,7 +39,7 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
 > 3. Ajoutez les informations no proxy : `echo "export no_proxy=localhost,127.0.0.1" >> ~/.bashrc`
 > 4. Ajoutez les informations ftp : `echo "export ftp_proxy=http://proxy_ip:proxy_port" >> ~/.bashrc`
 
-### Étapes
+## Étapes
 
  1. Configurez la liste des dépôts : `sudo ./01_TW_config_repository.sh`
 
@@ -57,7 +57,7 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
  8. Supprimez le répertoire temporaire **tmp_install** : `rm -rf ~/tmp_install`
 
 
-### Actions manuelles après l'installation
+## Actions manuelles après installation
 
  - Firefox Config (bookmarks)
  - Thunderbird Config (account)

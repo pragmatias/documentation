@@ -17,12 +17,12 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
 
 # Install
 
-### Summary
+## Summary
 1. [Requirement](#requirement)
 2. [Steps](#steps)
 3. [Things to do manually after install](#things-to-do-manually-after-install)
 
-### Requirement
+## Requirement
  1. Install [OpenSUSE Tumbleweed](https://software.opensuse.org/distributions/tumbleweed) with the [KDE/Plasma Desktop](https://www.kde.org/plasma-desktop)
  2. Install [GIT](https://git-scm.com/) : `sudo zypper in --no-recommend git`
  3. Get this git [repository](https://github.com/pragmatias/OpenSUSE) : `git clone https://github.com/pragmatias/OpenSUSE.git ~/tmp_install`
@@ -39,7 +39,7 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
 > 3. Add no proxy information : `echo "export no_proxy=localhost,127.0.0.1" >> ~/.bashrc`
 > 4. Add ftp information : `echo "export ftp_proxy=http://proxy_ip:proxy_port" >> ~/.bashrc`
 
-### Steps
+## Steps
 
  1. Configure the repositories list : `sudo ./01_TW_config_repository.sh`
 
@@ -57,7 +57,7 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
  8. Remove the tmp_install folder : `rm -rf ~/tmp_install`
 
 
-### Things to do manually after install
+## Things to do manually after install
  - Firefox Config (bookmarks)
  - Thunderbird Config (account)
  - NFS Config (NAS)
