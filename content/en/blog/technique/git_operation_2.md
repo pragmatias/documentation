@@ -47,7 +47,7 @@ In order to make the commits of a branch more readable, it can be interesting to
 
 _Note: In the example, we will work on a history of 4 commits in order to merge the 2 commits that correspond to the same operation._
 
-1. Before starting the merge operation, we have to get the ID of the commit we want to work from by uusing the command `git log` _(It will not be affected by the merge operation)_
+1. Before starting the merge operation, we have to get the ID of the commit we want to work from by using the command `git log` _(It will not be affected by the merge operation)_
 
 [![fusion_step_1](/blog/web/20230327_git_operation_2_p1.png)](/blog/web/20230327_git_operation_2_p1.png) 
 
@@ -117,3 +117,11 @@ If there are conflicts during the **cherry-pick** operation, this must be handle
 3. Finalize the **cherry-pick** operation with the command `git cherry-pick --continue`
 
 
+# Resources
+
+This work is based on the following resources :
+
+- [git-branch](https://git-scm.com/docs/git-branch)
+- [git-merge](https://git-scm.com/docs/git-merge)
+- [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
+- [git-rebase](https://git-scm.com/docs/git-rebase) 

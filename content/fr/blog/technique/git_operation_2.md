@@ -118,4 +118,11 @@ Si il existe des conflits lors de l'opération **cherry-pick**, il faut gérer c
 
 
 
+# Ressources
 
+Ce travail est basé sur les ressources suivantes :
+
+- [git-branch](https://git-scm.com/docs/git-branch)
+- [git-merge](https://git-scm.com/docs/git-merge)
+- [git-cherry-pick](https://git-scm.com/docs/git-cherry-pick)
+- [git-rebase](https://git-scm.com/docs/git-rebase) 
