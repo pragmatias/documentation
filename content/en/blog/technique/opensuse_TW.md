@@ -1,21 +1,17 @@
 ---
-Author : ""
-Description : ""
-Categories : [""]
+Categories : ["Linux","OpenSuse"]
 Tags : ["Linux","OpenSuse"]
 title : "Install of OpenSUSE (Tumbleweed)"
 date : 2019-02-05
-draft : true
+draft : false
 toc: true
 ---
 
-Avant de passer sur une distribution GNU/Linux, il était temps de faire un cahier des charges de ce que j'en attendais.
-L'objectif était de pouvoir travailler dessus (docker/sublimtext/etc ...) et aussi de pouvoir se divertir (Streaming/Video/etc ...)
+In order to facilitate the installation of the GNU/LINUX  OpenSuse Tumbleweed distribution for my needs, you will find in this article the steps to have a fully operational system from a new installation in few minutes.
 
-Après avoir fait le tour d'une partie des distributions accessible, j'ai fait le choix de partir sur OpenSUSE Tumbleweed
+The goal was to have quickly a full system allowing me to work  (docker/sublimtext/and more ...), to use entertainment media (Streaming/Video/and more ...) and to play games.
 
-Afin de faciliter l'installation (sur des VM ou sur mon postes) et pour mieux comprendre la distribution, j'ai repris/modifier/creer un ensemble de script permettant l'installation et la configuration.
-Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragmatias/opensuse).
+All the sources are in this repository [Github](https://github.com/pragmatias/opensuse).
 
  <!--more-->
 
@@ -24,18 +20,18 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
 ### Summary
 1. [Requirement](#requirement)
 2. [Steps](#steps)
-3. [Things to do manually after install](#Tips)
+3. [Things to do manually after install](#things-to-do-manually-after-install)
 
 ### Requirement
  1. Install [OpenSUSE Tumbleweed](https://software.opensuse.org/distributions/tumbleweed) with the [KDE/Plasma Desktop](https://www.kde.org/plasma-desktop)
  2. Install [GIT](https://git-scm.com/) : `sudo zypper in --no-recommend git`
  3. Get this git [repository](https://github.com/pragmatias/OpenSUSE) : `git clone https://github.com/pragmatias/OpenSUSE.git ~/tmp_install`
- 4. Go to the scripts folder : `cd ~/tmp_install/scripts`
+ 4. Go to the **scripts** folder : `cd ~/tmp_install/scripts`
 
 >  **Proxy** : somes information if you want to install OpenSUSE Tumbleweed behind a proxy
 > ##### With Yast
 > 1. Open Yast > Network Services > Proxy
-> 2. Click on Enable Proxy and fill all the needed information in "Proxy Setting" and "Proxy Authentification"
+> 2. Click on **Enable Proxy** and fill all the needed information in **Proxy Setting** and **Proxy Authentification**
 
 > ##### With Bashrc
 > 1. Add http information : `echo "export http_proxy=http://proxy_ip:proxy_port" >> ~/.bashrc`
@@ -91,7 +87,7 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
 
 
 
-# Ressources
+# Resources
 
 This work is based on the following ressources :
 

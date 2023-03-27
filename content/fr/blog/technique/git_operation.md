@@ -109,9 +109,9 @@ Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir g�
 
 
 
-# Définision d'un fichier .gitignore
+# Définition d'un fichier .gitignore
 
-Il est possible d'ignorer certain fichier/répertoire avec Git en utilisant un fichier [.gitignore](https://git-scm.com/docs/gitignore).
+Il est possible d'ignorer certain fichiers/répertoires avec Git en utilisant un fichier [.gitignore](https://git-scm.com/docs/gitignore).
 
 Exemple de contenu d'un fichier **.gitignore**
 
