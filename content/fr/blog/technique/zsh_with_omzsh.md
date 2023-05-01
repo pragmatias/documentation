@@ -1,30 +1,30 @@
 ---
 Categories : ["ZSH","MacOS","WSL","Linux"]
 Tags : ["ZSH","MacOS","WSL","Linux"]
-title : "ZSH : OMZSH with Powerlevel10k"
+title : "ZSH : OMZSH avec Powerlevel10k"
 date : 2023-05-01
 draft : true
 toc: true
 ---
 
-You will find in this article, the steps to install [ZSH](https://www.zsh.org/) with [Oh My ZSH](https://ohmyz.sh/) and the theme [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
+Vous trouverez dans cet article, les étapes pour installer [ZSH](https://www.zsh.org/) avec [Oh My ZSH](https://ohmyz.sh/) et le thème [Powerlevel10k](https://github.com/romkatv/powerlevel10k).
 
-More specifically, for [MacOS](https://www.apple.com/fr/macos/ventura/) and [Windows WSL](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux) configuration.
+Plus spécifiquement, pour la configuration de [MacOS](https://www.apple.com/fr/macos/ventura/) et [Windows WSL](https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux).
 
 
 <!--more-->
 
-# Tools installation
+# Installation des applications
 
-## For MacOS
+## Pour MacOS
 
-The steps are :
-1. Installation of [Xcode](https://apps.apple.com/fr/app/xcode/id497799835?mt=12)
-2. Installation of [Homebrew](https://brew.sh/index_fr) (package manager)
-3. Installation of [iTerm2](https://iterm2.com/) , [ZSH](https://www.zsh.org/), [FZF](https://github.com/junegunn/fzf), [FD](https://github.com/sharkdp/fd), [Tree](https://www.computerhope.com/unix/tree.htm)
-4. Installation of [Oh My ZSH]
+Les étapes sont :
+1. Installation de [Xcode](https://apps.apple.com/fr/app/xcode/id497799835?mt=12)
+2. Installation de [Homebrew](https://brew.sh/index_fr) (package manager)
+3. Installation de [iTerm2](https://iterm2.com/) , [ZSH](https://www.zsh.org/), [FZF](https://github.com/junegunn/fzf), [FD](https://github.com/sharkdp/fd), [Tree](https://www.computerhope.com/unix/tree.htm)
+4. Installation de [Oh My ZSH]
 
-The commands are :
+Les commandes sont :
 ```bash
 # Step 1 : Xcode
 xcode-select --install
@@ -41,15 +41,15 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 ```
 
 
-## For Windows WSL (and Linux)
+## Pour Windows WSL (et Linux)
 
 
-The steps are : 
-1. Installation of [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)
-2. Installation of [Windows WSL Ubuntu](https://ubuntu.com/wsl)
-3. Connect to WSL 2 with `Windows Terminal` and update `Ubuntu`
-4. Installation of [ZSH](https://www.zsh.org/), [FZF](https://github.com/junegunn/fzf), [FD](https://github.com/sharkdp/fd), [Tree](https://www.computerhope.com/unix/tree.htm)
-5. Installation of [Oh My ZSH](https://ohmyz.sh/)
+Les étapes sont : 
+1. Installation de [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)
+2. Installation de [Windows WSL Ubuntu](https://ubuntu.com/wsl)
+3. Connexion sur WSL 2 avec `Windows Terminal` et mise à jour de `Ubuntu`
+4. Installation de [ZSH](https://www.zsh.org/), [FZF](https://github.com/junegunn/fzf), [FD](https://github.com/sharkdp/fd), [Tree](https://www.computerhope.com/unix/tree.htm)
+5. Installation de [Oh My ZSH](https://ohmyz.sh/)
 
 ```bash
 # Step 2 : Windows WSL Ubuntu
@@ -82,14 +82,14 @@ Y
 
 
 
-# Tools configuration
+# Configuration des applications
 
 ## Alias
 
-1. Create a config file to store all your alias `~/.alias`
-2. Add the link to the alias config file `~/.alias` in your ZSH config file `~/.zshrc`
+1. Creation du fichier de configuration pour stocker vos alias `~/.alias`
+2. Ajout du lien entre le fichier de configuration d'alias`~/.alias` dans le fichier de configuration de ZSH `~/.zshrc`
 
-For MacOS & Linux : 
+Pour MacOS & Linux : 
 ```bash
 
 # Step 1 : Alias file creation
@@ -100,7 +100,7 @@ echo "[[ ! -f ~/.alias ]] || source ~/.alias" >> ~/.zshrc
 
 ```
 
-For Windows WSL
+Pour Windows WSL
 ```bash
 
 # Step 1 : Alias file creation
@@ -112,18 +112,18 @@ echo "[[ ! -f ~/.alias ]] || source ~/.alias" >> ~/.zshrc
 ```
 
 
-## Oh My ZSH Plugins
+## Plugins Oh My ZSH 
 
-1. Installation of [powerline fonts](https://github.com/powerline/fonts.git) (you'll find more instructions on this [link](https://github.com/romkatv/powerlevel10k#manual-font-installation))
+1. Installation de [powerline fonts](https://github.com/powerline/fonts.git) (vous trouverz plus d'instructions en suivant ce [lien](https://github.com/romkatv/powerlevel10k#manual-font-installation))
 
-For MacOS & Linux :
+Pour MacOS & Linux :
 ```bash
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
 ```
 
-For Windows (with `Windows Terminal`)  :
+Pour Windows (avec `Windows Terminal`)  :
 ```bash
 # Change the current user execution policy
 set-executionpolicy -scope CurrentUser -executionPolicy Unrestricted
@@ -139,7 +139,7 @@ set-executionpolicy -scope CurrentUser -executionPolicy Default
 
 ```
 
-2. Installation of the Powerlevel10k theme and the plugins (manually)
+2. Installation du thème Powerlevel10k et des plugins (manuellement)
 ```bash
 
 # Install Theme 
@@ -154,7 +154,7 @@ git clone --depth 1 https://github.com/aubreypwd/zsh-plugin-fd ${ZSH_CUSTOM:-~/.
 
 ```
 
-3. Modification of the ZSH config file : `~/.zshrc`
+3. Modification du fichier de configuration ZSH : `~/.zshrc`
 
 ```bash
 # Replace the ZSH_THEME config
@@ -174,19 +174,19 @@ plugins=(
 
 ## Iterm2 (for MacOS)
 
-1. Get the desired [iTerm2 color schemes](https://github.com/mbadolato/iTerm2-Color-Schemes)
+1. Récupération du [iTerm2 color schemes](https://github.com/mbadolato/iTerm2-Color-Schemes) souhaité
 
-2. Change fonts : Navigate to `iTerm2 > Preferences > Profiles > Text > Font`
-    1. Choose `MesloLGS NF`
-    2. Check option : `Use ligatures`
+2. Modification de la police d'écriture : Aller dans `iTerm2 > Preferences > Profiles > Text > Font`
+    1. Choisir `MesloLGS NF`
+    2. Cocher l'option : `Use ligatures`
 
-3. Import color scheme : Navigate to `iTerm2 > Preferences > Profiles > Colors`
-    1. Click on `Color Presets ...` and choose `Import...`
-    2. Click on your desired iTerm2 color scheme (from step n°1)
+3. Importer le schéma des couleurs : Aller dans `iTerm2 > Preferences > Profiles > Colors`
+    1. Cliquer sur `Color Presets ...` et selectionner `Import...`
+    2. Cliquer sur le schéma des couleurs souhaitées (cf l'étape n°1)
 
-4. Add Key mapping : Navigate to `iTerm2 > Preferences > Profiles > Keys > Key Mappings`
-    1. Choose the icon `+`
-    2. Add the following key map
+4. Ajouter des raccourcis : Aller dans `iTerm2 > Preferences > Profiles > Keys > Key Mappings`
+    1. Choisir l'icone `+`
+    2. Ajouter les raccourcis définis ci-dessous
 
 | Shortcut | Action               | Esc+ |
 | -------- | -------------------- | ---- |
@@ -196,23 +196,23 @@ plugins=(
 | ⌥→       | Send Escape Sequence | f    |
 
 
-## Windows Terminal (for Windows WSL)
+## Windows Terminal (pour Windows WSL)
 
-1. Get your desired color scheme from [windowsterminalthemes.dev](https://windowsterminalthemes.dev/)
-2. Open the Windows Terminal and navigate to `Windows Terminal > Settings`
-    1. Go to `Startup`
+1. Récupérer le schéma des couleurs souhaité à partir de [windowsterminalthemes.dev](https://windowsterminalthemes.dev/)
+2. Ouvrir l'application `Windows Terminal` et aller dans `Windows Terminal > Settings`
+    1. Aller dans `Startup`
         1. Default Profile : `Ubuntu`
         2. Default terminal application : `Windows Terminal`
-    2. Go to `Open your settings.json file`
-        1. Paste the color scheme in the `schemes` JSON key
-    3. Go to `Color Schemes`
-        1. choose your schemes name
-    4. For each profile (Defaults, Windows PowerShell, Command Prompt, Ubuntu, Azure CLoud Shell, Git Bash, ....)
-        1. Go to `Appearance`
-            1. Color scheme : Use your color scheme
+    2. Aller dans `Open your settings.json file`
+        1. Coller le schéma des couleurs dans la balise JSON `schemes`
+    3. Aller dans `Color Schemes`
+        1. Choisir votre schéma
+    4. Pour chaque profile (Defaults, Windows PowerShell, Command Prompt, Ubuntu, Azure CLoud Shell, Git Bash, ....)
+        1. Aller dans `Appearance`
+            1. Color scheme : CHoisir votre schéma
             2. Font face : `MesloLGS NF`
 
-Example for the scheme modification in the JSON config file :
+Exemple pour la modification du schéma dans le JSON de configuration :
 ```json
 "schemes": 
 [
@@ -245,9 +245,9 @@ Example for the scheme modification in the JSON config file :
 ```
 
 
-## Powerlevel10K configuration
+## Powerlevel10K
 
-1. Execute the command `p10k configuration` in the `iterm2` or `ubuntu` terminal with `zsh` 
+1. Exécuter la commande `p10k configuration` dans l'application`iterm2` ou `windows terminal > ubuntu` en utilisant `zsh` 
     1. Prompt Style : `Lean`
     2. Character Set : `Unicode`
     3. Prompt Colors : `256 colors`
