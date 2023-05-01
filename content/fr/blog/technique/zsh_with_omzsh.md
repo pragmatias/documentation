@@ -22,7 +22,7 @@ Les étapes sont :
 1. Installation de [Xcode](https://apps.apple.com/fr/app/xcode/id497799835?mt=12)
 2. Installation de [Homebrew](https://brew.sh/index_fr) (package manager)
 3. Installation de [iTerm2](https://iterm2.com/) , [ZSH](https://www.zsh.org/), [FZF](https://github.com/junegunn/fzf), [FD](https://github.com/sharkdp/fd), [Tree](https://www.computerhope.com/unix/tree.htm)
-4. Installation de [Oh My ZSH]
+4. Installation de [Oh My ZSH](https://ohmyz.sh/)
 
 Les commandes sont :
 ```bash
@@ -188,12 +188,12 @@ plugins=(
     1. Choisir l'icone `+`
     2. Ajouter les raccourcis définis ci-dessous
 
-| Shortcut | Action               | Esc+ |
-| -------- | -------------------- | ---- |
-| ⌘←       | Send Escape Sequence | OH   |
-| ⌘→       | Send Escape Sequence | OF   |
-| ⌥←       | Send Escape Sequence | b    |
-| ⌥→       | Send Escape Sequence | f    |
+| Shortcut | Action | Esc+ |
+|:--|:--|:--|
+| `⌘←` | Send Escape Sequence | `OH` |
+| `⌘→` | Send Escape Sequence | `OF` |
+| `⌥←` | Send Escape Sequence | `b` |
+| `⌥→` | Send Escape Sequence | `f` |
 
 
 ## Windows Terminal (pour Windows WSL)
