@@ -1,7 +1,7 @@
 ---
 Categories : ["ZSH","MacOS","WSL","Linux"]
 Tags : ["ZSH","MacOS","WSL","Linux"]
-title : "ZSH : OMZSH avec Powerlevel10k"
+title : "ZSH : Oh My ZSH avec Powerlevel10k"
 date : 2023-05-01
 draft : false
 toc: true

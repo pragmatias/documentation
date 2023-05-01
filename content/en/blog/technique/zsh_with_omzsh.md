@@ -1,7 +1,7 @@
 ---
 Categories : ["ZSH","MacOS","WSL","Linux"]
 Tags : ["ZSH","MacOS","WSL","Linux"]
-title : "ZSH : OMZSH with Powerlevel10k"
+title : "ZSH : Oh My ZSH with Powerlevel10k"
 date : 2023-05-01
 draft : false
 toc: true
@@ -189,7 +189,7 @@ plugins=(
     2. Add the following key map
 
 | Shortcut | Action | Esc+ |
-|:--|:--|:--|
+|:--|:--:|:--|
 | `⌘←` | Send Escape Sequence | `OH` |
 | `⌘→` | Send Escape Sequence | `OF` |
 | `⌥←` | Send Escape Sequence | `b` |
