@@ -402,9 +402,9 @@ rm tmp_databricks_metastore_update_sc.json
 
 
 
-## Step n°6 : Association d'un Metastore à un Workspace Databricks
+## Étape n°6 : Association d'un Metastore à un Workspace Databricks
 
-Pour pouvoir utiliser le Metastore avec un workspace Databricks, il est nécessaire de lui assigner le Metastore au niveau de l'account Databricks.
+Pour pouvoir utiliser le Metastore avec un Workspace Databricks, il est nécessaire d'assigner le Metastore au Workspace Databricks au niveau de l'account Databricks.
 Note : il est possible de définir le nom du Catalog par défaut pour les utilisateurs du Workspace.
 
 Exécution des commandes suivantes en s'appuyant sur Databricks CLI :
