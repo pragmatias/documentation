@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-We are going to discover the Unity Catalog solution from Databricks and more specifically how to set it up on an existing workspace.
+We are going to discover the [Unity Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html) solution from Databricks and more specifically how to set it up on an existing workspace.
 
 We will use a Databricks account on AWS to perform this demonstration.
 

@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-Nous allons découvrir la solution Unity Catalog de Databricks et plus particulièrement comment la mettre en place sur un workspace existant.
+Nous allons découvrir la solution [Unity Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html) de Databricks et plus particulièrement comment la mettre en place sur un workspace existant.
 
 Nous allons utiliser un Account Databricks sur AWS pour réaliser cette démonstration.
 
@@ -377,7 +377,7 @@ rm tmp_databricks_metastore_storagecredential.json
 
 
 
-## Step n°5 : Association d'un Storage Credential avec un Metastore
+## Étape n°5 : Association d'un Storage Credential avec un Metastore
 
 Afin que le Metastore puisse utiliser le Storage Credential pour accéder à la ressource AWS S3 et pour pouvoir gérer les accès sur les données pour l'ensemble des utilisateurs, nous devons associer le Storage Credential au Metastore.
 
