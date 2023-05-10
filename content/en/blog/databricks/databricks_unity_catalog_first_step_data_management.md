@@ -648,8 +648,7 @@ From the Unity Catalog solution, it is possible to access the data using Cluster
 
 # Resources
 
-## 
-Creation of a SQL Warehouse
+## Creation of a SQL Warehouse
 
 
 Databricks CLI does not support managing SQL Warehouses at the moment, therefore we can use [Databricks REST API](https://docs.databricks.com/sql/api/sql-endpoints.html) to do it.
