@@ -719,7 +719,6 @@ dbx-api -X POST -H "Content-Type: application/json" -d "@tmp_databricks_create_w
 
 # Delete the temporary config file
 rm tmp_databricks_create_warehouse.json
-
 ```
 
 
@@ -739,6 +738,5 @@ dbx-api -X POST ${DBX_API_URL}/api/2.0/sql/warehouses/${SQL_WH_ID}/start
 
 # Delete the SQL Warehouse
 dbx-api -X DELETE ${DBX_API_URL}/api/2.0/sql/warehouses/${SQL_WH_ID}
-
 ```
 
