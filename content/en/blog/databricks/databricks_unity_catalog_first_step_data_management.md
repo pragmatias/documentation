@@ -94,7 +94,7 @@ Summary of the actions that will be done :
 ### Setting up a dataset on the AWS S3 resource
 
 Content of the file `ref_products.csv`:
-```csv
+```text
 id,lib,brand,os,last_maj
 1,Pixel 7 Pro,Google,Android,2023-01-01 09:00:00
 2,Iphone 14,Apple,IOS,2023-01-01 09:00:00
@@ -102,7 +102,7 @@ id,lib,brand,os,last_maj
 ```
 
 Content of the file `fct_transactions.csv` :
-```csv
+```text
 id_trx,ts_trx,id_products,id_shop,id_client,quantity
 1,2023-04-01 09:00:00,1,2,1,1
 2,2023-04-01 11:00:00,1,1,1,3
