@@ -190,7 +190,7 @@ Regarding a group deletion :
 - If you remove the group from the Databricks Account, it will automatically be removed from all Databricks Workspaces
 
 
-## How it works
+## Practical application
 
 Prerequisites :
 - Have an account with the Databricks Account administration role/right
@@ -273,7 +273,7 @@ For example: If the owner of the table `ctg_ext.sch_ref.tbl_demo` gives the righ
 It is possible to manage the rights at the object (table/view) level but it is recommended to organize the data and the rights at the Schema level when the organization allows it to facilitate the management of the access rights to the different teams and profiles of the organization.
 
 
-## How it works
+## Practical application
 
 
 We have already created the Catalogs and Schemas with an admin account and we want to give the possibility to the user `usr_demo@tech.demo` to manage the objects in the different Catalogs and Schemas.
@@ -423,7 +423,7 @@ Regarding the External Table :
 
 
 
-## How it works
+## Practical application
 
 Creating an External Table and a Managed Table :
 1. Creation of an External Table named `ref_products` in the Schema `sch_ref` of the Catalog `ctg_ext` from a csv file named `ref_products.csv`
