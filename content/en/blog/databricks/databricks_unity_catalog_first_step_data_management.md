@@ -60,11 +60,11 @@ We will use the following elements:
 Prerequisites :
 - A user with admin rights on the Databricks Account and on the Databricks Workspace
 - There must not exist a group named `grp_demo` at the Databricks Account level and at the Databricks Workspace level
-- There must not exist a user named `usr_demo@tech.demo` at the Databricks Account level and at the Databricks Workspace level
+- There must not exist a user named `john.do.dbx@gmail.com` at the Databricks Account level and at the Databricks Workspace level
 
 Summary of the actions that will be done :
 - Creation of a group named `grp_demo` at the Databricks Account level.
-- Creation of a user named `usr_demo@tech.demo` at the Databricks Account level.
+- Creation of a user named `john.do.dbx@gmail.com` at the Databricks Account level.
 - Addition of the `grp_demo` group created at the Databricks Account level in the Databricks Workspace
 - Added rights on the Workspace Databricks on the group `grp_demo`
 - Added the needed rights on Unity Catalog objects at the Databricks Workspace level on the `grp_demo` group
@@ -183,7 +183,7 @@ In the context of access management with Unity Catalog, the recommendations are 
 - It is recommended to always define rights at groups level and not users level to facilitate the management of rights over time
     - You can manage groups on several levels to organize rights and users
 - When importing (creating) a group at the Workspace Databricks level, the Workspace administrator must define the rights (Entitlements) of the group on the Workspace Databricks
-- If you want to give the same rights as the user `usr_demo@tech.demo` to another user, you will only need to add this other user in the same groups as the user `usr_demo@tech.demo`
+- If you want to give the same rights as the user `john.do.dbx@gmail.com` to another user, you will only need to add this other user in the same groups as the user `john.do.dbx@gmail.com`
 
 Regarding a group deletion :
 - If you delete the group from the Databricks Workspace, it will still exist at the Databricks Account level
@@ -199,8 +199,8 @@ Prerequisites :
 
 
 For the creation of the group and the user, the following actions must be done at the Databricks Account level:
-1. Create a user named `usr_demo@tech.demo`
-2. Create a group named `grp_demo` and add the user `usr_demo@tech.demo` to the group `grp_demo`
+1. Create a user named `john.do.dbx@gmail.com`
+2. Create a group named `grp_demo` and add the user `john.do.dbx@gmail.com` to the group `grp_demo`
 
 
 For the user to be able to access the Databricks Workspace resources, the following actions must be done at the Databricks Workspace level:
@@ -217,7 +217,7 @@ Actions :
     1. Go to `Account Administration page > User Management > Groups`
     2. Click on `Add Group`
     3. Fill the information `Group name` and click on `save`
-    4. Click on `Add members` to add the user `usr_demo@tech.demo`
+    4. Click on `Add members` to add the user `john.do.dbx@gmail.com`
 3. Step n°3 
     1. Go to `Workspace page > username > Admin Settings > Groups`
     2. Click on `Add Group`
@@ -276,7 +276,7 @@ It is possible to manage the rights at the object (table/view) level but it is r
 ## Practical application
 
 
-We have already created the Catalogs and Schemas with an admin account and we want to give the possibility to the user `usr_demo@tech.demo` to manage the objects in the different Catalogs and Schemas.
+We have already created the Catalogs and Schemas with an admin account and we want to give the possibility to the user `john.do.dbx@gmail.com` to manage the objects in the different Catalogs and Schemas.
 
 By default, the `grp_demo` group has no rights to the Metastore Catalogs (and cannot view them).
 

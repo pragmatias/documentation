@@ -60,11 +60,11 @@ Nous allons reproduire les éléments suivants :
 Pré-requis :
 - Un utilisateur avec les droits d'administration sur l'Account Databricks et sur le Workspace Databricks
 - Il ne doit pas exister de groupe nommé `grp_demo` au niveau de l'Account Databricks et au niveau du Workspace Databricks
-- Il ne doit pas exister d'utilisateur nommé `usr_demo@tech.demo` au niveau de l'Account Databricks et au niveau du Workspace Databricks
+- Il ne doit pas exister d'utilisateur nommé `john.do.dbx@gmail.com` au niveau de l'Account Databricks et au niveau du Workspace Databricks
 
 Synthèse des actions qui seront réalisées :
 - Création d'un groupe nommé `grp_demo` au niveau de l'Account Databricks.
-- Création d'un utilisateur nommé `usr_demo@tech.demo` au niveau de l'Account Databricks.
+- Création d'un utilisateur nommé `john.do.dbx@gmail.com` au niveau de l'Account Databricks.
 - Ajout du groupe `grp_demo` créé au niveau de l'Account Databricks dans le Workspace Databricks
 - Ajout des droits sur le Workspace Databricks sur le groupe `grp_demo`
 - Ajout des droits nécessaires sur les objets de l'Unity Catalog au niveau du Workspace Databricks sur le groupe `grp_demo`
@@ -180,7 +180,7 @@ Dans le cadre de la gestion des accès avec Unity Catalog, les recommandations s
 - Il est recommandé de toujours appliquer des droits au niveau des groupes et non pas des utilisateurs pour faciliter la gestion des droits dans le temps
     - Vous pouvez gérer des groupes sur plusieurs niveaux pour organiser les droits et les utilisateurs
 - Lors de l'import (création) d'un groupe au niveau du Workspace Databricks, l'administrateur du Workspace doit définir les droits (Entitlements) du groupe sur le Workspace Databricks
-- Si vous voulez donner les même droits que l'utilisateur `usr_demo@tech.demo` à un autre utilisateur, il suffira d'ajouter cet autre utilisateur dans les même groupes que l'utilisateur `usr_demo@tech.demo`
+- Si vous voulez donner les même droits que l'utilisateur `john.do.dbx@gmail.com` à un autre utilisateur, il suffira d'ajouter cet autre utilisateur dans les même groupes que l'utilisateur `john.do.dbx@gmail.com`
 
 Concernant la suppression d'un  groupe : 
 - Si vous supprimez le groupe du Workspace Databricks, il existera toujours au niveau de l'Account Databricks
@@ -195,8 +195,8 @@ Pré-requis :
 - Avoir un SQL Warehouse existant sur le Workspace Databricks (pour que les utilisateurs puissent exécuter des requêtes SQL sur Databricks)
 
 Pour la création du groupe et de l'utilisateur, il faut réaler les actions suivantes au niveau de l'Account Databricks :
-1. Création d'un utilisateur nommé `usr_demo@tech.demo`
-2. Création d'un groupe nommé `grp_demo` et ajout de l'utilisateur `usr_demo@tech.demo` dans le groupe `grp_demo`
+1. Création d'un utilisateur nommé `john.do.dbx@gmail.com`
+2. Création d'un groupe nommé `grp_demo` et ajout de l'utilisateur `john.do.dbx@gmail.com` dans le groupe `grp_demo`
 
 Pour que l'utilisateur puisse accéder aux ressources du Workspace Databricks, il faut réaliser les actions suivantes au niveau du Workspace Databricks :
 3. Import du groupe `grp_demo` dans le Workspace Databricks
@@ -212,7 +212,7 @@ Détail des actions à réaliser :
     1. Allez dans `Account Administration page > User Management > Groups`
     2. Cliquez sur `Add Group`
     3. Renseignez les informations `Group name` et cliquez sur `save`
-    4. Cliquez sur `Add members` pour ajouter l'utilisateur `usr_demo@tech.demo`
+    4. Cliquez sur `Add members` pour ajouter l'utilisateur `john.do.dbx@gmail.com`
 3. Etape n°3 
     1. Allez dans `Workspace page > username > Admin Settings > Groups`
     2. Cliquez sur `Add Group`
@@ -273,7 +273,7 @@ Il est possible de gérer les droits au niveau de chaque objet (table/vue) mais 
 
 ## Mise en pratique
 
-Nous avons déjà créé les Catalog et les Schema avec un compte d'administration et nous voulons donner la possibilité à l'utilisateur `usr_demo@tech.demo` de gérer les objets dans les différents Catalog et Schema.
+Nous avons déjà créé les Catalog et les Schema avec un compte d'administration et nous voulons donner la possibilité à l'utilisateur `john.do.dbx@gmail.com` de gérer les objets dans les différents Catalog et Schema.
 
 Par défaut, le groupe `grp_demo` n'a aucun droit sur les Catalog du Metastore (et ne peut pas les visualiser).
 
