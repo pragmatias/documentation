@@ -103,7 +103,7 @@ id,lib,brand,os,last_maj
 
 Content of the file `fct_transactions.csv` :
 ```text
-id_trx,ts_trx,id_products,id_shop,id_client,quantity
+id_trx,ts_trx,id_product,id_shop,id_client,quantity
 1,2023-04-01 09:00:00,1,2,1,1
 2,2023-04-01 11:00:00,1,1,1,3
 3,2023-04-03 14:00:00,1,2,1,1
@@ -451,7 +451,7 @@ COMMENT 'Product referential (external)'
 CREATE TABLE ctg_ipp.sch_bronze.fct_transactions (
     id_trx string
     ,ts_trx string
-    ,id_products string
+    ,id_product string
     ,id_shop string
     ,id_client string
     ,quantity string
