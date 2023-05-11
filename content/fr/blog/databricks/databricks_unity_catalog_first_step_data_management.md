@@ -124,8 +124,8 @@ aws s3 cp fct_transactions.csv s3://s3-demo-data-uc/demo/fct_transactions.csv
 Les étapes sont les suivantes :
 Note : Utilisation d'un utilisateur avec les droits d'administration sur le Metastore
 1. Création d'un External Location pour permettre aux utilisateurs de stocker des données dans la ressource AWS S3 nommée `s3-demo-data-uc`
-2. Création des Catalog `ctg_ipp` et `ctg_ext`
-3. Création des Schema `ctg_ipp.sch_bronze` et `ctg_ext.sch_ref`
+2. Création des Catalogs `ctg_ipp` et `ctg_ext`
+3. Création des Schemas `ctg_ipp.sch_bronze` et `ctg_ext.sch_ref`
 ```sql
 -- 1. Create external location to access data from s3-demo-data-uc resource
 CREATE EXTERNAL LOCATION IF NOT EXISTS el_demo_data_uc
@@ -273,16 +273,16 @@ Il est possible de gérer les droits au niveau de chaque objet (table/vue) mais 
 
 ## Mise en pratique
 
-Nous avons déjà créé les Catalog et les Schema avec un compte d'administration et nous voulons donner la possibilité à l'utilisateur `john.do.dbx@gmail.com` de gérer les objets dans les différents Catalog et Schema.
+Nous avons déjà créé les Catalogs et les Schemas avec un compte d'administration et nous voulons donner la possibilité à l'utilisateur `john.do.dbx@gmail.com` de gérer les objets dans les différents Catalogs et Schemas.
 
-Par défaut, le groupe `grp_demo` n'a aucun droit sur les Catalog du Metastore (et ne peut pas les visualiser).
+Par défaut, le groupe `grp_demo` n'a aucun droit sur les Catalogs du Metastore (et ne peut pas les visualiser).
 
 Nous allons faire les actions nécessaires pour nous assurer que les droits seront suffisants pour pouvoir faire les manipulations suivantes :
 1. Création des nouveaux schémas dans le Catalog `ctg_ipp`
-2. Création des tables dans l'ensemble des Schema des Catalog `ctg_ipp` et `ctg_ext`
+2. Création des tables dans l'ensemble des Schemas des Catalogs `ctg_ipp` et `ctg_ext`
 
 Les actions à réaliser sont les suivantes : 
-1. Donner les droits de visualisation sur les Catalog
+1. Donner les droits de visualisation sur les Catalogs
 ```sql
 -- Right to view the Catalog ctg_ipp
 GRANT USAGE ON CATALOG ctg_ipp TO grp_demo;
@@ -322,7 +322,7 @@ GRANT CREATE EXTERNAL LOCATION ON STORAGE CREDENTIAL `sc-demo-data-uc` TO grp_de
 
 
 
-Exemple de requête permettant de récupérer l'ensemble des droits données au groupe `grp_demo` sur les objets des Catalog `ctg_ipp`et `ctg_ext` :
+Exemple de requête permettant de récupérer l'ensemble des droits données au groupe `grp_demo` sur les objets des Catalogs `ctg_ipp`et `ctg_ext` :
 ```sql
 -- How to get all the existing privileges for a group ?
 -- Get privileges from Catalog
