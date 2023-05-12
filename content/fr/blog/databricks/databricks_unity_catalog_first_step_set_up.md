@@ -15,7 +15,6 @@ _Note : Nous allons garder des termes techniques en anglais pour faciliter la co
 
 <!--more-->
 
-
 # Qu'est-ce qu'un métastore
 
 Un métastore est un référentiel permettant de stocker un ensemble de métadonnées liés aux données (stockage, usage, options).

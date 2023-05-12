@@ -13,6 +13,8 @@ Nous allons utiliser un Account Databricks sur AWS pour réaliser cette découve
 
 _Note : Nous allons garder des termes techniques en anglais pour faciliter la compréhension_
 
+<!--more-->
+
 # Qu'est ce qu'est le Data Lineage
 
 Le Data Lineage consiste à cartographier l'ensemble des objets et leur utilisation afin de pouvoir visualiser le cycle de vie des données.

@@ -11,9 +11,7 @@ We are going to discover the [Unity Catalog](https://docs.databricks.com/data-go
 
 We will use a Databricks account on AWS to perform this demonstration.
 
-
 <!--more-->
-
 
 # What's a metastore
 

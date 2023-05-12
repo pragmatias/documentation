@@ -13,6 +13,7 @@ We are going to discover the [Data Lineage](https://docs.databricks.com/data-gov
 
 We will use a Databricks Account on AWS to perfrom this discovery.
 
+<!--more-->
 
 # What's the Data Lineage
 
