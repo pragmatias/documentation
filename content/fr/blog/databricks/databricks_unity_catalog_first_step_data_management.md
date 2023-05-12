@@ -28,13 +28,13 @@ Les différents objets sont :
 - Storage Credential : Cet objet est associé directement au Metastore et permet de stocker les accès à un cloud provider (par exemple AWS S3) permettant à la solution Unity Catalog de gérer les droits sur les données.
 - External Location : Cet objet est associé au Metastore et permet de stocker le chemin vers un cloud provider (par exemple une ressource AWS S3) en combinaison avec un Storage Credential pour gérer les accès aux données
 - Metastore : Objet du plus haut niveau pouvant contenir des métadonnées
-- Catalog : Objet de 1er niveau permettant d'organiser les données par Schema (aussi nommé Base de données)
-- Schema : Objet de 2ème et dernier niveau permettant d'organiser les données (contient les tables, les vues et les fonctions)
+- Catalog (Catalogue) : Objet de 1er niveau permettant d'organiser les données par schéma (aussi nommé Base de données)
+- Schema (Schéma) : Objet de 2ème et dernier niveau permettant d'organiser les données (contient les tables, les vues et les fonctions)
 - Table : Objet permettant de définir la structure et le stockage des données. 
 - View : Objet permettant d'encapsuler une requête utilisant un ou plusieurs objets (table ou vue)
 - Function : Objet permettant de définir des opérations sur les données
 
-Lorsque vous souhaitez accéder à un objet (par exemple une table), il sera nécessaire de renseigner le nom du Catalog et le nom du Schema où est défini l'objet.
+Lorsque vous souhaitez accéder à un objet (par exemple une table), il sera nécessaire de renseigner le nom du catalogue et le nom du schéma où est défini l'objet.
 Exemple : `select * from catalog.schema.table`
 
 
@@ -82,10 +82,10 @@ Pré-requis :
 
 Synthèse des actions qui seront réalisées :
 - Création d'un External Storage pour pouvoir accéder avec Unity Catalog aux données de la ressource AWS S3 nommée `s3-demo-data-uc`
-- Création du Catalog `ctg_ipp` qui contiendra l'ensemble des éléments managés (stockés sur la ressource AWS S3 nommée `s3-dbx-metastore-uc` associée au Metastore `metastore-sandbox`)
-- Création du Catalog `ctg_ext` qui contiendra l'ensemble des éléments externes (stockés sur la ressource AWS S3 nommée `s3-demo-data-uc`)
-- Création du Schema `ctg_ipp.sch_bronze` qui permettra de créer les objets managés par Unity Catalog pour accéder aux données stockées sur la ressource AWS S3 nommée `s3-dbx-metastore-uc` (au format Delta uniquement)
-- Création du Schema `ctg_ext.sch_ref`  qui permettra de créer les objets pour accéder aux données stockées sur la ressource AWS S3 nommée  `s3-demo-data-uc` (sous forme de fichier CSV ou de fichier Delta)
+- Création du catalogue `ctg_ipp` qui contiendra l'ensemble des éléments managés (stockés sur la ressource AWS S3 nommée `s3-dbx-metastore-uc` associée au Metastore `metastore-sandbox`)
+- Création du catalogue `ctg_ext` qui contiendra l'ensemble des éléments externes (stockés sur la ressource AWS S3 nommée `s3-demo-data-uc`)
+- Création du schéma `ctg_ipp.sch_bronze` qui permettra de créer les objets managés par Unity Catalog pour accéder aux données stockées sur la ressource AWS S3 nommée `s3-dbx-metastore-uc` (au format Delta uniquement)
+- Création du schéma `ctg_ext.sch_ref`  qui permettra de créer les objets pour accéder aux données stockées sur la ressource AWS S3 nommée  `s3-demo-data-uc` (sous forme de fichier CSV ou de fichier Delta)
 
 ## Mise en place
 
@@ -124,8 +124,8 @@ aws s3 cp fct_transactions.csv s3://s3-demo-data-uc/demo/fct_transactions.csv
 Les étapes sont les suivantes :
 Note : Utilisation d'un utilisateur avec les droits d'administration sur le Metastore
 1. Création d'un External Location pour permettre aux utilisateurs de stocker des données dans la ressource AWS S3 nommée `s3-demo-data-uc`
-2. Création des Catalogs `ctg_ipp` et `ctg_ext`
-3. Création des Schemas `ctg_ipp.sch_bronze` et `ctg_ext.sch_ref`
+2. Création des catalogues `ctg_ipp` et `ctg_ext`
+3. Création des schémas `ctg_ipp.sch_bronze` et `ctg_ext.sch_ref`
 ```sql
 -- 1. Create external location to access data from s3-demo-data-uc resource
 CREATE EXTERNAL LOCATION IF NOT EXISTS el_demo_data_uc
@@ -264,25 +264,25 @@ Pour supprimer un droit à un groupe ou un utilisateur, la syntaxe est la suivan
 REVOKE <Rights with comma separator> ON <Type Object> <Name Object> FROM <Group or User>;
 ```
 
-Point d'attention : Il est indispensable d'avoir le droit de `USE/USAGE` sur le Catalog et le Schema pour accéder à une table même si on a déjà le droit de `SELECT` dessus sinon l'utilisateur (ou le groupe) n'aura pas la possible de voir le contenu du Catalog et du Schema par défaut.
+Point d'attention : Il est indispensable d'avoir le droit de `USE/USAGE` sur le catalogue et le schéma pour accéder à une table même si on a déjà le droit de `SELECT` dessus sinon l'utilisateur (ou le groupe) n'aura pas la possible de voir le contenu du catalogue et du schéma par défaut.
 
-Par exemple : Si le propriétaire de la table `ctg_ext.sch_ref.tbl_demo` donne le droit de `SELECT`au groupe `grp_demo` alors les utilisateurs du groupe `grp_demo`ne pourront pas lire les données de la table `tbl_demo` tant qu'ils n'auront pas le droit `USE` sur le Catalog `ctg_ext` et sur le Schema `sch_ref`.
+Par exemple : Si le propriétaire de la table `ctg_ext.sch_ref.tbl_demo` donne le droit de `SELECT`au groupe `grp_demo` alors les utilisateurs du groupe `grp_demo`ne pourront pas lire les données de la table `tbl_demo` tant qu'ils n'auront pas le droit `USE` sur le catalogue `ctg_ext` et sur le schéma `sch_ref`.
 
 
-Il est possible de gérer les droits au niveau de chaque objet (table/vue) mais il est recommandé d'organiser les données et les droits au niveau des objets Schema lorsque l'organisation le permet pour faciliter la gestion des droits d'accès aux données aux différentes équipes et profils de l'organisation.
+Il est possible de gérer les droits au niveau de chaque objet (table/vue) mais il est recommandé d'organiser les données et les droits au niveau des schémas lorsque l'organisation le permet pour faciliter la gestion des droits d'accès aux données aux différentes équipes et profils de l'organisation.
 
 ## Mise en pratique
 
-Nous avons déjà créé les Catalogs et les Schemas avec un compte d'administration et nous voulons donner la possibilité à l'utilisateur `john.do.dbx@gmail.com` de gérer les objets dans les différents Catalogs et Schemas.
+Nous avons déjà créé les catalogues et les schémas avec un compte d'administration et nous voulons donner la possibilité à l'utilisateur `john.do.dbx@gmail.com` de gérer les objets dans les différents catalogues et schémas.
 
-Par défaut, le groupe `grp_demo` n'a aucun droit sur les Catalogs du Metastore (et ne peut pas les visualiser).
+Par défaut, le groupe `grp_demo` n'a aucun droit sur les catalogue du Metastore (et ne peut pas les visualiser).
 
 Nous allons faire les actions nécessaires pour nous assurer que les droits seront suffisants pour pouvoir faire les manipulations suivantes :
-1. Création des nouveaux schémas dans le Catalog `ctg_ipp`
-2. Création des tables dans l'ensemble des Schemas des Catalogs `ctg_ipp` et `ctg_ext`
+1. Création des nouveaux schémas dans le atalogue `ctg_ipp`
+2. Création des tables dans l'ensemble des schémas des catalogues `ctg_ipp` et `ctg_ext`
 
 Les actions à réaliser sont les suivantes : 
-1. Donner les droits de visualisation sur les Catalogs
+1. Donner les droits de visualisation sur les catalogues
 ```sql
 -- Right to view the Catalog ctg_ipp
 GRANT USAGE ON CATALOG ctg_ipp TO grp_demo;
@@ -290,13 +290,13 @@ GRANT USAGE ON CATALOG ctg_ipp TO grp_demo;
 GRANT USAGE ON CATALOG ctg_ext TO grp_demo;
 ```
 
-2. Donner les droits de création de schéma au niveau du Catalog `ctg_ipp`
+2. Donner les droits de création de schéma au niveau du catalogue `ctg_ipp`
 ```sql
 -- Right to create new Schema in Catalog ctg_ipp
 GRANT USE SCHEMA, CREATE SCHEMA ON CATALOG ctg_ipp TO grp_demo;
 ```
 
-3. Donner les droits d'accès et de création des objets dans le Schema `ctg_ext.sch_ref` ainsi que les droits d'accès pour créer des tables externes (External Table) en se basant sur le stockage défini dans l'objet External Location nommé `el_demo_data_uc` :
+3. Donner les droits d'accès et de création des objets dans le schéma `ctg_ext.sch_ref` ainsi que les droits d'accès pour créer des tables externes (External Table) en se basant sur le stockage défini dans l'objet External Location nommé `el_demo_data_uc` :
 ```sql
 -- Rights to create objects in the Schema ctg_ext.sch_ref
 GRANT USE SCHEMA, SELECT , MODIFY, CREATE TABLE ON SCHEMA ctg_ext.sch_ref TO grp_demo;
@@ -304,7 +304,7 @@ GRANT USE SCHEMA, SELECT , MODIFY, CREATE TABLE ON SCHEMA ctg_ext.sch_ref TO grp
 GRANT CREATE EXTERNAL TABLE ON EXTERNAL LOCATION `el_demo_data_uc` TO grp_demo;
 ```
 
-4. Donner tous les droits sur le Schema `ctg_ipp.sch_bronze`
+4. Donner tous les droits sur le schéma `ctg_ipp.sch_bronze`
 ```sql
 -- All privileges on the Schema ctg_ipp.sch_bronze
 GRANT ALL PRIVILEGES ON SCHEMA ctg_ipp.sch_bronze TO grp_demo;
@@ -322,7 +322,7 @@ GRANT CREATE EXTERNAL LOCATION ON STORAGE CREDENTIAL `sc-demo-data-uc` TO grp_de
 
 
 
-Exemple de requête permettant de récupérer l'ensemble des droits données au groupe `grp_demo` sur les objets des Catalogs `ctg_ipp`et `ctg_ext` :
+Exemple de requête permettant de récupérer l'ensemble des droits données au groupe `grp_demo` sur les objets des catalogues `ctg_ipp`et `ctg_ext` :
 ```sql
 -- How to get all the existing privileges for a group ?
 -- Get privileges from Catalog
@@ -368,9 +368,9 @@ L'objet Table permet de définir la structure et le stockage des données.
 
 La création des tables et des vues se font obligatoirement dans un schéma.
 
-Par défaut, si l'on ne précise rien lors de la création des objets Catalog et Schema, l'ensemble des données seront gérées par Unity Catalog en se basant sur le stockage (ressource AWS S3) défini au niveau du Metastore.
-Si l'option `MANAGED LOCATION` est défini au niveau du Catalog alors l'ensemble des éléments (Schema et Table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
-Si l'option `MANAGED LOCATION` est défini au niveau du Schema alors l'ensemble des éléments (Table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
+Par défaut, si l'on ne précise rien lors de la création des catalogues et des schémas, l'ensemble des données seront gérées par Unity Catalog en se basant sur le stockage (ressource AWS S3) défini au niveau du Metastore.
+Si l'option `MANAGED LOCATION` est défini au niveau du catalogue alors l'ensemble des éléments (schéma et table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
+Si l'option `MANAGED LOCATION` est défini au niveau du schéma alors l'ensemble des éléments (table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
 
 Exemple de syntaxe :
 ```sql
@@ -387,7 +387,7 @@ CREATE SCHEMA XXX
 ;
 ```
 
-Le Schema et le Catalog ne sont que des enveloppes logiques pour organiser les données.
+Le schéma et le catalogue ne sont que des enveloppes logiques pour organiser les données.
 Il n'y a pas de création de répertoire lors de la création de ces objets.
 
 
@@ -396,7 +396,7 @@ Il existe deux types de tables :
 - External Table (table externe) : Uniquement les métadonnées sont gérées par Unity Catalog. Le format de stockage peut être l'un des formats suivants "Delta, CSV, JSON, Avro, Parquet, ORC ou Texte"
 
 Concernant les tables managées (Managed Table) :
-- Lorsque l'on crée une Managed Table, les données sont créées dans un sous répertoire du stockage défini au niveau du Metastore (dans le cas ou l'option "MANAGED LOCATION" n'est pas défini au niveau du Catalog ou du Schema parent)
+- Lorsque l'on crée une Managed Table, les données sont créées dans un sous répertoire du stockage défini au niveau du Metastore (dans le cas ou l'option "MANAGED LOCATION" n'est pas défini au niveau du catalogue ou du schéma parent)
 - Le chemin sera la suivante `<Metastore S3 Path>/<Metastore ID>/tables/<table ID>`,
     - Exemple : `s3://s3-dbx-metastore-uc/metastore-sandbox/13a746fa-c056-4b32-b6db-9d31c0d1eecf/tables/5c725019-fe8f-4778-a97c-c640eaf9b13e`
         - Metastore S3 Path : `s3-dbx-metastore-uc`
@@ -421,8 +421,8 @@ Concernant les tables externes (External Table) :
 ## Mise en pratique 
 
 Création d'une External Table et d'une Managed Table :
-1. Création d'une External Table nommée `ref_products` dans le Schema `sch_ref` du Catalog `ctg_ext` à partir d'un fichier csv nommé `ref_products.csv`
-2. Création d'une Managed Table nommée `fct_transactions` dans le Schema `sch_bronze` du Catalog `ctg_ipp`
+1. Création d'une table externe (External Table) nommée `ref_products` dans le schéma `sch_ref` du catalogue `ctg_ext` à partir d'un fichier csv nommé `ref_products.csv`
+2. Création d'une talbe managée (Managed Table) nommée `fct_transactions` dans le schéma `sch_bronze` du catalogue `ctg_ipp`
 3. Insertion des données dans la table `fct_transactions` à partir d'un fichier CSV nommé `fct_transactions.csv`
 
 ```sql

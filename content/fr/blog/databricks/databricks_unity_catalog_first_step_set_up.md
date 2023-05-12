@@ -72,7 +72,7 @@ La hiérarchie des objets est constitué des trois niveaux suivants :
     1. C'est le 2ème et dernier niveau de la hiérarchie permettant d'organiser les données
     2. Ce niveau permet de stocker l'ensemble des métadonnées sur les objets de type Table, Vue ou Fonction
 
-Lorsque vous souhaitez accéder à un objet (par exemple une table), il sera nécessaire de renseigner le Catalog et le Schema où est défini l'objet.
+Lorsque vous souhaitez accéder à un objet (par exemple une table), il sera nécessaire de renseigner le catalogue et le schéma où est défini l'objet.
 Exemple : `select ... from catalog.schema.table`
 
 
@@ -89,10 +89,10 @@ Objets utilisés par la solution Unity Catalog pour stocker et gérer les métad
 
 
 Quelques informations concernant les quotas des objets sur la solution Unity Catalog :
-- Un Metastore peut contenir jusqu'à 1000 objets Catalog
+- Un Metastore peut contenir jusqu'à 1000 catalogue
 - Un Metastore peut contenir jusqu'à 200 objets Storage Credential
-- Un Catalog peut contenir jusqu'à 10000 objets Schema
-- Un Schema peut contenir jusqu'à 10000 objets Table et 10000 objets Function
+- Un catalogue peut contenir jusqu'à 10000 schéma
+- Un schéma peut contenir jusqu'à 10000 tables (ou vues) et 10000 fonctions
 
 
 # Contexte 
@@ -405,7 +405,7 @@ rm tmp_databricks_metastore_update_sc.json
 ## Étape n°6 : Association d'un Metastore à un Workspace Databricks
 
 Pour pouvoir utiliser le Metastore avec un Workspace Databricks, il est nécessaire d'assigner le Metastore au Workspace Databricks au niveau de l'account Databricks.
-Note : il est possible de définir le nom du Catalog par défaut pour les utilisateurs du Workspace.
+Note : il est possible de définir le nom du catalogue par défaut pour les utilisateurs du Workspace.
 
 Exécution des commandes suivantes en s'appuyant sur Databricks CLI :
 ```bash
@@ -453,7 +453,7 @@ Les avantages de l'utilisation de la solution Unity Catalog :
 
 
 Quelques informations concernant les limitations sur la solution Unity Catalog : 
-- Le Workspace doit être au moins au niveau premium pour pouvoir utiliser unity catalog
+- Le Workspace doit être au moins au niveau premium pour pouvoir utiliser Unity Catalog
 - Un Metastore doit contenir l'ensemble des éléments concernant une région. 
 - Il est recommandé d'utiliser un cluster avec le Databricks Runtime en version 11.3 LTS ou supérieur 
 - La création d'un Storage Credential n'est possible qu'avec un rôle AWS IAM lorsque l'Account Databricks est sur AWS
@@ -475,9 +475,9 @@ Quelques informations concernant les limitations sur la solution Unity Catalog :
 - Data Warehouse : Entrepôt de données permettant de stocker des données structurées (Base de données relationnelle)
 - Lakehouse : Architecture de gestion des données qui combine les avantages d'un lac de données et  les fonctionnalités de gestion d'un entrepôt de données
 - Metastore : un métastore dans la solution Unity Catalog
-- Catalog : Objet de la solution Unity Catalog permettant d'organiser les données (objets) par Schéma
-- Table External : Table dont la donnée n'est pas directement géré par la solution Unity Catalog (l'utilisateur défini le chemin d'accès à la donnée)
-- Table Managed : Table dont la donnée est directement géré par la solution Unity Catalog 
+- Catalog (Catalgoue) : Objet de la solution Unity Catalog permettant d'organiser les données (objets) par Schéma
+- External Table (Table externe) : Table dont la donnée n'est pas directement géré par la solution Unity Catalog (l'utilisateur défini le chemin d'accès à la donnée)
+- Managed Table (Table managée) : Table dont la donnée est directement géré par la solution Unity Catalog 
 - Databricks CLI : Interface de ligne de commande permettant de faciliter l'utilisation et la configuration des ressources Databricks
 - AWS CLI : Interface de ligne de commande permettant de faciliter l'utilisation et la configuration des ressources AWS
 - AWS S3 : Service AWS Simple Storage permettant de stocker des données/objets
