@@ -447,17 +447,17 @@ Cela nous a permis de mettre en place simplement une solution permettant de gér
 Les avantages de l'utilisation de la solution Unity Catalog : 
 - Unity Catalog permet de simplifier et centraliser la gestion des droits sur l'ensemble des objets gérés.
 - Unity Catalog permet de sécuriser, faciliter et multiplier les usages sur les données grâce aux nombreux connecteurs pour SQL Warehouse ainsi que la possibilité d'exporter les informations vers d'autres outils de gestion de catalogue de données.
-- Unity Catalog est un outil qui s'améliore régulièrement et qui devrait devenir la référence pour la gouvernance des données pour toutsceux qui utilisent Databricks.
+- Unity Catalog est un outil qui s'améliore régulièrement et qui devrait devenir la référence pour la gouvernance des données pour tous ceux qui utilisent Databricks.
 
 
 
 Quelques informations concernant les limitations sur la solution Unity Catalog : 
-- Le Workspace doit être au moins au niveau premium pour pouvoir utiliser Unity Catalog
+- Le Workspace Databricks doit être au moins au niveau premium pour pouvoir utiliser la solution Unity Catalog
 - Un Metastore doit contenir l'ensemble des éléments concernant une région. 
-- Il est recommandé d'utiliser un cluster avec le Databricks Runtime en version 11.3 LTS ou supérieur 
+- Il est recommandé d'utiliser un cluster avec le Databricks Runtime en version 11.3 LTS (DBR) ou supérieur 
 - La création d'un Storage Credential n'est possible qu'avec un rôle AWS IAM lorsque l'Account Databricks est sur AWS
-- Une partie de la gestion des utilisateurs et groupes doit se faire au niveau de l'account et non plus seulement au niveau du workspace
-- Les groupes définis localement dans un workspace ne peuvent pas être utilisés avec Unity Catalog, il est nécessaire de recréer les groupes au niveau de l'account Databricks pour être utilisés par Unity Catalog (Migration).
+- Une partie de la gestion des utilisateurs et groupes doit se faire au niveau de l'Account Databricks et non plus seulement au niveau du Workspace Databricks
+- Les groupes définis localement dans un Workspace Databricks ne peuvent pas être utilisés avec Unity Catalog, il est nécessaire de les recréer au niveau de l'Account Databricks pour pouvoir les utiliser avec la solution Unity Catalog (Migration).
 
 
 
