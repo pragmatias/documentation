@@ -29,7 +29,7 @@ Dans une entreprise ayant une gouvernance de données basée sur un modèle Data
 
 # Qu'est ce que la solution Unity Catalog
 
-Unity Catalog est la solution de Databricks permettant d'avoir une gouvernance unifiée et centralisée pour l'ensemble des données gérer par les ressources Databricks ainsi que de sécuriser et faciliter la gestion et le partage des données à l'ensemble des acteurs internes et externes d'une organisation.
+Unity Catalog est la solution de Databricks permettant d'avoir une gouvernance unifiée et centralisée pour l'ensemble des données gérées par les ressources Databricks ainsi que de sécuriser et faciliter la gestion et le partage des données à l'ensemble des acteurs internes et externes d'une organisation.
 
 L'utilisation interne se fait en partageant un métastore d'Unity Catalog sur l'ensemble des workspaces Databricks.
 
