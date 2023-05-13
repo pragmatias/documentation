@@ -88,9 +88,9 @@ Objets utilisés par la solution Unity Catalog pour stocker et gérer les métad
 
 
 Quelques informations concernant les quotas des objets sur la solution Unity Catalog :
-- Un Metastore peut contenir jusqu'à 1000 catalogue
+- Un Metastore peut contenir jusqu'à 1000 catalogues
 - Un Metastore peut contenir jusqu'à 200 objets Storage Credential
-- Un catalogue peut contenir jusqu'à 10000 schéma
+- Un catalogue peut contenir jusqu'à 10000 schémas
 - Un schéma peut contenir jusqu'à 10000 tables (ou vues) et 10000 fonctions
 
 
