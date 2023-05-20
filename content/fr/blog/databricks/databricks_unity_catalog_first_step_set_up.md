@@ -39,7 +39,7 @@ L'utilisation externe se fait en utilisant la fonctionnalité "Delta Sharing" de
 Quelques exemples de fonctionnalités proposées par la solution Unity Catalog :
 - Gestion des droits sur les objets par des groupes et des utilisateurs en utilisant une syntaxe SQL ANSI
 - Gestion des objets permettant d'être créés dans un workspace Databricks et utilisés par l'ensemble des workspaces Databricks utilisant Unity Catalog
-- Possibilité de partager les données de manière simple et sécurisé en passant par la fonctionnalité Delta Sharing
+- Possibilité de partager les données de manière simple et sécurisée en passant par la fonctionnalité Delta Sharing
 - Permet de capturer des informations sur le cycle de vie et la provenance des données (Data Lineage)
 - Permet de capturer l'ensemble des logs pour être en capacité de faire l'audit des accès et de l'utilisation des données
 
@@ -57,7 +57,7 @@ Schématisation de la hiérarchie des objets :
 [![schema_01](/blog/web/20230504_databricks_unity_catalog_schema_01.png)](/blog/web/20230504_databricks_unity_catalog_schema_01.png) 
 
 
-La hiérarchie des objets est constitué des trois niveaux suivants :
+La hiérarchie des objets est constituée des trois niveaux suivants :
 1. Metastore (métastore) :
     1. C'est l'objet le plus haut niveau pouvant contenir des métadonnées
     2. Il ne peut y avoir qu'un seul Metastore par région

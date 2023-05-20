@@ -180,7 +180,7 @@ Dans le cadre de la gestion des accès avec Unity Catalog, les recommandations s
 - Il est recommandé de toujours appliquer des droits au niveau des groupes et non pas des utilisateurs pour faciliter la gestion des droits dans le temps
     - Vous pouvez gérer des groupes sur plusieurs niveaux pour organiser les droits et les utilisateurs
 - Lors de l'import (création) d'un groupe au niveau du Workspace Databricks, l'administrateur du Workspace doit définir les droits (Entitlements) du groupe sur le Workspace Databricks
-- Si vous voulez donner les même droits que l'utilisateur `john.do.dbx@gmail.com` à un autre utilisateur, il suffira d'ajouter cet autre utilisateur dans les même groupes que l'utilisateur `john.do.dbx@gmail.com`
+- Si vous voulez donner les même droits que l'utilisateur `john.do.dbx@gmail.com` à un autre utilisateur, il suffira d'ajouter cet autre utilisateur dans les mêmes groupes que l'utilisateur `john.do.dbx@gmail.com`
 
 Concernant la suppression d'un  groupe : 
 - Si vous supprimez le groupe du Workspace Databricks, il existera toujours au niveau de l'Account Databricks
@@ -227,7 +227,7 @@ Détail des actions à réaliser :
 
 Si vous voulez donner l'accès à un SQL Warehouse à un groupe, il faut suivre les étapes suivantes : 
 1. Allez sur `Workspace page > SQL > SQL Warehouses`
-2. Cliquez sur le buttons sous forme de 3 points and choisissez l'option `Permissions`
+2. Cliquez sur le bouton sous forme de 3 points and choisissez l'option `Permissions`
 3. Ajoutez le groupe et choisissez  l'option `Can use`
 
 
@@ -369,8 +369,8 @@ L'objet Table permet de définir la structure et le stockage des données.
 La création des tables et des vues se font obligatoirement dans un schéma.
 
 Par défaut, si l'on ne précise rien lors de la création des catalogues et des schémas, l'ensemble des données seront gérées par Unity Catalog en se basant sur le stockage (ressource AWS S3) défini au niveau du Metastore.
-Si l'option `MANAGED LOCATION` est défini au niveau du catalogue alors l'ensemble des éléments (schéma et table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
-Si l'option `MANAGED LOCATION` est défini au niveau du schéma alors l'ensemble des éléments (table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
+Si l'option `MANAGED LOCATION` est définie au niveau du catalogue alors l'ensemble des éléments (schéma et table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
+Si l'option `MANAGED LOCATION` est définie au niveau du schéma alors l'ensemble des éléments (table) utilisera cette option de stockage par défaut au lieu du stockage défini au niveau du Metastore.
 
 Exemple de syntaxe :
 ```sql
@@ -402,7 +402,7 @@ Concernant les tables managées (Managed Table) :
         - Metastore S3 Path : `s3-dbx-metastore-uc`
         - Metastore ID : `13a746fa-c056-4b32-b6db-9d31c0d1eecf`
         - Table ID : `5c725019-fe8f-4778-a97c-c640eaf9b13e`
-    - Du point de vue du stockage, l'ensemble des données des Managed Table au niveau du Metastore seront stockés par défaut dans le sous-répertoire `tables/` avec un identifiant unique défini lors de leur création.
+    - Du point de vue du stockage, l'ensemble des données des Managed Table au niveau du Metastore sera stocké par défaut dans le sous-répertoire `tables/` avec un identifiant unique défini lors de leur création.
 - Lors de la suppression de la table, les métadonnées ainsi que les données (fichiers) seront supprimées
 
 
@@ -574,7 +574,7 @@ demo/ext_tbl/part-00000-097fb1f5-1d7e-464a-a65b-1303bd06e2b0.c000.snappy.parquet
 Remarques : 
 - Lors de la création de la table, uniquement le sous-répertoire `_delta_log` est créé pour contenir les informations de la version n°0
 - Lorsque l'on positionne une propriété avec l’option “TBLPROPERTIES” sur la table externe, elle est aussi enregistrée sur le stockage.
-- Après la suppression de la table, les données ne sont plus accessible en passant par la table mais sont toujours accessible en passant par le chemin sur la ressource AWS S3
+- Après la suppression de la table, les données ne sont plus accessibles en passant par la table mais sont toujours accessibles en passant par le chemin sur la ressource AWS S3
 
 Concernant les propriétés pouvant être utilisées avec le format Delta : 
 Vous pourrez trouver plus d'information dans la [documentation officielle](https://docs.databricks.com/sql/language-manual/sql-ref-syntax-ddl-tblproperties.html)
@@ -631,7 +631,7 @@ La gestion des droits est simplifiée par l'usage de la syntaxe SQL ANSI, l'util
 
 La gestion des groupes nécessite d'être Administrateur sur l'Account Databricks  (création et suppression des groupes, ajout et suppression des utilisateurs dans les groupes) et Administrateur sur le Workspace Databricks pour ajouter ou supprimer des groupes existant au niveau de l'Account Databricks dans le Workspace Databricks.
 
-Point d'attention : La gestion des droits et des groupes ne sont pas compatible entre Unity Catalog et Hive Metastore, il est recommandé de migrer les éléments de Hive Metastore vers Unity Catalog en recréant les accès/éléments nécessaires.
+Point d'attention : La gestion des droits et des groupes n'est pas compatible entre Unity Catalog et Hive Metastore, il est recommandé de migrer les éléments de Hive Metastore vers Unity Catalog en recréant les accès/éléments nécessaires.
 
 
 Si l'on souhaite mettre en place un fonctionnement ouvert des données en minimisant l'utilisation de Databricks, il est possible d'utiliser Unity Catalog avec des tables externes au format Delta pour pouvoir utiliser le maximum de fonctionnalité tout en utilisant d'autres outils pour accéder directement aux données Delta (AWS EMR, AWS Glue, AWS Athena, ...).
