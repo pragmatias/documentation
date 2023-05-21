@@ -1,7 +1,7 @@
 ---
 Categories : ["Databricks","Unity Catalog"]
 Tags : ["Databricks","Unity Catalog"]
-title : "Databricks : Unity Catalog - First Step - Set up"
+title : "Databricks : Unity Catalog - First Step - Part 1 - Set up"
 date : 2023-05-04
 draft : false
 toc: true

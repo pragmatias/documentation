@@ -1,7 +1,7 @@
 ---
 Categories : ["Databricks","Unity Catalog"]
 Tags : ["Databricks","Unity Catalog"]
-title : "Databricks : Unity Catalog - Découverte - Data Lineage"
+title : "Databricks : Unity Catalog - Découverte - Partie 3 - Data Lineage"
 date : 2023-05-12
 draft : false
 toc: true

@@ -1,7 +1,7 @@
 ---
 Categories : ["Databricks","Unity Catalog"]
 Tags : ["Databricks","Unity Catalog"]
-title : "Databricks : Unity Catalog - First Step - Data and Rights Management"
+title : "Databricks : Unity Catalog - First Step - Part 2 - Data and Rights Management"
 date : 2023-05-10
 draft : false
 toc: true

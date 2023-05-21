@@ -1,7 +1,7 @@
 ---
 Categories : ["Databricks","Unity Catalog"]
 Tags : ["Databricks","Unity Catalog"]
-title : "Databricks : Unity Catalog - Découverte - Mise en place"
+title : "Databricks : Unity Catalog - Découverte - Partie 1 - Mise en place"
 date : 2023-05-04
 draft : false
 toc: true

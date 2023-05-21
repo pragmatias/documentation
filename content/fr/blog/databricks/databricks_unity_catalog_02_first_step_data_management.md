@@ -1,7 +1,7 @@
 ---
 Categories : ["Databricks","Unity Catalog"]
 Tags : ["Databricks","Unity Catalog"]
-title : "Databricks : Unity Catalog - Découverte - Gestion des données"
+title : "Databricks : Unity Catalog - Découverte - Partie 2 - Gestion des données"
 date : 2023-05-10
 draft : false
 toc: true
