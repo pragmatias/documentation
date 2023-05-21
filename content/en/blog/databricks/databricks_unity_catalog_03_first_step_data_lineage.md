@@ -1,13 +1,11 @@
 ---
 Categories : ["Databricks","Unity Catalog"]
 Tags : ["Databricks","Unity Catalog"]
-title : "Databricks : Unity Catalog - First Step - Data Lineage"
+title : "Databricks : Unity Catalog - First Step - Part 3 - Data Lineage"
 date : 2023-05-12
 draft : false
 toc: true
 ---
-
-We are going to discover the data management with the [Unity Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html) solution and more precisely the management of rights (Groups and Users) and storage (Tables).
 
 We are going to discover the [Data Lineage](https://docs.databricks.com/data-governance/unity-catalog/data-lineage.html) functionality offered by the [Unity Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html) solution.
 
@@ -36,8 +34,6 @@ This requires a lot of time and energy to write, maintain, extract and validate 
 
 
 # Unity Catalog and the object hierarchy
-
-## Synthesis 
 
 Unity Catalog is the Databricks solution that allows to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
 
