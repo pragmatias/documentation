@@ -31,7 +31,6 @@ The REST API interface is not necessarily the most efficient way to exchange lar
 Among the existing solutions, we are going to focus on the "Delta Sharing" functionality proposed by Databricks with the Unity Catalog solution in order to set up a data sharing with external partners.
 
 
-
 # Unity Catalog and the object hierarchy
 
 
