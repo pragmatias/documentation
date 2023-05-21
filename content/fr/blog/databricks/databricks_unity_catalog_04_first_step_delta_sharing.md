@@ -947,7 +947,7 @@ order by timestamp asc
 
 
 Résultat de l'étape n°2 concernant les actions  `deltaSharingQueryTable` :
-```csv
+```text
 requestId,recipient_name,share,schema,name,user_agent,statusCode,serviceName,sourceIPAddress
 CgsI3ceeowYQhsLgAzoQSHf2V13IQFqodUiz6jKNJw==,rcp_azure_dbx,share_aws_dbx,sch_share,fct_trx_mng,Delta-Sharing-Unity-Catalog-Databricks-Auth/1.0 Linux/5.4.0-1107-azure-fips OpenJDK_64-Bit_Server_VM/11.0.18+10-jvmci-22.3-b13 java/11.0.18 scala/2.12.15 java_vendor/GraalVM_Community,200,unityCatalog,
 CgsI78eeowYQvvjMFjoQvIDzt07UQ3mzAJR99KJGpg==,rcp_azure_dbx,share_aws_dbx,sch_share,fct_trx_ext,Delta-Sharing-Unity-Catalog-Databricks-Auth/1.0 Linux/5.4.0-1107-azure-fips OpenJDK_64-Bit_Server_VM/11.0.18+10-jvmci-22.3-b13 java/11.0.18 scala/2.12.15 java_vendor/GraalVM_Community,200,unityCatalog,
@@ -955,7 +955,7 @@ CgsI78eeowYQvvjMFjoQvIDzt07UQ3mzAJR99KJGpg==,rcp_azure_dbx,share_aws_dbx,sch_sha
 Cette requête nous permet d'accéder aux informations des demandes de requêtes exécutées sur les objets partagés (le nom du destinataire, le nom du partage, le nom du schéma, le nom de la table, etc ...)
 
 Résultat de la requête n°3 concernant les actions  `deltaSharingQueriedTable` :
-```csv
+```text
 requestId,recipient_name,numRecords,tableName,deltaSharingPartitionFilteringAccessed,serviceName,sourceIPAddress,userAgent
 d8140290-4a65-44a2-aac0-31c7feaf4aac,rcp_azure_dbx,5,fct_trx_mng,true,unityCatalog,,Delta-Sharing-Unity-Catalog-Databricks-Auth/1.0 Linux/5.4.0-1107-azure-fips OpenJDK_64-Bit_Server_VM/11.0.18+10-jvmci-22.3-b13 java/11.0.18 scala/2.12.15 java_vendor/GraalVM_Community
 854c0522-aaca-465c-8f7d-1684a003e8e1,rcp_azure_dbx,8,fct_trx_ext,false,unityCatalog,,Delta-Sharing-Unity-Catalog-Databricks-Auth/1.0 Linux/5.4.0-1107-azure-fips OpenJDK_64-Bit_Server_VM/11.0.18+10-jvmci-22.3-b13 java/11.0.18 scala/2.12.15 java_vendor/GraalVM_Community
@@ -1235,7 +1235,7 @@ order by timestamp asc
 
 
 Résultat de l'étape n°2 concernant les actions  `deltaSharingQueryTable` :
-```csv
+```text
 requestId,recipient_name,share,schema,name,user_agent,statusCode,serviceName,sourceIPAddress
 d59abaa0-2829-4d4b-90ea-73e9f4ec11ee,rcp_open_all,share_aws_dbx,sch_share,fct_trx_mng,Delta-Sharing-Python/0.6.4 pandas/1.3.4 PyArrow/11.0.0 Python/3.11.3 System/macOS-13.3.1-arm64-arm-64bit,200,unityCatalog,86.247.59.138
 0690bef9-413d-44ec-8541-4901273aa589,rcp_open_all,share_aws_dbx,sch_share,fct_trx_ext,Delta-Sharing-Python/0.6.4 pandas/1.3.4 PyArrow/11.0.0 Python/3.11.3 System/macOS-13.3.1-arm64-arm-64bit,200,unityCatalog,86.247.59.138
@@ -1244,7 +1244,7 @@ Cette requête nous permet d'accéder aux informations des demandes de requêtes
 
 
 Résultat de la requête n°3 concernant les actions  `deltaSharingQueriedTable` : 
-```csv
+```text
 requestId,recipient_name,numRecords,tableName,deltaSharingPartitionFilteringAccessed,serviceName,sourceIPAddress,userAgent
 88dc2822-63c1-4384-b706-82ab9d5f5d9a,rcp_open_all,3,fct_trx_mng,true,unityCatalog,86.247.59.138,Delta-Sharing-Python/0.6.4 pandas/1.3.4 PyArrow/11.0.0 Python/3.11.3 System/macOS-13.3.1-arm64-arm-64bit
 2be8d1b6-936c-40d9-89c1-60d104e9f50f,rcp_open_all,8,fct_trx_ext,false,unityCatalog,86.247.59.138,Delta-Sharing-Python/0.6.4 pandas/1.3.4 PyArrow/11.0.0 Python/3.11.3 System/macOS-13.3.1-arm64-arm-64bit
