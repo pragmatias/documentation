@@ -12,6 +12,7 @@ Nous allons découvrir la fonctionnalité [Delta Sharing](https://www.databricks
 Nous allons utiliser un Account Databricks sur AWS comme fournisseur (Provider) et un Account Databricks sur Azure comme destinataire (Recipient) du partage des objets avec la fonctionnalité Delta Sharing pour cette découverte.
 
 _Note n°1 : Nous allons garder des termes techniques en anglais pour faciliter la compréhension._
+
 _Note n°2 : Les informations de ce papier concernant la période Mars/Avril 2023._
 
 <!--more-->
