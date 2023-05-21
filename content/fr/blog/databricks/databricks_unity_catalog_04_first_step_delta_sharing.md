@@ -13,7 +13,7 @@ Nous allons utiliser un Account Databricks sur AWS comme fournisseur (Provider) 
 
 _Note n°1 : Nous allons garder des termes techniques en anglais pour faciliter la compréhension._
 
-_Note n°2 : Les informations de ce papier concernant la période Mars/Avril 2023._
+_Note n°2 : Les informations de ce papier concernent la période Mars/Avril 2023._
 
 <!--more-->
 
