@@ -13,6 +13,8 @@ Nous allons utiliser un Account Databricks sur AWS pour réaliser cette démonst
 
 _Note : Nous allons garder des termes techniques en anglais pour faciliter la compréhension_
 
+_Note : Les travaux se basent sur l'état de la solution Unity Catalog à la fin du 1er trimestre 2023 sur AWS et Azure._
+
 <!--more-->
 
 # Unity Catalog et la hiérarchie des objets

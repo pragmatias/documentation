@@ -11,6 +11,8 @@ We are going to discover the data management with the [Unity Catalog](https://do
 
 We will use a Databricks Account on AWS to perfrom this discovery.
 
+_Note: Work is based on the state of the Unity Catalog solution at the end of Q1 2023 on AWS and Azure._
+
 <!--more-->
 
 # Unity Catalog and the object hierarchy

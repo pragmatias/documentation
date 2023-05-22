@@ -13,7 +13,40 @@ Nous allons utiliser un Account Databricks sur AWS pour réaliser cette démonst
 
 _Note : Nous allons garder des termes techniques en anglais pour faciliter la compréhension_
 
+_Note : Les travaux se basent sur l'état de la solution Unity Catalog à la fin du 1er trimestre 2023 sur AWS et Azure._
+
 <!--more-->
+
+# Introduction
+
+En décembre 2021, Databricks a annoncé la disponibilité générale du [SQL Warehouse](https://www.databricks.com/blog/2021/12/15/announcing-general-availability-of-databricks-sql.html). Cela représente une étape importante dans le développement de la plateforme Lakehouse afin de multiplier les usages des données stockées au format Delta. La gestion des données se faisait principalement en s'appuyant sur Hive Metastore, ce qui avait pour inconvénient d'être par défaut local à un Workspace Databricks.
+Cela signifiait qu'il fallait redéfinir les différents objets et la gestion des droits sur les différents Workspace Databricks nécessitant d'accéder aux données de la plateforme Lakehouse si on voulait utiliser un SQL Warehouse sur les différents Workspace Databricks.
+
+Afin d'utiliser au mieux la plateforme Lakehouse et surtout de pouvoir gérer la gouvernance des données, nous attendions une solution de Databricks pour centraliser l'ensemble des métadonnées au niveau de l'Account Databricks et pouvoir faciliter le partage des informations entre Workspace Databricks.
+
+A la fin de l'été 2022, Databricks a annoncé la disponibilité générale de la solution Unity Catalog sur [AWS](https://docs.databricks.com/release-notes/unity-catalog/20220825.html) et sur [Azure](https://azure.microsoft.com/en-us/updates/generally-available-unity-catalog-for-azure-databricks/) puis fin du 1er trimestre 2023, l'annonce a été faite sur [GCP](https://www.databricks.com/blog/2023/03/22/announcing-general-availability-databricks-unity-catalog-google-cloud-platform.html). 
+Avec ces annonces, Unity Catalog est devenu la solution par défaut pour la gouvernance de données pour la plateforme Lakehouse de Databricks (aussi bien sur AWS, Azure et GCP).
+
+A la fin de l'été 2022, Databricks a aussi annoncé la disponibilité générale du [Delta Sharing](https://www.databricks.com/blog/2022/08/26/announcing-general-availability-delta-sharing.html) qui est une solution ouverte ayant pour objectif de partager de manière efficace, simple et sécurisée les données gérées par la plateforme Lakehouse avec des outils/technologies tierces (Python, Java, Scala, Power BI, et bien d'autres) mais aussi avec d'autres Account Databricks (utilisant ou non la solution Unity Catalog).
+
+A la fin de l'année 2022, Databricks a annoncé la disponibilité générale de la fonctionnalité [Data Lineage](https://www.databricks.com/blog/2022/12/12/announcing-general-availability-data-lineage-unity-catalog.html). Cette fonctionnalité étant très importante pour pouvoir suivre le cycle de vie de l'ensemble des données sur la plateforme Lakehouse.
+
+
+Afin de pouvoir rendre accessible au plus grand nombre la solution Unity Catalog qui est une solution clé dans l'utilisation et la gestion de la plateforme Lakehouse de Databricks, une série de 4 articles a été rédigée dans un esprit de découverte (pédagogique) pour mettre en place et utiliser les différents fonctionnalités de la solution Unity Catalog.
+
+Les 4 articles ont été organisé de la manière suivante :
+- Databricks : Unity Catalog - Découverte - Partie 1 - Mise en place
+- Databricks : Unity Catalog - Découverte - Partie 2 - Gestion des données
+- Databricks : Unity Catalog - Découverte - Partie 3 - Data Lineage
+- Databricks : Unity Catalog - Découverte - Partie 4 - Delta Sharing
+
+Attention : Les travaux se basent sur l'état de la solution Unity Catalog à la fin du 1er trimestre 2023 sur AWS et Azure.
+
+Nous allons utiliser les outils suivants :
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
+- [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/)
+- [Databricks CLI](https://docs.databricks.com/dev-tools/cli/index.html)
+- [Databricks REST API](https://docs.databricks.com/dev-tools/api/index.html)
 
 # Qu'est-ce qu'un métastore
 
@@ -132,7 +165,7 @@ _Note : Vous trouverez la démarche pour la configuration des outils AWS CLI et 
 
 Information concernant le rôle global Databricks pour la gestion des accès AWS par Unity Catalog :
 - AWS IAM Role Unity Catalog : `arn:aws:iam::414351767826:role/unity-catalog-prod-UCMasterRole-14S5ZJVKOTYTL`
-- AWS IAM ExternalId Unity Catalog : `65377825-bfee-466e-9a14-16a53b9a4e12`
+
 
 Information concernant le Databricks Workspace ID :
 - En se basant sur l'URL du Workspace Databricks `https://<databricks-instance>.com/o=XXXXX`, le Databricks Workspace ID est le numéro représenté par `XXXXX`.
@@ -219,7 +252,7 @@ cat > tmp_role_document.json <<EOF
             "Action": "sts:AssumeRole",
             "Condition": {
                 "StringEquals": {
-                    "sts:ExternalId": "65377825-bfee-466e-9a14-16a53b9a4e12"
+                    "sts:ExternalId": "<AWS Account Databricks ID>"
                 }
             }
         }
@@ -252,7 +285,7 @@ cat > tmp_role_document_update.json <<EOF
             "Action": "sts:AssumeRole",
             "Condition": {
                 "StringEquals": {
-                    "sts:ExternalId": "65377825-bfee-466e-9a14-16a53b9a4e12"
+                    "sts:ExternalId": "<AWS Account Databricks ID>"
                 }
             }
         }

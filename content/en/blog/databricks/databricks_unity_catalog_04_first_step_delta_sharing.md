@@ -11,7 +11,7 @@ We are going to discover the [Delta Sharing](https://www.databricks.com/fr/produ
 
 We are going to use a Databricks Account on AWS as a provider and a Databricks Account on Azure as a recipient for the sharing of objects with the Delta Sharing functionality for this discovery.
 
-_Note: The information in this paper regards the March/April 2023 period._
+_Note: Work is based on the state of the Unity Catalog solution at the end of Q1 2023 on AWS and Azure._
 
 <!--more-->
 
