@@ -1,7 +1,7 @@
 ---
-Categories : ["Databricks","Delta Live Table","Unity Catalog"]
-Tags : ["Databricks","Delta Live Table","Unity Catalog"]
-title : "Databricks : Unity Catalog - First Step - Part 4 - Delta Live Tables"
+Categories : ["Databricks","Unity Catalog"]
+Tags : ["Databricks","Unity Catalog"]
+title : "Databricks : Unity Catalog - First Step - Part 5 - Delta Live Tables"
 date : 2023-06-12
 draft : false
 toc: true

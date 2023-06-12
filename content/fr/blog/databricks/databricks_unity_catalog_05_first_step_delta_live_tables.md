@@ -1,7 +1,7 @@
 ---
-Categories : ["Databricks","Delta Live Table","Unity Catalog"]
-Tags : ["Databricks","Delta Live Table","Unity Catalog"]
-title : "Databricks : Unity Catalog - Découverte - Delta Live Tables"
+Categories : ["Databricks","Unity Catalog"]
+Tags : ["Databricks","Unity Catalog"]
+title : "Databricks : Unity Catalog - Découverte - Partie 5 - Delta Live Tables"
 date : 2023-06-12
 draft : false
 toc: true
