@@ -32,13 +32,14 @@ A la fin de l'été 2022, Databricks a aussi annoncé la disponibilité généra
 A la fin de l'année 2022, Databricks a annoncé la disponibilité générale de la fonctionnalité [Data Lineage](https://www.databricks.com/blog/2022/12/12/announcing-general-availability-data-lineage-unity-catalog.html). Cette fonctionnalité étant très importante pour pouvoir suivre le cycle de vie de l'ensemble des données sur la plateforme Lakehouse.
 
 
-Afin de pouvoir rendre accessible au plus grand nombre la solution Unity Catalog qui est une solution clé dans l'utilisation et la gestion de la plateforme Lakehouse de Databricks, une série de 4 articles a été rédigée dans un esprit de découverte (pédagogique) pour mettre en place et utiliser les différents fonctionnalités de la solution Unity Catalog.
+Afin de pouvoir rendre accessible au plus grand nombre la solution Unity Catalog qui est une solution clé dans l'utilisation et la gestion de la plateforme Lakehouse de Databricks, une série de 5 articles a été rédigée dans un esprit de découverte (pédagogique) pour mettre en place et utiliser les différents fonctionnalités de la solution Unity Catalog.
 
-Les 4 articles ont été organisé de la manière suivante :
+Les 5 articles ont été organisé de la manière suivante :
 - Databricks : Unity Catalog - Découverte - Partie 1 - Mise en place
 - Databricks : Unity Catalog - Découverte - Partie 2 - Gestion des données
 - Databricks : Unity Catalog - Découverte - Partie 3 - Data Lineage
 - Databricks : Unity Catalog - Découverte - Partie 4 - Delta Sharing
+- Databricks : Unity Catalog - Découverte - Partie 4 - Delta Live Tables
 
 Attention : Les travaux se basent sur l'état de la solution Unity Catalog à la fin du 1er trimestre 2023 sur AWS et Azure.
 
