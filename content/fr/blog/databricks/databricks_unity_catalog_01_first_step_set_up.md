@@ -39,7 +39,7 @@ Les 5 articles ont été organisé de la manière suivante :
 - Databricks : Unity Catalog - Découverte - Partie 2 - Gestion des données
 - Databricks : Unity Catalog - Découverte - Partie 3 - Data Lineage
 - Databricks : Unity Catalog - Découverte - Partie 4 - Delta Sharing
-- Databricks : Unity Catalog - Découverte - Partie 4 - Delta Live Tables
+- Databricks : Unity Catalog - Découverte - Partie 5 - Delta Live Tables
 
 Attention : Les travaux se basent sur l'état de la solution Unity Catalog à la fin du 1er trimestre 2023 sur AWS et Azure.
 
