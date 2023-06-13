@@ -91,6 +91,7 @@ Access is as follows :
 1. Click on the "Data Science & Engineering" view in the sidebar
 2. Click on "Workflows" option in the sidebar
 3. Click on the "Delta Live Tables" tab
+
 [![schema_01](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)
 
 From this screen, you will be able to manage DLT pipelines (creation, deletion, configuration, modification) and view the different executions (within the limit of the observability data retention period defined for each pipeline)

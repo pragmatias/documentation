@@ -91,7 +91,8 @@ La définition du pipeline DLT, se fait en utilisant la fonctionnalité "Workflo
 L'accès se fait de la manière suivante :
 1. Cliquez sur la vue "Data Science & Engineering" du menu latéral
 2. Cliquez sur l'option "Workflows" du menu latéral
-3. Cliquez sur l'onglet "Delta Live Tables" 
+3. Cliquez sur l'onglet "Delta Live Tables"
+
 [![schema_01](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)
 
 A partir de cet écran, vous pourrez gérer les pipelines DLT (création, suppression, configuration, modification) et visualiser les différentes exécutions (dans la limite de la période de rétention des données d'observabilité de l'édition définie pour chaque pipeline)
