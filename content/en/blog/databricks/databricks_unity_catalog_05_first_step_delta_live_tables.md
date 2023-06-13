@@ -137,7 +137,7 @@ Regarding the data management associated with a DLT pipeline (maintenance) :
 - The DLT framework performs automatic maintenance of each object (Delta table) updated within 24h after the last execution of a DLT pipeline.
     - By default, the system performs a full OPTIMIZE operation, followed by a VACUUM operation
     - If you do not want a Delta table to be automated by default, you must use the `pipelines.autoOptimize.managed = false` property when defining the object (TBLPROPERTIES).
-
+- When you delete a DLT pipeline, all objects defined in the DLT pipeline (in the target schema) are automatically deleted.
 
 Restrictions : 
 - It is not possible to mix the use of Hive Metastore with the Unity Catalog solution or to switch between the two metastores for the target of the DLT pipeline after its creation.
@@ -237,7 +237,7 @@ export LOC_PATH_DATA="<Local Path for the folder with the CSV files>"
 export LOC_SCRIPT_DLT="dlt_pipeline.py"
 # List CSV files for the first execution
 export LOC_SCRIPT_DATA_1=(ref_products_20230501.csv ref_clients_20230501.csv fct_transactions_20230501.csv)
-# List CSV viles for the second execution
+# List CSV files for the second execution
 export LOC_SCRIPT_DATA_2=(ref_clients_20230601.csv fct_transactions_20230601.csv)
 
 # Init Databricks variables (Workspace)
@@ -755,6 +755,7 @@ The types of existing events are as follows (not exhaustive):
 
 
 Warning :
+- When you delete a DLT pipeline, the event logs will no longer be accessible using the `event_log(<pipeline_id)` function, but will still be accessible by directly accessing the Delta table concerned (as long as it is not deleted).
 - Metrics are not captured for "Streaming Table" objects feeded with the Type 2 Slow Changing Dimension (SCD) process managed by the DLT framework
     - Nevertheless, it is possible to have metrics by accessing the history of the internal Delta table directly
 - When there are records that do not respect the constraints on an object, we have access to the metrics on the number of records but not the details of the records concerned.
@@ -937,10 +938,23 @@ Delete the "CTG_DLT_DEMO" catalog from the Unity Catalog Metastore :
 DROP CATALOG IF EXISTS CTG_DLT_DEMO CASCADE;
 ```
 
-Warning :
-- When we delete the catalog "CTG_DLT_DEMO" and the DLT pipeline, the internal Delta tables are not deleted directly (nor the internal schema).
-- It is necessary to wait for the automatic maintenance operation after the deletion of the DLT pipeline so that the elements are deleted.
+Warning: 
+- Deleting the DLT pipeline will delete all the objects in the target schema, but will not automatically delete the Delta tables in the internal schema.
+- You must manually delete internal Delta tables so that the internal schema associated with the deleted DLT pipeline is itself deleted during the automatic maintenance operation.
 
+Deleting Delta tables from the internal schema :
+```bash
+# Get the list of tables (with full_name)
+export list_tables=(`dbx-api -X GET ${DBX_API_URL}/api/2.1/unity-catalog/tables -H 'Content-Type: application/json' -d "{
+    \"catalog_name\": \"__databricks_internal\",
+    \"schema_name\": \"__dlt_materialization_schema_$(echo ${DBX_DLT_PIPELINE_ID} | sed 's/-/_/g')\"
+}" | jq -r '.tables[]|.full_name'`)
+
+# Delete tables
+for table in ${list_tables}; do 
+    dbx-api -X DELETE ${DBX_API_URL}/api/2.1/unity-catalog/tables/${table}
+done
+```
 
 
 # Conclusion
