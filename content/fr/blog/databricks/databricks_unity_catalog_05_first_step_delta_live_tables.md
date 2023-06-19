@@ -139,7 +139,7 @@ Concernant la gestion des données associées à un pipeline DLT (maintenance) :
 - Le framework DLT exécute une maintenance automatique de chaque objet (table Delta) mise à jour dans un délai de 24h après la dernière exécution d'un pipeline DLT.
     - Par défaut, le système exécute une opération complète OPTIMIZE, suivi d'une opération de VACUUM
     - Si vous ne souhaitez pas qu'une table Delta soit automatisée par défaut, il faut utiliser la propriété `pipelines.autoOptimize.managed = false` lors de la définition de l'objet (TBLPROPERTIES).
-- Lorsque vous supprimez le pipeline DLT, l'ensemble des objets définis dans le pipeline DLT et se trouvant dans le schéma cible sera supprimé automatiquement.
+- Lorsque vous supprimez le pipeline DLT, l'ensemble des objets définis dans le pipeline DLT et se trouvant dans le schéma cible sera supprimé automatiquement et les tables Delta interne seront supprimées lors de la maintenance automatique (dans un délai de 24h après la dernière action sur le pipeline DLT).
 
 
 Limitations : 
@@ -944,10 +944,8 @@ DROP CATALOG IF EXISTS CTG_DLT_DEMO CASCADE;
 ```
 
 Attention : 
-- La suppression du pipeline DLT va supprimer l'ensemble des objets du schéma cible mais ne supprimera pas automatiquement les tables Delta du schéma interne
-- Vous devez supprimer manuellement les tables Delta internes pour que le schéma interne associé au pipeline DLT supprimé soit lui-même supprimé lors de l'opération de maintenance automatique
-
-Suppression des tables Delta du schéma interne :
+- La suppression du pipeline DLT va supprimer l'ensemble des objets (défini dans le pipeline DLT) du schéma cible mais ne supprimera pas directement les tables Delta du schéma interne. La suppression des tables Delta interne se fera lors de l'opéation de maintenance automatique (dans les 24h après la suppression du pipeline DLT)
+- En cas de problème, la suppression des tables Delta du schéma interne peut se faire avec les commandes suivantes :
 ```bash
 # Get the list of tables (with full_name)
 export list_tables=(`dbx-api -X GET ${DBX_API_URL}/api/2.1/unity-catalog/tables -H 'Content-Type: application/json' -d "{

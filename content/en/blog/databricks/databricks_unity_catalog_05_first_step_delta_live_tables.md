@@ -138,7 +138,8 @@ Regarding the data management associated with a DLT pipeline (maintenance) :
 - The DLT framework performs automatic maintenance of each object (Delta table) updated within 24h after the last execution of a DLT pipeline.
     - By default, the system performs a full OPTIMIZE operation, followed by a VACUUM operation
     - If you do not want a Delta table to be automated by default, you must use the `pipelines.autoOptimize.managed = false` property when defining the object (TBLPROPERTIES).
-- When you delete a DLT pipeline, all objects defined in the DLT pipeline (in the target schema) are automatically deleted.
+- When you delete a DLT pipeline, all objects defined in the DLT pipeline and located in the target schema will be deleted automatically, and the internal Delta tables will be deleted during automatic maintenance (within 24 hours after the last action on the DLT pipeline).
+
 
 Restrictions : 
 - It is not possible to mix the use of Hive Metastore with the Unity Catalog solution or to switch between the two metastores for the target of the DLT pipeline after its creation.
@@ -940,10 +941,8 @@ DROP CATALOG IF EXISTS CTG_DLT_DEMO CASCADE;
 ```
 
 Warning: 
-- Deleting the DLT pipeline will delete all the objects in the target schema, but will not automatically delete the Delta tables in the internal schema.
-- You must manually delete internal Delta tables so that the internal schema associated with the deleted DLT pipeline is itself deleted during the automatic maintenance operation.
-
-Deleting Delta tables from the internal schema :
+- Deleting the DLT pipeline will delete all the objects in the target schema, but will not automatically delete the Delta tables (defined in the DLT pipeline) in the internal schema.
+- In the event of an issue, Delta tables can be deleted from the internal schema using the following commands:
 ```bash
 # Get the list of tables (with full_name)
 export list_tables=(`dbx-api -X GET ${DBX_API_URL}/api/2.1/unity-catalog/tables -H 'Content-Type: application/json' -d "{
