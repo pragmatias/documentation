@@ -91,7 +91,8 @@ La définition du pipeline DLT, se fait en utilisant la fonctionnalité "Workflo
 L'accès se fait de la manière suivante :
 1. Cliquez sur la vue "Data Science & Engineering" du menu latéral
 2. Cliquez sur l'option "Workflows" du menu latéral
-3. Cliquez sur l'onglet "Delta Live Tables" 
+3. Cliquez sur l'onglet "Delta Live Tables"
+
 [![schema_01](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)
 
 A partir de cet écran, vous pourrez gérer les pipelines DLT (création, suppression, configuration, modification) et visualiser les différentes exécutions (dans la limite de la période de rétention des données d'observabilité de l'édition définie pour chaque pipeline)
@@ -138,6 +139,7 @@ Concernant la gestion des données associées à un pipeline DLT (maintenance) :
 - Le framework DLT exécute une maintenance automatique de chaque objet (table Delta) mise à jour dans un délai de 24h après la dernière exécution d'un pipeline DLT.
     - Par défaut, le système exécute une opération complète OPTIMIZE, suivi d'une opération de VACUUM
     - Si vous ne souhaitez pas qu'une table Delta soit automatisée par défaut, il faut utiliser la propriété `pipelines.autoOptimize.managed = false` lors de la définition de l'objet (TBLPROPERTIES).
+- Lorsque vous supprimez le pipeline DLT, l'ensemble des objets définis dans le pipeline DLT et se trouvant dans le schéma cible sera supprimé automatiquement et les tables Delta interne seront supprimées lors de la maintenance automatique (dans un délai de 24h après la dernière action sur le pipeline DLT).
 
 
 Limitations : 
@@ -189,7 +191,7 @@ En prenant l'exemple de la définition d'un objet "Streaming Table" dans le sch�
 
 En prenant l'exemple de la définition d'un objet "Materialized View" dans le schéma "ctg.sch" dans un pipeline DLT dont l'identifiant est "0000", la gestion des données se fera de la manière suivante :
 1. Création d'une table Delta (avec un identifiant unique) dans un schéma interne géré par le système et nommé `__databricks__internal.__dlt_materialization_schema_0000`
-    1. Avec un sous répertoire (au niveau du stockage des données Delta) `_dlt_metadata` contenant un répertoire `_enzyme_log` pour les informations nécessaires au Project Enzyme afin de gérer le rafraichissement des données de l'objet
+    1. Avec un sous répertoire (au niveau du stockage des données Delta) `_dlt_metadata` contenant un répertoire `_enzyme_log` pour les informations nécessaires au Projet Enzyme afin de gérer le rafraîchissement des données de l'objet
 2. Création d'un objet de type "MATERIALIZED_VIEW" dans le schéma "ctg.sch" qui fait référence à la table Delta créée dans le schéma interne `__databricks__internal.__dlt_materialization_schema_0000`
     1. Cela permet d'accéder aux données de la table Delta interne avec certaines contraintes
 
@@ -241,7 +243,7 @@ export LOC_PATH_DATA="<Local Path for the folder with the CSV files>"
 export LOC_SCRIPT_DLT="dlt_pipeline.py"
 # List CSV files for the first execution
 export LOC_SCRIPT_DATA_1=(ref_products_20230501.csv ref_clients_20230501.csv fct_transactions_20230501.csv)
-# List CSV viles for the second execution
+# List CSV files for the second execution
 export LOC_SCRIPT_DATA_2=(ref_clients_20230601.csv fct_transactions_20230601.csv)
 
 # Init Databricks variables (Workspace)
@@ -757,6 +759,7 @@ Les types d'événements existant sont les suivants (non exhaustif) :
 - maintenance_progress : Information concernant les opérations de maintenance sur les données dans un délai de 24h après l'exécution du pipeline DLT
 
 Attention : 
+- Lorsque vous supprimez un pipeline DLT, les logs d'événements ne seront plus accessibles en utilisant la fonction `event_log(<pipeline_id)` mais seront toujours accessible en accédant directement à la table Delta “__event_log” concernée (tant qu'elle ne sera pas supprimée)
 - Les métriques ne sont pas capturées pour les objets "Streaming Table" mis à jour avec le processus de Slow Changing Dimension (SCD) de Type 2 géré par le framework DLT
     - Néanmoins, il est possible d'avoir des métriques en accédant à l'historique de la table Delta interne directement
 - Lorsqu'il y a des enregistrements ne respectant pas les contraintes sur un objet, nous avons accès aux métriques sur le nombre d'enregistrements mais pas le détail des enregistrements concernés.
@@ -941,9 +944,20 @@ DROP CATALOG IF EXISTS CTG_DLT_DEMO CASCADE;
 ```
 
 Attention : 
-- Lorsque que nous supprimons le catalogue "CTG_DLT_DEMO" et le pipeline DLT, les tables Delta internes ne sont pas supprimées directement (ni le schéma interne).
-- Il faut attendre l'opération de maintenance automatique après la suppression du pipeline DLT pour que les éléments soient supprimés.
+- La suppression du pipeline DLT va supprimer l'ensemble des objets (défini dans le pipeline DLT) du schéma cible mais ne supprimera pas directement les tables Delta du schéma interne. La suppression des tables Delta interne se fera lors de l'opéation de maintenance automatique (dans les 24h après la suppression du pipeline DLT)
+- En cas de problème, la suppression des tables Delta du schéma interne peut se faire avec les commandes suivantes :
+```bash
+# Get the list of tables (with full_name)
+export list_tables=(`dbx-api -X GET ${DBX_API_URL}/api/2.1/unity-catalog/tables -H 'Content-Type: application/json' -d "{
+    \"catalog_name\": \"__databricks_internal\",
+    \"schema_name\": \"__dlt_materialization_schema_$(echo ${DBX_DLT_PIPELINE_ID} | sed 's/-/_/g')\"
+}" | jq -r '.tables[]|.full_name'`)
 
+# Delete tables
+for table in ${list_tables}; do 
+    dbx-api -X DELETE ${DBX_API_URL}/api/2.1/unity-catalog/tables/${table}
+done
+```
 
 
 # Conclusion
