@@ -11,6 +11,7 @@ Following the announcement of the preview release of [Microsoft Fabric](https://
 
 _Note : Information is based on the state of the solution at the beginning of July 2023 in preview mode._
 
+<!--more-->
 
 # What is Microsoft Fabric
 

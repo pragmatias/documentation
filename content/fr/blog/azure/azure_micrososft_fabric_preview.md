@@ -9,9 +9,12 @@ toc: true
 
 Suite à l'annonce du passage en preview de la solution [Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/get-started/microsoft-fabric-overview), j'ai profité de la version d'essai (Trial) en preview pour en faire un premier tour rapide.
 
+
 _Note n°1 : Certains termes resteront en anglais pour faciliter la compréhension_
+
 _Note n°2 : Les informations se basent sur l'état de la solution début Juillet 2023 en mode preview._
 
+<!--more-->
 
 # Qu'est ce que Microsoft Fabric
 
