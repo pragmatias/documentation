@@ -293,9 +293,9 @@ _Note: The objective is to keep the data from the mariaDB database and the Nextc
 
 In order to configure the services required by the Nextcloud application when running the Docker container, we'll prepare the following configuration files:
 
-1. For the **Apache2** service
-    1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/apache2`
-    2. Create the configuration file **nextcloud.conf** in the created directory
+1\. For the **Apache2** service :
+1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/apache2`
+2. Create the configuration file **nextcloud.conf** in the created directory
 
 The contents of the file **nextcloud.conf** :
 ```apacheconf
@@ -332,13 +332,14 @@ The contents of the file **nextcloud.conf** :
 </VirtualHost>
 ```
 
-2. For the **MariaDB** service
-    1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb`. 
-    2. Create the **50-server.conf** configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`.
+2\. For the **MariaDB** service
+1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb`. 
+2. Create the **50-server.conf** configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`.
 
-3. For the **Nextcloud** application
-    1. Create the `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` configuration directory. 
-    2. Create configuration files named **autoconfig.php** and **docker.config.php** in the created directory to automatically configure the Nextcloud application on the first run.
+
+3\.  For the **Nextcloud** application
+1. Create the `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` configuration directory. 
+2. Create configuration files named **autoconfig.php** and **docker.config.php** in the created directory to automatically configure the Nextcloud application on the first run.
 
 The contents of the file **autoconfig.php** :
 ```php
@@ -428,9 +429,9 @@ $CONFIG = array (
 
 ```
 
-5. For the **PHP** service
-    1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/php`. 
-    2. Create a configuration file named **20-pdo_mysql.ini** in the created directory.
+4\. For the **PHP** service
+1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/php`. 
+2. Create a configuration file named **20-pdo_mysql.ini** in the created directory.
 
 The contents of the file **20-pdo_mysql.ini**:
 ```ini
