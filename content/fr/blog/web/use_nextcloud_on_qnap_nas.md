@@ -70,7 +70,7 @@ Les étapes seront les suivantes :
 
 # Détails
 
-## 1. Création d'un utilisateur spécifique pour Docker 
+## Création d'un utilisateur spécifique pour Docker 
 
 Création d'un utilisateur spécifique pour Docker afin de limiter les droits sur l'ensemble des éléments et services du NAS QNAP :
 1. Allez dans `Main Menu > ControlPanel > Privilege > Users`
@@ -83,7 +83,7 @@ _Note : Gardez de côté le PUID (ex : 501) et le PGID (ex: 100), car ils seront
 
 [![20231107_Blog_use_nextcloud_on_qnap_01](/blog/web/20231107_Blog_use_nextcloud_on_qnap_01.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_01.png) 
 
-## 2. Création d'un répertoire partagé pour Docker
+## Création d'un répertoire partagé pour Docker
 
 Pour créer un répertoire partagé spécifique pour les fichiers de données et de configuration du conteneur Docker contenant l'application Nextcloud, il faut suivre les étapes suivantes :
 1. Allez dans `Main Menu > ControlPanel > Privilege > Shared Folders`
@@ -98,7 +98,7 @@ Pour créer un répertoire partagé spécifique pour les fichiers de données et
 
 [![20231107_Blog_use_nextcloud_on_qnap_02](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png) 
 
-## 3.  Activation d'un accès SSH sur le NAS QNAP
+## Activation d'un accès SSH sur le NAS QNAP
 
 Pour pouvoir se connecter en SSH sur le NAS QNAP, il faut commencer par activer le service en suivant les étapes suivantes :
 1. Allez dans `Main Menu > ControlPanel > Network & File Services > Telnet / SSH`
@@ -109,7 +109,7 @@ _Note : Dans notre cas nous allons utiliser le port 23422 pour l'accès SSH_
 
 [![20231107_Blog_use_nextcloud_on_qnap_03](/blog/web/20231107_Blog_use_nextcloud_on_qnap_03.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_03.png) 
 
-## 4. Installation de l'application QNAP Container Station
+## Installation de l'application QNAP Container Station
 
 Pour pouvoir utiliser Docker sur le NAS QNAP, il faut installer l'application QNAP Container Station, en suivant les étapes suivantes :
 1. Allez dans `Main Menu > App Center > QNAP Store > All Apps`
@@ -119,7 +119,7 @@ _Note : un raccourci nommé **Container Station** doit  être présent sur la pa
 
 [![20231107_Blog_use_nextcloud_on_qnap_04](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png) 
 
-## 5. Se connecter en SSH sur le NAS QNAP 
+## Se connecter en SSH sur le NAS QNAP 
 
 Pour se connecter au NAS QNAP en SSH, il suffit d'utiliser la commande suivante : `ssh <useradmin>@<ip NAS QNAP> -p <port>`
 Dans notre cas, la commande sera : `ssh admin@110.110.110.110 -p 23422` 
@@ -130,7 +130,7 @@ Nous allons en profiter pour créer les premiers répertoires nécessaires pour 
 3. Créez le répertoire **scripts** qui permettra de stocker tous les scripts et fichiers de configuration nécessaires à la construction de l'image et du conteneur Docker contenant l'application Nextcloud : `mkdir /share/Docker/scripts`
 
 
-## 6. Création d'un fichier Dockerfile
+## Création d'un fichier Dockerfile
 
 Pour pouvoir mettre en place l'application Nextcloud sur le NAS QNAP, nous allons créer les différents éléments nécessaires.
 
@@ -215,7 +215,7 @@ ENTRYPOINT ["bash","/config/run_nextcloud.sh",">","/var/log/nextcloud/run_nextcl
 
 
 
-## 7. Création d'un fichier Docker Compose
+## Création d'un fichier Docker Compose
 
 Afin de faciliter l'utilisation de Docker pour la mise en place de l'application Nextcloud, nous allons utiliser Docker Compose en créant un fichier nommé **docker-compose.yml** dans le répertoire `/share/Docker/scripts/nextcloud_app`
 
@@ -288,7 +288,7 @@ Précision concernant les **volumes** :
 
 _Note : L'objectif est de garder les données de la base de données mariaDB et de l'application Nextcloud dans le répertoire partagé afin de pouvoir faciliter les sauvegarde et pouvoir dissocier les données du conteneur_
 
-## 8. Création des fichiers de configurations pour l'application Nextcloud
+## Création des fichiers de configurations pour l'application Nextcloud
 
 Afin de pouvoir configurer les services nécessaires à l'application Nextcloud lors de l'exécution du conteneur Docker, nous allons préparer les fichiers de configuration suivants :
 
@@ -452,7 +452,7 @@ mysql.trace_mode=Off
 ```
 
 
-## 9. Création d'un script d'initialisation pour Nextcloud
+## Création d'un script d'initialisation pour Nextcloud
 
 Afin de pouvoir réaliser l'initialisation de l'application Nextcloud lors de l'exécution du conteneur, nous allons mettre en place le script **run_nextcloud.sh** dans le répertoire `/share/Docker/scripts/nextcloud_app/config`
 
@@ -618,7 +618,7 @@ done
 exit 0
 ```
 
-## 10. Création d'un fichier de configuration pour l'ensemble des variables d'environnement
+## Création d'un fichier de configuration pour l'ensemble des variables d'environnement
 
 Afin de pouvoir finaliser la création de l'image Docker, nous avons besoin de mettre en place un fichier **.env** afin de centraliser l'ensemble des variables d'environnements nécessaires au container et plus spécifique au script d'initialisation **run_nextcloud.sh**
 
@@ -649,7 +649,7 @@ NC_ADMIN_PASSWORD=<nextcloud admin password>
 
 
 
-## 11. Mise en place d'un script de démarrage sur le NAS QNAP
+## Mise en place d'un script de démarrage sur le NAS QNAP
 
 Afin de pouvoir relancer au démarrage du NAS QNAP le conteneur Docker de l'application Nextcloud :
 1. Allez dans `Main Menu > ControlPanel > System > Hardware`
