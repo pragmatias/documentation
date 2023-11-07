@@ -1,6 +1,6 @@
 ---
-Categories : ["Nextcloud","Cloud"]
-Tags : ["Nextcloud","Cloud"]
+Categories : ["Nextcloud","Cloud","Synology"]
+Tags : ["Nextcloud","Cloud","Synology"]
 title : "Mise en place de Nextcloud sur un NAS Synology"
 date : 2019-10-20
 draft : false
