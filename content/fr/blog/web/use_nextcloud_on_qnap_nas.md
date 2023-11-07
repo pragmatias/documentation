@@ -33,9 +33,10 @@ _Note : Pour rendre l'application Nextcloud accessible depuis internet, il faut 
 ## Contrainte spécifique au NAS QNAP
 
 La contrainte spécifique liée au NAS QNAP de la série [TS-x31P3 Series](https://www.qnap.com/static/landing/2020/fr-ts-x31p3-ts-x31k/index.html) est la suivante :
-- Ce NAS possède un processeur ARM v7 mais dont l'application QNAP Container Station a été modifiée pour implémenter un page size de 32k au lieu de celui [par défaut](https://wiki.osdev.org/ARM_Paging).
+- Ce NAS possède un processeur ARM v7 mais dont l'application QNAP Container Station a été modifiée pour implémenter un page size de 32k au lieu de celui [par défaut](https://wiki.osdev.org/ARM_Paging)
 
-> Une grande majorité d'image Docker ne fonctionne tout simplement pas dont [Nextcloud AIO](https://github.com/nextcloud/all-in-one) (qui est l'image Docker recommandée par Nextcloud)
+> Une grande majorité d'image Docker ne fonctionne tout simplement pas dont [Nextcloud AIO](https://github.com/nextcloud/all-in-one) (qui est l'image Docker recommandée par Nextcloud).
+> 
 > Le message d'erreur qui s'affiche est : `/bin/sh: error while loading shared libraries: libc.so.6: ELF load command address/offset not page-aligned`
 
 ## Caractéristique du NAS QNAP
@@ -116,7 +117,7 @@ Pour pouvoir utiliser Docker sur le NAS QNAP, il faut installer l'application QN
 1. Allez dans `Main Menu > App Center > QNAP Store > All Apps`
 2. Recherchez l'application **Container Station (Utilities)** et cliquez sur l'option `+ Install`
 
-_Note : un raccourci nommé **Container Station** doit  être présent sur la page d'accueil de votre NAS QNAP_
+_Note : un raccourci nommé **Container Station** doit  être présent sur la page d'accueil de votre NAS QNAP._
 
 [![20231107_Blog_use_nextcloud_on_qnap_04](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png) 
 
@@ -143,7 +144,7 @@ Nous allons créer un répertoire **nextcloud_app** dans lequel nous mettrons l'
 
 ### Création du fichier Dockerfile
 
-Créez un fichier nommé **Dockerfile** dans le répertoire `/share/Docker/scripts/nextcloud_app`
+Créez un fichier nommé **Dockerfile** dans le répertoire `/share/Docker/scripts/nextcloud_app`.
 
 Le contenu du fichier est le suivante :
 ```Dockerfile
@@ -218,7 +219,7 @@ ENTRYPOINT ["bash","/config/run_nextcloud.sh",">","/var/log/nextcloud/run_nextcl
 
 ## Création d'un fichier Docker Compose
 
-Afin de faciliter l'utilisation de Docker pour la mise en place de l'application Nextcloud, nous allons utiliser Docker Compose en créant un fichier nommé **docker-compose.yml** dans le répertoire `/share/Docker/scripts/nextcloud_app`
+Afin de faciliter l'utilisation de Docker pour la mise en place de l'application Nextcloud, nous allons utiliser Docker Compose en créant un fichier nommé **docker-compose.yml** dans le répertoire `/share/Docker/scripts/nextcloud_app`.
 
 Ce fichier va nous permettre de définir le **build** de l'image Docker ainsi que le réseau (**network**) Docker qui seront utilisés par le conteneur Docker contenant l'application Nextcloud.
 
@@ -287,7 +288,7 @@ Précision concernant les **volumes** :
 - Le répertoire `/share/Docker/nextcloud/nc_log` contiendra l'ensemble des logs de l'application Nextcloud
 - Le répertoire `/share/Docker/nextcloud/db_log` contiendra l'ensemble des logs de la base de données MariaDB utilisée par l'application Nextcloud
 
-_Note : L'objectif est de garder les données de la base de données mariaDB et de l'application Nextcloud dans le répertoire partagé afin de pouvoir faciliter les sauvegarde et pouvoir dissocier les données du conteneur_
+_Note : L'objectif est de garder les données de la base de données mariaDB et de l'application Nextcloud dans le répertoire partagé afin de pouvoir faciliter les sauvegarde et pouvoir dissocier les données du conteneur._
 
 ## Création des fichiers de configurations pour l'application Nextcloud
 
@@ -457,7 +458,7 @@ mysql.trace_mode=Off
 
 ## Création d'un script d'initialisation pour Nextcloud
 
-Afin de pouvoir réaliser l'initialisation de l'application Nextcloud lors de l'exécution du conteneur, nous allons mettre en place le script **run_nextcloud.sh** dans le répertoire `/share/Docker/scripts/nextcloud_app/config`
+Afin de pouvoir réaliser l'initialisation de l'application Nextcloud lors de l'exécution du conteneur, nous allons mettre en place le script **run_nextcloud.sh** dans le répertoire `/share/Docker/scripts/nextcloud_app/config`.
 
 Contenu du script **run_nextcloud.sh** :
 ```sh
@@ -623,10 +624,10 @@ exit 0
 
 ## Création d'un fichier de configuration pour l'ensemble des variables d'environnement
 
-Afin de pouvoir finaliser la création de l'image Docker, nous avons besoin de mettre en place un fichier **.env** afin de centraliser l'ensemble des variables d'environnements nécessaires au container et plus spécifique au script d'initialisation **run_nextcloud.sh**
+Afin de pouvoir finaliser la création de l'image Docker, nous avons besoin de mettre en place un fichier **.env** afin de centraliser l'ensemble des variables d'environnements nécessaires au container et plus spécifique au script d'initialisation **run_nextcloud.sh**.
 
-Ce fichier d'environnement est définie au niveau du fichier **docker-compose.yml**
-Le fichier **.env**doit être créé dans le répertoire `/share/Docker/scripts/nextcloud_app/config`
+Ce fichier d'environnement est définie au niveau du fichier **docker-compose.yml**.
+Le fichier **.env**doit être créé dans le répertoire `/share/Docker/scripts/nextcloud_app/config`.
 
 Le contenu du fichier **.env** est le suivant :  _(en remplaçant les valeurs nécessaires pour votre environnement)_
 ```sh
@@ -684,7 +685,7 @@ Les étapes pour exécuter manuellement l'application Nextcloud sont les suivant
 3. Exécutez la commande docker compose suivante : `docker compose up -d`
 4. Attendez quelques secondes/minutes et vérifiez la bonne exécution du conteneur en vous connectant sur l'application Nextcloud `https://110.110.110.151`
 
-Vous pouvez vérifier la bonne exécution du conteneur en allant voir les informations dans l'application QNAP Container Station ou en utilisant les commande Docker (stats, logs, ps, ...)
+Vous pouvez vérifier la bonne exécution du conteneur en allant voir les informations dans l'application QNAP Container Station ou en utilisant les commande Docker (stats, logs, ps, ...).
 
 [![20231107_Blog_use_nextcloud_on_qnap_05](/blog/web/20231107_Blog_use_nextcloud_on_qnap_05.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_05png) 
 

@@ -34,9 +34,10 @@ _Note: To have access to the Nextcloud application from Internet, you'll need to
 ## Constraints specific to QNAP NAS
 
 The specific QNAP NAS constraint of the [TS-x31P3 Series](https://www.qnap.com/static/landing/2020/fr-ts-x31p3-ts-x31k/index.html) is as follows:
-- This NAS has an ARM v7 processor but the QNAP Container Station application has been modified to implement a page size of 32k instead of the [default](https://wiki.osdev.org/ARM_Paging).
+- This NAS has an ARM v7 processor but the QNAP Container Station application has been modified to implement a page size of 32k instead of the [default](https://wiki.osdev.org/ARM_Paging)
 
 > The majority of existing Docker images don't work, including [Nextcloud AIO](https://github.com/nextcloud/all-in-one) (which is Nextcloud's recommended Docker image).
+> 
 > The error message displayed is : `/bin/sh: error while loading shared libraries: libc.so.6: ELF load command address/offset not page-aligned`
 
 
@@ -76,9 +77,9 @@ The steps are as follows:
 ## Create a specific user for Docker 
 
 Create a specific user for Docker to limit rights on all QNAP NAS components and services:
-1. Go to `Main Menu > ControlPanel > Privilege > Users`.
-2. Click on the `Create` button, then on the `Create a User` option.
-3. Fill in the form and choose the name (username) **dockeruser**.
+1. Go to `Main Menu > ControlPanel > Privilege > Users`
+2. Click on the `Create` button, then on the `Create a User` option
+3. Fill in the form and choose the name (username) **dockeruser**
 4. Click on the `Create` button
 
 _Note: Save the PUID (e.g. 501) and PGID (e.g. 100), as these will be required for the rights of the Docker container containing the Nextcloud application._
@@ -88,23 +89,23 @@ _Note: Save the PUID (e.g. 501) and PGID (e.g. 100), as these will be required f
 ## Create a shared directory for Docker
 
 To create a specific shared directory for the data and configuration files of the Docker container containing the Nextcloud application, follow these steps:
-1. Go to `Main Menu > ControlPanel > Privilege > Shared Folders`.
-2. Click on the `Create` button, then on the `Create A Shared Folder` option.
-3. Fill in the details and click on the `Next` button.
+1. Go to `Main Menu > ControlPanel > Privilege > Shared Folders`
+2. Click on the `Create` button, then on the `Create A Shared Folder` option
+3. Fill in the details and click on the `Next` button
     1. Folder Name : Folder name
     2. Comment : Comment for the directory
-    3. Disk Volume : Disk on which the folder will be created.
+    3. Disk Volume : Disk on which the folder will be created
     4. Path: Directory path
-4. In the **Configure access privileges for users** window, select the `RW` (read & write) option for your administration user and for the **dockeruser** user, and click on the `Next` button.
-5. In the **Properties** window, select the desired options and click on the `Finish` button.
+4. In the **Configure access privileges for users** window, select the `RW` (read & write) option for your administration user and for the **dockeruser** user, and click on the `Next` button
+5. In the **Properties** window, select the desired options and click on the `Finish` button
 
 [![20231107_Blog_use_nextcloud_on_qnap_02](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png) 
 
 ## Enable SSH access on QNAP NAS
 
 To be able to connect to the QNAP NAS via SSH, you must first activate the service by following the steps below:
-1. Go to `Main Menu > ControlPanel > Network & File Services > Telnet / SSH`.
-2. Check the `Allow SSH connection` option and enter the desired port number.
+1. Go to `Main Menu > ControlPanel > Network & File Services > Telnet / SSH`
+2. Check the `Allow SSH connection` option and enter the desired port number
 3. Click on the `Apply` button
 
 _Note: In our case, we'll use port 23422 for SSH access._
@@ -114,8 +115,8 @@ _Note: In our case, we'll use port 23422 for SSH access._
 ## Install QNAP Container Station application
 
 To use Docker on the QNAP NAS, you need to install the QNAP Container Station application, following these steps:
-1. Go to `Main Menu > App Center > QNAP Store > All Apps`.
-2. Find the **Container Station (Utilities)** application and click on the `+ Install` option.
+1. Go to `Main Menu > App Center > QNAP Store > All Apps`
+2. Find the **Container Station (Utilities)** application and click on the `+ Install` option
 
 _Note: A shortcut named **Container Station** should be present on the home page of your QNAP NAS._
 
@@ -127,9 +128,9 @@ To connect to the QNAP NAS via SSH, simply use the following command: `ssh <user
 In our case, the command would be: `ssh admin@110.110.110.110 -p 23422` 
 
 Let's take this opportunity to create the first directories needed for Docker and the Docker container containing the Nextcloud application
-1. Go to the Docker shared directory: `cd /share/Docker`.
-2. Create the **nextcloud** directory, which will store all data associated with the Nextcloud application: `mkdir /share/Docker/nextcloud`.
-3. Create the **scripts** directory, which will store all the scripts and configuration files needed to build the Docker image and container containing the Nextcloud application: `mkdir /share/Docker/scripts`.
+1. Go to the Docker shared directory: `cd /share/Docker`
+2. Create the **nextcloud** directory, which will store all data associated with the Nextcloud application: `mkdir /share/Docker/nextcloud`
+3. Create the **scripts** directory, which will store all the scripts and configuration files needed to build the Docker image and container containing the Nextcloud application: `mkdir /share/Docker/scripts`
 
 
 ## Create a Dockerfile
@@ -139,8 +140,8 @@ To set up the Nextcloud application on the QNAP NAS, we're going to create the r
 ### Creating the directories needed for the Docker image
 
 We're going to create an **nextcloud_app** directory in which we'll put all the elements needed to build the Docker image containing the Nextcloud application :
-1. Create an **nextcloud_app** directory:  `mkdir /share/Docker/scripts/nextcloud_app`.
-2. Create a **config** subdirectory to store all the configuration files required for the Nextcloud application: `mkdir /share/Docker/scripts/nextcloud_app/config`.
+1. Create an **nextcloud_app** directory:  `mkdir /share/Docker/scripts/nextcloud_app`
+2. Create a **config** subdirectory to store all the configuration files required for the Nextcloud application: `mkdir /share/Docker/scripts/nextcloud_app/config`
 
 ### Create a Dockerfile
 
@@ -282,11 +283,11 @@ networks:
 ```
 
 Note on **volumes**:
-- The `/share/Docker/nextcloud/nc_data` directory will contain all Nextcloud application user data.
-- The `/share/Docker/nextcloud/nc_apps` directory will contain all the Nextcloud application's internal applications.
-- The `/share/Docker/nextcloud/db_data` directory will contain all the MariaDB database data used by the Nextcloud application.
-- The `/share/Docker/nextcloud/nc_log` directory will contain all Nextcloud application logs.
-- The `/share/Docker/nextcloud/db_log` directory will contain all logs from the MariaDB database used by the Nextcloud application.
+- The `/share/Docker/nextcloud/nc_data` directory will contain all Nextcloud application user data
+- The `/share/Docker/nextcloud/nc_apps` directory will contain all the Nextcloud application's internal applications
+- The `/share/Docker/nextcloud/db_data` directory will contain all the MariaDB database data used by the Nextcloud application
+- The `/share/Docker/nextcloud/nc_log` directory will contain all Nextcloud application logs
+- The `/share/Docker/nextcloud/db_log` directory will contain all logs from the MariaDB database used by the Nextcloud application
 
 _Note: The objective is to keep the data from the mariaDB database and the Nextcloud application in the shared directory, to make backups easier and to be able to dissociate the data from the container._
 
@@ -334,14 +335,14 @@ The contents of the file **nextcloud.conf** :
 ```
 
 III\. For the **MariaDB** service :
-1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb`. 
-2. Create the **50-server.conf** configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`.
+1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb`
+2. Create the **50-server.conf** configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`
 
 </br>
 
 III\.  For the **Nextcloud** application :
-1. Create the `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` configuration directory. 
-2. Create configuration files named **autoconfig.php** and **docker.config.php** in the created directory to automatically configure the Nextcloud application on the first run.
+1. Create the `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` configuration directory.
+2. Create configuration files named **autoconfig.php** and **docker.config.php** in the created directory to automatically configure the Nextcloud application on the first run
 
 The contents of the file **autoconfig.php** :
 ```php
@@ -432,8 +433,8 @@ $CONFIG = array (
 ```
 
 IV\. For the **PHP** service :
-1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/php`. 
-2. Create a configuration file named **20-pdo_mysql.ini** in the created directory.
+1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/php`
+2. Create a configuration file named **20-pdo_mysql.ini** in the created directory
 
 The contents of the file **20-pdo_mysql.ini**:
 ```ini
@@ -654,8 +655,8 @@ NC_ADMIN_PASSWORD=<nextcloud admin password>
 ## Set up a startup script on the QNAP NAS
 
 In order to start the Docker container of the Nextcloud application at the QNAP NAS startup :
-1. Go to `Main Menu > ControlPanel > System > Hardware`.
-2. In the `General` tab, check the `Run user defined processes during startup` option.
+1. Go to `Main Menu > ControlPanel > System > Hardware`
+2. In the `General` tab, check the `Run user defined processes during startup` option
 3. Connect to the QNAS NAS via SSH with an administrator account: `ssh <user>@<ip> -p <port>`
 4. Run the follow commands to mount the directory `/tmp/config`
 ```sh
