@@ -337,7 +337,7 @@ II\. Pour le service **MariaDB** :
 1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb` 
 2. Créez le fichier de configuration **50-server.conf** dans le répertoire créé en reprenant le template souhaité et modifiez la ligne commençant par `datadir` avec la ligne suivante `datadir                 = ${ROOT_DB_DATA}`
 
-</br>
+<p>&nbsp;</p>
 
 III\. Pour l'application **Nextcloud** :
 1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` 
