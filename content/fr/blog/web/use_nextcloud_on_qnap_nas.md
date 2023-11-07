@@ -290,12 +290,12 @@ _Note : L'objectif est de garder les données de la base de données mariaDB et 
 
 Afin de pouvoir configurer les services nécessaires à l'application Nextcloud lors de l'exécution du conteneur Docker, nous allons préparer les fichiers de configuration suivants :
 
-1. Pour le service `Apache2`
+1. Pour le service **Apache2**
     1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/apache2` 
     2. Créez le fichier de configuration `nextcloud.conf` dans le répertoire créé
 
 Contenu du fichier `nextcloud.conf` :
-```conf
+```apacheconf
 <VirtualHost *:80>
     ServerName ${NC_HOSTNAME}
     Redirect permanent / https://${NC_HOSTNAME}/
@@ -329,11 +329,11 @@ Contenu du fichier `nextcloud.conf` :
 </VirtualHost>
 ```
 
-2. Pour le service `mariadb`
+2. Pour le service **MariaDB**
     1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb` 
     2. Créez le fichier de configuration `50-server.conf` dans le répertoire créé en reprenant le template souhaité et modifiez la ligne commençant par `datadir` avec la ligne suivante `datadir                 = ${ROOT_DB_DATA}`
 
-3. Pour l'application `nextcloud`
+3. Pour l'application **Nextcloud**
     1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` 
     2. Créez les fichiers de configuration nommés `autoconfig.php` et `docker.config.php` dans le répertoire créé afin de configurer automatique l'application Nextcloud lors de la 1ère exécution
 
@@ -426,7 +426,7 @@ $CONFIG = array (
 ```
 
 
-5. Pour le service `php`
+5. Pour le service **PHP**
     1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/php` 
     2. Créez le fichier de configuration nommé `20-pdo_mysql.ini` dans le répertoire créé
 
