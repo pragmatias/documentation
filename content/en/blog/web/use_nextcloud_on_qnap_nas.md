@@ -36,7 +36,9 @@ _Note: To have access to the Nextcloud application from Internet, you'll need to
 The specific QNAP NAS constraint of the [TS-x31P3 Series](https://www.qnap.com/static/landing/2020/fr-ts-x31p3-ts-x31k/index.html) is as follows:
 - This NAS has an ARM v7 processor but the QNAP Container Station application has been modified to implement a page size of 32k instead of the [default](https://wiki.osdev.org/ARM_Paging).
     - The majority of existing Docker images don't work, including [Nextcloud AIO](https://github.com/nextcloud/all-in-one) (which is Nextcloud's recommended Docker image).
-    - The error message displayed is : `/bin/sh: error while loading shared libraries: libc.so.6: ELF load command address/offset not page-aligned`.
+    - The error message displayed is : 
+
+> /bin/sh: error while loading shared libraries: libc.so.6: ELF load command address/offset not page-aligned
 
 
 ## QNAP NAS specification
@@ -75,7 +77,7 @@ The steps are as follows:
 Create a specific user for Docker to limit rights on all QNAP NAS components and services:
 1. Go to `Main Menu > ControlPanel > Privilege > Users`.
 2. Click on the `Create` button, then on the `Create a User` option.
-3. Fill in the form and choose the name (username) `dockeruser`.
+3. Fill in the form and choose the name (username) **dockeruser**.
 4. Click on the `Create` button
 
 _Note: Save the PUID (e.g. 501) and PGID (e.g. 100), as these will be required for the rights of the Docker container containing the Nextcloud application._
@@ -92,8 +94,8 @@ To create a specific shared directory for the data and configuration files of th
     2. Comment : Comment for the directory
     3. Disk Volume : Disk on which the folder will be created.
     4. Path: Directory path
-4. In the `Configure access privileges for users` window, select the `RW` (read & write) option for your administration user and for the `dockeruser` user, and click on the `Next` button.
-5. In the `Properties` window, select the desired options and click on the `Finish` button.
+4. In the **Configure access privileges for users** window, select the `RW` (read & write) option for your administration user and for the **dockeruser** user, and click on the `Next` button.
+5. In the **Properties** window, select the desired options and click on the `Finish` button.
 
 [![20231107_Blog_use_nextcloud_on_qnap_02](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png) 
 
@@ -112,9 +114,9 @@ _Note: In our case, we'll use port 23422 for SSH access._
 
 To use Docker on the QNAP NAS, you need to install the QNAP Container Station application, following these steps:
 1. Go to `Main Menu > App Center > QNAP Store > All Apps`.
-2. Find the `Container Station (Utilities)` application and click on the `+ Install` option.
+2. Find the **Container Station (Utilities)** application and click on the `+ Install` option.
 
-_Note: A shortcut named "Container Station" should be present on the home page of your QNAP NAS._
+_Note: A shortcut named **Container Station** should be present on the home page of your QNAP NAS._
 
 [![20231107_Blog_use_nextcloud_on_qnap_04](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png) 
 
@@ -125,8 +127,8 @@ In our case, the command would be: `ssh admin@110.110.110.110 -p 23422`
 
 Let's take this opportunity to create the first directories needed for Docker and the Docker container containing the Nextcloud application
 1. Go to the Docker shared directory: `cd /share/Docker`.
-2. Create the `nextcloud` directory, which will store all data associated with the Nextcloud application: `mkdir /share/Docker/nextcloud`.
-3. Create the `scripts` directory, which will store all the scripts and configuration files needed to build the Docker image and container containing the Nextcloud application: `mkdir /share/Docker/scripts`.
+2. Create the **nextcloud** directory, which will store all data associated with the Nextcloud application: `mkdir /share/Docker/nextcloud`.
+3. Create the **scripts** directory, which will store all the scripts and configuration files needed to build the Docker image and container containing the Nextcloud application: `mkdir /share/Docker/scripts`.
 
 
 ## 6. Create a Dockerfile
@@ -135,15 +137,15 @@ To set up the Nextcloud application on the QNAP NAS, we're going to create the r
 
 ### Creating the directories needed for the Docker image
 
-We're going to create an `nextcloud_app` directory in which we'll put all the elements needed to build the Docker image containing the Nextcloud application :
-1. Create an `nextcloud_app` directory:  `mkdir /share/Docker/scripts/nextcloud_app`.
-2. Create a `config` subdirectory to store all the configuration files required for the Nextcloud application: `mkdir /share/Docker/scripts/nextcloud_app/config`.
+We're going to create an **nextcloud_app** directory in which we'll put all the elements needed to build the Docker image containing the Nextcloud application :
+1. Create an **nextcloud_app** directory:  `mkdir /share/Docker/scripts/nextcloud_app`.
+2. Create a **config** subdirectory to store all the configuration files required for the Nextcloud application: `mkdir /share/Docker/scripts/nextcloud_app/config`.
 
 ### Create a Dockerfile
 
-Create a file named `Dockerfile` in the directory `/share/Docker/scripts/nextcloud_app`.
+Create a file named **Dockerfile** in the directory `/share/Docker/scripts/nextcloud_app`.
 
-The contents of the file `Dockerfile` :
+The contents of the file **Dockerfile** :
 ```Dockerfile
 # Based on ubuntu image
 FROM ubuntu:22.04
@@ -216,11 +218,11 @@ ENTRYPOINT ["bash","/config/run_nextcloud.sh",">","/var/log/nextcloud/run_nextcl
 
 ## 7. Creating a Docker Compose file
 
-To make it easier to use Docker to build the Nextcloud application, we're going to use Docker Compose to create a file named `docker-compose.yml` in the `/share/Docker/scripts/nextcloud_app` directory.
+To make it easier to use Docker to build the Nextcloud application, we're going to use Docker Compose to create a file named **docker-compose.yml** in the `/share/Docker/scripts/nextcloud_app` directory.
 
-This file will enable us to define the build of the Docker image and the Docker network to be used by the Docker container containing the Nextcloud application.
+This file will enable us to define the **build** of the Docker image and the Docker **network** to be used by the Docker container containing the Nextcloud application.
 
-The contents of the file `docker-compose.yml` :
+The contents of the file **docker-compose.yml** :
 ```yaml
 version: "3.7"
 
@@ -278,7 +280,7 @@ networks:
 
 ```
 
-Note on `volumes`:
+Note on **volumes**:
 - The `/share/Docker/nextcloud/nc_data` directory will contain all Nextcloud application user data.
 - The `/share/Docker/nextcloud/nc_apps` directory will contain all the Nextcloud application's internal applications.
 - The `/share/Docker/nextcloud/db_data` directory will contain all the MariaDB database data used by the Nextcloud application.
@@ -293,9 +295,9 @@ In order to configure the services required by the Nextcloud application when ru
 
 1. For the **Apache2** service
     1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/apache2`
-    2. Create the configuration file `nextcloud.conf` in the created directory
+    2. Create the configuration file **nextcloud.conf** in the created directory
 
-The contents of the file `nextcloud.conf` :
+The contents of the file **nextcloud.conf** :
 ```apacheconf
 <VirtualHost *:80>
     ServerName ${NC_HOSTNAME}
@@ -332,13 +334,13 @@ The contents of the file `nextcloud.conf` :
 
 2. For the **MariaDB** service
     1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb`. 
-    2. Create the `50-server.conf` configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`.
+    2. Create the **50-server.conf** configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`.
 
 3. For the **Nextcloud** application
     1. Create the `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` configuration directory. 
-    2. Create configuration files named `autoconfig.php` and `docker.config.php` in the created directory to automatically configure the Nextcloud application on the first run.
+    2. Create configuration files named **autoconfig.php** and **docker.config.php** in the created directory to automatically configure the Nextcloud application on the first run.
 
-The contents of the file `autoconfig.php`:
+The contents of the file **autoconfig.php** :
 ```php
 <?php
 $AUTOCONFIG = array(
@@ -359,7 +361,7 @@ $AUTOCONFIG = array(
 );
 ```
 
-The contents of the file `docker.config.php`:
+The contents of the file **docker.config.php** :
 ```php
 <?php
 $CONFIG = array (
@@ -428,9 +430,9 @@ $CONFIG = array (
 
 5. For the **PHP** service
     1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/php`. 
-    2. Create a configuration file named `20-pdo_mysql.ini` in the created directory.
+    2. Create a configuration file named **20-pdo_mysql.ini** in the created directory.
 
-The contents of the file `20-pdo_mysql.ini`:
+The contents of the file **20-pdo_mysql.ini**:
 ```ini
 ; configuration for php mysql module
 ; priority=20
@@ -452,9 +454,9 @@ mysql.trace_mode=Off
 
 ## 9. Creation of an initialization script for the Nextcloud application
 
-In order to initialize the Nextcloud application when the container is executed, we'll set up the `run_nextcloud.sh` script in the `/share/Docker/scripts/nextcloud_app/config` directory.
+In order to initialize the Nextcloud application when the container is executed, we'll set up the **run_nextcloud.sh** script in the `/share/Docker/scripts/nextcloud_app/config` directory.
 
-The contents of the file `run_nextcloud.sh` :
+The contents of the file **run_nextcloud.sh** :
 ```sh
 #!/bin/sh
 
@@ -618,12 +620,12 @@ exit 0
 
 ## 10. Creation of a configuration file for all environment variables
 
-In order to finalize the creation of the Docker image, we need to set up an `.env` file to centralize all the environment variables required by the container and, more specifically, by the `run_nextcloud.sh` initialization script.
+In order to finalize the creation of the Docker image, we need to set up an **.env** file to centralize all the environment variables required by the container and, more specifically, by the **run_nextcloud.sh** initialization script.
 
-This environment file is defined in the `docker-compose.yml` file.
-The `.env` file must be created in the `/share/Docker/scripts/nextcloud_app/config` directory.
+This environment file is defined in the **docker-compose.yml** file.
+The **.env** file must be created in the `/share/Docker/scripts/nextcloud_app/config` directory.
 
-The contents of the file `.env` :  _(replacing the values required for your environment))_
+The contents of the file **.env** :  _(replacing the values required for your environment))_
 ```sh
 PUID=501
 PGID=100
@@ -693,17 +695,17 @@ You can check that the container is running correctly by checking the informatio
 # Commands
 
 Some commands for using Docker :
-- `docker build -t nextcloud-qnas-img:v27 . ` : Builds the image from the `Dockerfile` in the current directory.
-    - `docker build  -t nextcloud-qnas-img:v27 . --build-arg build_TZ=Europe/Paris --build-arg build_PUID=501 --build-arg build_PGID=100` : `build` command with argument
+- `docker build -t nextcloud-qnas-img:v27 . ` : Builds the image from the **Dockerfile** in the current directory.
+    - `docker build  -t nextcloud-qnas-img:v27 . --build-arg build_TZ=Europe/Paris --build-arg build_PUID=501 --build-arg build_PGID=100` : Build command with argument
 - `docker ps` : List of running containers
 - `docker ps -a` : List of all existing containers
 - `docker stats` : Statistics on running container usage
 - `docker logs nextcloud-qnas` : Container log message (standard output)
-- `docker create -i -t -v /share/Docker/nextcloud/...:/... -v ... --name nextcloud-qnas nextcloud-qnas-img:v27` : Create an `nextcloud-qnas` container from the `nextcloud-qnas-img:v27` image
+- `docker create -i -t -v /share/Docker/nextcloud/...:/... -v ... --name nextcloud-qnas nextcloud-qnas-img:v27` : Create an **nextcloud-qnas** container from the **nextcloud-qnas-img:v27** image
 - `docker container start -a -i nextcloud-qnas` : Start a container by accessing the console directly
 - `docker rm nextcloud-qnas` : Delete the container
 
-If you need to manually recreate the QNAP NAS `network` for Docker : 
+If you need to manually recreate the QNAP NAS **network** for Docker : 
 ```bash
 # Create dhcp network
 docker network create -d qnet --opt=iface=eth0 --ipam-driver=qnet --ipam-opt=iface=eth0 qnet-dhcp-eth0
@@ -714,7 +716,7 @@ docker network create -d qnet --opt=iface=eth0 --ipam-driver=qnet --ipam-opt=ifa
 ```
 
 Some commands for using Docker Compose : _(You need to be in the directory containing the `docker-compose.yaml` file)_ 
-- `docker compose build --build-arg TZ=Europe/Paris --build-arg PUID=501 --build-arg PGID=100` : Allows `Build` to be performed in the same way as the Docker command
+- `docker compose build --build-arg TZ=Europe/Paris --build-arg PUID=501 --build-arg PGID=100` : Allows build to be performed in the same way as the Docker command
 - `docker compose up -d` : Create and start defined containers
 - `docker compose down` : Stop and delete defined containers
 - `docker compose start` : Start defined containers
