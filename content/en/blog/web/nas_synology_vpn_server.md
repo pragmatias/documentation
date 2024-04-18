@@ -3,7 +3,7 @@ Categories : ["NAS","Synology","VPN"]
 Tags : ["NAS","Synology","VPN"]
 title : "Set up a VPN access with a Synology NAS"
 date : 2024-02-21
-draft : true
+draft : false
 toc: true
 ---
 
