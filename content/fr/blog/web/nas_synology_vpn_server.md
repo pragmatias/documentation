@@ -112,7 +112,7 @@ Pour l'utilisateur local nommé **vpn**:
 [![Config - Step n°2](/blog/web/20240221_nas_synology_vpn_server_09.png)](/blog/web/20240221_nas_synology_vpn_server_09.png)
 
 
-### Configuration de la partie "General Settings"
+### Configuration de la partie **General Settings**
 
 Pour la configuration générale : 
 1. Renseignez l'option `Network interface` avec l'interface réseau `LAN`
@@ -143,7 +143,7 @@ Pour configurer l'accès avec le protocole OpenVPN :
 
 ## Installation et configuration de l'accès VPN sur le téléphone (Android)
 
-### Pré-requis : Préparation du fichier de profile
+### Pré-requis : Création du profile
 1. Récupération du fichier de profile par défaut sur votre poste : 
     1. Cliquez sur le menu `Main menu` (en haut à gauche sur l'écran principal)
     2. Cliquez sur l'application `VPN Server`
