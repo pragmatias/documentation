@@ -21,9 +21,7 @@ Pour mettre en place les éléments nécessaires, nous allons réaliser les éta
 5. Installation et configuration de l'accès VPN sur le téléphone (Android)
 
 
-# Étapes
-
-## Création d'un utilisateur spécifique pour l'accès au VPN 
+# Création d'un utilisateur spécifique pour l'accès au VPN 
 
 Nous allons créer un utilisateur local, nommé **vpn**, au NAS spécifiquement pour être utiliser lors de l'accès au server VPN afin de pouvoir limiter les droits en fonction de nos besoins.
 
@@ -42,7 +40,7 @@ Résultat :
 [![User - Step n°2](/blog/web/20240221_nas_synology_vpn_server_02.png)](/blog/web/20240221_nas_synology_vpn_server_02.png)
 
 
-## Installation de l'application **VPN Server**
+# Installation de l'application **VPN Server**
 
 Pour installation l'application VPN Server, il faut suivre les étapes suivantes :
 1. Cliquez sur le menu `Main menu` (en haut à gauche sur l'écran principal)
@@ -61,7 +59,7 @@ Pour vérifier que l'application VPN Server est bien installé, il faut suivre l
 [![Appli - Step n°1](/blog/web/20240221_nas_synology_vpn_server_03.png)](/blog/web/20240221_nas_synology_vpn_server_03.png)
 
 
-## Mise en place d'un certificat **Let's Encrypt**
+# Mise en place d'un certificat **Let's Encrypt**
 
 Afin de sécuriser l'accès au VPN, nous allons mettre en place un certificat **Let's Encrypt** pour l'application VPN Server :
 1. Cliquez sur le menu `Main menu` (en haut à gauche sur l'écran principal)
@@ -83,7 +81,7 @@ Résultat :
 [![Certif - Step n°4](/blog/web/20240221_nas_synology_vpn_server_07.png)](/blog/web/20240221_nas_synology_vpn_server_07.png)
 
 
-## Configuration de l'application **VPN Server**
+# Configuration de l'application **VPN Server**
 
 Nous allons nous limiter au protocole **OpenVPN** qui nous permettra d'accéder à l'ensemble des services souhaités en se connectant à l'accès VPN. 
 Il est aussi possible d'utiliser les protocoles [PPTP](https://fr.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol) et [L2TP/IPSec](https://fr.wikipedia.org/wiki/Layer_2_Tunneling_Protocol)
@@ -103,7 +101,7 @@ Les différentes options disponibles :
 - **Privilege** : Permet de gérer les droits entre les utilisateurs et les protocoles
 
 
-### Configuration de la partie **Privilege**
+## Configuration de la partie **Privilege**
 
 Pour l'utilisateur local nommé **vpn**:
 1. Sélectionnez le droit d'utilisateur du protocole OpenVPN uniquement
@@ -112,7 +110,7 @@ Pour l'utilisateur local nommé **vpn**:
 [![Config - Step n°2](/blog/web/20240221_nas_synology_vpn_server_09.png)](/blog/web/20240221_nas_synology_vpn_server_09.png)
 
 
-### Configuration de la partie **General Settings**
+## Configuration de la partie **General Settings**
 
 Pour la configuration générale : 
 1. Renseignez l'option `Network interface` avec l'interface réseau `LAN`
@@ -131,7 +129,7 @@ Pour la mise en place d'une sécurité supplémentaire pour l'accès au VPN :
 [![Config - Step n°3](/blog/web/20240221_nas_synology_vpn_server_11.png)](/blog/web/20240221_nas_synology_vpn_server_11.png)
 
 
-### Configuration du protocole OpenVPN
+## Configuration du protocole OpenVPN
 
 Pour configurer l'accès avec le protocole OpenVPN :
 1. Cochez la case `Enable OpenVPN server`
@@ -141,9 +139,9 @@ Pour configurer l'accès avec le protocole OpenVPN :
 [![Config - Step n°4](/blog/web/20240221_nas_synology_vpn_server_12.png)](/blog/web/20240221_nas_synology_vpn_server_12.png)
 
 
-## Installation et configuration de l'accès VPN sur le téléphone (Android)
+# Installation et configuration de l'accès VPN sur le téléphone (Android)
 
-### Pré-requis : Création du profile
+## Pré-requis : Création du profile
 1. Récupération du fichier de profile par défaut sur votre poste : 
     1. Cliquez sur le menu `Main menu` (en haut à gauche sur l'écran principal)
     2. Cliquez sur l'application `VPN Server`
@@ -159,7 +157,7 @@ Pour configurer l'accès avec le protocole OpenVPN :
 
 
 
-### Installation et configuration de l'accès VPN sur le téléphone
+## Installation et configuration de l'accès VPN sur le téléphone
 
 1. Installez l'application `OpenVPN Connect` en utilisant **Google Play Store**
 
