@@ -13,7 +13,7 @@ Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre 
 
 # Objectif
 
-## Context
+## Contexte
 
 Nous souhaitons utiliser un nom de domaine personnel de [Gandi.net](https://www.gandi.net/en) nommé `testing.com` pour pouvoir accéder aux différents services existant derrière un accès (Routeur Livebox) internet personnel en fonction des sous-domaines définis.
 
@@ -24,12 +24,12 @@ Nous avons un réseau local contenant les équipements suivants :
 - Serveur local n°2 pour héberger le service GAME avec l'adresse local 192.10.10.20
 - Serveur local n°3 pour héberger le service TODO avec l'adresse local 192.10.10.30
 
-Nous avons un nom de domaine `testing.com` actif chez Gandi.net.
+Nous avons un nom de domaine `testing.com` actif chez [Gandi.net](https://www.gandi.net/en).
 
 [![Obj - Step n°0](/blog/web/20240419_nas_synology_dns_gandi_12.png)](/blog/web/20240419_nas_synology_dns_gandi_12.png)
 
 
-Diagramme :
+Schématisation :
 
 [![Obj - Step n°1](/blog/web/20240419_nas_synology_dns_gandi_07.png)](/blog/web/20240419_nas_synology_dns_gandi_07.png)
 
@@ -46,27 +46,25 @@ Le routeur Livebox ne permet de gérer que l'IPv4, l'adresse IP publique n'est p
 - Lorsqu'un utilisateur souhaite accéder à l'url `htpps://share.testing.com` alors il doit être redirigé automatiquement vers le NAS Synology.
 
 
-Schématisation : 
+Schéma : 
 [![Obj - Step n°2](/blog/web/20240419_nas_synology_dns_gandi_08.png)](/blog/web/20240419_nas_synology_dns_gandi_08.png)
 
 
 ## Liste des étapes
 
 Pour mettre en place les éléments nécessaires, nous allons réaliser les étapes suivantes :
-1. Création d'un jeton d'accès à l'API de Gandi.net
+1. Création d'un jeton d'accès à l'API de [Gandi.net](https://www.gandi.net/en)
 2. Configuration du routeur Livebox pour rediriger le traffic internet entrant vers le NAS Synology
-3. Creation et mise à jour des DNS Gandi.net avec l'adresse IP Public associée au routeur Livebox
+3. Creation et mise à jour des DNS [Gandi.net](https://www.gandi.net/en) avec l'adresse IP publique associée au routeur Livebox
 4. Mise en place du Proxy inversé sur le NAS Synology pour accéder aux différents serveurs
 
 
-# Étapes
+# Création d'un jeton d'accès à l'API de Gandi.net
 
-## Création d'un jeton d'accès à l'API de Gandi.net
-
-Le jeton d'accès va nous permettre de nous authentifier pour utiliser l'API fourni par Gandi.net afin de pouvoir automatiser les modifications nécessaires sur les enregistrements DNS lors des changements d'IP publique.
+Le jeton d'accès va nous permettre de nous authentifier pour utiliser l'API fourni par [Gandi.net](https://www.gandi.net/en) afin de pouvoir automatiser les modifications nécessaires sur les enregistrements DNS lors des changements d'adresse IP publique.
 
 Démarche pour créer le jeton d'accès :
-1. Connexion sur le compte d'administration sur le site Gandi.net
+1. Connexion sur le compte d'administration sur le site [Gandi.net](https://www.gandi.net/en)
 2. Cliquez sur le menu `Organizations`
 
 [![Token - Step n°1](/blog/web/20240419_nas_synology_dns_gandi_01.png)](/blog/web/20240419_nas_synology_dns_gandi_01.png)
@@ -91,7 +89,7 @@ Démarche pour créer le jeton d'accès :
 
 [![Token - Step n°4](/blog/web/20240419_nas_synology_dns_gandi_04.png)](/blog/web/20240419_nas_synology_dns_gandi_04.png)
 
-## Configuration de la box internet 
+# Configuration du routeur 
 
 Nous allons mettre en place une redirection du traffic internet entrant vers le NAS Synology par défaut pour que le NAS Synology puisse servir de reverse proxy pour rediriger les utilisateurs vers le serveur local défini en fonction de l'adresse entrante utilisée.
 
@@ -103,35 +101,32 @@ Démarche pour configurer la box internet :
 [![Box - Step n°1](/blog/web/20240419_nas_synology_dns_gandi_05.png)](/blog/web/20240419_nas_synology_dns_gandi_05.png)
 
 4. Cliquez sur l'onglet `NAT / PAT`
-5. Ajouter une règle pour rediriger le traffic HTTP entrant vers le NAS Synology et cliquez sur `Create`
+5. Ajoutez une règle pour rediriger le traffic HTTP entrant vers le NAS Synology et cliquez sur `Create`
     1. Application/Service : Reverse Proxy HTTP
     2. Internal Port : 80
     3. External Port : 80
     4. Protocol : TCP
     5. Equipment : 192.10.10.2
     6. External IP : All
-6. Ajouter une règle pour rediriger le traffic HTTPS entrant vers le NAS Synology et cliquez sur `Create`
-    1. Application/Service : Reverse Proxy HTTP
+6. Ajoutez une règle pour rediriger le traffic HTTPS entrant vers le NAS Synology et cliquez sur `Create`
+    1. Application/Service : Reverse Proxy HTTPS
     2. Internal Port : 443
     3. External Port : 443
     4. Protocol : TCP
     5. Equipment : 192.10.10.2
     6. External IP : All
-    7. Application 
 
 [![Box - Step n°2](/blog/web/20240419_nas_synology_dns_gandi_06.png)](/blog/web/20240419_nas_synology_dns_gandi_06.png)
 
 
 
-
-
-## Creation et mise à jour des DNS Gandi.net 
+# Creation et mise à jour des DNS Gandi.net 
 
 _Attention : la prise en compte d'un changement de DNS peut mettre plusieurs heures en fonction de sa configuration._
 
 Pour créer et mettre à jour les informations sur le DNS de Gandi.net, nous allons utiliser l'API publique de Gandi.net et créer un script qui sera exécuté directement sur le NAS Synology.
 
-###  Création d'un répertoire sur le NAS pour stocker le script à exécuter
+##  Création d'un répertoire sur le NAS pour stocker le script à exécuter
 
 1. Allez dans l'application `File Station`
 2. Naviguez jusqu'au répertoire `Share`
@@ -139,7 +134,7 @@ Pour créer et mettre à jour les informations sur le DNS de Gandi.net, nous all
 
 _Note : L'adresse complète du répertoire sera `volume1/Share/Script`_
 
-### Création d'un script nommé **Gandi_Update_DNS.sh**
+## Création d'un script nommé **Gandi_Update_DNS.sh**
 
 Le script `Gandi_Update_DNS.sh` doit être créé dans le répertoire `volume1/Share/Script` du NAS Synology.
 
@@ -218,12 +213,12 @@ exit 0
 
 Les grandes étapes sont les suivantes :
 1. `curl -s -4 ifconfig.co/ip` (résultat : `90.125.62.14`) : Récupération de notre adresse IP publique actuelle
-2. `curl -X GET "https://api.gandi.net/v5/livedns/domains/${DOMAIN_GANDI}/nameservers" -H "authorization: Bearer ${TOKEN_GANDI}" | jq '.[0]' | sed 's/"//g'` : Récupération du `nameserver` principal de Gandi.net pour notre domaine `testing.com`
-3.  `/var/packages/DNSServer/target/bin/dig +short ${RECORD_GANDI}.${DOMAIN_GANDI} @${NS_GANDI}` : Récupération de l'adresse IP publique enregistrée dans le DNS de Gandi.net pour le domaine `testing.com`
+2. `curl -X GET "https://api.gandi.net/v5/livedns/domains/${DOMAIN_GANDI}/nameservers" -H "authorization: Bearer ${TOKEN_GANDI}" | jq '.[0]' | sed 's/"//g'` : Récupération du `nameserver` principal de [Gandi.net](https://www.gandi.net/en) pour notre domaine `testing.com`
+3.  `/var/packages/DNSServer/target/bin/dig +short ${RECORD_GANDI}.${DOMAIN_GANDI} @${NS_GANDI}` : Récupération de l'adresse IP publique enregistrée dans le DNS de [Gandi.net](https://www.gandi.net/en) pour le domaine `testing.com`
 4. Dans le cas où l'adresse IP publique actuelle est différente de l'adresse IP publique enregistrée dans le DNS de Gandi.net alors on met à jour l'information pour chaque sous domaine renseigné.
 
 
-### Automatisation de l'exécution du script **Gandi_Update_DNS.sh**
+## Automatisation de l'exécution du script **Gandi_Update_DNS.sh**
 
 Pour exécuter automatiquement un script sur le NAS Synology, les étapes sont les suivantes :
 1. Cliquez sur le menu `Main menu` (en haut à gauche sur l'écran principal)
@@ -242,12 +237,12 @@ Pour exécuter automatiquement un script sur le NAS Synology, les étapes sont l
 
 [![CRON - Step n°1](/blog/web/20240419_nas_synology_dns_gandi_13.png)](/blog/web/20240419_nas_synology_dns_gandi_13.png)
 
-### Résultat de l’exécution du script **Gandi_Update_DNS.sh**
+## Résultat de l’exécution du script **Gandi_Update_DNS.sh**
 
 [![Execution - Step n°1](/blog/web/20240419_nas_synology_dns_gandi_14.png)](/blog/web/20240419_nas_synology_dns_gandi_14.png)
 
 
-## Mise en place du Proxy inversé sur le NAS Synology
+# Mise en place du Proxy inversé sur le NAS Synology
 
 Se connecter au NAS Synology et suivre les étapes suivantes :
 1. Cliquez sur le menu `Main menu` (en haut à gauche sur l'écran principal)

@@ -20,9 +20,7 @@ To set up the needed elements, we will perform the following steps:
 4. Setting up the [VPN Server](https://www.synology.com/fr-fr/dsm/packages/VPNCenter) application
 5. Installing and configuring VPN access on the phone (Android)
 
-# Steps
-
-## Create a specific user for VPN access
+# Create a specific user for VPN access
 
 We're going to create a local user, named **vpn**, on the NAS specifically to access the VPN server, so that we can limit rights if necessary.
 
@@ -41,7 +39,7 @@ Result :
 [![User - Step n°2](/blog/web/20240221_nas_synology_vpn_server_02.png)](/blog/web/20240221_nas_synology_vpn_server_02.png)
 
 
-## Install the **VPN Server** application
+# Install the **VPN Server** application
 
 To install the VPN Server application, follow the steps below:
 1. Click on `Main menu` (top left of main screen)
@@ -60,7 +58,7 @@ To check that the VPN Server application has been installed, follow the steps be
 [![Appli - Step n°1](/blog/web/20240221_nas_synology_vpn_server_03.png)](/blog/web/20240221_nas_synology_vpn_server_03.png)
 
 
-## Install a **Let's Encrypt** certificat
+# Install a **Let's Encrypt** certificat
 
 To secure access to the VPN, we're going to set up a **Let's Encrypt** certificate for the VPN Server application:
 1. Click on the `Main menu` (top left of main screen)
@@ -83,7 +81,7 @@ Result :
 [![Certif - Step n°4](/blog/web/20240221_nas_synology_vpn_server_07.png)](/blog/web/20240221_nas_synology_vpn_server_07.png)
 
 
-## Setting up the **VPN Server** application
+# Setting up the **VPN Server** application
 
 We're going to limit ourselves to the **OpenVPN** protocol, which will enable us to access all the services we require by connecting to the VPN access. 
 It is also possible to use the [PPTP](https://en.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol) and [L2TP/IPSec](https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol) protocols.
@@ -111,7 +109,7 @@ Les différentes options disponibles :
 - **Privilege** : Permet de gérer les droits d'utilisation entre les utilisateurs et les protocoles
 
 
-### Setting up the **Privilege** part
+## Setting up the **Privilege** part
 
 For the local user named **vpn**:
 1. Select OpenVPN protocol user rights only
@@ -120,7 +118,7 @@ For the local user named **vpn**:
 [![Config - Step n°2](/blog/web/20240221_nas_synology_vpn_server_09.png)](/blog/web/20240221_nas_synology_vpn_server_09.png)
 
 
-### Setting up the **General Settings** part
+## Setting up the **General Settings** part
 
 For the general configuration : 
 1. Set the `Network interface` option to `LAN`.
@@ -139,7 +137,7 @@ To set up additional security for VPN access :
 [![Config - Step n°3](/blog/web/20240221_nas_synology_vpn_server_11.png)](/blog/web/20240221_nas_synology_vpn_server_11.png)
 
 
-### Setting up the OpenVPN protocol
+## Setting up the OpenVPN protocol
 
 To configure access using the OpenVPN protocol :
 1. Check the `Enable OpenVPN server` box.
@@ -149,9 +147,9 @@ To configure access using the OpenVPN protocol :
 [![Config - Step n°4](/blog/web/20240221_nas_synology_vpn_server_12.png)](/blog/web/20240221_nas_synology_vpn_server_12.png)
 
 
-## Installing and configuring VPN access on the phone (Android)
+# Installing and configuring VPN access on the phone (Android)
 
-### Prerequisites: Create the profile file
+## Prerequisites: Create the profile file
 1. Retrieving the default profile file on your workstation : 
     1. Click on `Main menu` (top left of main screen)
     2. Click on the `VPN Server` application
@@ -167,7 +165,7 @@ To configure access using the OpenVPN protocol :
 
 
 
-### Installing and configuring VPN access on the phone
+## Installing and configuring VPN access on the phone
 
 1. Install the `OpenVPN Connect` application using **Google Play Store**
 
