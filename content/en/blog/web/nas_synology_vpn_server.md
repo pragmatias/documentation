@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-In this article, you'll find all the information you need to set up VPN access using a Synology NAS (and more specifically the [OpenVPN] protocol (https://openvpn.net/faq/what-is-openvpn/) as VPN server and an Android phone as client.
+In this article, you'll find all the information you need to set up VPN access using a Synology NAS (and more specifically the [OpenVPN](https://openvpn.net/faq/what-is-openvpn/) protocol as VPN server and an Android phone as client.
 
  <!--more-->
 
@@ -86,7 +86,7 @@ Result :
 ## Setting up the **VPN Server** application
 
 We're going to limit ourselves to the **OpenVPN** protocol, which will enable us to access all the services we require by connecting to the VPN access. 
-It is also possible to use the [PPTP](https://fr.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol) and [L2TP/IPSec](https://fr.wikipedia.org/wiki/Layer_2_Tunneling_Protocol) protocols.
+It is also possible to use the [PPTP](https://en.wikipedia.org/wiki/Point-to-Point_Tunneling_Protocol) and [L2TP/IPSec](https://en.wikipedia.org/wiki/Layer_2_Tunneling_Protocol) protocols.
 
 To access the VPN Server application configuration menu : 
 1. Click on the `Main menu` (top left of main screen)

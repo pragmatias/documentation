@@ -21,7 +21,7 @@ Pour mettre en place les éléments nécessaires, nous allons réaliser les éta
 5. Installation et configuration de l'accès VPN sur le téléphone (Android)
 
 
-# Etapes
+# Étapes
 
 ## Création d'un utilisateur spécifique pour l'accès au VPN 
 
