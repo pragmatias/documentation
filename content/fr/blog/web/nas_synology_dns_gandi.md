@@ -1,7 +1,7 @@
 ---
 Categories : ["NAS","Synology","DNS"]
 Tags : ["NAS","Synology","DNS"]
-title : "Mise a jour des DNS Gandi.net et Proxy inversé avec un NAS Synology"
+title : "Mise a jour des DNS de Gandi.net et utilisation d'un Proxy inversé avec un NAS Synology"
 date : 2024-04-19
 draft : false
 toc: true
@@ -29,7 +29,7 @@ Nous avons un nom de domaine `testing.com` actif chez [Gandi.net](https://www.ga
 [![Obj - Step n°0](/blog/web/20240419_nas_synology_dns_gandi_12.png)](/blog/web/20240419_nas_synology_dns_gandi_12.png)
 
 
-Schématisation :
+Schéma :
 
 [![Obj - Step n°1](/blog/web/20240419_nas_synology_dns_gandi_07.png)](/blog/web/20240419_nas_synology_dns_gandi_07.png)
 
