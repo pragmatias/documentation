@@ -39,12 +39,12 @@ Schema :
 The Livebox router can only manage IPv4, the public IP address is not fixed and we don't know when it changes, so we need to be able to check our public IP address regularly to update Gandi.net's DNS when necessary.
 
 
-## Use
+## Usage
 
 - When a user wants to access the url `https://vpn.testing.com` then he must be automatically redirected to local server n°1.
 - When a user wants to access the url `http://game.testing.com` then he must be automatically redirected to local server n°2.
 - When a user wants to access the url `http://todo.testing.com` then he must be automatically redirected to local server n°3.
-- When a user wants to access the url `htpps://share.testing.com` then he should be automatically redirected to the Synology NAS.
+- When a user wants to access the url `https://share.testing.com` then he should be automatically redirected to the Synology NAS.
 
 Schema : 
 [![Obj - Step n°2](/blog/web/20240419_nas_synology_dns_gandi_08.png)](/blog/web/20240419_nas_synology_dns_gandi_08.png)

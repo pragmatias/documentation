@@ -38,12 +38,12 @@ Schéma :
 
 Le routeur Livebox ne permet de gérer que l'IPv4, l'adresse IP publique n'est pas fixe et on ne sait pas quand elle change, il faut donc pouvoir vérifier régulièrement notre adresse IP publique pour mettre à jour le DNS de Gandi.net lorsque cela est nécessaire.
 
-## Utilisation
+## Usage
 
 - Lorsqu'un utilisateur souhaite accéder à l'url `https://vpn.testing.com` alors il doit être redirigé automatiquement vers le serveur local n°1.
 - Lorsqu'un utilisateur souhaite accéder à l'url `http://game.testing.com` alors il doit être redirigé automatiquement vers le serveur local n°2.
 - Lorsqu'un utilisateur souhaite accéder à l'url `http://todo.testing.com` alors il doit être redirigé automatiquement vers le serveur local n°3.
-- Lorsqu'un utilisateur souhaite accéder à l'url `htpps://share.testing.com` alors il doit être redirigé automatiquement vers le NAS Synology.
+- Lorsqu'un utilisateur souhaite accéder à l'url `https://share.testing.com` alors il doit être redirigé automatiquement vers le NAS Synology.
 
 
 Schéma : 

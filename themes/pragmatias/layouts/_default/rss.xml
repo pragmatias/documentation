@@ -1,30 +1,37 @@
+{{- $pctx := . }}
+{{- if .IsHome }}{{ $pctx = .Site }}{{ end }}
+{{- $pages := slice }}
+{{- if or $.IsHome $.IsSection }}
+{{- $pages = $pctx.RegularPages }}
+{{- else }}
+{{- $pages = $pctx.Pages }}
+{{- end }}
+{{- $limit := .Site.Config.Services.RSS.Limit }}
+{{- if ge $limit 1 }}
+{{- $pages = $pages | first $limit }}
+{{- end }}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>{{ .Site.Title }}</title>
     <link>{{ "/blog" | absLangURL }}</link>
     <description>{{ i18n "rss_content" }} {{ .Site.Title }}</description>
     <generator>Hugo {{ hugo.Version }}</generator>
-    {{ with .Site.LanguageCode }}
-      <language>{{.}}</language>
-    {{end}}
-    {{ with $.Site.Author.email }}
-      <webMaster>{{.}}</webMaster>
-    {{end}}
-    {{ with .Site.Copyright }}
-      <copyright>{{.}}</copyright>
-    {{end}}
-    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
-    <atom:link href="{{ "/feed.xml" | absLangURL }}" rel="self" type="application/rss+xml" />
-    {{ range first 10 (where .Data.Pages "Type" "blog") }}
+    {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
+    {{ with $.Site.Author.email }}<webMaster>{{.}}</webMaster>{{end}}
+    {{ with .Site.Copyright }}<copyright>{{.}}</copyright>{{end}}
+    <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod | time.Format ":date_short" | safeHTML }}</lastBuildDate>
+    {{- with .OutputFormats.Get "RSS" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range first 10 $pages }}
     <item>
-      <title>{{ .Title }}</title>
+      <title>{{ .Title transform.Plainify | transform.HTMLUnescape | safeHTML }}</title>
       <link>{{ .Permalink }}</link>
-      <pubDate>
-          {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}
-      </pubDate>
+      <pubDate>{{ .PublishDate | time.Format ":date_short" | safeHTML }}</pubDate>
       <guid>{{ .Permalink }}</guid>
-      <description>{{ .Summary | html }}</description>
+      <description>{{ .Summary | transform.Plainify | transform.HTMLUnescape | safeHTML }}</description>
     </item>
-    {{ end }}
+    {{- end }}
   </channel>
 </rss>
