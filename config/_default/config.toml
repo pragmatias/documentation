@@ -29,7 +29,7 @@ enableRobotsTXT = true
 
 [author]
     name = "pragmatias"
-    email = "dev@pragmatias.fr"
+    email = "contact@pragmatias.fr"
 
 [sitemap]
   changefreq = "monthly"
