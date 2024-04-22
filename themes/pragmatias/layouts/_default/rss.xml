@@ -20,17 +20,17 @@
     {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
     {{ with $.Site.Author.email }}<webMaster>{{.}}</webMaster>{{end}}
     {{ with .Site.Copyright }}<copyright>{{.}}</copyright>{{end}}
-    <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod | time.Format ":date_short" | safeHTML }}</lastBuildDate>
+    <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod | safeHTML }}</lastBuildDate>
     {{- with .OutputFormats.Get "RSS" }}
     {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{- end }}
-    {{- range first 10 $pages }}
+    {{- range first 20 $pages }}
     <item>
       <title>{{ .Title | transform.Plainify | transform.HTMLUnescape | safeHTML }}</title>
       <link>{{ .Permalink }}</link>
-      <pubDate>{{ .PublishDate | time.Format ":date_short" | safeHTML }}</pubDate>
+      <pubDate>{{ .PublishDate | safeHTML }}</pubDate>
       <guid>{{ .Permalink }}</guid>
-      <description>{{ .Summary | transform.Plainify | transform.HTMLUnescape | safeHTML }}</description>
+      <description>{{ .Summary | transform.XMLEscape | safeHTML }}</description>
     </item>
     {{- end }}
   </channel>
