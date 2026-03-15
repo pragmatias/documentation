@@ -27,9 +27,9 @@ enableRobotsTXT = true
 [taxonomies]
   tag = "tags"
 
-[author]
-    name = "pragmatias"
-    email = "contact@pragmatias.fr"
+[params]
+  author = "pragmatias"
+  contact = "contact@pragmatias.fr"
 
 [sitemap]
   changefreq = "monthly"

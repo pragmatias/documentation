@@ -54,7 +54,6 @@ Nous allons utiliser les éléments suivants :
 - Application Nextcloud v27 (archive)
 - Utilisation d'une IP spécifique pour l'accès à Nextcloud (110.110.110.151)
 
-</br>
 
 Les étapes seront les suivantes :
 1. Création d'un utilisateur spécifique pour Docker 
@@ -337,7 +336,6 @@ II\. Pour le service **MariaDB** :
 1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb` 
 2. Créez le fichier de configuration **50-server.conf** dans le répertoire créé en reprenant le template souhaité et modifiez la ligne commençant par `datadir` avec la ligne suivante `datadir                 = ${ROOT_DB_DATA}`
 
-<p>&nbsp;</p>
 
 III\. Pour l'application **Nextcloud** :
 1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` 

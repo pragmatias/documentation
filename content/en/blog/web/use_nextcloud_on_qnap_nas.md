@@ -11,8 +11,7 @@ In this article, you'll find everything you need to set up the [Nextcloud](https
 
 The set up is specific to the QNAP NAS of the [TS-x31P3 Series](https://www.qnap.com/static/landing/2020/fr-ts-x31p3-ts-x31k/index.html) which has a constraint limiting the use of Docker images in general and consequently blocking the use of the [Nextcloud AIO](https://github.com/nextcloud/all-in-one) image.
 
-
- <!--more-->
+<!--more-->
 
 # What's a NAS
 
@@ -40,7 +39,6 @@ The specific QNAP NAS constraint of the [TS-x31P3 Series](https://www.qnap.com/s
 > 
 > The error message displayed is : `/bin/sh: error while loading shared libraries: libc.so.6: ELF load command address/offset not page-aligned`
 
-
 ## QNAP NAS specification
 
 - OS : QTS 5.X
@@ -52,14 +50,16 @@ The specific QNAP NAS constraint of the [TS-x31P3 Series](https://www.qnap.com/s
 ## Process
 
 We'll be using the following components:
+
 - QNAP Container Station application (Docker and Docker Compose)
 - Nextcloud v27 application (archive)
 - A static IP for Nextcloud access (110.110.110.151)
 
-</br>
+
 
 The steps are as follows:
-1. Create a specific user for Docker 
+
+1. Create a specific user for Docker
 2. Create a shared directory for Docker
 3. Enable SSH access on QNAP NAS
 4. Install QNAP Container Station application
@@ -77,6 +77,7 @@ The steps are as follows:
 ## Create a specific user for Docker 
 
 Create a specific user for Docker to limit rights on all QNAP NAS components and services:
+
 1. Go to `Main Menu > ControlPanel > Privilege > Users`
 2. Click on the `Create` button, then on the `Create a User` option
 3. Fill in the form and choose the name (username) **dockeruser**
@@ -84,7 +85,7 @@ Create a specific user for Docker to limit rights on all QNAP NAS components and
 
 _Note: Save the PUID (e.g. 501) and PGID (e.g. 100), as these will be required for the rights of the Docker container containing the Nextcloud application._
 
-[![20231107_Blog_use_nextcloud_on_qnap_01](/blog/web/20231107_Blog_use_nextcloud_on_qnap_01.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_01.png) 
+[![20231107_Blog_use_nextcloud_on_qnap_01](/blog/web/20231107_Blog_use_nextcloud_on_qnap_01.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_01.png)
 
 ## Create a shared directory for Docker
 
@@ -99,7 +100,7 @@ To create a specific shared directory for the data and configuration files of th
 4. In the **Configure access privileges for users** window, select the `RW` (read & write) option for your administration user and for the **dockeruser** user, and click on the `Next` button
 5. In the **Properties** window, select the desired options and click on the `Finish` button
 
-[![20231107_Blog_use_nextcloud_on_qnap_02](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png) 
+[![20231107_Blog_use_nextcloud_on_qnap_02](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_02.png)
 
 ## Enable SSH access on QNAP NAS
 
@@ -110,7 +111,7 @@ To be able to connect to the QNAP NAS via SSH, you must first activate the servi
 
 _Note: In our case, we'll use port 23422 for SSH access._
 
-[![20231107_Blog_use_nextcloud_on_qnap_03](/blog/web/20231107_Blog_use_nextcloud_on_qnap_03.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_03.png) 
+[![20231107_Blog_use_nextcloud_on_qnap_03](/blog/web/20231107_Blog_use_nextcloud_on_qnap_03.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_03.png)
 
 ## Install QNAP Container Station application
 
@@ -120,7 +121,7 @@ To use Docker on the QNAP NAS, you need to install the QNAP Container Station ap
 
 _Note: A shortcut named **Container Station** should be present on the home page of your QNAP NAS._
 
-[![20231107_Blog_use_nextcloud_on_qnap_04](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png) 
+[![20231107_Blog_use_nextcloud_on_qnap_04](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png)](/blog/web/20231107_Blog_use_nextcloud_on_qnap_04.png)
 
 ## SSH connection to QNAP NAS 
 
@@ -217,7 +218,6 @@ ENTRYPOINT ["bash","/config/run_nextcloud.sh",">","/var/log/nextcloud/run_nextcl
 ```
 
 
-
 ## Creating a Docker Compose file
 
 To make it easier to use Docker to build the Nextcloud application, we're going to use Docker Compose to create a file named **docker-compose.yml** in the `/share/Docker/scripts/nextcloud_app` directory.
@@ -282,7 +282,7 @@ networks:
 
 ```
 
-Note on **volumes**:
+Note on **volumes** :
 - The `/share/Docker/nextcloud/nc_data` directory will contain all Nextcloud application user data
 - The `/share/Docker/nextcloud/nc_apps` directory will contain all the Nextcloud application's internal applications
 - The `/share/Docker/nextcloud/db_data` directory will contain all the MariaDB database data used by the Nextcloud application
@@ -338,9 +338,9 @@ III\. For the **MariaDB** service :
 1. Create the configuration directory `mkdir /share/Docker/scripts/nextcloud_app/config/mariadb`
 2. Create the **50-server.conf** configuration file in the directory you've created, using the desired template and modifying the line starting with `datadir` with the following line `datadir = ${ROOT_DB_DATA}`
 
-<p>&nbsp;</p>
 
-III\.  For the **Nextcloud** application :
+
+III\. For the **Nextcloud** application :
 1. Create the `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` configuration directory.
 2. Create configuration files named **autoconfig.php** and **docker.config.php** in the created directory to automatically configure the Nextcloud application on the first run
 
@@ -630,6 +630,7 @@ This environment file is defined in the **docker-compose.yml** file.
 The **.env** file must be created in the `/share/Docker/scripts/nextcloud_app/config` directory.
 
 The contents of the file **.env** :  _(replacing the values required for your environment))_
+
 ```sh
 PUID=501
 PGID=100
@@ -699,6 +700,7 @@ You can check that the container is running correctly by checking the informatio
 # Docker commands
 
 Some commands for using Docker :
+
 - `docker build -t nextcloud-qnas-img:v27 . ` : Builds the image from the **Dockerfile** in the current directory.
     - `docker build  -t nextcloud-qnas-img:v27 . --build-arg build_TZ=Europe/Paris --build-arg build_PUID=501 --build-arg build_PGID=100` : Build command with argument
 - `docker ps` : List of running containers
@@ -709,7 +711,8 @@ Some commands for using Docker :
 - `docker container start -a -i nextcloud-qnas` : Start a container by accessing the console directly
 - `docker rm nextcloud-qnas` : Delete the container
 
-If you need to manually recreate the QNAP NAS **network** for Docker : 
+If you need to manually recreate the QNAP NAS **network** for Docker :
+
 ```bash
 # Create dhcp network
 docker network create -d qnet --opt=iface=eth0 --ipam-driver=qnet --ipam-opt=iface=eth0 qnet-dhcp-eth0
@@ -719,13 +722,11 @@ docker network create -d qnet --opt=iface=eth0 --ipam-driver=qnet --ipam-opt=ifa
       --subnet=110.110.110.0/24 --gateway=110.110.110.1 qnet-static-eth0
 ```
 
-Some commands for using Docker Compose : _(You need to be in the directory containing the `docker-compose.yaml` file)_ 
+Some commands for using Docker Compose : _(You need to be in the directory containing the `docker-compose.yaml` file)_
+
 - `docker compose build --build-arg TZ=Europe/Paris --build-arg PUID=501 --build-arg PGID=100` : Allows build to be performed in the same way as the Docker command
 - `docker compose up -d` : Create and start defined containers
 - `docker compose down` : Stop and delete defined containers
 - `docker compose start` : Start defined containers
 - `docker compose stop` : Stop defined containers
-
-
-
 

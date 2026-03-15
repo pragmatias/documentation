@@ -18,7 +18,7 @@
     <description>{{ i18n "rss_content" }} {{ .Site.Title }}</description>
     <generator>Hugo {{ hugo.Version }}</generator>
     {{ with .Site.LanguageCode }}<language>{{.}}</language>{{end}}
-    {{ with $.Site.Author.email }}<webMaster>{{.}}</webMaster>{{end}}
+    {{ with .Site.Params.author }}<webMaster>{{.}}</webMaster>{{end}}
     {{ with .Site.Copyright }}<copyright>{{.}}</copyright>{{end}}
     <lastBuildDate>{{ (index $pages.ByLastmod.Reverse 0).Lastmod | safeHTML }}</lastBuildDate>
     {{- with .OutputFormats.Get "RSS" }}
