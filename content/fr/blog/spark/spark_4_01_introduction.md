@@ -14,7 +14,7 @@ Vous trouverez dans cet article des informations sur [Spark](https://spark.apach
 
 # Qu'est ce que Spark
 
-[Apache Spark](https://en.wikipedia.org/wiki/Apache_Spark) est un système de calcul distribué rapide et polyvalent qui d'exécuter les traitements par lots (batch), en streaming, d'apprentissage automatique et de graphes avec le même moteur d'exécution. Il a été créé pour répondre aux limitations de Hadoop MapReduce en se basant sur une gestion des structures de données en mémoire et un moteur/optimiseur avancé.
+[Apache Spark](https://en.wikipedia.org/wiki/Apache_Spark) est un système de calcul distribué rapide et polyvalent qui permet d'exécuter les traitements par lots (batch), en streaming, d'apprentissage automatique et de graphes avec le même moteur d'exécution. Il a été créé pour répondre aux limitations de Hadoop MapReduce en se basant sur une gestion des structures de données en mémoire et un moteur/optimiseur avancé.
 
 Fonctionnalités principales :
 - [RDD (Resilient Distributed Dataset)](https://spark.apache.org/docs/latest/rdd-programming-guide.html) : Collections distribuées immuables et tolérantes aux pannes qui exposent des transformations (map, filter, reduce) et des actions
