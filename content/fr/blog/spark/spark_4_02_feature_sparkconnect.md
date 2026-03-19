@@ -57,7 +57,7 @@ Spark Connect maintient l'isolation des sessions (Le client ne détient plus le 
 
 # Limitations
 
-1. **Latence Réseau** : Chaque opération sur un DataFrame nécessite un aller-retour réseau pour la soumission du plan. Les petites requêtes (exécution de 1-10ms) montrent un ralentissement de 5 à 10 fois en raison de la surcharge de sérialisation et réseau. Le développement interactif avec de nombreuses petites opérations peut sembler plus lent comparé au mode local.
+1. **Latence Réseau** : Chaque opération sur un DataFrame nécessite un aller-retour réseau pour la soumission du plan. Le développement interactif avec de nombreuses petites opérations peut sembler plus lent comparé au mode local.
 2. **Limitations des UDF**  : Les UDFs Python nécessitent une sérialisation et une transmission vers le serveur. Le code UDF est envoyé sous forme [d'objets pickled](https://spark.apache.org/docs/latest/api/python/user_guide/udfandudtf.html). Le débogage est plus difficile car les exceptions UDF se produisent côté serveur. Les UDFs avec de grandes fermetures (closures) (variables capturées) atteignent les limites de sérialisation. Les UDF Pandas fonctionnent mais avec une surcharge plus élevée.
 3. **Pas de Mode d'Exécution Local** : Spark Connect nécessite un serveur en cours d'exécution. Il est impossible d'utiliser le mode `local[*]` pour des tests rapides. Cela ajoute de la complexité au flux de travail de développement local et nécessite Docker ou un cluster distant même pour les tests unitaires.
 4. **Parité de Fonctionnalités encore en évolution** : Certaines API RDD héritées et configurations de bas niveau spécifiques ne sont pas prises en charge.
@@ -66,7 +66,7 @@ Spark Connect maintient l'isolation des sessions (Le client ne détient plus le 
 
 > **Warning** : 
 > - Via Spark Connect, un `collect()` sur un DataFrame de 10 millions de lignes peut saturer le buffer gRPC. 
-> - Lorsque vous modifiez des configurations via `spark.conf.set`, certaines options ne sont pas propagées au moteur d'exécution de la même manière que dans une session Spark classique "in-process".
+> - Lorsque vous modifiez des configurations via `spark.conf.set`, certaines options ne sont pas propagées au moteur d'exécution de la même manière que dans une session Spark classique `in-process`.
 
 
 > **Quand ne pas utiliser Spark Connect** : 

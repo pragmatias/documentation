@@ -57,7 +57,7 @@ Spark Connect maintains session isolation (Client no longer holds SparkContext).
 
 # Limitations
 
-1. **Network Latency** : Every DataFrame operation requires network round-trip for plan submission. Small queries (1-10ms execution) show 5-10x slowdown due to serialization and network overhead. Interactive development with many small operations feels slowly compared to local mode.
+1. **Network Latency** : Every DataFrame operation requires network round-trip for plan submission. Interactive development with many small operations feels slowly compared to local mode.
 2. **UDF Limitations** : Python UDFs require serialization and transmission to server. UDF code is sent as [pickled objects](https://spark.apache.org/docs/latest/api/python/user_guide/udfandudtf.html). Debugging is harder because UDF exceptions happen server-side. UDFs with large closures (captured variables) hit serialization limits. Pandas UDFs work but with higher overhead.
 3. **No Local Execution Mode** : Spark Connect requires a running server. Cannot use `local[*]` mode for quick testing. Adds complexity to local development workflow. Requires Docker or remote cluster even for unit tests.
 4. **Feature Parity still evolving** : Some legacy RDD APIs and specific low-level configurations are not supported.

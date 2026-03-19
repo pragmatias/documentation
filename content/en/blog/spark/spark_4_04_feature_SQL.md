@@ -46,7 +46,7 @@ The mode is configured per-session via `spark.sql.ansi.enabled`. Once enabled, a
 - **`TRY_CAST` vs `CAST` in ANSI Mode**  : 
     - `CAST()` throws exceptions on conversion errors in ANSI mode. `TRY_CAST()` returns `NULL` but explicitly signals validation failure. 
     - Use `TRY_CAST()` for data validation pipelines where bad rows should be filtered/logged rather than failing the entire job.
-- **`typeof()` Function**  :
+- **[typeof()](https://spark.apache.org/docs/latest/api/sql/index.html#typeof) Function**  :
     - Returns the data type of an expression result. Shows whether result is `INT`, `DECIMAL`, `DOUBLE`, etc. Use in migration validation to identify type changes.
 - **Reserved Keyword Quoting**  
     - ANSI mode enforces backtick quoting for reserved words. Queries with column names like `user`, `timestamp`, `order` must be rewritten. This is a breaking change for large SQL codebases. 

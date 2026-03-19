@@ -17,9 +17,6 @@ Vous trouverez dans cet article, des informations sur les fonctionnalité SQL (S
 
 ## Introduction
 
-
-It enables type safety, prevents implicit casting errors and enforces reserved keyword restrictions.
-
 Le mode de conformité ANSI SQL applique une sémantique SQL plus stricte correspondant à la [norme ISO/IEC 9075](https://www.iso.org/standard/76583.html).
 Cela permet de limiter les erreurs de typage, empêcher les erreurs de conversion implicite et appliquer les restrictions sur les mots-clés réservés.
 
@@ -50,7 +47,7 @@ Le mode est configuré par session via `spark.sql.ansi.enabled`. Une fois activ�
 - **`TRY_CAST` vs `CAST` en mode ANSI** :
     - `CAST()` lève des exceptions en cas d'erreurs de conversion en mode ANSI. `TRY_CAST()` retourne `NULL` mais signale explicitement l'échec de validation.
     - Utilisez `TRY_CAST()` pour les pipelines de validation de données où les lignes incorrectes doivent être filtrées/journalisées plutôt que de faire échouer la tâche entière.
-- **Fonction `typeof()`** :
+- **Fonction [typeof()](https://spark.apache.org/docs/latest/api/sql/index.html#typeof)** :
     - Retourne le type de données d'un résultat d'expression. Indique si le résultat est `INT`, `DECIMAL`, `DOUBLE`, etc. À utiliser pour identifier les changements de type (dans le cas d'une migration par exemple).
 - **Guillemets pour les mots-clés réservés** :
     - Le mode ANSI impose l'utilisation de backticks (guillemets inversés) pour les mots réservés. Les requêtes avec des noms de colonnes comme `user`, `timestamp`, `order` doivent être réécrites. Il s'agit d'un changement critique pour les grandes bases de code SQL.

@@ -31,12 +31,13 @@ Spark 4.0 adds the `COLLATE` clause and the `spark.sql.session.collation.enabled
 Three primary collation families exist in Spark 4.0:
 - **UTF8_BINARY**: Default byte-by-byte comparison (backward compatible)
 - **UTF8_LCASE**: Case-insensitive UTF-8 comparison (most common use case)
-- **UNICODE**: Linguistic collation with locale-specific rules (e.g., UNICODE_DE for German)
+- **UNICODE**: Linguistic collation with locale-specific rules (e.g., `*de.*` for German)
 
 The collation system integrates with the Catalyst optimizer. Spark analyzes collation requirements during query planning and injects appropriate comparison logic. This adds planning overhead but enables vectorized execution for collation-aware operations rather than falling back to row-by-row processing.
 
 
 **Key Collations** :
+To get the list of available collation : `SELECT * FROM collations();`
 
 | Identifier    | Description                                         |
 | ------------- | --------------------------------------------------- |

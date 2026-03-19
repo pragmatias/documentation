@@ -196,7 +196,6 @@ spark.stop()
 ## Conseils
 
 - `from_json` nécessite de connaître le schéma à l'avance, alors que `parse_json` préserve la flexibilité des données brutes tout en les optimisant.
-- Use `VARIANT` for the landing/raw layer (and exploration) and `STRUCT` for the Gold/Serving layer.
 - Utilisez `VARIANT` pour la couche Landing/Bronze (et l'exploration) et `STRUCT` pour la couche Optimisé/Gold
 
 

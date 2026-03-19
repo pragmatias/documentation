@@ -31,13 +31,14 @@ Spark 4.0 ajoute la clause `COLLATE` et la configuration` spark.sql.session.coll
 Trois familles principales de classement existent dans Spark 4.0 :
 - **UTF8_BINARY** : Comparaison octet par octet par défaut (rétrocompatible)
 - **UTF8_LCASE** : Comparaison UTF-8 insensible à la casse (cas d'usage le plus courant)
-- **UNICODE** : Classement linguistique avec règles spécifiques aux paramètres régionaux (par exemple, UNICODE_DE pour l'allemand)
+- **UNICODE** : Classement linguistique avec règles spécifiques aux paramètres régionaux (par exemple, `*de.*` pour l'allemand)
 
 Le système de collation s'intègre avec l'optimiseur Catalyst. Spark analyse les exigences de la collation lors de la planification des requêtes et applique la logique de comparaison appropriée. Cela ajoute une surcharge de planification mais permet l'exécution vectorisée pour les opérations tenant compte de la collation plutôt que de revenir à un traitement ligne par ligne.
 
 
 
 **Collations clés** :
+Pour avoir la liste des collations disponibles : `SELECT * FROM collations();`
 
 | Identifier    | Description                                             |
 | ------------- | ------------------------------------------------------- |
