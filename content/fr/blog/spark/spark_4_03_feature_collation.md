@@ -2,7 +2,7 @@
 Categories : ["Spark"]
 Tags : ["Spark"]
 title : "Spark : v4.x - Fonctionnalités - Pris en charge de la collation (SQL)"
-date : 2026-03-10
+date : 2026-04-02
 draft : false
 toc: true
 ---

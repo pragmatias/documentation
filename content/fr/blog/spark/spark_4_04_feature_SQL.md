@@ -2,7 +2,7 @@
 Categories : ["Spark"]
 Tags : ["Spark"]
 title : "Spark : v4.x - Fonctionnalités - Scripts SQL, Session et Conformité ANSI"
-date : 2026-03-13
+date : 2026-04-07
 draft : false
 toc: true
 ---

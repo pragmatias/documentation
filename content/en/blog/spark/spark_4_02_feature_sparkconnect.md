@@ -2,7 +2,7 @@
 Categories : ["Spark"]
 Tags : ["Spark"]
 title : "Spark : v4.x - Features - Spark Connect"
-date : 2026-03-06
+date : 2026-03-30
 draft : false
 toc: true
 ---

@@ -2,7 +2,7 @@
 Categories : ["Spark"]
 Tags : ["Spark"]
 title : "Spark : v4.x - Fonctionnalités - Variant Data Type"
-date : 2026-03-17
+date : 2026-04-20
 draft : false
 toc: true
 ---
