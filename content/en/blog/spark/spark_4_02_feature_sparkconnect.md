@@ -16,7 +16,7 @@ You'll find in this article, some information about the [Spark Connect](https://
 
 [Spark Connect](https://spark.apache.org/docs/latest/spark-connect-overview.html) is a client-server architecture within Apache Spark that enables remote connectivity to Spark clusters from any application
 
-[Spark Connect](https://spark.apache.org/docs/latest/spark-connect-overview.html) decouples client applications from Spark cluster processes through a [gRPC-based client-server architecture](https://grpc.io/). Clients send logical plans over the network instead of running JVM code in the driver. 
+[Spark Connect](https://spark.apache.org/docs/latest/spark-connect-overview.html) decouples client applications from Spark cluster processes through a [gRPC-based client-server architecture](https://grpc.io/). Instead of sending Scala/Python code to be executed directly on the Spark cluster driver, the client sends only the logical plans (a description of what it wants to do) for execution. 
 
 Some important points : 
 - Enables thin clients in Python, Scala, Java, and other languages without requiring Spark binaries locally. 
