@@ -90,13 +90,13 @@ The directories used for this project are:
 
 Steps from the spark-image-docker directory:
 1. Create the `spark-defaults.conf` file to define the configuration elements for the Spark cluster
-2. Create the `spark-env.sh` file to define the environment elements for the Spark cluster
-3. Create the `spark-start.sh` file to define the execution script for Spark cluster applications
+2. Create the `spark-env.sh` file to define the environment variables for the Spark cluster
+3. Create the `spark-start.sh` file to define the execution script for Spark cluster services
 4. Create the `Dockerfile` to define the content of the Spark image for creating the Spark cluster
 5. Execute the Docker image build command : `docker build -t spark4 spark-image-docker --no-cache`
 
 
-Content of the `spark-defaults.conf` file :
+Content of the **spark-defaults.conf** file :
 ```bash
 # --- History Server Configuration ---
 spark.eventLog.enabled              true
@@ -107,7 +107,7 @@ spark.history.fs.logDirectory       file:///opt/spark/event_logs
 spark.sql.warehouse.dir             file:///opt/spark/data/warehouse
 ```
 
-Content of the `spark-env.sh` file :
+Content of the **spark-env.sh** file :
 ```bash
 #!/bin/env bash
 
@@ -115,7 +115,7 @@ export SPARK_LOCAL_IP=`hostname -i`
 export SPARK_PUBLIC_DNS=`hostname -f`
 ```
 
-Content of the `spark-start.sh` file :
+Content of the **spark-start.sh** file :
 ```bash
 #!/bin/bash
 
@@ -148,7 +148,7 @@ tail -f $SPARK_HOME/logs/*
 ```
 
 
-Content of the `Dockerfile` file :
+Content of the **Dockerfile** file :
 ```docker
 # Use OpenJDK base image
 FROM eclipse-temurin:21-jdk-jammy
@@ -259,7 +259,7 @@ Steps to perform from the root directory :
 
 
 
-Content of the `compose.yml` :
+Content of the **compose.yml** :
 ```yaml
 services:
   spark-master:
@@ -394,7 +394,7 @@ Content of the log from the stop command `docker-compose down` :
 
 ## List of ports and interfaces
 
-Based on the configuration in the compose.yml file:
+Based on the configuration in the **compose.yml** file:
 - `4040` : Communication port for the [application UI (Jobs UI)](http://localhost:4040/jobs/)
 - `7077` : Communication port for the Spark cluster (Internal)
 - `8080` : Communication port for the [Master node web interface (driver)](http://localhost:8080/)
@@ -414,7 +414,7 @@ To execute a PySpark script directly on the local cluster:
 
 > Note: the user's `application/src` directory is mapped by default, in the configuration defined in the `compose.yml` file, to the `/home/root/src` directory
 
-Content of the `spark-submit-app.py` Python script:
+Content of the **spark-submit-app.py** Python script:
 ```python
 from pyspark.sql import SparkSession
 
@@ -609,7 +609,7 @@ To execute a PySpark script using Spark Connect:
 
 > Note: to get information about the execution of the Python script with Spark Connect, you need to go to the `Connect` tab in [the Jobs application interface](http://localhost:4040/connect/)
 
-Content of the `spark-connect-app.py` Python script : 
+Content of the **spark-connect-app.py** Python script : 
 ```python
 
 from pyspark.sql import SparkSession

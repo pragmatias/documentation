@@ -163,7 +163,7 @@ spark.stop()
 
 **Demonstration results** :
 
-**1/ Regarding the `data_variant_ns.parquet` file**
+**1/ Regarding the [data_variant_ns.parquet] file**
 - This file contains only two rows of data so Spark does not apply `shredding` by default.
 - This is confirmed by using the command `duckdb -c "DESCRIBE SELECT * FROM '~/{folder_data}/files/data_variant_ns.parquet/*.parquet';"` which displays the description of the data column type that stores the JSON as VARIANT (which is a STRUCT composed of `metadata` and `value`)
 
@@ -178,7 +178,7 @@ spark.stop()
 └─────────────┴─────────────────────────────────────┴─────────┴─────────┴─────────┴─────────┘
 ```
 
-**2/ Regarding the `data_variant_sc.parquet` file**
+**2/ Regarding the [data_variant_sc.parquet] file**
 - This file contains 10 rows of data and Spark applies `shredding` by default.
 - This is confirmed by using the command `duckdb -c "DESCRIBE SELECT * FROM '~/{folder_data}/files/data_variant_sc.parquet/*.parquet';"` which displays the description of the data column type that stores the JSON as VARIANT (which is a STRUCT composed of `metadata` and `value` but this time with the additional `typed_value` information which is the result of `shredding`)
 ```log

@@ -99,7 +99,7 @@ To execute a PySpark script using Spark Connect :
 
 > Note: To get information about the Python script execution with Spark Connect, you need to go to the `Connect` tab of [the jobs application interface](http://localhost:4040/connect/).
 
-Content of the `spark-connect-app.py` Python script : 
+Content of the **spark-connect-app.py** Python script : 
 ```python
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col

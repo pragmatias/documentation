@@ -86,15 +86,15 @@ Les répertoires utilisés pour ce projet sont :
 
 ## Création d'une image Docker
 
-Etapes à réaliser à partir du répertoire `spark-image-docker` :
+Étapes à réaliser à partir du répertoire **spark-image-docker** :
 1. Création du fichier `spark-defaults.conf` permettant de définir les éléments de configuration pour le cluster Spark
-2. Création du fichier `spark-env.sh` permettant de définir les éléments d'environnement pour le cluster Spark
-3. Création du fichier `spark-start.sh` permettant de définir le script d'exécution des applications du cluster Spark
+2. Création du fichier `spark-env.sh` permettant de définir les variables d'environnement pour le cluster Spark
+3. Création du fichier `spark-start.sh` permettant de définir le script d'exécution des services du cluster Spark
 4. Création du fichier `Dockerfile` permettant de définir le contenu de l'image Spark pour la création du cluster Spark
 5. Exécution de la commande de création de l'image Docker : `docker build -t spark4 spark-image-docker --no-cache`
 
 
-Contenu du fichier `spark-defaults.conf` :
+Contenu du fichier **spark-defaults.conf** :
 ```bash
 # --- History Server Configuration ---
 spark.eventLog.enabled              true
@@ -105,7 +105,7 @@ spark.history.fs.logDirectory       file:///opt/spark/event_logs
 spark.sql.warehouse.dir             file:///opt/spark/data/warehouse
 ```
 
-Contenu du fichier `spark-env.sh` :
+Contenu du fichier **spark-env.sh** :
 ```bash
 #!/bin/env bash
 
@@ -114,7 +114,7 @@ export SPARK_PUBLIC_DNS=`hostname -f`
 ```
 
 
-Contenu du fichier `spark-start.sh` :
+Contenu du fichier **spark-start.sh** :
 ```bash
 #!/bin/bash
 
@@ -147,7 +147,7 @@ tail -f $SPARK_HOME/logs/*
 ```
 
 
-Contenu du fichier `Dockerfile` :
+Contenu du fichier **Dockerfile** :
 ```docker
 # Use OpenJDK base image
 FROM eclipse-temurin:21-jdk-jammy
@@ -256,7 +256,7 @@ Etapes à réaliser à partir du répertoire racine :
 2. Démarrer le cluster local avec la commande `docker-compose up -d`
 3. Arrêter le cluster local avec la commande `docker-compose down`
 
-Contenu du fichier `compose.yml` :
+Contenu du fichier **compose.yml** :
 ```yaml
 services:
   spark-master:
@@ -391,7 +391,7 @@ Contenu du fichier de log après exécution de la commande `docker-compose down`
 
 ## Liste des ports et des interfaces
 
-En se basant sur la configuration définie dans le fichier `compose.yml` :
+En se basant sur la configuration définie dans le fichier **compose.yml** :
 - `4040` : Port de communication avec [l'interface applicative (UI) des jobs](http://localhost:4040/jobs/)
 - `7077` : Port de communication interne du cluster Spark
 - `8080` : Port de communication avec [l'interface web du Master (driver)](http://localhost:8080/)
@@ -411,7 +411,7 @@ Pour exécuter un script PySpark directement sur le cluster local :
 > Note : le répertoire `application/src` de l'utilisateur est mappé par défaut, dans la configuration définie dans le fichier `compose.yml`, sur le répertoire `/home/root/src`
 
 
-Contenu du script Python `spark-submit-app.py` :
+Contenu du script Python **spark-submit-app.py** :
 ```python
 from pyspark.sql import SparkSession
 
@@ -605,7 +605,7 @@ Pour exécuter un script PySpark en utilisant Spark Connect :
 
 > Note : pour avoir des informations sur l'exécution du script Python avec Spark Connect, il faut aller dans l'onglet `Connect` de [l'interface applicative des jobs](http://localhost:4040/connect/)
 
-Contenu du script Python `spark-connect-app.py` :
+Contenu du script Python **spark-connect-app.py** :
 ```python
 
 from pyspark.sql import SparkSession

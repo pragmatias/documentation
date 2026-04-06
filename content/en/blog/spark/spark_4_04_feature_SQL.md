@@ -977,7 +977,7 @@ result = spark.sql(sql_script)
 result.show()
 ```
 
-Content of the `example_SQL.sql` SQL script file :
+Content of the **example_SQL.sql** SQL script file :
 ```SQL
 -- Spark 4.x - SQL Scripting
 
