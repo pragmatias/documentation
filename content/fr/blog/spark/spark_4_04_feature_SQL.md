@@ -601,7 +601,7 @@ spark.sql(f"SELECT * FROM orders WHERE country = '{params['country']}'")
 ```
 
 
-Spark 4.0 introduit les variables SQL qui résolvent ces problèmes. Les variables sont déclarées avec des types explicites et limitées à la session :
+Spark 4.0 introduit les variables SQL qui permettent de résoudre ces problèmes. Les variables sont déclarées avec des types explicites et limitées à la session :
 ```sql
 DECLARE min_amount DECIMAL(10,2) DEFAULT 100.0;
 SELECT * FROM orders WHERE amount >= min_amount;
