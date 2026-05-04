@@ -2,7 +2,7 @@
 Categories : ["Spark"]
 Tags : ["Spark"]
 title : "Spark : v4.x - Fonctionnalités - Spark Declarative Pipelines"
-date : 2026-04-27
+date : 2026-05-11
 draft : false
 toc: true
 ---
