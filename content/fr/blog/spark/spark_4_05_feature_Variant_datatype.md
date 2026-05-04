@@ -96,7 +96,7 @@ Liste des fonctions pour manipuler les données de type VARIANT : [Documentation
 - La performance (I/O) : Si vous faites une requête pour accéder à l'information `$.sensor`, Spark ne lit physiquement que la colonne `shredded` correspondant à ce champ. Il ignore tout le reste du document JSON.
 - La compression : Comme les données décomposées sont typées (ex: tous les IDs sont des entiers), les algorithmes de compression comme Snappy ou Zstd sont beaucoup plus efficaces que sur du texte brut.
 
-La limite du `shredding` :  Cela ne transforme pas l'ensemble des éléments du Variant en colonnes. Spark utilise une limite (généralement sur le nombre de champs ou la profondeur) pour éviter de créer des milliers de colonnes dans Parquet.
+La limite du `shredding` : Cela ne transforme pas l'ensemble des éléments du Variant en colonnes. Spark utilise une limite (généralement sur le nombre de champs ou la profondeur) pour éviter de créer des milliers de colonnes dans le fichier Parquet.
 
 
 > **Attention** : Le `shredding` ne se produit que si Spark détecte que les données sont suffisamment répétitives pour valoir le coup d'être extraites en colonnes. Sur un petit échantillon, il est possible que Spark décide de ne pas faire de `shredding`.
