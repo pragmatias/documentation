@@ -2,7 +2,7 @@
 Categories : ["Spark"]
 Tags : ["Spark"]
 title : "Spark : v4.x - Fonctionnalités - Variant Data Type"
-date : 2026-04-20
+date : 2026-05-01
 draft : false
 toc: true
 ---
@@ -196,7 +196,7 @@ spark.stop()
 ## Conseils
 
 - `from_json` nécessite de connaître le schéma à l'avance, alors que `parse_json` préserve la flexibilité des données brutes tout en les optimisant.
-- Utilisez `VARIANT` pour la couche Landing/Bronze (et l'exploration) et `STRUCT` pour la couche Optimisé/Gold
+- Utilisez `VARIANT` pour la couche Landing/Bronze (et l'exploration) et `STRUCT` pour la couche Optimisée/Gold
 
 
 # Advantages
