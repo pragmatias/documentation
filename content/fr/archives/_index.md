@@ -1,5 +1,5 @@
 ---
-Title : "Archives"
+title : "Archives"
 date : 2019-04-19
 ---
 

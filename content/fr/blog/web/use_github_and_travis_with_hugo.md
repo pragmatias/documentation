@@ -7,21 +7,21 @@ draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre en place un site web static en se basant sur les outils suivants :
+Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre en place un site web statique en se basant sur les outils suivants :
 
-- [Hugo](https://gohugo.io) : Générateur de site web static
+- [Hugo](https://gohugo.io) : Générateur de site web statique
 - [Github](https://github.com) : Service web d'hébergement et de gestion des sources de développements (utilisant l'outil [Git](https://en.wikipedia.org/wiki/Git)) 
-- [Travis CI](https://travis-ci.com) : Service web permettant de tester et deployer les développements
+- [Travis CI](https://travis-ci.com) : Service web permettant de tester et déployer les développements
 - [Gandi](https://www.gandi.net) : Fournisseur du nom de domaine
 
  <!--more-->
 
 # Objectif
 
-- Création d'un dépôt [Github](https://github.com) pour stocker les sources permettant de générer le site web static (**documentation**)
-- Création d'un dépôt [Github](https://github.com) pour stocker les éléments du site web static (**pragmatias.github.io**)
-- Configurer [Travis CI](https://travis-ci.com) pour déclencher la génération du site web static dans le dépôt **pragmatias.github.io** lors d'un commit dans la branche **master** du dépôt **documentation**
-- Gestion du nom de domaine personnel chez [Gandi](https://www.gandi.net/fr) pour afficher le site web static avec l'adresse [pragmatias.fr](https://pragmatias.fr)
+- Création d'un dépôt [Github](https://github.com) pour stocker les sources permettant de générer le site web statique (**documentation**)
+- Création d'un dépôt [Github](https://github.com) pour stocker les éléments du site web statique (**pragmatias.github.io**)
+- Configurer [Travis CI](https://travis-ci.com) pour déclencher la génération du site web statique dans le dépôt **pragmatias.github.io** lors d'un commit dans la branche **master** du dépôt **documentation**
+- Gestion du nom de domaine personnel chez [Gandi](https://www.gandi.net/fr) pour afficher le site web statique avec l'adresse [pragmatias.fr](https://pragmatias.fr)
 
 
 # Code source
@@ -52,7 +52,7 @@ Il faut faire les mêmes étapes que pour la création du dépôt **documentatio
 
 Il faut créer au moins un fichier dans le dépôt **pragmatias.github.io** pour la suite de la configuration du dépôt.
 
-Vous trouverez plus d'information sur le systeme **Pages** de Github sur le [site officiel](https://pages.github.com).
+Vous trouverez plus d'informations sur le système **Pages** de Github sur le [site officiel](https://pages.github.com).
 
 Si vous voulez modifier la configuration par défaut :
 
@@ -69,7 +69,7 @@ Si vous voulez modifier la configuration par défaut :
 
 # Lier Travis CI avec un dépôt Github
 
-1\. Connectez vous sur [Travis CI](https://travis-ci.com) avec votre compte [Github](https://github.com)
+1\. Connectez-vous sur [Travis CI](https://travis-ci.com) avec votre compte [Github](https://github.com)
 
 [![1ère étape](/blog/web/20190429_travis_step1.png)](/blog/web/20190429_travis_step1.png)
 
@@ -85,7 +85,7 @@ Si vous voulez modifier la configuration par défaut :
 # Configuration des actions de Travis CI sur les dépôts Github
 
 ## Gestion d'un jeton Github
-Il faut commencer par créer un jeton Github permettant de donner le droit à [Travis CI](https://travis-ci.com) de faire la mise à jour du dépot cible.
+Il faut commencer par créer un jeton Github permettant de donner le droit à [Travis CI](https://travis-ci.com) de faire la mise à jour du dépôt cible.
 
 1\. Connectez vous sur votre compte [Github](https://github.com), allez dans **settings** et cliquez sur **Developer settings**
 
@@ -95,7 +95,7 @@ Il faut commencer par créer un jeton Github permettant de donner le droit à [T
 
 [![2ème étape](/blog/web/20190429_github_token_step2.png)](/blog/web/20190429_github_token_step2.png)
 
-3\. Remplissez le champ **Tocken description**, puis selectionnez les droits nécessaires *(repo et gist)* et cliquez sur **Generate token**
+3\. Remplissez le champ **Token description**, puis sélectionnez les droits nécessaires *(repo et gist)* et cliquez sur **Generate token**
 
 [![3ème étape](/blog/web/20190429_github_token_step3.png)](/blog/web/20190429_github_token_step3.png)
 
@@ -147,13 +147,13 @@ deploy:
 Le contenu du fichier est le suivant :
 
 - Utilisation de la distribution Ubuntu Trusty `dist: trusty`
-- Recuperation et installation de l'outil Hugo pour Linux `install: ...`
+- Récuperation et installation de l'outil Hugo pour Linux `install: ...`
 - Suppression du répertoire **public** qui est le répertoire par défaut de génération de l'outil Hugo `before_script: ...`
 - Exécution de l'outil Hugo `script: ...`
 - Pour la partie déploiement :
- - On défini que l'on souhaite déployer le contenu du répertoire **public** après exécution de la partie **script** dans le dépôt **pragmatias/pragmatias.github.io**
- - On défini que l'on souhaite utiliser la branche **master** pour les deux dépôts *(source et cible)*
- - On défini que la cible est **Github Pages** `provider: pages`
+    - On définit que l'on souhaite déployer le contenu du répertoire **public** après exécution de la partie **script** dans le dépôt **pragmatias/pragmatias.github.io**
+    - On définit que l'on souhaite utiliser la branche **master** pour les deux dépôts *(source et cible)*
+    - On définit que la cible est **Github Pages** `provider: pages`
  
 
 

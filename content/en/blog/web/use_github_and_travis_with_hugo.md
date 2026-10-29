@@ -95,7 +95,7 @@ First, you have to create a Github token allowing to give the right at [Travis C
 
 [![2ème étape](/blog/web/20190429_github_token_step2.png)](/blog/web/20190429_github_token_step2.png)
 
-3\. Fill the **Tocken description** field, then select the necessary rights *(repo et gist)* and click on **Generate token**
+3\. Fill the **Token description** field, then select the necessary rights *(repo et gist)* and click on **Generate token**
 
 [![3ème étape](/blog/web/20190429_github_token_step3.png)](/blog/web/20190429_github_token_step3.png)
 
@@ -151,9 +151,9 @@ The content of this file is :
 - delete the folder **public** which is the default generation folder for Hugo `before_script: ...`
 - Run the Hugo tool `script: ...`
 - For the deployment part :
- - We define that we want to deploy the content of the directory **public** after executing the part **script** in the repository **pragmatias/pragmatias.github.io**
- - We define that we want to use the **master** branch for both repositories *(source and target)*
- - We define that the target is **Github Pages** `provider: pages`
+    - We define that we want to deploy the content of the directory **public** after executing the part **script** in the repository **pragmatias/pragmatias.github.io**
+    - We define that we want to use the **master** branch for both repositories *(source and target)*
+    - We define that the target is **Github Pages** `provider: pages`
  
 
 

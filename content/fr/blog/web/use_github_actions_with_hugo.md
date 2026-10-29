@@ -7,21 +7,21 @@ draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre en place un site web static en se basant sur les outils suivants :
+Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre en place un site web statique en se basant sur les outils suivants :
 
-- [Hugo](https://gohugo.io) : Générateur de site web static
+- [Hugo](https://gohugo.io) : Générateur de site web statique
 - [Github](https://github.com) : Service web d'hébergement et de gestion des sources de développements (utilisant l'outil [Git](https://en.wikipedia.org/wiki/Git)) 
-- [Github Actions](https://github.com/features/actions) : Service Github permettant de tester et deployer les développements
+- [Github Actions](https://github.com/features/actions) : Service Github permettant de tester et déployer les développements
 - [Gandi](https://www.gandi.net) : Fournisseur du nom de domaine
 
  <!--more-->
 
 # Objectif
 
-- Création d'un dépôt [Github](https://github.com) pour stocker les sources permettant de générer le site web static (**documentation**)
-- Création d'un dépôt [Github](https://github.com) pour stocker les éléments du site web static (**pragmatias.github.io**)
-- Configurer [Github Actions](https://github.com/features/actions) pour déclencher la génération du site web static dans le dépôt **pragmatias.github.io** lors d'un commit dans la branche **master** du dépôt **documentation**
-- Gestion du nom de domaine personnel chez [Gandi](https://www.gandi.net/fr) pour afficher le site web static avec l'adresse [pragmatias.fr](https://pragmatias.fr)
+- Création d'un dépôt [Github](https://github.com) pour stocker les sources permettant de générer le site web statique (**documentation**)
+- Création d'un dépôt [Github](https://github.com) pour stocker les éléments du site web statique (**pragmatias.github.io**)
+- Configurer [Github Actions](https://github.com/features/actions) pour déclencher la génération du site web statique dans le dépôt **pragmatias.github.io** lors d'un commit dans la branche **master** du dépôt **documentation**
+- Gestion du nom de domaine personnel chez [Gandi](https://www.gandi.net/fr) pour afficher le site web statique avec l'adresse [pragmatias.fr](https://pragmatias.fr)
 
 
 # Code source
@@ -52,7 +52,7 @@ Il faut faire les mêmes étapes que pour la création du dépôt **documentatio
 
 Il faut créer au moins un fichier dans le dépôt **pragmatias.github.io** pour la suite de la configuration du dépôt.
 
-Vous trouverez plus d'information sur le systeme **Pages** de Github sur le [site officiel](https://pages.github.com).
+Vous trouverez plus d'informations sur le système **Pages** de Github sur le [site officiel](https://pages.github.com).
 
 Si vous voulez modifier la configuration par défaut :
 
@@ -69,9 +69,9 @@ Si vous voulez modifier la configuration par défaut :
 # Configuration des actions sur les dépôts Github
 
 ## Gestion d'un jeton personnel Github
-Il faut commencer par créer un jeton Github permettant de donner le droit à [Github Actions](https://github.com/features/actions) de faire la mise à jour du dépot cible.
+Il faut commencer par créer un jeton Github permettant de donner le droit à [Github Actions](https://github.com/features/actions) de faire la mise à jour du dépôt cible.
 
-1\. Connectez vous sur votre compte [Github](https://github.com), allez dans **settings** et cliquez sur **Developer settings**
+1\. Connectez-vous sur votre compte [Github](https://github.com), allez dans **settings** et cliquez sur **Developer settings**
 
 [![1ère étape](/blog/web/20190429_github_token_step1.png)](/blog/web/20190429_github_token_step1.png)
 
@@ -79,7 +79,7 @@ Il faut commencer par créer un jeton Github permettant de donner le droit à [G
 
 [![2ème étape](/blog/web/20190429_github_token_step2.png)](/blog/web/20190429_github_token_step2.png)
 
-3\. Remplissez le champ **Tocken description**, puis selectionnez les droits nécessaires *(repo et gist)* et cliquez sur **Generate token**
+3\. Remplissez le champ **Token description**, puis sélectionnez les droits nécessaires *(repo et gist)* et cliquez sur **Generate token**
 
 [![3ème étape](/blog/web/20190429_github_token_step3.png)](/blog/web/20190429_github_token_step3.png)
 
@@ -155,11 +155,11 @@ jobs:
 Le contenu du fichier est le suivant :
 
 - Utilisation de la distribution Ubuntu `runs-on: ubuntu-latest`
-- Recuperation et installation de l'outil Hugo pour Linux `name: Setup Hugo`
+- Récuperation et installation de l'outil Hugo pour Linux `name: Setup Hugo`
 - Suppression du répertoire **public** qui est le répertoire par défaut de génération de l'outil Hugo `name: Cleaning`
 - Exécution de l'outil Hugo `name: Build`
 - Pour la partie déploiement :
- - On défini que l'on souhaite déployer le contenu du répertoire **public**  dans la branche **master** du dépôt **pragmatias/pragmatias.github.io**
+    - On définit que l'on souhaite déployer le contenu du répertoire **public**  dans la branche **master** du dépôt **pragmatias/pragmatias.github.io**
  
 
 
@@ -187,6 +187,10 @@ Le contenu du fichier est le suivant :
 2\.3\. Ajouter les enregistrements DNS suivants *(pour faire la redirection entre le service Pages de Github et votre nom de domaine)*
 
 ```plaintext
+@ 1800 IN A 185.199.108.153
+@ 1800 IN A 185.199.109.153
+@ 1800 IN A 185.199.110.153
+@ 1800 IN A 185.199.111.153
 www 10800 IN CNAME pragmatias.github.io
 ```
 

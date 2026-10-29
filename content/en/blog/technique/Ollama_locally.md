@@ -3,7 +3,7 @@ Categories : ["Ollama","LLMs","VS Code","Podman"]
 Tags : ["Ollama","LLMs","VS Code","Podman"]
 title : "LLMs : Using Ollama with Podman and VS Code"
 date : 2024-07-24
-draft : fals
+draft : false
 toc: true
 ---
 
