@@ -155,7 +155,7 @@ jobs:
 Le contenu du fichier est le suivant :
 
 - Utilisation de la distribution Ubuntu `runs-on: ubuntu-latest`
-- Récuperation et installation de l'outil Hugo pour Linux `name: Setup Hugo`
+- Récupération et installation de l'outil Hugo pour Linux `name: Setup Hugo`
 - Suppression du répertoire **public** qui est le répertoire par défaut de génération de l'outil Hugo `name: Cleaning`
 - Exécution de l'outil Hugo `name: Build`
 - Pour la partie déploiement :

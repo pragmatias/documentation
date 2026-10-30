@@ -78,7 +78,7 @@ Documentation :
 
 # Advantages
 
-1. **Automatic dependency resolution and pipeline execution optimization** : This is the most tangible benefit. The order in which Python functions or SQL queries are defined does not matter. The SDP famework analyzes the graph and determines the optimal execution order. The SDP framework runs queries without direct dependencies in parallel, then sequentially executes those with dependencies.
+1. **Automatic dependency resolution and pipeline execution optimization** : This is the most tangible benefit. The order in which Python functions or SQL queries are defined does not matter. The SDP framework analyzes the graph and determines the optimal execution order. The SDP framework runs queries without direct dependencies in parallel, then sequentially executes those with dependencies.
 2. **Enables pre-execution validation with dry-run** : The `dry-run` feature detects syntax errors (Python or SQL), analysis errors (missing tables or columns), and graph validation errors like cyclic dependencies without reading or writing any data. This allows for automated checks within CI/CD pipelines.
 3. **Format-agnostic** : The SDP framework supports all data sources and catalogs supported by Spark. It is recommended to use [Iceberg](https://iceberg.apache.org) or [Delta Lake](https://docs.databricks.com/aws/en/delta/) data formats.
 4. **Easier maintenance** : Understanding and maintaining a pipeline based on a declarative framework is much easier than managing a set of imperative PySpark processes.
@@ -635,7 +635,7 @@ To properly manage the environment, we will create two PySpark scripts in the `a
     - `sdp_bronze`: For storing bronze tables
     - `sdp_silver`: For storing silver tables
     - `sdp_gold`: For storing gold tables
-- The `check_list_tables.py` script will displays all the created elements
+- The `check_list_tables.py` script will display all the created elements
 
 
 Content of the **init_schemas.py** file :

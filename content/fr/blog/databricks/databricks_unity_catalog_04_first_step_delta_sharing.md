@@ -17,7 +17,7 @@ _Note : Les travaux se basent sur l'état de la solution Unity Catalog à la fin
 
 <!--more-->
 
-# Qu'est ce qu'est le Data Sharing
+# Qu'est-ce qu'est le Data Sharing
 
 Le Data Sharing est une pratique qui consiste à partager des données entre différents partenaires.
 
@@ -69,7 +69,7 @@ Cette fonctionnalité s'appuie sur un [protocol ouvert](https://github.com/delta
 
 Cette fonctionnalité se base sur la solution Unity Catalog afin de centraliser la gouvernance des données (gestion des catalogues et des droits sur les données).
 
-Le Delta Sharing Server est géré par la solution Unity Catalog et permet de donner à un destinataire l'accès direct au données sur le stockage sans passer par un cluster ou un SQL Warehouse
+Le Delta Sharing Server est géré par la solution Unity Catalog et permet de donner à un destinataire l'accès direct aux données sur le stockage sans passer par un cluster ou un SQL Warehouse
 
 Schématisation du fonctionnement du Delta Sharing : 
 [![schema_20](/blog/web/20230521_blog_article_unity_catalog_dela_sharing_20.png)](/blog/web/20230521_blog_article_unity_catalog_dela_sharing_20.png)
@@ -93,14 +93,14 @@ Quelques avantages de cette fonctionnalité :
 - Un fournisseur peut facilement définir des partages sur une version ou une partition spécifique d'une table
 - Les tables sont partagés en direct et peuvent être mise à jour par le fournisseur seulement
 - Tous les clients qui peuvent lire des données parquets peuvent accéder aux données partagées
-- Le transfert des données s'appuient uniquement sur les ressources S3/ADLS/GCS, par conséquent le transfert est extrêmement efficace et peu coûteux
+- Le transfert des données s'appuie uniquement sur les ressources S3/ADLS/GCS, par conséquent le transfert est extrêmement efficace et peu coûteux
 
 
-Il est possible d'utiliser la fonctionnalité "Delta Sharing" de trois façon différentes :
+Il est possible d'utiliser la fonctionnalité "Delta Sharing" de trois façons différentes :
 1. [Open Sharing](https://docs.databricks.com/data-sharing/share-data-open.html)
-    1. Cela permet à n'importe quel client n'utilisant pas Databricks  avec la solution Unity Catalog d'accéder aux données partagés
-    2. Il est nécessaire d'utiliser une librairies spécifiques pour pouvoir lire des données en passant pour le Delta Sharing
-    3. Les destinataires de ce type de partage se base sur la durée de vie d'un Token Databricks (définie au niveau du Metastore Unity Catalog du fournisseur)
+    1. Cela permet à n'importe quel client n'utilisant pas Databricks avec la solution Unity Catalog d'accéder aux données partagées
+    2. Il est nécessaire d'utiliser une librairie spécifique pour pouvoir lire des données en passant pour le Delta Sharing
+    3. Les destinataires de ce type de partage se basent sur la durée de vie d'un Token Databricks (définie au niveau du Metastore Unity Catalog du fournisseur)
 2. [Databricks-to-Databricks Sharing](https://docs.databricks.com/data-sharing/share-data-databricks.html)
     1. Cela correspond au partage de données entre deux Metastores de la solution Unity Catalog (dans le même Account Databricks ou dans des Accounts Databricks différents (AWS, Azure ou GCP))
     3. Un des avantages de ce type de partage est que ni le destinataire (Recipient), ni le fournisseur (Provider) n'a besoin de gérer un Token Databricks pour l'accès aux données partagées.
@@ -111,7 +111,7 @@ Il est possible d'utiliser la fonctionnalité "Delta Sharing" de trois façon di
 
 
 
-Les objets spécifique à cette fonctionnalité qui ont été mis en place dans la solution Unity Catalog sont :
+Les objets spécifiques à cette fonctionnalité qui ont été mis en place dans la solution Unity Catalog sont :
 - `Provider` (Fournisseur) : Cela permet de définir le fournisseur de données pour le destinataire
 - `Recipient` (Destinataire) : Cela permet de définir les différents destinataires (équivalent d'utilisateur) pour gérer les droits d'accès sur les données partagées
 - `Share` (Partage) : C'est une collection de tables et de notebooks en lecture  seule permettant de partager des données provenant d'un Metastore à des destinataires 
@@ -126,7 +126,7 @@ Information concernant les partages (Share) :
 - Les droits d'accès au partage (Share) ne peuvent être donnés qu’aux destinataires (Recipient) définis
 - Le nom d'un partage (Share) peut être un nom déjà utilisé par un catalogue ou un schéma (pas de restriction, mais il est recommandé d'avoir un nom différent pour faciliter la gestion des partages)
 - Il est possible de partager uniquement des tables Delta qu'elles soient managées ou externes
-    - Il est possible de définir une notion de partition se basant sur les partitions existantes de la table Delta pour limiter automatiquement l'accès aux données en fonction des propriétés de chaque destinaires (Recipient)
+    - Il est possible de définir une notion de partition se basant sur les partitions existantes de la table Delta pour limiter automatiquement l'accès aux données en fonction des propriétés de chaque destinaire (Recipient)
         - La gestion des partitions au niveau du partage (Share) peut être extrêmement pratique si vous avez défini des partitions sur une information comme le pays, une période ou un identifiant lié au destinataire (Recipient) pour limiter automatiquement l'accès aux données.
         - Cela permet de définir une seule fois les contraintes sur les partitions au niveau du partage (Share) et de pouvoir définir les propriétés de chaque destinataire (Recipient)
     - Il est possible de définir si l'historique d'une table Delta est partagée ou non
@@ -136,15 +136,15 @@ Information concernant les partages (Share) :
     - Lorsque l'on ne défini pas d'alias pour le nom du schéma et de la table alors c'est le nom du schéma source et de la table source qui seront utilisés
     - Il n'est pas possible de mettre à jour un alias après ajout de l'objet dans le partage. (Il est nécessaire d'enlever et d'ajouter à nouveau l'objet pour modifier l'alias)
 - Information spécifique au partage d'un notebook (dans le cas d'un partage Databricks-to-Databricks uniquement) :
-    - Lors du partage du notebook, il est en réalité exporté au format HTML vers un répertoire du stockage (AWS S3) managé de Unity Catalog (et plus précisément le répertoire `s3://s3-dbx-metastore-uc/metastore-sandbox/<Metastore ID>/delta-sharing/shares/<Share ID>/notebooks_files/*`), ce qui a pour effet de garder un version figée du notebook que l'on souhaite partager.
+    - Lors du partage du notebook, il est en réalité exporté au format HTML vers un répertoire du stockage (AWS S3) managé de Unity Catalog (et plus précisément le répertoire `s3://s3-dbx-metastore-uc/metastore-sandbox/<Metastore ID>/delta-sharing/shares/<Share ID>/notebooks_files/*`), ce qui a pour effet de garder une version figée du notebook que l'on souhaite partager.
     - Lorsque le notebook qui a été partagé est modifié, cela n'a pas d'impact sur le notebook partagé. Il faut l'enlever et l'ajouter à nouveau au partage (Share) pour partager la dernière version du notebook.
 
 
 Information concernant les destinataires (Recipient) :
 - C'est un objet au niveau du Metastore qui permet de définir un accès pour un partenaire/client
 - La gestion des accès en lecture sur le partage (Share) se fait sur l'objet destinataire (Recipient) 
-- Un destinataire  (Recipient) peut accéder à l'ensemble des partages (Share) d'un Metastore en fonction des droits données par les propriétaires des partages (Share)
-- Un destinataire  (Recipient) ne peut pas accéder aux catalogues du Metatore Unity Catalog, uniquement aux partages autorisés.
+- Un destinataire  (Recipient) peut accéder à l'ensemble des partages (Share) d'un Metastore en fonction des droits donnés par les propriétaires des partages (Share)
+- Un destinataire  (Recipient) ne peut pas accéder aux catalogues du Metastore Unity Catalog, uniquement aux partages autorisés.
 - Pour pouvoir créer un destinataire (Recipient), il est nécessaire d'activer la fonctionnalité Delta Sharing au niveau du Metastore
 - Il existe deux types de destinataire (Recipient)
     - Open Sharing : le destinataire (Recipient) utilise un Token Databricks dont la durée de validité est définie au niveau du Metastore
@@ -184,7 +184,7 @@ Quelques informations :
     - Lorsque vous allez mettre en place la configuration de logs, il faudra faire attention à ne pas filtrer d'identifiant de Workspace Databricks ou à prendre en compte l'identifiant de Workspace Databricks avec la valeur `0`  sinon vous ne récupérerez pas les logs concernant les évènements liés au Métastore Unity Catalog.
 - Vous ne pourrez pas mettre à jour ou supprimer une configuration de log au niveau de l'Account Databricks, vous pourrez uniquement la désactiver et en créer une nouvelle (même si vous utiliser le même nom, l'identifiant de configuration sera différent avec un identifiant unique)
 
-Tous les événements tracés au niveau account et plus spécifiquement concernant Unity Catalog sont tracés dans la logs d’audit et peuvent faire l'objet d'une analyse. Nous avons volontairement limité notre analyse à deux types d'actions pour cette démonstration.
+Tous les événements tracés au niveau account et plus spécifiquement concernant Unity Catalog sont tracés dans les logs d’audit et peuvent faire l'objet d'une analyse. Nous avons volontairement limité notre analyse à deux types d'actions pour cette démonstration.
 
 Vous trouverez une liste exhaustive des actions/événements que vous pourrez analyser sur la [documentation officielle](https://docs.databricks.com/administration-guide/account-settings/audit-logs.html#events).
 
@@ -342,7 +342,7 @@ id_trx,ts_trx,id_product,id_shop,id_client,quantity
 ```
 
 
-Réalisation de la copie des données vers le répertoire `demo`de la ressource AWS S3 nommée `s3-demo-data-uc` avec l'outil AWS CLI:
+Réalisation de la copie des données vers le répertoire `demo` de la ressource AWS S3 nommée `s3-demo-data-uc` avec l'outil AWS CLI:
 ```bash
 aws s3 cp fct_transactions.csv s3://s3-demo-data-uc/demo/fct_transactions.csv 
 ```
@@ -526,7 +526,7 @@ Pour activer cette fonctionnalité, il faut réaliser l'action suivante :
 1. Mise à jour de la configuration du Metastore avec les informations suivantes :
     - L'information `delta_sharing_scope` doit être valorisée avec la valeur  `INTERNAL_AND_EXTERNAL` 
         - La valeur `INTERNAL` signifie que la fonctionnalité est désactivée
-    - L'information `delta_sharing_recipient_token_lifetime_in_seconds` doit être valorisée avec le nombre de seconde de validité du Token Databricks (par exemple avec la valeur `86400` pour une journée)
+    - L'information `delta_sharing_recipient_token_lifetime_in_seconds` doit être valorisée avec le nombre de secondes de validité du Token Databricks (par exemple avec la valeur `86400` pour une journée)
         - Le destinataire utilisant un Token Databricks pourra accéder aux objets partagés uniquement durant le temps de validité du Token Databricks
     - L'information `delta_sharing_organization_name` doit être valorisée avec le nom représentant votre organisation en tant que fournisseur (Provider) (par exemple : `dbx_aws_sharing`)
         - C'est le nom que les destinataires (Recipient), utilisant Databricks, verront comme fournisseur (Provider) du partage (Share)
@@ -568,7 +568,7 @@ La création du partage (Share) permet de définir l'ensemble des données à pa
     2. Autoriser l'accès à partir de la version n°0 de l'historique des données (option `start_version : 0`)
 3. Ajouter la table `ctg_mng.sch_mng.fct_transactions_mng` en utilisant l'alias `sch_share.fct_trx_mng` 
     1. Autoriser l'accès uniquement à la dernière version des données (pas d'accès à l'historique) (option `history_data_sharing_status : false`)
-    2. Ajouter une gestion des partitions pour n'autoriser l'accès aux données uniquement pour la partition (id_client) qui est égale à la valeur de la propriété nommée `ìd_client` associé au destinataire (Recipient) lors de sa création. (Chaque destinataire aura une valeur différente pour la propriété `id_client` afin de mettre en évidence cette stratégie d'accès qui ne pourra pas être contourné par le destinataire)
+    2. Ajouter une gestion des partitions pour n'autoriser l'accès aux données uniquement pour la partition (id_client) qui est égale à la valeur de la propriété nommée `id_client` associé au destinataire (Recipient) lors de sa création. (Chaque destinataire aura une valeur différente pour la propriété `id_client` afin de mettre en évidence cette stratégie d'accès qui ne pourra pas être contournée par le destinataire)
 4. Ajouter le notebook `/Shared/read_demo_data_nbk_scala` dans le partage (Share) manuellement (l'API ne fonctionnait pas lors de nos tests)
 
 Utilisation de Databricks REST API :
@@ -673,11 +673,11 @@ Pour rappel, le Metastore Unity Catalog principal (fournisseur) est sur un Accou
 Pour ce faire nous allons commencer par mettre en place un Metastore sur un Workspace Databricks sur Azure.
 
 Pré-requis :
-- Vous devez avoir installer l'outil Azure CLI et configurez la connexion nécessaire à Azure
-- Vous devez avoir créé un Workspace Databricks dans un Ressource Groupe et votre compte doit avoir les droits d'administration du Workspace Databricks.
+- Vous devez avoir installé l'outil Azure CLI et configuré la connexion nécessaire à Azure
+- Vous devez avoir créé un Workspace Databricks dans un Resource Groupe et votre compte doit avoir les droits d'administration du Workspace Databricks.
 - Vous devez avoir les droits d'administration de l'Account Databricks Azure
     - Ce droit peut être donné par un compte avec le rôle "Azure AD Global Administrator" en se connectant à l'Account Databricks Azure
-- Vous devez avoir les droits de créer les différentes ressources nécessaire dans un Ressource Groupe Azure
+- Vous devez avoir les droits de créer les différentes ressources nécessaires dans un Resource Groupe Azure
 
 
 Les étapes nécessaires pour mettre en place un Metastore Unity Catalog sur Azure sont les suivantes :
@@ -779,9 +779,9 @@ Afin de pouvoir partager les données avec un destinataire utilisant un Metastor
 Détail des étapes :
 1. Demander l'identifiant de partage du Metastore Unity Catalog (sharing identifier) du destinataire (Recipient)
 
-L'identifiant de partage est une chaîne de caractères composées des informations suivantes : `<Metastore Cloud Provider>:<Metastore Region>:<Metastore ID>`
+L'identifiant de partage est une chaîne de caractères composée des informations suivantes : `<Metastore Cloud Provider>:<Metastore Region>:<Metastore ID>`
 
-Il existe plusieurs moyen d'avoir cet identifiant pour le destinataire: 
+Il existe plusieurs moyens d'avoir cet identifiant pour le destinataire: 
 - Le 1er moyen (qui est le plus simple) est de se connecter sur le Worspace Databricks et d'exécuter la commande `select current_metastore()` sur un SQL Warehouse (ou `spark.sql("select current_metastore()")` dans un notebook attaché à un cluster ayant les droits d'accès à au Metastore Unity Catalog)
 - Le 2ème moyen est l'utilisation de Databricks REST API
 ```bash
@@ -841,7 +841,7 @@ DESCRIBE RECIPIENT rcp_azure_dbx;
 GRANT SELECT ON SHARE share_aws_dbx TO RECIPIENT rcp_azure_dbx;
 ```
 
-A partir de cette dernière étape, le destinataire (Recipient) `rcp_azure_dbx` pourra accéder aux objets du partage (Share) en utilisant sont Metastore Unity Catalog avec son Workspace Databricks Azure.
+À partir de cette dernière étape, le destinataire (Recipient) `rcp_azure_dbx` pourra accéder aux objets du partage (Share) en utilisant son Metastore Unity Catalog avec son Workspace Databricks Azure.
 
 Note : Il faut parfois attendre quelques secondes ou minutes pour voir apparaître le nouveau fournisseur (Provider) nommé `dbx_aws_sharing` au niveau du Metastore Unity Catalog Azure après la création du destinataire (Recipient) `rcp_azure_dbx`
 
@@ -1062,7 +1062,7 @@ dbx-api -X POST ${DBX_API_URL}/api/2.1/unity-catalog/recipients/${DBX_RECIPIENT_
 ```
 
 
-A partir de l'étape n°4, le destinataire (Recipient) peut accéder aux objets (tables delta uniquement) du partage (Share) en utilisant l'outil souhaité en fonction des connecteurs `delta-sharing` disponible (python, java, spark, etc ...)
+À partir de l'étape n°4, le destinataire (Recipient) peut accéder aux objets (tables delta uniquement) du partage (Share) en utilisant l'outil souhaité en fonction des connecteurs `delta-sharing` disponibles (python, java, spark, etc ...)
 
 
 
@@ -1333,7 +1333,7 @@ Cela permet de multiplier l'usage possible des données sans avoir à les dupliq
 
 En s'appuyant sur les Logs d'audit, nous avons la possibilité de tracer l'ensemble des évènements liés aux Metastores de la solution Unity Catalog au niveau de l'Account Databricks et ainsi pouvoir analyser l'usage des objets partagés par les différents destinataires (Recipient).
 
-Au moment de l'écriture de ce document (Avril/Mai 2023), il n'était pas encore possible de partager d'autres objets que des tables delta (managées ou externes) et des notebooks (uniquement pour le partage Databricks-to-Databricks) mais la roadmap de Databricks concernant les prochaines version confirme que l'on pourra bientôt partagés bien plus de type d'objets.
+Au moment de l'écriture de ce document (avril/mai 2023), il n'était pas encore possible de partager d'autres objets que des tables delta (managées ou externes) et des notebooks (uniquement pour le partage Databricks-to-Databricks) mais la roadmap de Databricks concernant les prochaines version confirme que l'on pourra bientôt partagés bien plus de type d'objets.
 
 Cette fonctionnalité est encore récente mais devrait se rendre indispensable dans un futur proche pour tout ceux utilisant Databricks pour la gestion d’un Data Lake ou d’un Lakehouse afin de permettre de maximiser les usages des données par l'ensemble des partenaires (interne et externe) et de maîtriser la gouvernance des données avec la solution Unity Catalog.
 

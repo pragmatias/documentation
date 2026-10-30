@@ -38,7 +38,7 @@ All the source code of this website can be found on my [dépôt github](https://
 
 [![1ère étape](/blog/web/20190429_create_repository_step1.png)](/blog/web/20190429_create_repository_step1.png)
 
-2\. Fill the name of your repository that will contain the sources code to generate the website and click on **Create repository**
+2\. Fill the name of your repository that will contain the source code to generate the website and click on **Create repository**
 
 [![2ème étape](/blog/web/20190429_create_repository_step2.png)](/blog/web/20190429_create_repository_step2.png)
 
@@ -60,7 +60,7 @@ If you want to change the default configuration :
 
 [![4ème étape](/blog/web/20190429_create_repository_step4.png)](/blog/web/20190429_create_repository_step4.png)
 
-2\. Go in the **GitHub Pages** section to configure the needed informations *(custom domain, enforces HTTPS, ...)*
+2\. Go in the **GitHub Pages** section to configure the needed information *(custom domain, enforces HTTPS, ...)*
 
 [![5ème étape](/blog/web/20190429_create_repository_step5.png)](/blog/web/20190429_create_repository_step5.png)
 
@@ -159,7 +159,7 @@ The content of this file is :
 
 # Using a personal domain with Github Pages
 
-*Note : i use the domain name * ***pragmatias.fr*** *at [Gandi](https://www.gandi.net)*
+*Note : I use the domain name * ***pragmatias.fr*** * at [Gandi](https://www.gandi.net)*
 
 1\. In the **pragmatias.github.io** repository parameters, fill then **Custom domain** section
 
@@ -197,6 +197,6 @@ script:
 www 10800 IN CNAME pragmatias.github.io
 ```
 
-> Be careful not to have any other lines starting with *@ 1800 IN A* ou par *www*
+> Be careful not to have any other lines starting with *@ 1800 IN A* or by *www*
 
-It may take several hours for the modification of records to be propagate before they are taken into account.
+It may take several hours for the modification of records to be propagated before they are taken into account.

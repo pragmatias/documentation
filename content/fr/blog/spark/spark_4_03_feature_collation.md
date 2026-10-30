@@ -14,7 +14,7 @@ Vous trouverez dans cet article, des informations sur la fonctionnalité de pris
 
 # Introduction
 
-La collation (SQL) contrôle la manière dont Spark compare et trie les chaîne de caractères. Spark 4.0 introduit la définition explicite de la collation, permettant le tri linguistique (par exemple, le ä allemand trié près du a) et les opérations insensibles à la casse sans UDF personnalisées. 
+La collation (SQL) contrôle la manière dont Spark compare et trie les chaînes de caractères. Spark 4.0 introduit la définition explicite de la collation, permettant le tri linguistique (par exemple, le ä allemand trié près du a) et les opérations insensibles à la casse sans UDF personnalisées. 
 
 Le comportement par défaut reste la comparaison binaire UTF-8 pour la rétrocompatibilité. 
 
@@ -26,7 +26,7 @@ La collation définit les règles de comparaison des valeurs de chaînes de cara
 
 La collation binaire UTF-8 trie selon les valeurs des points de code Unicode. Cela signifie que `'Z' (U+005A)` est trié avant `'a' (U+0061)` car les lettres majuscules ont des points de code inférieurs. Les caractères accentués sont triés à la fin de l'alphabet plutôt que près de leurs lettres de base. Les opérations insensibles à la casse nécessitaient des appels à la fonction `lower()`, qui créent de nouvelles chaînes et augmentent l'utilisation de la mémoire.
 
-Spark 4.0 ajoute la clause `COLLATE` et la configuration` spark.sql.session.collation.enabled`. il est désormais possible de spécifier la collation au niveau de la définition d'une colonne, d'une expression ou de la session Spark. L'implémentation s'appuie sur la [librairie ICU (International Components for Unicode)](https://icu.unicode.org/) pour les règles linguistiques.
+Spark 4.0 ajoute la clause `COLLATE` et la configuration` spark.sql.session.collation.enabled`. Il est désormais possible de spécifier la collation au niveau de la définition d'une colonne, d'une expression ou de la session Spark. L'implémentation s'appuie sur la [librairie ICU (International Components for Unicode)](https://icu.unicode.org/) pour les règles linguistiques.
 
 Trois familles principales de classement existent dans Spark 4.0 :
 - **UTF8_BINARY** : Comparaison octet par octet par défaut (rétrocompatible)

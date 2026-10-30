@@ -100,15 +100,6 @@ Available options :
 - **Privilege**: Manage rights between users and protocols
 
 
-
-Les différentes options disponibles :
-- **Overview** : Donne l'état actuel de l'utilisation du VPN en fonction de chaque protocole (le nombre de connexion en cours)
-- **Connection List** : Donne des informations sur les connexions en cours (nom d'utilisateur, adresse IP, Protocole, uptime)
-- **Log** : Message de log des connexions, déconnexions etc ....
-- **General Settings** : Permet de définir le comportement général de l'application et la sécurité liée
-- **Privilege** : Permet de gérer les droits d'utilisation entre les utilisateurs et les protocoles
-
-
 ## Setting up the **Privilege** part
 
 For the local user named **vpn**:

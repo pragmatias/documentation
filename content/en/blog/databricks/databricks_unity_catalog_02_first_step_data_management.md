@@ -9,7 +9,7 @@ toc: true
 
 We are going to discover the data management with the [Unity Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html) solution and more precisely the management of rights (Groups and Users) and storage (Tables).
 
-We will use a Databricks Account on AWS to perfrom this discovery.
+We will use a Databricks Account on AWS to perform this discovery.
 
 _Note: Work is based on the state of the Unity Catalog solution at the end of Q1 2023 on AWS and Azure._
 
@@ -17,7 +17,7 @@ _Note: Work is based on the state of the Unity Catalog solution at the end of Q1
 
 # Unity Catalog and the object hierarchy
 
-Unity Catalog is the Databricks solution that allows to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
+Unity Catalog is the Databricks solution that allows you to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
 
 
 You can get a more complete overview by reading the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html)
@@ -32,7 +32,7 @@ The objects are :
 - Metastore : Top-level object that can contain metadata
 - Catalog : 1st level object allowing to organize data by Schema (also called Database)
 - Schema : 2nd and last level object used to organize data (contains tables, views and functions)
-- Table : Object used to define the structure and storage of data.. 
+- Table : Object used to define the structure and storage of data. 
 - View : Object used to encapsulate a query using one or more objects (table or view)
 - Function : Object allowing to define operations on the data
 
@@ -166,11 +166,11 @@ CREATE SCHEMA IF NOT EXISTS ctg_ext.sch_ref
 ## Synthesis 
 
 A group is an object used to manage access rights on users or other groups.
-This allow to set up an access organization in relation to teams or profiles rather than going directly through users.
+This allows you to set up an access organization in relation to teams or profiles rather than going directly through users.
 
 There are two types of groups :
 - A group at the Account Databricks level makes it possible to manage access to data using the Unity Catalog solution (centralization)
-- A local group at Workspace Databricks level allows to manage access at workspace level only and is not compatible with Unity Catalog solution (this is mainly used with Hive Metastore and for Workspace Databricks rights)
+- A local group at Workspace Databricks level allows you to manage access at workspace level only and is not compatible with Unity Catalog solution (this is mainly used with Hive Metastore and for Workspace Databricks rights)
 
 Quota : You can have up to a combination of 10,000 users and 5,000 groups in a Databricks Account
 
@@ -214,11 +214,11 @@ Actions :
 1. Step n°1  
     1. Go to `Account Administration page > User Management > Users`
     2. Click on `Add User`
-    3. Fill the informations `Email`, `First name` and `Last name` and click on `Send invite`
+    3. Fill in the information `Email`, `First name` and `Last name` and click on `Send invite`
 2. Step n°2 
     1. Go to `Account Administration page > User Management > Groups`
     2. Click on `Add Group`
-    3. Fill the information `Group name` and click on `save`
+    3. Fill in the information `Group name` and click on `save`
     4. Click on `Add members` to add the user `john.do.dbx@gmail.com`
 3. Step n°3 
     1. Go to `Workspace page > username > Admin Settings > Groups`
@@ -632,7 +632,7 @@ Deleting the user at the Databricks Account level:
 
 We were able to see a first overview of some features of the Unity Catalog solution, mainly concerning the management of rights and storage with External Table and Managed Table.
 
-Rights management is simplified by the use of ANSI SQL syntax, the use of user groups and the centralization of access management within Unity Catalog..
+Rights management is simplified by the use of ANSI SQL syntax, the use of user groups and the centralization of access management within Unity Catalog.
 
 
 Group management requires being an Administrator on the Databricks Account (creation and deletion of groups, addition and deletion of users in groups) and an Administrator on the Databricks Workspace to add or delete existing groups at the level of the Databricks Account in the Databricks Workspace.

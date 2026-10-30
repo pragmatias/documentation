@@ -34,7 +34,7 @@ A la fin de l'année 2022, Databricks a annoncé la disponibilité générale de
 
 Afin de pouvoir rendre accessible au plus grand nombre la solution Unity Catalog qui est une solution clé dans l'utilisation et la gestion de la plateforme Lakehouse de Databricks, une série de 5 articles a été rédigée dans un esprit de découverte (pédagogique) pour mettre en place et utiliser les différents fonctionnalités de la solution Unity Catalog.
 
-Les 5 articles ont été organisé de la manière suivante :
+Les 5 articles ont été organisés de la manière suivante :
 - Databricks : Unity Catalog - Découverte - Partie 1 - Mise en place
 - Databricks : Unity Catalog - Découverte - Partie 2 - Gestion des données
 - Databricks : Unity Catalog - Découverte - Partie 3 - Data Lineage
@@ -51,7 +51,7 @@ Nous allons utiliser les outils suivants :
 
 # Qu'est-ce qu'un métastore
 
-Un métastore est un référentiel permettant de stocker un ensemble de métadonnées liés aux données (stockage, usage, options).
+Un métastore est un référentiel permettant de stocker un ensemble de métadonnées liées aux données (stockage, usage, options).
 
 Une métadonnée est une information sur une donnée permettant de définir son contexte (description, droits, date et heure technique de création ou mise à jour, créateur, ...) et son usage (stockage, structure, accès, ...).
 
@@ -61,7 +61,7 @@ Dans une entreprise ayant une gouvernance de données basée sur un modèle Data
 
 
 
-# Qu'est ce que la solution Unity Catalog
+# Qu'est-ce que la solution Unity Catalog
 
 Unity Catalog est la solution de Databricks permettant d'avoir une gouvernance unifiée et centralisée pour l'ensemble des données gérées par les ressources Databricks ainsi que de sécuriser et faciliter la gestion et le partage des données à l'ensemble des acteurs internes et externes d'une organisation.
 
@@ -100,7 +100,7 @@ La hiérarchie des objets est constituée des trois niveaux suivants :
 2. Catalog (catalogue) :
     1. C'est le 1er niveau de la hiérarchie permettant d'organiser les données
     2. Il permet d'organiser les objets (données) par Schéma (aussi nommé Base de données)
-    3. Si l'on souhaite pouvoir avoir plusieurs environnements dans un même Metastore (dans une même région) alors on pourra créer un Catalog par environnement
+    3. Si l'on souhaite pouvoir avoir plusieurs environnements dans un même Metastore (dans une même région), alors on pourra créer un Catalog par environnement
 3. Schema (schéma ou base de données) : 
     1. C'est le 2ème et dernier niveau de la hiérarchie permettant d'organiser les données
     2. Ce niveau permet de stocker l'ensemble des métadonnées sur les objets de type Table, Vue ou Fonction
@@ -158,7 +158,7 @@ Les éléments suivants sont nécessaires avant de démarrer les actions :
 - Vous devez avoir un compte utilisateur AWS avec les droits d'administration sur les ressources AWS S3 et AWS IAM
 
 
-Afin d'utiliser les outils Databricks CLI et AWS CLI vous devez avoir créé les éléments suivants :
+Afin d'utiliser les outils Databricks CLI et AWS CLI, vous devez avoir créé les éléments suivants :
 - Un Token Utilisateur pour Databricks pour utiliser Databricks CLI
 - Un Token Utilisateur AWS pour utiliser AWS CLI
 _Note : Vous trouverez la démarche pour la configuration des outils AWS CLI et Databricks CLI dans les ressources de cette article_
@@ -187,7 +187,7 @@ Pour mettre en place la solution Unity Catalog et créer le Metastore nécessair
 
 ## Étape n°0 : Initialisation des variables d'environnement
 
-Création des variables d'environnement permettant de définir les nommage et de faciliter la rédaction des commandes
+Création des variables d'environnement permettant de définir les nommages et de faciliter la rédaction des commandes
 ```bash
 # AWS Variables
 export AWS_S3_DBX_UC="s3-dbx-metastore-uc"
@@ -504,13 +504,13 @@ Quelques informations concernant les limitations sur la solution Unity Catalog :
 - Workspace Databricks : Espace de travail dans Databricks
 - Databricks Workspace ID : Identifiant du workspace Databricks
 - Storage Credential : Objet permettant le stockage des accès par la solution Unity Catalog
-- Data Lake : Lac de données permettant de stocker des données structurée, semi-structurée ou non structurée
+- Data Lake : Lac de données permettant de stocker des données structurées, semi-structurées ou non structurées
 - Data Warehouse : Entrepôt de données permettant de stocker des données structurées (Base de données relationnelle)
 - Lakehouse : Architecture de gestion des données qui combine les avantages d'un lac de données et  les fonctionnalités de gestion d'un entrepôt de données
 - Metastore : un métastore dans la solution Unity Catalog
 - Catalog (Catalgoue) : Objet de la solution Unity Catalog permettant d'organiser les données (objets) par Schéma
 - External Table (Table externe) : Table dont la donnée n'est pas directement géré par la solution Unity Catalog (l'utilisateur défini le chemin d'accès à la donnée)
-- Managed Table (Table managée) : Table dont la donnée est directement géré par la solution Unity Catalog 
+- Managed Table (Table managée) : Table dont la donnée est directement gérée par la solution Unity Catalog 
 - Databricks CLI : Interface de ligne de commande permettant de faciliter l'utilisation et la configuration des ressources Databricks
 - AWS CLI : Interface de ligne de commande permettant de faciliter l'utilisation et la configuration des ressources AWS
 - AWS S3 : Service AWS Simple Storage permettant de stocker des données/objets
@@ -533,7 +533,7 @@ Quelques informations concernant les limitations sur la solution Unity Catalog :
     5. Si vous avez une politique d'administration (AWS IAM Policy) déjà définie :
         1. Sélectionnez `Attach policies directly`
         2. Sélectionnez la politique souhaitée : `AdministratorAccess` et cliquez sur `Next`
-    6. Si vous souhaitez définir des tags : Cliquez sur `Add new tag` et ajoutez les informations souhaités
+    6. Si vous souhaitez définir des tags : Cliquez sur `Add new tag` et ajoutez les informations souhaitées
     7. Cliquez sur `Create user`
     8. Sélectionnez l'utilisateur créé `usr_adm_cli`
     9. Cliquez sur `Security credentials`

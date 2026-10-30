@@ -9,7 +9,7 @@ toc: true
 
 In order to facilitate the installation of the GNU/LINUX  OpenSuse Tumbleweed distribution for my needs, you will find in this article the steps to have a fully operational system from a new installation in few minutes.
 
-The goal was to have quickly a full system allowing me to work  (docker/sublimtext/and more ...), to use entertainment media (Streaming/Video/and more ...) and to play games.
+The goal was to have quickly a full system allowing me to work  (docker/Sublime Text/and more ...), to use entertainment media (Streaming/Video/and more ...) and to play games.
 
 All the sources are in this repository [Github](https://github.com/pragmatias/opensuse).
 
@@ -30,11 +30,11 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
 3. Get this git [repository](https://github.com/pragmatias/OpenSUSE) : `git clone https://github.com/pragmatias/OpenSUSE.git ~/tmp_install`
 4. Go to the **scripts** folder : `cd ~/tmp_install/scripts`
 
-> **Proxy** : somes information if you want to install OpenSUSE Tumbleweed behind a proxy
+> **Proxy** : some information if you want to install OpenSUSE Tumbleweed behind a proxy
 
 > **With Yast** :
 > 1. Open Yast > Network Services > Proxy
-> 2. Click on **Enable Proxy** and fill all the needed information in **Proxy Setting** and **Proxy Authentification**
+> 2. Click on **Enable Proxy** and fill all the needed information in **Proxy Setting** and **Proxy Authentication**
 
 > **With Bashrc** :
 > 1. Add http information : `echo "export http_proxy=http://proxy_ip:proxy_port" >> ~/.bashrc`
@@ -46,7 +46,7 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
 
 1. Configure the repositories list : `sudo ./01_TW_config_repository.sh`
 
-> *Note* : you need to remove the nvidia repository if you don't have a nvidia graphic card
+> *Note* : you need to remove the nvidia repository if you don't have a Nvidia graphics card
 
 2. Remove the listed packages : `sudo ./02_TW_remove_package.sh`
 3. Install the listed packages : `sudo ./03_TW_install_package.sh`
@@ -55,7 +55,7 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
 
 4. Install of truetype proprietary fonts : `sudo ./04_TW_install_fonts_truetype.sh`
 5. Customization of users : `sudo ./05_TW_customize_users.sh` 
-6. Install the graphic card driver (manually) : `sudo zypper in nvidia-glG05`
+6. Install the graphics card driver (manually) : `sudo zypper in nvidia-glG05`
 7. Restart your computer : `sudo shutdown -r 0`
 8. Remove the tmp_install folder : `rm -rf ~/tmp_install`
 
@@ -64,7 +64,7 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
  - Firefox Config (bookmarks)
  - Thunderbird Config (account)
  - NFS Config (NAS)
- - KeepassXC Config (file)
+ - KeePassXC Config (file)
  - Add "Redshift Widget" in Latte-Dock (before System Tray)
 
 
@@ -81,10 +81,10 @@ All the sources are in this repository [Github](https://github.com/pragmatias/op
 	*	Application Style > Window Decorations > Breeze (Customize : "Small" Button Size, check only "Draw window background gradient")
 	*	Desktop Behavior > Workspace > Click behavior > Double-click to open files and folders
 	*	Desktop Behavior > Screen Locking > deactivation Lock screen automatically
-	*	Desltop Behavior > Virtual Desktop > Desktop (Customize : Number of desktops = 4 and Number of rows = 1)
+	*	Desktop Behavior > Virtual Desktop > Desktop (Customize : Number of desktops = 4 and Number of rows = 1)
 	*	Input Devices > Keyboard > NumLock on Plasma Startup > Turn on
 * KDE Desktop
-    * Right Click on the desktop wallpaper > Configure Desktop > Tweask > Uncheck Show the desktop toolbox
+    * Right Click on the desktop wallpaper > Configure Desktop > Tweak > Uncheck Show the desktop toolbox
     * Right Click on the desktop wallpaper > Configure Desktop > Filter > Show Files Matching
     * Right Click on the desktop wallpaper > Configure Desktop > Wallpaper > Add Image > Choose your wallpaper
 

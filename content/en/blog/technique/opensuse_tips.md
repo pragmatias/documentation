@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-You'll find in this article, somes tips about the [OpenSUSE Tumbleweed](https://www.opensuse.org/#Tumbleweed) distribution.
+You'll find in this article, some tips about the [OpenSUSE Tumbleweed](https://www.opensuse.org/#Tumbleweed) distribution.
 
 The tips cover :
 
@@ -160,7 +160,7 @@ Some usefull command :
 
 - Reset the current KDE session (kill all process & logout) : `pkill -kill -u username`
 
-> Note : replace **username** by the name of the choosen one
+> Note : replace **username** by the name of the chosen one
 
 
 # Some tips about software
@@ -180,7 +180,7 @@ The file **places.sqlite** in **$HOME/.mozilla/firefox/%.default** contains book
 
 List of interesting addons :
 
- - Ublock Origin
+ - uBlock Origin
  - HTTPS Everywhere
  - Canvasblocker
  - Cookie autodelete

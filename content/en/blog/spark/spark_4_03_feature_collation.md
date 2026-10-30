@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-You'll find in this article, some informations about the string SQL collation support feature from [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
+You'll find in this article, some information about the string SQL collation support feature from [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
 
 <!--more-->
 
@@ -49,7 +49,7 @@ To get the list of available collation : `SELECT * FROM collations();`
 | `*_AS_*`      | Accent-sensitive.                                   | 
 | `*fr.*`       | French linguistic order.                            |
 | `*en.*`       | American Linguistic order.                          |
-| `*de.*`       | Deutch Linguistic order.                            |
+| `*de.*`       | Dutch Linguistic order.                            |
 
 
 **Collation SQL functions** :

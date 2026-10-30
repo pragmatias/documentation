@@ -7,24 +7,24 @@ draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, l'ensemble des éléments permettant de créer un site web static en se basant sur le générateur [Hugo](https://gohugo.io).
+Vous trouverez dans cet article, l'ensemble des éléments permettant de créer un site web statique en se basant sur le générateur [Hugo](https://gohugo.io).
 
 Les sujets abordés sont la structuration du site, la création d'un thème, la gestion d'un flux rss, la mise en place du multi-langue, ...
 
  <!--more-->
 
-# Qu'est ce que Hugo  
+# Qu'est-ce que Hugo  
 
-[Hugo](https://gohugo.io) est un générateur de site web static écrit en Go et créé par Steve Francia en 2013 ([wikipedia](https://en.wikipedia.org/wiki/Hugo_\(software\))).
+[Hugo](https://gohugo.io) est un générateur de site web statique écrit en Go et créé par Steve Francia en 2013 ([wikipedia](https://en.wikipedia.org/wiki/Hugo_\(software\))).
 
 La [documentation](https://gohugo.io/documentation/) est très bien faite pour prendre en main rapidement les bases de l'outil.
 
 # Objectif
 
 - Avoir un système de **blog** lié avec des tags permettant de naviguer sur les sujets et avoir un esprit **documentation** sans être un **wiki**
-- Ne pas avoir de dépendance inutile avec des ressources extérieurs *(google,facebook,javascript,...)*
-- Ne pas récupérer/gérer d'information des visiteurs *(trackers,cookies,commentaires,...)*
-- Faire le maximum de chose par moi même
+- Ne pas avoir de dépendance inutile avec des ressources extérieures *(google, facebook, javascript, ...)*
+- Ne pas récupérer/gérer d'information des visiteurs *(trackers, cookies, commentaires, ...)*
+- Faire le maximum de choses par moi-même
 - Générer automatiquement les pages html
 
 # Code source
@@ -55,15 +55,15 @@ Les étapes sont bien expliquées et il existe un grand nombre de choix de [them
   +-- /config
   |   +-- /_default
   +-- /content
-  +-- /ressources
+  +-- /resources
   +-- /themes
 ```
 
 - Le répertoire "archetypes" permet de stocker le template des articles de blogs
 - Le répertoire "config" permet de stocker les fichiers de configurations
 - Le répertoire "content" permet de stocker le contenant du site (articles du blog)
-- Le répertoire "ressources" permet de stocker l'ensemble des ressources générés (le site)
-- Le répertoire "themes" permet de stocker le theme utilisé
+- Le répertoire "resources" permet de stocker l'ensemble des ressources générées (le site)
+- Le répertoire "themes" permet de stocker le thème utilisé
 
 
 ## Définition des répertoires d'un thème
@@ -87,14 +87,14 @@ Les répertoires possibles pour un theme *(en prenant exemple sur mon theme)* :
   |   +-- theme.toml
 ```
 
-Le theme se nomme **pragmatias** et les metadonnées se trouvent dans le fichier **theme.toml**.
+Le thème se nomme **pragmatias** et les métadonnées se trouvent dans le fichier **theme.toml**.
 Un exemple de contenu pour le fichier "theme.toml" peut être récupéré sur le [site officiel](https://github.com/gohugoio/hugoThemes#themetoml).
 
 Les répertoires importants sont :
 
-- i18n : permettant gérer la partie multi-langue (vocabulaire)
+- i18n : permettant de gérer la partie multi-langue (vocabulaire)
 - layouts : permettant de gérer l'affichage du site
-- static : permettant de stocker l'ensemble des ressources (js,fonts,css,images)
+- static : permettant de stocker l'ensemble des ressources (js, fonts, css, images)
 
 
 ## Définition du squelette du site
@@ -121,7 +121,7 @@ Elle nécessite la création des fichiers suivants dans le répertoire `/themes/
 - header.html : permet de définir le menu de navigation en haut du site
 - footer.html : permet de définir le pied de page du site
 
-Pour l'entête et le pied de page, l'invocation des fichiers **\*.html** se fait en utilisant la syntaxe suivantes :
+Pour l'entête et le pied de page, l'invocation des fichiers **\*.html** se fait en utilisant la syntaxe suivante :
 ```html 
 {{- partial "*.html" . -}}
 ```
@@ -136,7 +136,7 @@ Afin de gérer un menu de navigation en fonction de la taille de l'écran (mobil
 
 Les étapes de mise en place sont les suivantes :
 
-1\. Télécharger les fichiers javascript [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/),[jquery](https://jquery.com/download/) et [popper](https://popper.js.org) dans les répertoires `/themes/pragmatias/static/js` et `/themes/pragmatias/static/css`
+1\. Télécharger les fichiers javascript [bootstrap](https://getbootstrap.com/docs/4.3/getting-started/download/), [jquery](https://jquery.com/download/) et [popper](https://popper.js.org) dans les répertoires `/themes/pragmatias/static/js` et `/themes/pragmatias/static/css`
 
   - js/bootstrap.min.js
   - js/bootstrap.min.js.map
@@ -569,7 +569,7 @@ other = "Décembre"
 
 ## Utilisation d'un fichier CSS
 
-1\. Creer le fichier CSS souhaité dans le répertoire `/themes/pragmatias/static/css`
+1\. Créer le fichier CSS souhaité dans le répertoire `/themes/pragmatias/static/css`
 ```css
 html {}
 
@@ -585,7 +585,7 @@ body {}
 ## Gestion des couleurs
 Pour pouvoir gérer les couleurs de l'ensemble du site à un seul endroit.
 
-1\. Définir l'ensemble des variables nécessaire au début du fichier CSS
+1\. Définir l'ensemble des variables nécessaires au début du fichier CSS
 ```css
 :root {
   --color-bg-primary:#fdfaee;

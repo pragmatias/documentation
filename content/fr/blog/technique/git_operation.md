@@ -7,11 +7,11 @@ draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, quelques opérations/commandes à connaitre pour travailler avec l'outil [Git](https://en.wikipedia.org/wiki/Git).
+Vous trouverez dans cet article, quelques opérations/commandes à connaître pour travailler avec l'outil [Git](https://en.wikipedia.org/wiki/Git).
 
 <!--more-->
 
-# Qu'est ce que Git
+# Qu'est-ce que Git
 
 Git est un logiciel de gestion de versions décentralisé créé par Linus Torvalds en 2005.
 
@@ -28,16 +28,16 @@ Sur OpenSUSE :
 
 Sur Windows : 
 
-- Allez sur le [site officiel](https://git-scm.com/download/win) pour récupérer l'exécutable d'installation et exécutez le sur votre poste de travail. 
+- Allez sur le [site officiel](https://git-scm.com/download/win) pour récupérer l'exécutable d'installation et exécutez-le sur votre poste de travail. 
 
 ## Définition du vocabulaire
 
 Les différents états :
 
 - Untracked : Le fichier n'est pas pris en compte par Git
-- Unmodified : Le fichier a déjà était commit sur Git et n'a pas encore été modifié
+- Unmodified : Le fichier a déjà était committé sur Git et n'a pas encore été modifié
 - Modified : Le fichier a déjà était commit sur Git et a été modifié
-- Staged : L'état actuel du fichier est pris en compte dans Git mais n'a pas été commit
+- Staged : L'état actuel du fichier est pris en compte dans Git mais n'a pas été committé
 
 Schéma :
 [![schema](/blog/web/20190528_git_lifecycle.png)](/blog/web/20190528_git_lifecycle.png) 
@@ -46,13 +46,13 @@ Schéma :
 
 Vous pourrez trouver plus d'information sur le [site officiel](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration).
 
-Recupération de la liste des paramètres de configuration :
+Récupération de la liste des paramètres de configuration :
 
 - Tous les paramètres :  `$ git config --list` 
 - tous les paramètres globaux : `$ git config --list --global` 
 - Tous les paramètres et leur origine : `$ git config --list --show-origin` 
 
-Définition des paramètre utilisateurs :
+Définition des paramètres utilisateurs :
 
 - Le nom de l'utilisateur : `$ git config --global user.name "user"`
 - L'adresse mail de l'utilisateur : `$ git config --global user.email "user@mail"`
@@ -70,13 +70,13 @@ Pour initialiser Git dans un nouveau répertoire : `$ git init`
 Pour faire le lien avec un dépôt distant : `$ git remote add <remote_name> <remote_url>`
 
 
-2/ [Clonage](https://git-scm.com/docs/git-clone) d'un dépot existant (exemple avec github)
+2/ [Clonage](https://git-scm.com/docs/git-clone) d'un dépôt existant (exemple avec github)
 Pour récupérer un dépôt distant sur son espace de travail : `$ git clone <url> <folder>`
 
 
 # Gestion des fichiers avec Git
 
-Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir gérer les fichiers avec Git.
+Vous trouverez, ci-dessous, une liste des opérations à connaître pour pouvoir gérer les fichiers avec Git.
 
 | Commande | Commentaire |
 |:--|:--|
@@ -86,7 +86,7 @@ Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir g�
 | `$ git add -f <fichier ou pattern>` | Force l'ajout ou la prise en compte des modifications d'un fichier (gitignore) |
 | `$ git add -A` | Ajout ou prise en compte des modifications de l'ensemble des fichiers |
 | `$ git commit -m "<message>"` | Enregistrement de l'ensemble des éléments se trouvant dans l'espace _staged_ avec un message |
-| `$ git commit --amend"` | Ajout de l'ensemble des éléments se trouvant dans l'espace _staged_ dans le _commit_ précent |
+| `$ git commit --amend"` | Ajout de l'ensemble des éléments se trouvant dans l'espace _staged_ dans le _commit_ précédent |
 | `$ git rm <fichier ou pattern>` | Suppression d'un fichier dans le répertoire courant si il a déjà était _commit_ |
 | `$ git rm --cached <fichier ou pattern>` | Suppression d'un fichier de l'espace _staged_ mais pas du répertoire courant |
 | `$ git checkout -- <fichier ou pattern>` | Annulation des modifications d'un fichier non présent dans l'état _staged_ |
@@ -94,7 +94,7 @@ Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir g�
 
 # Gestion d'un dépôt distant
 
-Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir gérer un [dépôt distant](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches) avec Git
+Vous trouverez, ci-dessous, une liste des opérations à connaître pour pouvoir gérer un [dépôt distant](https://git-scm.com/book/en/v2/Git-Branching-Remote-Branches) avec Git
 
 | Commande | Commentaire |
 |:--|:--|
@@ -111,7 +111,7 @@ Vous trouverez ci-dessous une liste des opérations à connaitre pour pouvoir g�
 
 # Définition d'un fichier .gitignore
 
-Il est possible d'ignorer certain fichiers/répertoires avec Git en utilisant un fichier [.gitignore](https://git-scm.com/docs/gitignore).
+Il est possible d'ignorer certains fichiers/répertoires avec Git en utilisant un fichier [.gitignore](https://git-scm.com/docs/gitignore).
 
 Exemple de contenu d'un fichier **.gitignore**
 
@@ -195,7 +195,7 @@ Exemple des options pouvant être utilisés comme format :
 | `$ git tag <tag>` | Création d'un tag allégé |
 | `$ git tag -d <tag>` | Suppression d'un tag |
 | `$ git show <tag>` | Récupérer la decription d'un tag annoté |
-| `$ git tag -a <tag> <checksum>` | Création d'un tag sur un commit déja existant (checksum) |
+| `$ git tag -a <tag> <checksum>` | Création d'un tag sur un commit déjà existant (checksum) |
 | `$ git push <remote> <tag>` | Enregistrer le tag sur le dépôt distant  |
 | `$ git push <remote> --tags` | Enregistrer l'ensemble des tags sur le dépôt distant  |
 | `$ git push <remote> --delete <tag>` | Suppression d'un tag sur le dépôt distant |
@@ -233,4 +233,4 @@ $ git config --global alias.last 'log -1 HEAD'
 
 # Autres opérations 
 
-L'opération de **rebase** pour appliquer l'ensembler des modifications d'une branche en réécrivant l'historique : [documentation](https://git-scm.com/docs/git-rebase).
+L'opération de **rebase** pour appliquer l'ensemble des modifications d'une branche en réécrivant l'historique : [documentation](https://git-scm.com/docs/git-rebase).

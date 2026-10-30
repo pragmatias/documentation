@@ -11,7 +11,7 @@ Nous allons découvrir le framework [Delta Live Tables](https://www.databricks.c
 
 Nous allons nous concentrer sur les éléments propres à la solution Unity Catalog.
 
-L'utilisation de la solution Unity Catalog avec le framework Delta Live Tables était en "Public Preview" lors de la rédaction de ce papier début Juin 2023.
+L'utilisation de la solution Unity Catalog avec le framework Delta Live Tables était en "Public Preview" lors de la rédaction de ce papier début juin 2023.
 
 Nous allons utiliser un Account Databricks sur AWS pour réaliser cette découverte.
 
@@ -19,7 +19,7 @@ _Note : Nous allons garder des termes techniques en anglais pour faciliter la co
 
 <!--more-->
 
-# Qu'est ce que Delta Live Tables
+# Qu'est-ce que Delta Live Tables
 
 ## Synthèse
 
@@ -37,7 +37,7 @@ Ce framework se base sur les trois types d'objets suivant afin de gérer l'orche
 Vous pourrez retrouver dans [ce lien](https://www.databricks.com/product/pricing/delta-live) l'ensemble des informations concernant le coût et les fonctionnalités accessibles par type d'édition.
 Une vision très synthétique des différentes éditions :
 - DLT Core :
-    - Permet de gérer l'ensemble des fonctionnalité de base
+    - Permet de gérer l'ensemble des fonctionnalités de base
 - DLT Pro : 
     - Permet de gérer l'ensemble des fonctionnalités de l'édition "DLT Core" et la gestion du Change Data Capture (CDC) ainsi que de l'alimentation d'un objet en Slow Changing Dimension (SCD) de type 2 (très utile pour simplifier la gestion des données d'un référentiel lorsque l'on souhaite garder l'historique des changements)
 - DLT Advanced :
@@ -65,7 +65,7 @@ Concernant l'objet **Materialized View** :
 - Pour accéder en lecture à un objet "Materialized View" en dehors du pipeline DLT, il faut utilisé un Cluster "Shared" ou un SQL Warehouse de type Pro ou Serverless (recommandé)
 
 Concernant l'objet **View** :
-- Cet objet permet de définir une vue temporaire (requête encapsulé) sur une source de données, cette vue n'existera que durant l'exécution du pipeline DLT
+- Cet objet permet de définir une vue temporaire (requête encapsulée) sur une source de données, cette vue n'existera que durant l'exécution du pipeline DLT
 - La requête encapsulé est exécutée à chaque lecture de l'objet
 - Il est possible de définir des contraintes (expectations) au niveau de l'objet
 
@@ -77,8 +77,8 @@ Concernant l'objet **View** :
 La gestion de la qualité des données se fait en déclarant des contraintes (expectations) sur les objets :
 - Syntaxe en SQL : `CONSTRAINT expectation_name EXPECT (expectation_expr) [ON VIOLATION { FAIL UPDATE | DROP ROW }]`
 
-Lorsque l'on défini une contrainte (expectation) sur un objet, le framework DLT fera le contrôle lors de l'ingestion de l'enregistrement et réalisera l'action définie :
-- `CONSTRAINT expectation_name EXPECT (expectation_expr) ` : Lorsqu'il n'y a pas d'action défini, alors les enregistrements ne respectant pas la contrainte seront insérés dans l'objet et une information sera ajoutée dans les logs d'événement du pipeline DLT avec le nombre d'enregistrements concernés pour cet objet.
+Lorsque l'on définit une contrainte (expectation) sur un objet, le framework DLT fera le contrôle lors de l'ingestion de l'enregistrement et réalisera l'action définie :
+- `CONSTRAINT expectation_name EXPECT (expectation_expr) ` : Lorsqu'il n'y a pas d'action définie, alors les enregistrements ne respectant pas la contrainte seront insérés dans l'objet et une information sera ajoutée dans les logs d'événement du pipeline DLT avec le nombre d'enregistrements concernés pour cet objet.
 - `CONSTRAINT expectation_name EXPECT (expectation_expr) ON VIOLATION FAIL UPDATE` : Lorsque l'action définie est "FAIL UPDATE", alors le pipeline DLT s'arrêtera en erreur au premier enregistrement ne respectant pas la contrainte avec le message d'erreur dans les logs d'événement du pipeline DLT.
 - `CONSTRAINT expectation_name EXPECT (expectation_expr) ON VIOLATION DROP ROW` : Lorsque l'action définie est "DROP ROW", alors les enregistrements ne respectant pas la contrainte ne seront pas insérés dans l'objet et une information sera ajoutée dans les logs d'événements du pipeline DLT avec le nombre d'enregistrements concernés pour cet objet.
 
@@ -95,12 +95,12 @@ L'accès se fait de la manière suivante :
 
 [![schema_01](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_01.png)
 
-A partir de cet écran, vous pourrez gérer les pipelines DLT (création, suppression, configuration, modification) et visualiser les différentes exécutions (dans la limite de la période de rétention des données d'observabilité de l'édition définie pour chaque pipeline)
+À partir de cet écran, vous pourrez gérer les pipelines DLT (création, suppression, configuration, modification) et visualiser les différentes exécutions (dans la limite de la période de rétention des données d'observabilité de l'édition définie pour chaque pipeline)
 [![schema_02](/blog/web/20230612_databricks_unity_catalog_deltalivetables_02.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_02.png)
 
 Les informations utiles pour la création d'un pipeline DLT :
 - General :
-    - Product edition : Édition à choisir parmi DLT Core, DLT Pro et DLT Advanced, cela va définir les fonctionnalités utilisables ainsi qu'un des critères du coûts de l'exécution du pipeline DLT
+    - Product edition : Édition à choisir parmi DLT Core, DLT Pro et DLT Advanced, cela va définir les fonctionnalités utilisables ainsi qu'un des critères du coût de l'exécution du pipeline DLT
     - Pipeline mode : 
         - Triggered : Permet de gérer l'exécution en mode batch et par conséquent de couper le cluster après exécution du pipeline DLT
         - Continuous : Permet de gérer l'exécution en mode streaming et par conséquent d'exécuter le pipeline en continue pour traiter les données dès qu'elles arrivent.
@@ -115,7 +115,7 @@ Les informations utiles pour la création d'un pipeline DLT :
 
 Les informations utiles après la création du pipeline DLT :
 - Mode d'exécution :
-    - Development : Dans ce mode, le cluster utilisée par le pipeline DLT ne s'arrêtera qu'après 2h (par défaut) pour éviter le temps de redémarrage d'un cluster et il n'y a pas de gestion de redémarrage automatique.
+    - Development : Dans ce mode, le cluster utilisé par le pipeline DLT ne s'arrêtera qu'après 2h (par défaut) pour éviter le temps de redémarrage d'un cluster et il n'y a pas de gestion de redémarrage automatique.
         - Il est possible de modifier le temps d'attention avant l'arrêt du cluster en configurant le paramètre `pipelines.clusterShutdown.delay` avec la valeur souhaitée (par exemple "300s" pour 5 minutes) 
         - Exemple : `{"configuration": {"pipelines.clusterShutdown.delay": "300s"}})`
     - Production : Dans ce mode, le cluster s'arrête automatiquement après l'exécution du pipeline DLT et il redémarre automatiquement en cas de problème technique (fuite mémoires, autorisations, démarrage, ...)
@@ -131,7 +131,7 @@ Attention :
     - Lorsque vous le ferez, vous aurez le message suivant : `This Delta Live Tables query is syntactically valid, but you must create a pipeline in order to define and populate your table.`
 - Un pipeline DLT correspond uniquement à un script ou un notebook, par conséquent si l'on souhaite exécuter plusieurs scripts ou notebooks, il faut utiliser la fonctionnalité "Job" (de la fonctionnalité "Workflows") pour orchestrer l'exécution de plusieurs pipelines DLT.
     - L'exécution du "Job" permettra d'exécuter les pipelines DLT avec les contraintes (et l'orchestration) souhaitées
-- Il n'est possible d'accéder à un objet avec la syntaxe du framework DLT qu'au sein du même pipeline DLT, si on souhaite lire le contenu d'un objet en dehors du pipeline DLT alors il sera accédé comme un objet externe et son utilisation ne sera pas tracé dans le graphe et dans les logs d'événements du pipeline DLT
+- Il n'est possible d'accéder à un objet avec la syntaxe du framework DLT qu'au sein du même pipeline DLT, si on souhaite lire le contenu d'un objet en dehors du pipeline DLT alors il sera accédé comme un objet externe et son utilisation ne sera pas tracée dans le graphe et dans les logs d'événements du pipeline DLT
     - Syntaxe pour accéder à un objet au sein du même pipeline DLT: `dlt.read(<object>)` ou `dlt.read_stream(<object>)` en Python et `LIVE.<object>` ou `STREAM(LIVE.<object>)` en SQL.
 
 
@@ -170,8 +170,8 @@ Afin de pouvoir utiliser Unity Catalog avec Delta Live Tables, il faut avoir les
 
 Conseil concernant l'ingestion des fichiers :
 - Lorsque l'on souhaite récupérer des informations (métadonnées) concernant les fichiers ingérés, il n'est pas possible d'utiliser la fonction `input_file_name` qui n'est pas supportée par Unity Catalog
-    - Il faut utiliser la colonne `_metadata` qui permet de récupérer les informations nécessaire, comme par exemple le nom du fichier `_metadata.file_name`
-    - Vous trouverez la liste des informations disponible dans la colonne `_metadata` sur la [documentation officielle](https://docs.databricks.com/ingestion/file-metadata-column.html).
+    - Il faut utiliser la colonne `_metadata` qui permet de récupérer les informations nécessaires, comme par exemple le nom du fichier `_metadata.file_name`
+    - Vous trouverez la liste des informations disponibles dans la colonne `_metadata` sur la [documentation officielle](https://docs.databricks.com/ingestion/file-metadata-column.html).
 
 ## Concernant la gestion des objets par le framework DLT (lors de l'exécution du pipeline DLT)
 
@@ -273,8 +273,8 @@ Détail du pipeline DLT :
 - Alimentation en streaming des données de l'objet "REF_PRODUCTS_RAW" vers un objet "Streaming Table" nommé "REF_PRODUCTS"
 - Récupération des données du référentiel Client en streaming à partir de fichier CSV (ref_clients_YYYYMMDD.csv) vers un objet "Streaming Table" nommé "REF_CLIENTS_RAW" (avec l'activation du Change Data Feed)
 - Alimentation en streaming des données de l'objet "REF_PRODUCTS_RAW" vers un objet "Streaming Table" utilisant la fonctionnalité SCD Type 2 et nommé "REF_CLIENTS" 
-    - En utilisant une vue nommé "REF_CLIENTS_CAST" pour transformer les données en amont
-- Récupération des données de transactions en streaming à partir de fichier CSV (fct_transactions_YYYYMMDD.csv) vers un objet "Streaming Table" nommé "FCT_TRX_RAW"
+    - En utilisant une vue nommée "REF_CLIENTS_CAST" pour transformer les données en amont
+- Récupération des données de transactions en streaming à partir de fichiers CSV (fct_transactions_YYYYMMDD.csv) vers un objet "Streaming Table" nommé "FCT_TRX_RAW"
 - Alimentation d'un objet "Streaming Table" nommé "FCT_TRX" à partir de l'objet "FCT_TRX_RAW" en appliquant une contrainte sur l'information "quantity" qui ne doit pas être égale à 0.
 - Alimentation d'un objet "Materialized View" nommé "FCT_TRX_AGG_MONTH" à partir des objets "FCT_TRX", "REF_CLIENTS" et "REF_PRODUCTS" pour agréger les ventes par mois, clients et produits
 
@@ -665,7 +665,7 @@ Exemple de l'onglet contenant les logs d'évènements de la 2ème exécution du 
 
 
 Remarque :
-- Le graphe du pipeline DLT permet de très facilement visualiser le lineage des données ainsi que le nombre d'enregistrement traités (ou supprimés) lors de chaque étape (objet)
+- Le graphe du pipeline DLT permet de très facilement visualiser le lineage des données ainsi que le nombre d'enregistrements traités (ou supprimés) lors de chaque étape (objet)
 - Lorsque nous cliquons sur un objet, nous pouvons avoir des métriques sur l'objet (nombre d'enregistrements écrits et supprimés, nombre d'enregistrements violant une contrainte, schéma de l'objet, date et heure d'exécution, durée, ...)
 - En bas de l'écran, nous avons accès à l'ensemble des logs d'événements de l'exécution du pipeline DLT et il est possible de les filtrer sur les options "All", "Info", "Warning" et "Error" ou sur la description des événements.
 - Il est possible de choisir l'exécution que l'on souhaite visualiser en la sélectionnant dans la liste déroulante (par timestamp d'exécution et contenant le dernier statut d'exécution).
@@ -746,7 +746,7 @@ GRANT USE_SCHEMA ON SCHEMA __databricks_internal.__dlt_materialization_schema_<p
 Le stockage des logs d'événements des pipelines DLT est physiquement séparé pour chaque pipeline DLT et il n'existe pas de vue par défaut qui permet d'avoir une vue agrégée des logs d’événements.
 Vous trouverez le détail du schéma dans la [documentation officielle](https://docs.databricks.com/delta-live-tables/observability.html#event-log-schema)
 
-Les types d'événements existant sont les suivants (non exhaustif) :
+Les types d'événements existants sont les suivants (non exhaustif) :
 - user_action : Information concernant les actions utilisateurs (création d'un pipeline DLT, exécution d'un pipeline DLT, arrêt manuel d'un pipeline DLT)
 - create_update : Information concernant la demande d'exécution du pipeline DLT (origine de la demande)
 - update_progress : Information concernant les étapes d'exécution du pipeline DLT (WAITING_FOR_RESOURCES, INITIALIZING, SETTING_UP_TABLES,  RUNNING, COMPLETED, FAILED)
@@ -759,7 +759,7 @@ Les types d'événements existant sont les suivants (non exhaustif) :
 - maintenance_progress : Information concernant les opérations de maintenance sur les données dans un délai de 24h après l'exécution du pipeline DLT
 
 Attention : 
-- Lorsque vous supprimez un pipeline DLT, les logs d'événements ne seront plus accessibles en utilisant la fonction `event_log(<pipeline_id)` mais seront toujours accessible en accédant directement à la table Delta “__event_log” concernée (tant qu'elle ne sera pas supprimée)
+- Lorsque vous supprimez un pipeline DLT, les logs d'événements ne seront plus accessibles en utilisant la fonction `event_log(<pipeline_id)` mais seront toujours accessibles en accédant directement à la table Delta “__event_log” concernée (tant qu'elle ne sera pas supprimée)
 - Les métriques ne sont pas capturées pour les objets "Streaming Table" mis à jour avec le processus de Slow Changing Dimension (SCD) de Type 2 géré par le framework DLT
     - Néanmoins, il est possible d'avoir des métriques en accédant à l'historique de la table Delta interne directement
 - Lorsqu'il y a des enregistrements ne respectant pas les contraintes sur un objet, nous avons accès aux métriques sur le nombre d'enregistrements mais pas le détail des enregistrements concernés.
@@ -791,7 +791,7 @@ order by timestamp desc
 Résultat :
 [![schema_20](/blog/web/20230612_databricks_unity_catalog_deltalivetables_20.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_20.png)
 
-2/ Exemple de requête permettant de récupérer le nombre de ligne écrites pour chaque objet lors des deux exécutions du pipeline DLT : 
+2/ Exemple de requête permettant de récupérer le nombre de lignes écrites pour chaque objet lors des deux exécutions du pipeline DLT : 
 ```sql
 with updid (
   select row_number() over (order by ts_start_pipeline desc) as num_exec_desc
@@ -822,7 +822,7 @@ order by l.origin.flow_name
 Remarque :
 - Lorsque l'objet est de type "Streaming Table", les métriques sont capturées avec l'événement qui a le statut "RUNNING"
     - Cas particulier pour un objet "Streaming Table" utilisant le processus du SCD Type 2 dont les métriques ne sont pas capturés
-- Lorsque l'objet est de type "Materialized View", les métriques sont capturés avec l'événement qui a le statut "COMPLETED"
+- Lorsque l'objet est de type "Materialized View", les métriques sont capturées avec l'événement qui a le statut "COMPLETED"
 - Lorsque l'objet est de type "View", aucune métrique n'est capturée
 
 Résultat : 
@@ -944,7 +944,7 @@ DROP CATALOG IF EXISTS CTG_DLT_DEMO CASCADE;
 ```
 
 Attention : 
-- La suppression du pipeline DLT va supprimer l'ensemble des objets (défini dans le pipeline DLT) du schéma cible mais ne supprimera pas directement les tables Delta du schéma interne. La suppression des tables Delta interne se fera lors de l'opéation de maintenance automatique (dans les 24h après la suppression du pipeline DLT)
+- La suppression du pipeline DLT va supprimer l'ensemble des objets (défini dans le pipeline DLT) du schéma cible mais ne supprimera pas directement les tables Delta du schéma interne. La suppression des tables Delta internes se fera lors de l'opération de maintenance automatique (dans les 24h après la suppression du pipeline DLT)
 - En cas de problème, la suppression des tables Delta du schéma interne peut se faire avec les commandes suivantes :
 ```bash
 # Get the list of tables (with full_name)

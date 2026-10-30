@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-You'll find in this article, some informations/commands to know to work with the [Git](https://en.wikipedia.org/wiki/Git) tool.
+You'll find in this article, some information/commands to know to work with the [Git](https://en.wikipedia.org/wiki/Git) tool.
 
 <!--more-->
 
@@ -148,7 +148,7 @@ Some commands to see the [differences](https://git-scm.com/docs/git-diff) betwee
 |:--|:--|
 | `$ git diff` | Difference between the working directory and the last _commit_ |
 | `$ git diff --cached` | Difference between files added for the next _commit_ and the last _commit_ |
-| `$ git diff <commit_1> <commit_2> <pattern>` | List of differences between two _commit_ for all files corresponding to the choosen pattern |
+| `$ git diff <commit_1> <commit_2> <pattern>` | List of differences between two _commit_ for all files corresponding to the chosen pattern |
 
 
 Some commands to read [a _commit_ history](https://git-scm.com/docs/git-log) :
@@ -159,7 +159,7 @@ Some commands to read [a _commit_ history](https://git-scm.com/docs/git-log) :
 | `$ git log -2` | See the history of the two last _commit_ |
 | `$ git log -p -1` | See the history of the last _commit_ with details of the differences between them |
 | `$ git log -stat -1` | See the history of the last _commit_ with statitics |
-| `$ git log --pretty=format:"<format>"` | See the history of the _commit_ in the choosen format |
+| `$ git log --pretty=format:"<format>"` | See the history of the _commit_ in the chosen format |
 | `$ git log --oneline --decorate"` | Example of command ... |
 | `$ git log --oneline --decorate --graph --all"` | Example of command ... |
 
@@ -217,7 +217,7 @@ $ git config --global alias.last 'log -1 HEAD'
 
 # Branch management with Git
 
-| Commande | Commentaire |
+| Command | Comment |
 |:--|:--|
 | `$ git branch` | List of branches |
 | `$ git branch -v` | List of branches with the last _commit_ |

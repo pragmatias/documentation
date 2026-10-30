@@ -12,7 +12,7 @@ Vous trouverez dans cet article des informations sur [Spark](https://spark.apach
 <!--more-->
 
 
-# Qu'est ce que Spark
+# Qu'est-ce que Spark
 
 [Apache Spark](https://en.wikipedia.org/wiki/Apache_Spark) est un système de calcul distribué rapide et polyvalent qui permet d'exécuter les traitements par lots (batch), en streaming, d'apprentissage automatique et de graphes avec le même moteur d'exécution. Il a été créé pour répondre aux limitations de Hadoop MapReduce en se basant sur une gestion des structures de données en mémoire et un moteur/optimiseur avancé.
 
@@ -45,7 +45,7 @@ Nouvelles fonctionnalités clés :
 - [Et de nombreuses améliorations de performances pour Structured Streaming, l'API Python, ...](https://www.databricks.com/blog/introducing-apache-spark-40)
 
 
-Quelques exemples du support de Spark 4.x chez les fournisseurs de services managés (Février 2026) :
+Quelques exemples du support de Spark 4.x chez les fournisseurs de services managés (février 2026) :
 - [Databricks](https://docs.databricks.com/aws/en/release-notes/runtime/) : La version Spark v4.0 est supportée à partir de Databricks Runtime 17.2 (Septembre 2025) et Spark 4.1 est supportée à partir de Databricks Runtime 18.0 (Janvier 2026)
 - [Snowflake](https://docs.snowflake.com/fr/user-guide/spark-connector) : Il ne semble pas encore y avoir de Connecteur Snowflake prenant en charge Spark 4.x. Spark 3.5 est la version la plus récente supportée.
 - [AWS EMR](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-7120-release.html) : La version 7.12.0 d'EMR (dernière version disponible) supporte Spark 3.5.6.

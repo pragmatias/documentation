@@ -14,7 +14,7 @@ Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre 
 # Objectif
 
 Pour mettre en place les éléments nécessaires, nous allons réaliser les étapes suivantes :
-1. Création d'un utilisateur spécifiques (nommé **vpn**) pour l'accès au VPN
+1. Création d'un utilisateur spécifique (nommé **vpn**) pour l'accès au VPN
 2. Installation de l'application [VPN Server](https://www.synology.com/fr-fr/dsm/packages/VPNCenter)
 3. Mise en place d'un certificat [Let's Encrypt](https://letsencrypt.org/)
 4. Configuration de l'application [VPN Server](https://www.synology.com/fr-fr/dsm/packages/VPNCenter)
@@ -94,7 +94,7 @@ Pour accéder au menu de configuration de l'application VPN Server :
 
 
 Les différentes options disponibles :
-- **Overview** : Donne l'état actuel de l'utilisation du VPN en fonction de chaque protocole (le nombre de connexion en cours)
+- **Overview** : Donne l'état actuel de l'utilisation du VPN en fonction de chaque protocole (le nombre de connexions en cours)
 - **Connection List** : Donne des informations sur les connexions en cours (nom d'utilisateur, adresse IP, Protocole, uptime)
 - **Log** : Message de log des connexions, déconnexions, ...
 - **General Settings** : Permet de définir le comportement général de l'application et la sécurité liée
@@ -122,7 +122,7 @@ Pour la configuration générale :
 
 Pour la mise en place d'une sécurité supplémentaire pour l'accès au VPN :
 1. Cliquez sur l'option `Set up Auto Block` afin de pouvoir sécuriser l'accès au VPN
-2. Cochez la case `Enable auto block` et renseignez les valeurs souhaitées pour le nombre de tentative avant blocage _(5 par défaut)_
+2. Cochez la case `Enable auto block` et renseignez les valeurs souhaitées pour le nombre de tentatives avant blocage _(5 par défaut)_
 3. Cochez la case `Enable DoS protection` sur l'interface réseau `LAN` 
 4. Cliquez sur le bouton `Apply` pour valider les modifications
 

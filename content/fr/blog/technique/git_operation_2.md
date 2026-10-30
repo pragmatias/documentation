@@ -7,7 +7,7 @@ draft : false
 toc: true
 ---
 
-Vous trouverez dans cet article, quelques opérations à connaitre lorsque vous travaillez avec l'outil [Git](https://en.wikipedia.org/wiki/Git).
+Vous trouverez dans cet article, quelques opérations à connaître lorsque vous travaillez avec l'outil [Git](https://en.wikipedia.org/wiki/Git).
 
 Plus spécifiquement, concernant la manipulation des commits/branches
 
@@ -17,7 +17,7 @@ Plus spécifiquement, concernant la manipulation des commits/branches
 
 Afin de pouvoir changer le nom d'une branche _(erreur lors du nommage initiale, ou changement de norme de nommage après la création de la branche distante)_, il est possible de réaliser les opérations suivantes.
 
-Nous prenons dans l'exemple les noms de branche suivantes :
+Nous prenons dans l'exemple les noms de branche suivants :
 * **br_src** pour le nom de la branche source
 * **br_cbl** pour le nom de la branche cible
 

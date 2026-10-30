@@ -207,7 +207,7 @@ plugins=(
         1. Paste the color scheme in the `schemes` JSON key
     3. Go to `Color Schemes`
         1. choose your schemes name
-    4. For each profile (Defaults, Windows PowerShell, Command Prompt, Ubuntu, Azure CLoud Shell, Git Bash, ....)
+    4. For each profile (Defaults, Windows PowerShell, Command Prompt, Ubuntu, Azure Cloud Shell, Git Bash, ...)
         1. Go to `Appearance`
             1. Color scheme : Use your color scheme
             2. Font face : `MesloLGS NF`

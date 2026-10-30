@@ -8,7 +8,7 @@ toc: true
 ---
 
 
-You'll find in this article, some informations about the [Variant Data Type](https://parquet.apache.org/docs/file-format/types/variantencoding/) from [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
+You'll find in this article, some information about the [Variant Data Type](https://parquet.apache.org/docs/file-format/types/variantencoding/) from [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
 
 <!--more-->
 

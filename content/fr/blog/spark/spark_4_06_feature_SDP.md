@@ -14,12 +14,12 @@ Vous trouverez dans cet article, des informations sur la fonctionnalité [Spark 
 # Introduction 
 
 
-En Juin 2022, [Databricks](https://www.databricks.com/) a annoncé la disponibilité générale d'une nouvelle fonctionnalité nommée [Delta Live Tables (DLT)](https://www.databricks.com/blog/2022/04/05/announcing-generally-availability-of-databricks-delta-live-tables-dlt.html) dans son écosystème et permettant le développement de manière déclarative des pipelines de traitements Spark. 
+En juin 2022, [Databricks](https://www.databricks.com/) a annoncé la disponibilité générale d'une nouvelle fonctionnalité nommée [Delta Live Tables (DLT)](https://www.databricks.com/blog/2022/04/05/announcing-generally-availability-of-databricks-delta-live-tables-dlt.html) dans son écosystème et permettant le développement de manière déclarative des pipelines de traitements Spark. 
 Cette fonctionnalité se basait principalement sur le format de données [Delta Lake](https://docs.databricks.com/aws/en/delta/) et sur le catalogue de données [Unity Catalog](https://www.databricks.com/product/unity-catalog).
 
 En juin 2025, Lors de l’événement [Data+AI Summit 2025](https://www.databricks.com/dataaisummit), [Databricks](https://www.databricks.com/) a annoncé publiquement [l'ouverture en open source d'une partie cœur de son framework déclaratif de traitement de données basé sur Apache Spark](https://www.databricks.com/company/newsroom/press-releases/databricks-donates-declarative-pipelines-apache-sparktm-open-source) en excluant, par conséquent, un grand nombre de fonctionnalités et d'optimisations qui seront disponibles uniquement sur la plateforme Databricks.
 
-En Juillet 2025, [Databricks](https://www.databricks.com/) a annoncé le renommage de la fonctionnalité Delta Live Tables en [Lakeflow Declarative Pipelines](https://www.databricks.com/blog/whats-new-lakeflow-declarative-pipelines-july-2025) qui est devenu le nom officiel de cette fonctionnalité au sein de la plateforme Databricks.
+En juillet 2025, [Databricks](https://www.databricks.com/) a annoncé le renommage de la fonctionnalité Delta Live Tables en [Lakeflow Declarative Pipelines](https://www.databricks.com/blog/whats-new-lakeflow-declarative-pipelines-july-2025) qui est devenu le nom officiel de cette fonctionnalité au sein de la plateforme Databricks.
 
 
 # Information
@@ -52,11 +52,11 @@ Les éléments clés :
 
 Les commandes spécifiques au framework SDP :
 - `spark-pipelines init` : Pour initialiser un premier projet
-- `spark-pipelines dry-run --spec pipeline_def.yaml` : Pour valider un pipeline sans l'exécuter (très utile pour valider les pipelines développés lors de l'exécution d'une pipeline CI/CD)
+- `spark-pipelines dry-run --spec pipeline_def.yaml` : Pour valider un pipeline sans l'exécuter (très utile pour valider les pipelines développés lors de l'exécution d'un pipeline CI/CD)
 - `spark-pipelines run --spec pipeline_def.yaml` : Pour exécuter le pipeline souhaité
 
 
-Le fonctionnement générale du framework SDP :
+Le fonctionnement général du framework SDP :
 1. Début de l'exécution.
 2. Lecture du fichier de définition du pipeline.
 3. Création d'une session Spark en s'appuyant sur les éléments de configuration définis dans le fichier de définition du pipeline.
@@ -71,7 +71,7 @@ Documentation :
 - [Syntaxe SQL](https://spark.apache.org/docs/4.1.1/declarative-pipelines-programming-guide.html#programming-with-sdp-in-sql)  
 
 > **Attention** : 
-> Lors des tests, le framework avait beaucoup de mal à définir le graphe de dépendance lorsque le code était entièrement fait avec les décorateur Python. De très nombreuses erreurs était liés au fait que le framework chercher l'existant d'une table dans le catalogue de données plutôt que dans les scripts du pipeline. L'utilisation du code SQL semble beaucoup mieux gérer pour le moment.
+> Lors des tests, le framework avait beaucoup de mal à définir le graphe de dépendance lorsque le code était entièrement fait avec les décorateurs Python. De très nombreuses erreurs était liées au fait que le framework cherchait l'existant d'une table dans le catalogue de données plutôt que dans les scripts du pipeline. L'utilisation du code SQL semble beaucoup mieux gérer pour le moment.
 
 # Avantages
 
@@ -423,7 +423,7 @@ En se basant sur la configuration définie dans le fichier **compose.yml** :
 
 Dans le répertoire **data** :
 1. Création d'un répertoire `input` : `mkdir -p data/input`
-2. Création du fichier `clients.csv` pour stocker quelques lignes définissants des clients
+2. Création du fichier `clients.csv` pour stocker quelques lignes définissant des clients
 3. Création du fichier `products.csv` pour stocker quelques lignes définissant les produits
 4. Création du fichier `orders.csv` pour stocker quelques lignes définissant des événements d'achats des produits par les clients
 
@@ -493,7 +493,7 @@ Cela aura pour effet de créer un répertoire nommé `LoadOrdersData` dans le r�
 
 ### Création des éléments nécessaire au pipeline
 
-L'objectif est de créer le pipeline suivante :
+L'objectif est de créer le pipeline suivant :
 ```mermaid
 graph TD;
     A(clients.csv) --load_bronze_orders.py--> D(sdp_bronze.raw_clients)
@@ -628,7 +628,7 @@ ORDER BY sales_volume DESC
 ### Création des éléments pour gérer l'environnement
 
 Afin de pouvoir gérer proprement l'environnement, nous allons créer deux scripts PySpark dans le répertoire `application/LoadOrdersData` :
-- Le script `init_schemas.py` permettant de créer les schémas nécessaires à la création des tables du pipelines
+- Le script `init_schemas.py` permettant de créer les schémas nécessaires à la création des tables du pipeline
     - `sdp_bronze`: pour le stockage des tables bronze
     - `sdp_silver`: pour le stockage des tables silver
     - `sdp_gold`: pour le stockage des tables gold

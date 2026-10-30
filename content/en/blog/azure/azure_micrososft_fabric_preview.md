@@ -47,7 +47,7 @@ _Note: we can see that Microsoft Fabric relies mainly on Azure Synapse and Power
 
 
 Regarding the concept of [Capacity Fabric](https://learn.microsoft.com/en-us/fabric/enterprise/licenses) :
-- As all services are managed and serverless, the computing power/ressource available is defined by a **Capacity Fabric**.
+- As all services are managed and serverless, the computing power/resource available is defined by a **Capacity Fabric**.
 - A **Capacity Fabric** is specific to a Tenant (organization) and there can be several per organization.
 - Each **Capacity Fabric** represents a distinct set of resources allocated to Microsoft Fabric, and more specifically to the workspaces concerned.
 - The configuration size for a **Capacity Fabric** will determine the computing power available, and consequently the managed services that can be used.
@@ -57,7 +57,7 @@ You will find the list of configurations in the [official documentation](https:/
 Hierarchy of elements:
 * Level n°1 : OneLake is unique for the entire Tenant
 * Level n°2 : [Workspaces](https://learn.microsoft.com/en-us/fabric/get-started/workspaces) (with logical grouping by [domain](https://learn.microsoft.com/en-us/fabric/governance/domains))
-* Level n°3 : Ressources (Lakehouse, Warehouse, KQL Database, SQL Endpoint, ...)
+* Level n°3 : Resources (Lakehouse, Warehouse, KQL Database, SQL Endpoint, ...)
 * Level n°4 : Objects (Files, Tables, Dashboard, Notebooks, ...)
 
 A [workspace](https://learn.microsoft.com/en-us/fabric/get-started/workspaces) is assigned to a **Capacity Fabric** and all managed services use the resources of this **Capacity Fabric** to run.
@@ -85,7 +85,7 @@ When creating a Lakehouse, Microsoft Fabric creates two additional elements by d
 - SQL Endpoint (SQL Engine)
 - Default Dataset (Data representation)
 
-SQL Endpoint allows to access data from tables defined at the Lakehouse level in read-only mode with the T-SQL syntax.
+SQL Endpoint allows access to data from tables defined at the Lakehouse level in read-only mode with the T-SQL syntax.
 It also provides read-only access to tables in other Lakehouses and Warehouses in the same workspace.
 
 The following actions can be performed with a SQL Endpoint:
@@ -101,7 +101,7 @@ The Lakehouse is composed of two root directories:
 - The **Files** directory represents data **not managed** by Lakehouse (_multiple user-managed data formats_).
  
 There are several ways to work with data in the Lakehouse:
-- **Upload**: Download local files or directories to the Lakehouse (_in the **Files** directory_) and load data into the **Tables** directory.
+- **Upload**: Upload local files or directories to the Lakehouse (_in the **Files** directory_) and load data into the **Tables** directory.
 - **[Dataflows (Gen2)](https://learn.microsoft.com/en-us/fabric/data-factory/dataflows-gen2-overview)** : Import and transform data from many sources and load them directly into Lakehouse tables
 - **Data Factory pipelines** : Copy data and orchestrate data transformation and loading activities in the Tables or Files directories of the Lakehouse
 - **Notebooks** : Working interactively with data with Apache Spark (Scala, Java, Python, R ...)
@@ -119,9 +119,9 @@ Regarding the format of data that can be used in the Lakehouse :
 - For the Tables directory: the default format is Delta
 
 In terms of storage, data are stored in the following spaces by default :
-- Path with tables name : `<workspace name>@onelake.dfs.fabric.microsoft.com/<lakehouse name>.Lakehouse/Tables/*`
-- Path with files name : `<workspace name>@onelake.dfs.fabric.microsoft.com/<lakehouse name>.Lakehouse/Files/*`
-- Path with unique identifier (tables) : `<workspace id>@onelake.dfs.fabric.microsoft.com/<lakehouse id>/Tables/*`
+- Path with table names : `<workspace name>@onelake.dfs.fabric.microsoft.com/<lakehouse name>.Lakehouse/Tables/*`
+- Path with file names : `<workspace name>@onelake.dfs.fabric.microsoft.com/<lakehouse name>.Lakehouse/Files/*`
+- Path with unique identifiers (tables) : `<workspace id>@onelake.dfs.fabric.microsoft.com/<lakehouse id>/Tables/*`
 
 
 
@@ -135,9 +135,9 @@ Example of the Warehouse interface :
 Data storage uses the OneLake storage and the Delta format (_which should be the default format_).
 _Note: in the preview version, when you create a table without specifying the storage format, you end up with Hive's default format (which is not Delta format)._ 
 
-This service makes it possible to implement a relational modeling layer on top of data storage in the Lakehouse, and to benefit from all the features of a Warehouse (_ACID ownership, concurrency, rights management, schema organization, relational model..._).
+This service makes it possible to implement a relational modeling layer on top of data storage in the Lakehouse, and to benefit from all the features of a Warehouse (_ACID properties, concurrency, rights management, schema organization, relational model..._).
 Data can be easily explored using T-SQL queries or reporting tools such as PowerBI.
-The Synapse Warehouse interface also supports T-SQL queries management (_create, save, modify, ...._).
+The Synapse Warehouse interface also supports T-SQL queries management (_create, save, modify, ..._).
 
 Creating a Warehouse in a workspace generates the following elements :
 - Creation of default schemas: dbo, guest, INFORMATION_SCHEMA and sys
@@ -308,12 +308,12 @@ There's a real desire to push PowerBI as the single solution for data analysis.
 
 This is a very interesting direction in data centralization, to limit the silo effect and facilitate data sharing and centralized governance (_in a Data Mesh approach for example_).
 
-An important aspect of the development is the no-code (or low-code) principle, which enables to work on data without writing code (or minimal one), mainly using Synapse services.
+An important aspect of the development is the no-code (or low-code) principle, which enables you to work on data without writing code (or minimal one), mainly using Synapse services.
 This is a good idea if you want users who are not Data Engineers to be able to manage/use the data for experimentation and demonstration purposes, but when you want to industrialize data management and processing efficiently, this becomes a constraint that can be very costly in terms of time and energy.
 
 Add to this the fact that you can't manage resource configuration, which is based directly on a Capacity Fabric, and you end up with ease of data use, but a loss of control over resources, and consequently costs.
-_Note: A small exception is the Apache Spark Pool, which allows you to manage few parameters, such as the number and type of workers_.
+_Note: A small exception is the Apache Spark Pool, which allows you to manage a few parameters, such as the number and type of workers_.
 
-**In conclusion**, Microsoft Fabric is an all-in-one, ready for use solution that enables all types of users to manage and manipulate data in a unified space, but I think that a solution like Databricks or Snowflake is much more efficient (_performance, cost, industrialization_), while keeping the use of the PowerBI service for the Lakehouse, Warehouse, Data Science approach, centralized data governance and cost control, but won't enable people with few technical skills to work properly with data.
+**In conclusion**, Microsoft Fabric is an all-in-one, ready-to-use solution that enables all types of users to manage and manipulate data in a unified space, but I think that a solution like Databricks or Snowflake is much more efficient (_performance, cost, industrialization_), while keeping the use of the PowerBI service for the Lakehouse, Warehouse, Data Science approach, centralized data governance and cost control, but won't enable people with few technical skills to work properly with data.
 
 

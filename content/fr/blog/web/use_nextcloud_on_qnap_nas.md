@@ -13,18 +13,18 @@ La mise en place est spécifique au NAS QNAP de la série [TS-x31P3 Series](http
 
  <!--more-->
 
-# Qu'est ce qu'un NAS
+# Qu'est-ce qu'un NAS
 
 Un [NAS (Network Attached Storage)](https://en.wikipedia.org/wiki/Network-attached_storage) est un serveur de stockage réseau qui permet de stocker, sauvegarder, partager, sécuriser et faciliter l'accès aux fichiers numériques (photos, vidéos, musiques, documents) et permet aussi d'exécuter des applications permettant d'enrichir les services accessibles (vpn, sftp, serveur web, ...).
 
-# Qu'est ce que Nextcloud
+# Qu'est-ce que Nextcloud
 
 [Nextcloud](https://fr.wikipedia.org/wiki/Nextcloud) est un logiciel (libre) offrant une plateforme de services de stockage et partage de fichiers ainsi que des applications en ligne.
 
 
 # Objectif
 
-L'objectif de cette démarche est de pouvoir avoir un cloud privée (basé sur Nextcloud) permettant à toute la famille de stocker, partager et gérer ces données tout en utilisant un ancien NAS QNAP déjà existant.
+L'objectif de cette démarche est de pouvoir avoir un cloud privé (basé sur Nextcloud) permettant à toute la famille de stocker, partager et gérer ses données tout en utilisant un ancien NAS QNAP déjà existant.
 
 L'application Nextcloud doit être accessible en local en utilisant l'adresse HTTPS suivante : `https://110.110.110.151`
 
@@ -339,7 +339,7 @@ II\. Pour le service **MariaDB** :
 
 III\. Pour l'application **Nextcloud** :
 1. Créez le répertoire de configuration `mkdir /share/Docker/scripts/nextcloud_app/config/nextcloud` 
-2. Créez les fichiers de configuration nommés **autoconfig.php** et **docker.config.php** dans le répertoire créé afin de configurer automatique l'application Nextcloud lors de la 1ère exécution
+2. Créez les fichiers de configuration nommés **autoconfig.php** et **docker.config.php** dans le répertoire créé, afin de configurer automatiquement l'application Nextcloud lors de la 1ère exécution
 
 Contenu du fichier **autoconfig.php** :
 ```php
@@ -656,8 +656,8 @@ NC_ADMIN_PASSWORD=<nextcloud admin password>
 Afin de pouvoir relancer au démarrage du NAS QNAP le conteneur Docker de l'application Nextcloud :
 1. Allez dans `Main Menu > ControlPanel > System > Hardware`
 2. Dans l'onglet `General`, cochez l'option `Run user defined processes during startup`
-3. Connectez vous en SSH sur le NAS QNAS avec un compte administrateur : `ssh <user>@<ip> -p <port>`
-4. Exécutez les commandes suivante pour monter le répertoire `/tmp/config`
+3. Connectez-vous en SSH sur le NAS QNAP avec un compte administrateur : `ssh <user>@<ip> -p <port>`
+4. Exécutez les commandes suivantes pour monter le répertoire `/tmp/config`
 ```sh
 ubiattach -m 6 -d 2
 /bin/mount -t ubifs ubi2:config /tmp/config
@@ -668,7 +668,7 @@ ubiattach -m 6 -d 2
 cd /share/Docker/scripts/nextcloud_app
 docker compose up -d
 ```
-6. Exécuter les commandes suivante pour rendre exécutable le fichier `/tmp/config/autorun.sh` 
+6. Exécuter les commandes suivantes pour rendre exécutable le fichier `/tmp/config/autorun.sh` 
 ```sh
 chmod +x /tmp/config/autorun.sh
 umount /tmp/config
@@ -678,8 +678,8 @@ ubidetach -m 6
 # Exécution de l'application Nextcloud
 
 Les étapes pour exécuter manuellement l'application Nextcloud sont les suivantes :
-1. Connectez vous SSH sur le NAS QNAP avec un compte administrateur : `ssh <user>@<ip> -p <port>`
-2. Positionnez vous dans le répertoire contenant les éléments de l'image docker : `cd /share/Docker/scripts/nextcloud_app`
+1. Connectez-vous SSH sur le NAS QNAP avec un compte administrateur : `ssh <user>@<ip> -p <port>`
+2. Positionnez-vous dans le répertoire contenant les éléments de l'image docker : `cd /share/Docker/scripts/nextcloud_app`
 3. Exécutez la commande docker compose suivante : `docker compose up -d`
 4. Attendez quelques secondes/minutes et vérifiez la bonne exécution du conteneur en vous connectant sur l'application Nextcloud `https://110.110.110.151`
 

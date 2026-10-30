@@ -17,7 +17,7 @@ _Note : Les travaux se basent sur l'état de la solution Unity Catalog à la fin
 
 <!--more-->
 
-# Qu'est ce qu'est le Data Lineage
+# Qu'est-ce qu'est le Data Lineage
 
 Le Data Lineage consiste à cartographier l'ensemble des objets et leur utilisation afin de pouvoir visualiser le cycle de vie des données.
 
@@ -29,9 +29,9 @@ Cela permet de faciliter les travaux de rationalisation de l'usage global des do
 Un Lineage technique consiste à mettre en place les éléments et outils pour cartographier les objets techniques et l'utilisation des données par les différents outils techniques.
 Cela permet de visualiser la relation entre les différents objets et de pouvoir identifier rapidement la provenance des données d'un objet ainsi que les éléments impactés par les changements d'un objet.
 
-Certain outils de gouvernance de données permettant d'automatiser la capture des métadonnées pour centraliser les informations de type Data Lineage comme par exemple Apache Atlas, Azure Purview ou AWS Glue (et bien d'autres)
+Certains outils de gouvernance des données permettent d'automatiser la capture des métadonnées pour centraliser les informations de type Data Lineage comme par exemple Apache Atlas, Azure Purview ou AWS Glue (et bien d'autres)
 
-Dans notre cas, nous allons nous appuyer sur la solution Unity Catalog proposée par Databricks et plus précisément sur la capture des informations mis en place par cette solution pour cartographier l'ensemble des éléments liés au Data Lineage.
+Dans notre cas, nous allons nous appuyer sur la solution Unity Catalog proposée par Databricks et plus précisément sur la capture des informations, mises en place par cette solution pour cartographier l'ensemble des éléments, liées au Data Lineage.
 
 Remarque : Il est aussi possible de mettre en place cette cartographie de manière manuelle avec l'utilisation d'un support de type Wiki alimenté manuellement ou à l'aide de scripts pour extraire les métadonnées des différents outils lorsque cela est possible.
 Cela nécessite énormément de temps et d'énergie pour rédiger, maintenir, extraire et valider les informations dans le temps (évolution des outils, évolution des applications, évolution des données, ...)
@@ -173,7 +173,7 @@ CREATE CATALOG IF NOT EXISTS ctg_ext
 
 2. Création des schémas
 La liste des schémas est la suivante :
-- `ctg_ext.sch_ref` : Schéma permettant de regrouper les tables externes pour l'accès aux données référentiels
+- `ctg_ext.sch_ref` : Schéma permettant de regrouper les tables externes pour l'accès aux données référentielles
 - `ctg_ipp.sch_bronze` : Schéma permettant de stocker les données brutes
 - `ctg_ipp.sch_silver` : Schéma permettant de stocker les données raffinées
 - `ctg_ipp.sch_gold` : Schéma permettant de stocker les données agrégées
@@ -449,7 +449,7 @@ L'interface `Principale` permet d'accéder aux éléments suivants :
 
 
 L'interface `Catalog` : 
-- Onglet `Schemas` : Affichage de la liste des schémas, visibles par l'utilisateurs, dans le catalogue avec pour chaque schéma le timestamp de création et le propriétaire (créateur par défaut)
+- Onglet `Schemas` : Affichage de la liste des schémas, visibles par les utilisateurs, dans le catalogue avec pour chaque schéma le timestamp de création et le propriétaire (créateur par défaut)
 - Onglet `Detail` : Affichage du détail des informations concernant le catalogue (Metastore Id, ...)
 - Onglet `Permissions` : Gestion des droits sur le catalogue
 
@@ -525,7 +525,7 @@ Contrainte pour que les informations de Data Lineage soient capturées pour un o
 
 Fonctionnement :
 - La capture des informations de Data Lineage est faite à partir des logs d'exécution des différents outils (notebooks, requêtes sql, workflow, ...) sur les 30 derniers jours (période glissante)
-    - Cela signifie que les informations de Data Lineage concernant les logs d'exécution des traitements de plus de 30 jours ne sont pas disponible
+    - Cela signifie que les informations de Data Lineage concernant les logs d'exécution des traitements de plus de 30 jours ne sont pas disponibles
 - La capture se fait jusqu'à la granularité de la colonne de chaque objet
 
 Limitation : 
@@ -538,9 +538,9 @@ Limitation :
     - Lors du renommage d'un objet (pour un objet managé dans le Metastore), l'identifiant de l'objet (et le chemin de stockage) ne change pas. Seulement le nom de l'objet ou de la colonne est modifié.
 
 
-Pour chaque objet, les informations du Data Lineage sont constitués des éléments suivants :
+Pour chaque objet, les informations du Data Lineage sont constituées des éléments suivants :
 - Affichage du graphe complet (ensemble des éléments sources et cible en partant de l'objet) et possibilité de naviguer dedans 
-- Option "Upstream" : Permet de filtrer l'ensemble des éléments utiliser comme source de l'alimentation de l'objet (1er niveau)
+- Option "Upstream" : Permet de filtrer l'ensemble des éléments utilisés comme source de l'alimentation de l'objet (1er niveau)
 - Option "Downstream" : Permet de filtrer l'ensemble des éléments utilisant les données de l'objet (1er niveau)
 
 Les éléments qui peuvent être capturés par Unity Catalog pour un objet (Table ou Vue) sont :
@@ -576,7 +576,7 @@ Affichage de la liste des objets dont l'une des sources de données est la table
 
 
 
-## Export des données de Data Linage avec Databricks REST API
+## Export des données de Data Lineage avec Databricks REST API
 
 Pré-requis :
 - Avoir l'outil `Curl` installé
@@ -737,10 +737,10 @@ aws s3 rm "s3://s3-demo-data-uc/demo/" --recursive
 L'outil Data Explorer permet de faciliter l'exploration des données au sein du Metastore de la solution Unity Catalog et de gérer les droits d'accès sur les objets sans connaître les commandes SQL.
 
 Les informations du Data Lineage capturées par la solution Unity Catalog permettent d'avoir un certain nombre d'informations sur le cycle de vie des données ainsi que sur la liste des éléments utilisant un objet spécifique.
-Cela permet d'avoir facilement une liste des éléments (notebooks, workflows, pipelines, requêtes,...) utilisant l'objet et par conséquent pouvant être impactés en cas de modification de l'objet.
+Cela permet d'avoir facilement une liste des éléments (notebooks, workflows, pipelines, requêtes, ...) utilisant l'objet et par conséquent pouvant être impactés en cas de modification de l'objet.
 Cela permet aussi de permettre la visualisation et la navigation en se basant sur les informations de Data Lineage (liens entre les objets jusqu'au niveau des colonnes).
 
-Point d'attention : La contrainte des 30 derniers jours (glissant) pour la capture des informations peut être très limitante dans le cadre d'une application ayant des traitements avec une fréquence supérieur eou égale au mois.
+Point d'attention : La contrainte des 30 derniers jours (glissant) pour la capture des informations peut être très limitante dans le cadre d'une application ayant des traitements avec une fréquence supérieure ou égale au mois.
 
 
 

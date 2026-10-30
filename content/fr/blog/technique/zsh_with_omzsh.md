@@ -176,17 +176,17 @@ plugins=(
 
 1. Récupération du [iTerm2 color schemes](https://github.com/mbadolato/iTerm2-Color-Schemes) souhaité
 
-2. Modification de la police d'écriture : Aller dans `iTerm2 > Preferences > Profiles > Text > Font`
-    1. Choisir `MesloLGS NF`
-    2. Cocher l'option : `Use ligatures`
+2. Modification de la police d'écriture : Allez dans `iTerm2 > Preferences > Profiles > Text > Font`
+    1. Choisissez `MesloLGS NF`
+    2. Cochez l'option : `Use ligatures`
 
-3. Importer le schéma des couleurs : Aller dans `iTerm2 > Preferences > Profiles > Colors`
-    1. Cliquer sur `Color Presets ...` et selectionner `Import...`
-    2. Cliquer sur le schéma des couleurs souhaitées (cf l'étape n°1)
+3. Import du schéma des couleurs : Allez dans `iTerm2 > Preferences > Profiles > Colors`
+    1. Cliquez sur `Color Presets ...` et sélectionnez `Import...`
+    2. Cliquez sur le schéma des couleurs souhaitées (cf l'étape n°1)
 
-4. Ajouter des raccourcis : Aller dans `iTerm2 > Preferences > Profiles > Keys > Key Mappings`
-    1. Choisir l'icone `+`
-    2. Ajouter les raccourcis définis ci-dessous
+4. Ajout des raccourcis : Allez dans `iTerm2 > Preferences > Profiles > Keys > Key Mappings`
+    1. Choisissez l'icone `+`
+    2. Ajoutez les raccourcis définis ci-dessous
 
 | Shortcut | Action | Esc+ |
 |:--|:--|:--|
@@ -198,17 +198,17 @@ plugins=(
 
 ## Windows Terminal (pour Windows WSL)
 
-1. Récupérer le schéma des couleurs souhaité à partir de [windowsterminalthemes.dev](https://windowsterminalthemes.dev/)
-2. Ouvrir l'application `Windows Terminal` et aller dans `Windows Terminal > Settings`
-    1. Aller dans `Startup`
+1. Récupérez le schéma des couleurs souhaité à partir de [windowsterminalthemes.dev](https://windowsterminalthemes.dev/)
+2. Ouvrez l'application `Windows Terminal` et aller dans `Windows Terminal > Settings`
+    1. Allez dans `Startup`
         1. Default Profile : `Ubuntu`
         2. Default terminal application : `Windows Terminal`
-    2. Aller dans `Open your settings.json file`
-        1. Coller le schéma des couleurs dans la balise JSON `schemes`
-    3. Aller dans `Color Schemes`
-        1. Choisir votre schéma
-    4. Pour chaque profile (Defaults, Windows PowerShell, Command Prompt, Ubuntu, Azure CLoud Shell, Git Bash, ....)
-        1. Aller dans `Appearance`
+    2. Allez dans `Open your settings.json file`
+        1. Collez le schéma des couleurs dans la balise JSON `schemes`
+    3. Allez dans `Color Schemes`
+        1. Choisissez votre schéma
+    4. Pour chaque profile (Defaults, Windows PowerShell, Command Prompt, Ubuntu, Azure CLoud Shell, Git Bash, ...)
+        1. Allez dans `Appearance`
             1. Color scheme : CHoisir votre schéma
             2. Font face : `MesloLGS NF`
 

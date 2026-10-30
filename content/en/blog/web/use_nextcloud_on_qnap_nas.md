@@ -17,9 +17,9 @@ The set up is specific to the QNAP NAS of the [TS-x31P3 Series](https://www.qnap
 
 A [NAS (Network Attached Storage)](https://en.wikipedia.org/wiki/Network-attached_storage) is a network storage server that stores, backs up, shares, secures and facilitates access to files (photos, videos, music, documents), as well as running applications to add more services (vpn, sftp, web server, etc.).
 
-# What's Nexcloud
+# What's Nextcloud
 
-[Nextcloud](https://en.wikipedia.org/wiki/Nextcloud) is a open source software offering a platform for file storage and sharing services as well as online applications.
+[Nextcloud](https://en.wikipedia.org/wiki/Nextcloud) is an open source software offering a platform for file storage and sharing services as well as online applications.
 
 
 # Objective
@@ -658,19 +658,19 @@ NC_ADMIN_PASSWORD=<nextcloud admin password>
 In order to start the Docker container of the Nextcloud application at the QNAP NAS startup :
 1. Go to `Main Menu > ControlPanel > System > Hardware`
 2. In the `General` tab, check the `Run user defined processes during startup` option
-3. Connect to the QNAS NAS via SSH with an administrator account: `ssh <user>@<ip> -p <port>`
-4. Run the follow commands to mount the directory `/tmp/config`
+3. Connect to the QNAP NAS via SSH with an administrator account: `ssh <user>@<ip> -p <port>`
+4. Run the following commands to mount the directory `/tmp/config`
 ```sh
 ubiattach -m 6 -d 2
 /bin/mount -t ubifs ubi2:config /tmp/config
 ```
-5. Create the file `/tmp/config/autorun.sh` with the content as follow :
+5. Create the file `/tmp/config/autorun.sh` with the following content :
 ```sh
 #!/bin/sh
 cd /share/Docker/scripts/nextcloud_app
 docker compose up -d
 ```
-6. Run the following commands to be able to run the file `/tmp/config/autorun.sh`  and unmount he directory `/tmp/config`
+6. Run the following commands to be able to run the file `/tmp/config/autorun.sh` and unmount the directory `/tmp/config`
 ```sh
 chmod +x /tmp/config/autorun.sh
 umount /tmp/config

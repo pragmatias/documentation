@@ -8,7 +8,7 @@ toc: true
 ---
 
 
-You'll find in this article, some informations about the SQL features (Script, Session, Compliance) from [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
+You'll find in this article, some information about the SQL features (Script, Session, Compliance) from [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
 
 <!--more-->
 
@@ -28,7 +28,7 @@ Implicit type conversions silently succeed even when semantically wrong. Dividin
 ANSI SQL compliance fundamentally changes these behaviors to match traditional databases like PostgreSQL, SQL Server and more. The changes affect three primary areas:
 - **Type System Strictness**  : Queries fail instead of returning truncated or `null` results silently
 - **NULL Handling**  : ANSI mode enforces stricter `NULL` semantics in predicates and set operations. `NULL = NULL` always returns NULL (not true). `UNION`, `INTERSECT`, and `EXCEPT` treat `NULL` values as equal for deduplication (matching the SQL standard).
-- **Reserved Keywords**  : ANSI mode enforces SQL reserved keyword restrictions. Column names like `SELECT`, `FROM`, `WHERE` must be backtick-quoted. This matches traditional databases behavior but breaks Spark SQL queries that use these names freely.
+- **Reserved Keywords**  : ANSI mode enforces SQL reserved keyword restrictions. Column names like `SELECT`, `FROM`, `WHERE` must be backtick-quoted. This matches traditional database behavior but breaks Spark SQL queries that use these names freely.
 
 The implementation affects multiple Spark subsystems:
 - **Catalyst Optimizer**: Adds type validation rules during the analysis phase. Rejects queries with type mismatches earlier in planning.

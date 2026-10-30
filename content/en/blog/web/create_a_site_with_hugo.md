@@ -21,10 +21,10 @@ The [documentation](https://gohugo.io/documentation/) is pretty complete and wel
 
 # Objective
 
-- Created a **blog** system linnked with a **tags** system allowing an eeasy navigation in a **documentation** spirit (wihtout using a **wiki**)
-- Do not use external ressource *(google,facebook,javascript,...)*
-- Do not retrieve visitor information *(trackers,cookies,comments,...)*
-- Do as much as i can by myself
+- Created a **blog** system linked with a **tags** system allowing an easy navigation in a **documentation** spirit (without using a **wiki**)
+- Do not use external resource *(google, facebook, javascript, ...)*
+- Do not retrieve visitor information *(trackers, cookies, comments, ...)*
+- Do as much as I can by myself
 - Automatically generate html pages
 
 # Source code
@@ -59,11 +59,11 @@ The steps are well explained and you will find a large number of [themes](https:
   +-- /themes
 ```
 
-- The folder "archetypes" allow to store the blog articles template
-- The folder "config" allow to store global config files
-- The folder "content" allow to store the content of the website (with **\*.md** files)
-- The foder "ressources" allow to store all the ressources elements generated
-- The folder "themes" allow to store the theme files
+- The folder "archetypes" allows storing the blog articles template
+- The folder "config" allows storing global config files
+- The folder "content" allows storing the content of the website (with **\*.md** files)
+- The folder "resources" allows storing all the resource elements generated
+- The folder "themes" allows storing the theme files
 
 
 ## Theme directories definition
@@ -87,14 +87,14 @@ The folders used for a theme *(example with my own theme)* :
   |   +-- theme.toml
 ```
 
-The theme is named **pragmatias** and the meta-data will be find in the file **theme.toml**
+The theme is named **pragmatias** and the metadata will be found in the file **theme.toml**
 An example of the file **theme.toml** content can be found in the [officiel website](https://github.com/gohugoio/hugoThemes#themetoml).
 
 Important folders :
 
 - i18n : manage the multilingue parts (vocabulary)
 - layouts : manage the display of the website
-- static : store all the needed ressources (js,fonts,css,images)
+- static : store all the needed resources (js, fonts, css, images)
 
 
 ## Website structure definition
@@ -117,9 +117,9 @@ This page will be the default skeleton of each website page.
 
 You need to create the following files in the folder `/themes/pragmatias/layouts/partials` : 
 
-- head.html : allow to define the **header** part of each html page
-- header.html : allow to define the **navigation menu** part (on top of the website)
-- footer.html : allow to define the **footer** part of each html page
+- head.html : allows defining the **header** part of each html page
+- header.html : allows defining the **navigation menu** part (on top of the website)
+- footer.html : allows defining the **footer** part of each html page
 
 For the header and footer, the invocation of the files **\*.html** is done using the following syntax :
 ```html 
@@ -132,7 +132,7 @@ For the body, the invocation of the files **\*.html** is done in a more complex 
 
 ## Navigation menu management
 
-To manage the navigation menu Afin de gérer un menu de navigation depending on the screen size (mobile/desktop), i used the [bootstrap](https://getbootstrap.com/) javascript library .
+To manage the navigation menu depending on the screen size (mobile/desktop), I used the [bootstrap](https://getbootstrap.com/) javascript library.
 
 Implementation steps are :
 
@@ -214,7 +214,7 @@ To create articles, you need to define and manage a **blog** section.
 
 This folder will be used to store all the articles content of the **blog** section in the **\*.md** format.
 
-Example of a article content :
+Example of an article content :
 ```toml
 ---
 Categories : [""]

@@ -1,7 +1,7 @@
 ---
 Categories : ["Ollama","LLMs","VS Code","Podman"]
 Tags : ["Ollama","LLMs","VS Code","Podman"]
-title : "LLMs : Utilisation de Ollama avec Podman et VS Code"
+title : "LLMs : Utilisation d'Ollama avec Podman et VS Code"
 date : 2024-07-24
 draft : false
 toc: true
@@ -105,14 +105,14 @@ Seconde manière par la Palette de commande de VS Code :
 
 ## Mise en place de Ollama en locale
 
-Nous utiliserons les paramètres suivantes :
+Nous utiliserons les paramètres suivants :
 - Modèle Ollama : `llama3:8b`
 
 Pour installer et utiliser [Ollama](https://ollama.com/) : 
 1. Allez sur le [site officiel](https://ollama.com/download) et télécharger la version souhaitée (Linux, Windows or Mac).
 2. Suivez les instructions d'installation de l'outil
 3. Ouvrez un terminal
-5. Exécutez la commande : `Ollama pull llama3:8b` *(Ou choisissez le model souhaité à partir de la librarie Ollama)*
+5. Exécutez la commande : `Ollama pull llama3:8b` *(ou choisissez le modèle souhaité à partir de la librairie Ollama)*
 6. Exécutez la commande : `Ollama run llama3:8b`
 
 *Note : Si vous n'avez pas de GPU, alors [Ollama](https://ollama.com/) affichera le warning suivant :  `No NVIDIA/AMD GPU detected. Ollama will run in CPU-only mode.`*
@@ -124,7 +124,7 @@ Pour installer et utiliser [Ollama](https://ollama.com/) :
 
 ## Configuration de l'extension VS Code Continue
 
-Exemple d'une configuration de [VS Code Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) pour utiliser un serveur locale de [Ollama](https://ollama.com/) :
+Exemple d'une configuration de [VS Code Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) pour utiliser un serveur local d'[Ollama](https://ollama.com/) :
 ```JSON
 {
   "models": [

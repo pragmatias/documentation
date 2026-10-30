@@ -212,7 +212,7 @@ spark.stop()
 # Limitations
 
 
-1. **Performances plus lentes que les types natifs** : Les agrégations sur les champs VARIANT sont plus lentes que les colonnes natives INT/DECIMAL. L'extraction et la validation de type se produisent à l'exécution. L'accès basé sur les chemins a une surcharge par rapport à l'accès direct aux colonnes. Non adapté pour l'analytique critique en performances sur des schémas stables.
+1. **Performances plus faibles que les types natifs** : Les agrégations sur les champs VARIANT sont plus lentes que les colonnes natives INT/DECIMAL. L'extraction et la validation de type se produisent à l'exécution. L'accès basé sur les chemins a une surcharge par rapport à l'accès direct aux colonnes. Non adapté pour l'analytique critique en performances sur des schémas stables.
 2. **Pas de validation de schéma** : N'importe quel JSON peut être inséré. Aucune contrainte sur la présence ou les types de champs. Les fautes de frappe dans les noms de champs retournent silencieusement `NULL`. Les problèmes de qualité des données sont plus difficiles à détecter. Nécessite une validation au niveau applicatif.
 3. **Support limité de l'optimiseur** : Les prédicats imbriqués complexes peuvent ne pas être poussés vers le stockage. La collecte de statistiques est limitée. L'optimisation des jointures est moins efficace que les types natifs. La planification de requête ne peut pas exploiter les informations de schéma pour l'optimisation.
 4. **Surcharge de stockage pour les données simples** : Il est légèrement plus lourd qu'un `STRUCT` optimisé car il doit stocker des métadonnées supplémentaires pour chaque enregistrement
@@ -229,7 +229,7 @@ spark.stop()
 - **Cas d'usage 1 : Agrégation d'événements multi-sources**
     - Une plateforme de données ingère des événements provenant de plus de 20 microservices. Chaque service a des schémas d'événements différents qui évoluent indépendamment. Une table avec une colonne VARIANT stocke tous les événements sans coordination de schéma. Les requêtes extraient les champs spécifiques au service selon les besoins. L'évolution du schéma se produit sans modification du pipeline.
 - **Cas d'usage 2 : Mise en cache de réponses d'API**
-    - Un système met en cache les réponses API dans des tables Spark pour analyse. Les payloads API sont profondément imbriqués avec des champs optionnels. la colonne de type VARIANT stocke les réponses sans aplatissement. Les requêtes d'analyse extraient des chemins spécifiques. Les nouvelles versions d'API ajoutent des champs sans casser les requêtes existantes.
+    - Un système met en cache les réponses API dans des tables Spark pour analyse. Les payloads API sont profondément imbriqués avec des champs optionnels. La colonne de type VARIANT stocke les réponses sans aplatissement. Les requêtes d'analyse extraient des chemins spécifiques. Les nouvelles versions d'API ajoutent des champs sans casser les requêtes existantes.
 
 
 # Codes

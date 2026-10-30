@@ -85,7 +85,7 @@ Spark Connect maintains session isolation (Client no longer holds SparkContext).
 - **Use Case 3: Continuous Upgrade Pipeline**  
     - A platform runs Spark 4.0 cluster but has 50+ client applications in different repositories. Traditional approach requires coordinating upgrades across all repos. Spark Connect allows upgrading cluster to 4.1 while clients remain on 4.0 client library. Gradual migration reduces risk and testing burden.
 - **Use Case 4 : Shared Development Environments**
-    - Engineers connecting their local editor code (VS Code, PyCharm, ...) to a shared spark cluster. The editor code connect directly to the cluster via `SPARK_REMOTE`, providing auto-completion and local testing without complex configuration.
+    - Engineers connecting their local editor code (VS Code, PyCharm, ...) to a shared spark cluster. The editor code connects directly to the cluster via `SPARK_REMOTE`, providing auto-completion and local testing without complex configuration.
 
 
 

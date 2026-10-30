@@ -13,7 +13,7 @@ In this article, you will find all the elements/steps to install [Nextcloud](htt
 
 # What's Nextcloud
 
-[Nextcloud](https://en.wikipedia.org/wiki/Nextcloud) is a open source software offering a platform for file storage and sharing services as well as online applications.
+[Nextcloud](https://en.wikipedia.org/wiki/Nextcloud) is an open source software offering a platform for file storage and sharing services as well as online applications.
 
 # Objective
 
@@ -40,7 +40,7 @@ On the Synology NAS, it's required to install the following applications by usin
 
 # Enabling SSH access on the Synology NAS
 
-The [SSH](https://en.wikipedia.org/wiki/Secure_Shell) access will allow to install the Nextcloud application from the command line.
+The [SSH](https://en.wikipedia.org/wiki/Secure_Shell) access will allow installing the Nextcloud application from the command line.
 
 To activate SSH access, the following steps must be followed :
 
@@ -52,9 +52,9 @@ To activate SSH access, the following steps must be followed :
 [![Activation SSH](/blog/web/20191020_nextcloud_activation_ssh.png)](/blog/web/20191020_nextcloud_activation_ssh.png) 
 
 
-# Connexion au NAS Synology par SSH
+# Connecting to the Synology NAS via SSH
 
-Récupérez l'application [Putty](https://www.putty.org/) et suivez les étapes suivantes :
+Retrieve the [Putty](https://www.putty.org/) application and follow the steps below :
 
 1. Run [Putty](https://www.putty.org/)
 2. Fill **Host Name** with the NAS IP : `192.168.51.54`

@@ -1,7 +1,7 @@
 ---
 Categories : ["Linux","OpenSuse"]
 Tags : ["Linux","OpenSuse"]
-title : "Installation de OpenSUSE (Tumbleweed)"
+title : "Installation d'OpenSUSE (Tumbleweed)"
 date : 2019-02-05
 draft : false
 toc: true
@@ -9,7 +9,7 @@ toc: true
 
 Afin de faciliter l'installation de la distribution GNU/LINUX OpenSuse Tumbleweed par rapport à mes besoins, vous trouverez dans cet article les étapes pour avoir un système opérationnel rapidement à partir d'une nouvelle installation.
 
-L'objectif était de pouvoir avoir rapidement un système me permettant de travailler  (docker/sublimtext/etc ...) et me divertir (Streaming/Video/etc ...)
+L'objectif était de pouvoir avoir rapidement un système me permettant de travailler  (docker/Sublime Text/etc ...) et me divertir (Streaming/Video/etc ...)
 
 Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragmatias/opensuse).
 
@@ -46,7 +46,7 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
 
 1. Configurez la liste des dépôts : `sudo ./01_TW_config_repository.sh`
 
-> *Note* : You devez retirer le dépôt nvidia si you n'avez pas de carte graphique nvidia
+> *Note* : You devez retirer le dépôt nvidia si vous n'avez pas de carte graphique nvidia
 
 2. Supprimez les paquets non souhaités : `sudo ./02_TW_remove_package.sh`
 3. Installez les paquets souhaités : `sudo ./03_TW_install_package.sh`
@@ -54,7 +54,7 @@ Toutes les sources se trouvent dans ce dépôt [Github](https://github.com/pragm
 > *Note* : si l'installation du paquet "vlc-codecs" n'est pas [OK], vous devez l'installer manuellement avec la commande `sudo zypper in --no-recommend vlc-codecs` and choisir l'option **with vendor change for the libraries**
 
 4. Installez les fonts **truetype** propriétaires : `sudo ./04_TW_install_fonts_truetype.sh`
-5. Personnalisez lesutilisateurs : `sudo ./05_TW_customize_users.sh` 
+5. Personnalisez les utilisateurs : `sudo ./05_TW_customize_users.sh` 
 6. Installez les drivers de la carte graphique (manuellement) : `sudo zypper in nvidia-glG05`
 7. Redémarrez votre ordinateur : `sudo shutdown -r 0`
 8. Supprimez le répertoire temporaire **tmp_install** : `rm -rf ~/tmp_install`
@@ -81,14 +81,14 @@ Un exemple de personnalisation utilisée :
 	*	Fonts > Fonts > Ubuntu (Hack for "Fixed  width")
 	*	Application Style > Window Decorations > Border size : No Borders
 	*	Application Style > Window Decorations > Breeze (Customize : "Small" Button Size, cochez seulement "Draw window background gradient")
-	*	Desktop Behavior > Workspace > Click behavior > Double-click : pour ouvrir les fichiers et répertoirs (en double cliquant au lieu d'un clique simple)
+	*	Desktop Behavior > Workspace > Click behavior > Double-click : pour ouvrir les fichiers et répertoires (en double cliquant au lieu d'un clic simple)
 	*	Desktop Behavior > Screen Locking > deactivation Lock screen automatically
-	*	Desltop Behavior > Virtual Desktop > Desktop (Customize : Nombre de bureau = 4 et Nombre de lignes = 1)
+	*	Desktop Behavior > Virtual Desktop > Desktop (Customize : Nombre de bureau = 4 et Nombre de lignes = 1)
 	*	Input Devices > Keyboard > NumLock on Plasma Startup > Turn on
 * KDE Desktop
-    * Clique droit sur le fond d'écran du bureau > Configure Desktop > Tweask > Uncheck Show the desktop toolbox
-    * Clique droit sur le fond d'écran du bureau > Configure Desktop > Filter > Show Files Matching
-    * Clique droit sur le fond d'écran du bureau > Configure Desktop > Wallpaper > Add Image > Choose your wallpaper
+    * Clic droit sur le fond d'écran du bureau > Configure Desktop > Tweak > Uncheck Show the desktop toolbox
+    * Clic droit sur le fond d'écran du bureau > Configure Desktop > Filter > Show Files Matching
+    * Clic droit sur le fond d'écran du bureau > Configure Desktop > Wallpaper > Add Image > Choose your wallpaper
 
 
 

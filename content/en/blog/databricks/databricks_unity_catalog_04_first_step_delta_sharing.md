@@ -34,7 +34,7 @@ Among the existing solutions, we are going to focus on the "Delta Sharing" funct
 # Unity Catalog and the object hierarchy
 
 
-Unity Catalog is the Databricks solution that allows to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
+Unity Catalog is the Databricks solution that allows you to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
 
 You can get a more complete overview by reading the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html)
 
@@ -137,7 +137,7 @@ Information about recipients :
 - This is an object at the Metastore level that allows you to define access for a partner/customer
 - Read access to the share is managed on the recipient object 
 - A recipient can access all the shares in a Metastore according to the rights given by the share owners
-- A recipient cannot access Metatore Unity Catalogs, only authorized shares.
+- A recipient cannot access Metastore Unity Catalogs, only authorized shares.
 - In order to create a recipient it is necessary to activate the Delta Sharing feature for the Metastore
 - There are two types of recipient :
     - Open Sharing : the recipient uses a Databricks token whose validity period is defined at the Metastore level
@@ -170,7 +170,7 @@ To do this, it is necessary to set up the storage of audit logs for events relat
 
 The storage of audit logs requires the implementation of a log configuration at the level of the Databricks account.
 
-Some informations : 
+Some information : 
 - Audit logs are not retrieved in real time, but every X minutes and stored in storage resource specified at the log configuration level in the Account Databricks.
 - The audit log files are in JSON format.
 - The audit log files for the Metastore Unity Catalog are stored in a subdirectory named `workspace=0`.
@@ -744,7 +744,7 @@ export TMP_DBX_AZ_METASTORE_SC_ID=`dbx-api -X GET ${DBX_AZ_API_URL}/api/2.1/unit
 dbx-api -X PATCH ${DBX_AZ_API_URL}/api/2.1/unity-catalog/metastores/${TMP_DBZ_AZ_METASTORE_ID} -H 'Content-Type: application/json' -d "{\"storage_root_credential_id\": \"${TMP_DBX_AZ_METASTORE_SC_ID}\"}"
 ``` 
 
-If creating the `Databricks Access Connector` (step #2) does not work with the Azure CLI tool, you can do it manually by following this steps :
+If creating the `Databricks Access Connector` (step #2) does not work with the Azure CLI tool, you can do it manually by following these steps :
 1. Go to `Microsoft Azure page > Resource Group`
 2. Click on the desired resource group
 3. Click on `Create`
@@ -948,7 +948,7 @@ d8140290-4a65-44a2-aac0-31c7feaf4aac,rcp_azure_dbx,5,fct_trx_mng,true,unityCatal
 ```
 This query allows us to access the information of the result of the queries executed on the shared objects.
 We can see that the query on the `fct_trx_mng` table has the `deltaSharingPartitionFilteringAccessed` option enabled and returns only 3 rows (which corresponds to the filter on the partitions) and that the query on the `fct_trx_ext` table returns 8 rows.
-We can also have other information such as the ip address, the agent of the tool that executed the request (Databricks in our case) and many more informations.
+We can also have other information such as the ip address, the agent of the tool that executed the request (Databricks in our case) and many more information.
 
 
 
@@ -1231,7 +1231,7 @@ requestId,recipient_name,numRecords,tableName,deltaSharingPartitionFilteringAcce
 ```
 This query allows us to access the information of the result of the queries executed on the shared objects.
 We can see that the query on the `fct_trx_mng` table has the `deltaSharingPartitionFilteringAccessed` option enabled and returns only 5 rows (which corresponds to the filter on the partitions) and that the query on the `fct_trx_ext` table returns 8 rows.
-We can also have other information such as the ip address, the agent of the tool that executed the request (Python/pandas in our case) and many other information.
+We can also have other information such as the ip address, the agent of the tool that executed the request (Python/pandas in our case) and much more information.
 
 
 
@@ -1308,9 +1308,9 @@ With the Delta Sharing functionality, the Unity Catalog solution makes it possib
 The management of shared objects can be done only with SQL commands, which makes the administration of shares and the management of access for the different recipients very simple and efficient.
 
 Data sharing with Delta Sharing does not require the use of Databricks computing resources (Cluster or SQL Warehouse) of the provider to access shared objects.
-Delta Sharing makes it possible to share data, which can be voluminous, in an efficient way and by limiting costs by providing transparent access directly to data storage in a secure way (AWS S3, Azure ADLS, GCP)
+Delta Sharing makes it possible to share data, which can be voluminous, in an efficient way and by limiting costs by providing transparent access directly to data storage in a secure way (AWS S3, Azure ADLS, GCP).
 
-This makes it possible to multiply the data usage without having to duplicate it and to be able to access it from a very large number of tools and technologies (Spark, Python, Java, Scala, PowerBI and many others in the futur)
+This makes it possible to multiply the data usage without having to duplicate it and to be able to access it from a very large number of tools and technologies (Spark, Python, Java, Scala, PowerBI and many others in the future).
 
 By relying on audit logs, we have the possibility of tracking all the events related to the Metastores of the Unity Catalog solution at the account level and to be able to analyze the use of shared objects by the different recipients.
 

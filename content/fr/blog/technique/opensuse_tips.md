@@ -53,7 +53,7 @@ Il faut reconstruire la base RPM : `sudo rpm --rebuilddb`
 
 Pour effectuer un retour en arrière à partir d'un snapshot "bootable" : 
 
- 1. Démarrez le système. Dans le menu de démarrage, choisissez l'option "Bootable snapshots" et selectionnez le snapshot sur lequel vous voulez démarrer.
+ 1. Démarrez le système. Dans le menu de démarrage, choisissez l'option "Bootable snapshots" et sélectionnez le snapshot sur lequel vous voulez démarrer.
  2. Connectez-vous. Vérifiez si tout fonctionne comme prévu.
  3. Si vous voulez effectuer le rollback, exécutez `sudo snapper rollback` et redémarrez ensuite. 
  4. Sur l'écran de démarrage, choisissez l'entrée de démarrage par défaut pour redémarrer sur le système restauré. 
@@ -79,7 +79,7 @@ Pour redémarrer pulseaudio, vous pouvez utiliser : `pulseaudio -k`
 
 Pour redémarrer le service réseau, vous pouvez utiliser :` sudo rcnetwork restart network_interface`
 
-> Note: remplacer **network_interface** par votre nom d'interface. (vous pouvez utiliser `ifconfig` pour la connaitre)
+> Note: remplacer **network_interface** par votre nom d'interface. (vous pouvez utiliser `ifconfig` pour la connaître)
 
 ## Configuration du fichier /etc/fstab (avec un disque ntfs)
 
@@ -145,7 +145,7 @@ Quelques commandes utiles concernant les disques :
 | Switch One Desktop Up | Meta+Up |
 | Full screen Window | Meta+f |
 
-2\. Clique droit sur le papier peint du bureau > Configure Desktop > Mouse Actions > Remove action "Switch Desktop" for "Vertical-Scroll"
+2\. Clic droit sur le papier peint du bureau > Configure Desktop > Mouse Actions > Remove action "Switch Desktop" for "Vertical-Scroll"
 
 
 ## Autostart (KDE)
@@ -178,9 +178,9 @@ Dans Settings > Edit Current Profile
 ## Configuration de Firefox
 Le fichier **places.sqlite** dans **$HOME/.mozilla/firefox/%.default** contient les favoris et l'historique.
 
-Liste des modules intéressant :
+Liste des modules intéressants :
 
- - Ublock Origin
+ - uBlock Origin
  - HTTPS Everywhere
  - Canvasblocker
  - Cookie autodelete
@@ -196,7 +196,7 @@ Liste des modules intéressant :
 
 ## Configuration de Latte Dock
 
-Liste des widgets intéressant :
+Liste des widgets intéressants :
 
  - Application Menu
  - Pager
@@ -242,7 +242,7 @@ Si vous ne pouvez pas installer **Polybar** (erreur avec **libjsoncpp.so.19**), 
 
 Installation de VBoxGuestAdditions :
 
- 1. insérez le fichier VBoxGuestAdditions*.iso dans le cdrom de la machine virtuel
+ 1. Insérez le fichier VBoxGuestAdditions*.iso dans le cdrom de la machine virtuelle
  2. `sudo mkdir -p /media/cdrom`
  3. `sudo mount -t iso9660 /dev/cdrom /media/cdrom`
  4. `cd /media/cdrom`

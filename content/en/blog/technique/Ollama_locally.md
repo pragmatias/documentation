@@ -20,7 +20,7 @@ You will find in this article, some information to use [Ollama](https://ollama.c
 
 You will find the supported GPU list in the [official documentation](https://github.com/ollama/ollama/blob/main/docs/gpu.md).
 
-You will need to have a good amount of memory to use it, i recommend you to have 32 Go.
+You will need to have a good amount of memory to use it, I recommend you to have 32 GB.
 
 You will find all available LLMs models in the [official library](https://ollama.com/library).
 
@@ -50,11 +50,11 @@ Useful commands :
 
 Core concepts :
 - Pods are groups of containers that run together and share the same resources, similar to Kubernetes pods.
-- A container is an isolated environment where an application runs without affecting the rest of the system and without the system impacting the application..
+- A container is an isolated environment where an application runs without affecting the rest of the system and without the system impacting the application.
 - A container image is a static file with executable code that can create a container on a computing system. A container image is immutable—meaning it cannot be changed, and can be deployed consistently in any environment
 - A container volume is a persistent storage that could be used by a container
 
-*Warning : To achieve optimal performance, i recommend using the [GPU Passthrough](https://docs.nvidia.com/ai-enterprise/deployment-guide-rhel-with-kvm/0.1.0/podman.html).*
+*Warning : To achieve optimal performance, I recommend using the [GPU Passthrough](https://docs.nvidia.com/ai-enterprise/deployment-guide-rhel-with-kvm/0.1.0/podman.html).*
 
 
 # VS Code
@@ -62,7 +62,7 @@ Core concepts :
 [VS Code](https://code.visualstudio.com/) is a multi-platform source-code editor developed by Microsoft. 
 [VS Code](https://code.visualstudio.com/) can be extended via extensions available through a [central repository](https://marketplace.visualstudio.com/vscode).
 
-[Continue](https://www.continue.dev/) is an open-source AI code assistant which allow to connect any models inside the IDE.
+[Continue](https://www.continue.dev/) is an open-source AI code assistant which allows you to connect any models inside the IDE.
 
 We will use the [VS Code Continue](https://marketplace.visualstudio.com/items?itemName=Continue.continue) extension to work with our [Ollama](https://ollama.com/) configuration (local or remote). Additionally, you can leverage various providers and services, such as [Open AI](https://openai.com/), [Anthropic](https://www.anthropic.com/), [Mistral](https://mistral.ai/), [Gemini](https://gemini.google.com/) and others.
 

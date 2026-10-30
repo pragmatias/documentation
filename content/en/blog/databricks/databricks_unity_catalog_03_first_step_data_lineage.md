@@ -9,7 +9,7 @@ toc: true
 
 We are going to discover the [Data Lineage](https://docs.databricks.com/data-governance/unity-catalog/data-lineage.html) functionality offered by the [Unity Catalog](https://docs.databricks.com/data-governance/unity-catalog/index.html) solution.
 
-We will use a Databricks Account on AWS to perfrom this discovery.
+We will use a Databricks Account on AWS to perform this discovery.
 
 _Note: Work is based on the state of the Unity Catalog solution at the end of Q1 2023 on AWS and Azure._
 
@@ -37,7 +37,7 @@ This requires a lot of time and energy to write, maintain, extract and validate 
 
 # Unity Catalog and the object hierarchy
 
-Unity Catalog is the Databricks solution that allows to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
+Unity Catalog is the Databricks solution that allows you to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
 
 
 You can get a more complete overview by reading the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html)
@@ -52,7 +52,7 @@ The objects are :
 - Metastore : Top-level object that can contain metadata
 - Catalog : 1st level object allowing to organize data by Schema (also called Database)
 - Schema : 2nd and last level object used to organize data (contains tables, views and functions)
-- Table : Object used to define the structure and storage of data.. 
+- Table : Object used to define the structure and storage of data. 
 - View : Object used to encapsulate a query using one or more objects (table or view)
 - Function : Object allowing to define operations on the data
 
@@ -615,7 +615,7 @@ export DBX_API_URL="<url workspace databricks with https://>"
 ```
 
 
-Get informations at the `ctg_ipp.sch_silver.fct_transactions` object level :
+Get information at the `ctg_ipp.sch_silver.fct_transactions` object level :
 ```bash
 # 1. Get the list of upstreams elements from an object
 dbx-api -X GET -H 'Content-Type: application/json' ${DBX_API_URL}/api/2.0/lineage-tracking/table-lineage -d '{"table_name": "ctg_ipp.sch_silver.fct_transactions", "include_entity_lineage": true}}' | jq '.upstreams[]'
@@ -744,7 +744,7 @@ aws s3 rm "s3://s3-demo-data-uc/demo/" --recursive
 
 The Data Explorer tool makes it easy to explore data in the Unity Catalog Metastore and to manage rights on objects without knowing SQL commands.
 
-The Data Lineage information captured by the Unity Catalog solution allows to have a certain amount of information on the data life cycle as well as on the list of elements using a specific object.
+The Data Lineage information captured by the Unity Catalog solution allows you to have a certain amount of information on the data life cycle as well as on the list of elements using a specific object.
 This makes it easy to have a list of elements (notebooks, workflows, pipelines, queries, etc.) that use the object and may be impacted by a modification of an object.
 This also allows for visualization and navigation based on Data Lineage information (links between objects down to the column level).
 

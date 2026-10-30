@@ -8,7 +8,7 @@ toc: true
 ---
 
 
-Vous trouverez dans cet article, des informations sur les fonctionnalité SQL (Script, Session, Conformité) à partir de [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
+Vous trouverez dans cet article, des informations sur les fonctionnalités SQL (Script, Session, Conformité) à partir de [Spark v4.x](https://spark.apache.org/releases/spark-release-4-0-0.html).
 
 
 <!--more-->

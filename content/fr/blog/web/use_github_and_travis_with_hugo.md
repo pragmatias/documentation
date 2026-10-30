@@ -87,7 +87,7 @@ Si vous voulez modifier la configuration par défaut :
 ## Gestion d'un jeton Github
 Il faut commencer par créer un jeton Github permettant de donner le droit à [Travis CI](https://travis-ci.com) de faire la mise à jour du dépôt cible.
 
-1\. Connectez vous sur votre compte [Github](https://github.com), allez dans **settings** et cliquez sur **Developer settings**
+1\. Connectez-vous sur votre compte [Github](https://github.com), allez dans **settings** et cliquez sur **Developer settings**
 
 [![1ère étape](/blog/web/20190429_github_token_step1.png)](/blog/web/20190429_github_token_step1.png)
 
@@ -147,7 +147,7 @@ deploy:
 Le contenu du fichier est le suivant :
 
 - Utilisation de la distribution Ubuntu Trusty `dist: trusty`
-- Récuperation et installation de l'outil Hugo pour Linux `install: ...`
+- Récupération et installation de l'outil Hugo pour Linux `install: ...`
 - Suppression du répertoire **public** qui est le répertoire par défaut de génération de l'outil Hugo `before_script: ...`
 - Exécution de l'outil Hugo `script: ...`
 - Pour la partie déploiement :

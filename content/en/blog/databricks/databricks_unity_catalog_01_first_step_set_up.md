@@ -58,13 +58,13 @@ A metadata is an information about a data allowing to define its context (descri
 
 A metastore can be local to an instance of a resource (a cluster, a workspace) or central to all resources managing data.
 
-In a company with a data governance based on a Data Lake, Datawarehouse or Lakehouse model for example, we will advise to set up a centralized metastore allowing to store all the metadata of the company's data in order to facilitate the governance, the use and the sharing of the data to all the teams
+In a company with a data governance based on a Data Lake, Datawarehouse or Lakehouse model for example, we advise to setting up a centralized metastore allowing you to store all the metadata of the company's data in order to facilitate the governance, the use and the sharing of the data to all the teams
 
 
 
-# Wha's the Unity Catalog solution
+# What's the Unity Catalog solution
 
-Unity Catalog is the Databricks solution that allows to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
+Unity Catalog is the Databricks solution that allows you to have a unified and centralized governance for all the data managed by the Databricks resources as well as to secure and facilitate the management and the sharing of the data to all the internal and external actors of an organization.
 
 The internal use is done by sharing a metastore of Unity Catalog on all Databricks workspaces.
 
@@ -74,7 +74,7 @@ Some examples of features offered by the Unity Catalog solution:
 - Management of rights on objects by groups and users using an ANSI SQL syntax
 - Management of objects that can be created in a Databricks workspace and used by all Databricks workspaces using Unity Catalog
 - Possibility to share data in a simple and secure way through the Delta Sharing functionality
-- Allows to capture information on the life cycle and the origin of the data (Data Lineage)
+- Allows you to capture information on the life cycle and the origin of the data (Data Lineage)
 - Capture all logs to be able to audit data access and use
 
 You can get a more complete overview by reading the [official documentation](https://docs.databricks.com/data-governance/unity-catalog/index.html)
@@ -82,9 +82,6 @@ You can get a more complete overview by reading the [official documentation](htt
 
 
 # Objects hierarchy
-
-Avant d'aller plus loin, nous allons introduire la hiérarchie des objets au sein de la solution Unity Catalog.
-Nous allons nous concentrer uniquement sur les éléments nécessaires à la mise en place de la solution Unity Catalog.
 
 We will introduce the object hierarchy within the Unity Catalog solution.
 We will focus only on the elements that are used in our set up of the Unity Catalog solution.
@@ -102,7 +99,7 @@ The objects hierarchy consists of the following three levels :
     4. The Metastore must have the same region as the Workspace to which it is attached
 2. Catalog :
     1. It is the first level of the hierarchy used to organize the data
-    2. It allows to organize objects (data) by schema (also called database)
+    2. It allows you to organize objects (data) by schema (also called database)
     3. If you want to have several environments in the same Metastore (in the same region) then you can create one Catalog per environment
 3. Schema (or Database) : 
     1. It is the 2nd and last level of the hierarchy used to organize the data
@@ -235,9 +232,9 @@ aws s3api put-bucket-tagging --bucket ${AWS_S3_DBX_UC} --tagging ${AWS_TAGS}
 ```
 
 
-## Étape n°2 : Création d'une politique et d'un rôle avec la ressource AWS IAM
+## Step n°2: Creating a policy and a role with the AWS IAM resource
 
-The policy and the role will allow to give administrative rights to the Unity Catalog solution to manage data access on the AWS S3 resource.
+The policy and the role will allow you to give administrative rights to the Unity Catalog solution to manage data access on the AWS S3 resource.
 
 Execute the following commands using the AWS CLI :
 ```bash
@@ -482,13 +479,6 @@ With the help of the Databricks CLI and AWS CLI tools, we were able to easily se
 This allowed us to easily set up a solution to manage our centralized metadata repository for all the data managed and manipulated by our Databricks resources (Cluster and SQL Warehouse).
 
 
-
-Les avantages de l'utilisation de la solution Unity Catalog : 
-- Unity Catalog permet de simplifier et centraliser la gestion des droits sur l'ensemble des objets gérés.
-- Unity Catalog permet de sécuriser, faciliter et multiplier les usages sur les données grâce aux nombreux connecteurs pour SQL Warehouse ainsi que la possibilité d'exporter les informations vers d'autres outils de gestion de catalogue de données.
-- Unity Catalog est un outil qui s'améliore régulièrement et qui devrait devenir la référence pour la gouvernance des données pour toutsceux qui utilisent Databricks.
-
-
 The advantages of using the Unity Catalog solution : 
 - Unity Catalog simplifies and centralizes the management of rights on all managed objects.
 - Unity Catalog allows you to secure, facilitate and multiply the usages of data by using the numerous connectors for SQL Warehouse as well as the possibility of exporting information to other data catalog management tools.
@@ -566,7 +556,6 @@ Some information about the limitations on the Unity Catalog solution:
 
 ## Connection management for the Databricks CLI tool
 
-
 1. Install the tool `Databricks CLI` with `pip` (requires python3)
     1. Execute the command : `pip install databricks-cli`
     2. Check the result with the command : `databricks --version` (Result : `Version 0.17.6`)
@@ -576,7 +565,7 @@ Some information about the limitations on the Unity Catalog solution:
     2. Click on your user and click on `User Settings`
     3. Click on `Access tokens`
     4. Click on `Generate new token`
-    5. Fill the comment and define the token life time
+    5. Fill the comment and define the token lifetime
     6. Click on `Generate`
     7. Copy the Databricks Token to be able to use it with Databricks CLI
 
@@ -586,3 +575,5 @@ Some information about the limitations on the Unity Catalog solution:
     3. Fill the `Access Token` with the Databricks Token created : `dapi2c0000aa000a0r0a00e000000000000`
 
 You can see your credential with the command`cat ~/.databrickscfg`
+
+

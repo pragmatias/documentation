@@ -37,7 +37,7 @@ A concise overview of the different editions :
 - DLT Core :
     - Allows you to manage basic functionality
 - DLT Pro : 
-    - Allows you to manage all the functions of the "DLT Core" edition, including Change Data Capture (CDC) and Slow Changing Dimension (SCD) type 2 object (very useful for simplifying referential data management when you want to keep track of changes)
+    - Allows you to manage all the functions of the "DLT Core" edition, including Change Data Capture (CDC) and Slowly Changing Dimension (SCD) type 2 object (very useful for simplifying referential data management when you want to keep track of changes)
 - DLT Advanced :
   - Allows you to manage all the functions of the "DLT Pro" edition, as well as all data quality management functions (mainly the definition of constraints (expectations) and their observability (metrics)).
 
@@ -53,7 +53,7 @@ Regarding the **Streaming Table** object :
 - To read a "Streaming table" object in the same DLT pipeline, use the syntax `STREAM(LIVE.<object>)` (SQL) or `dlt.read_stream("<object>")` (Python).
 - It is possible to define the ingestion of data from a "Streaming Table" object with a type 2 Slow Changing Dimension process automatically managed by the DLT framework.
     - This makes it very easy to set up history management for referential data from a source using CDC (Change Data Capture) or CDF (Change Data Feed).
-- Since objects are managed by the DLT framework when a DLT pipeline is executed, it's not recommended to changes data (update, delete, insert) outside the DLT pipeline.
+- Since objects are managed by the DLT framework when a DLT pipeline is executed, it's not recommended to change data (update, delete, insert) outside the DLT pipeline.
     - It is possible to perform modifications (DML-type queries) with certain limitations on "Streaming Table" objects, but this is not recommended and not all operations are supported.
 
 Regarding the **Materialized View** object :
@@ -101,8 +101,8 @@ Useful information for creating a DLT pipeline:
 - General :
     - Product edition : Edition to be chosen among DLT Core, DLT Pro and DLT Advanced, this will define the usable functionalities as well as one of the criteria of the cost of the DLT pipeline execution
     - Pipeline mode : 
-        - Triggered : Allows to manage the execution in batch mode and therefore to stop the cluster after execution of the DLT pipeline
-        - Continuous : Allows to manage the execution in streaming mode and therefore to execute the pipeline continuously to process the data as soon as it arrives.
+        - Triggered : Allows you to manage the execution in batch mode and therefore to stop the cluster after execution of the DLT pipeline
+        - Continuous : Allows you to manage the execution in streaming mode and therefore to execute the pipeline continuously to process the data as soon as it arrives.
 - Source Code : Allows to define the script (Python) or the Notebook (Python or SQL) to be executed by the DLT pipeline
 - Destination
     - Storage Option : Choose Unity Catalog to use the Unity Catalog solution with the DLT framework
@@ -259,7 +259,7 @@ export DBX_DLT_PIPELINE_ID=""
 ```
 
 
-## Schématisation de l'environnement
+## Diagram of the environment
 
 Diagram of the DLT pipeline we are going to set up :
 [![schema_04](/blog/web/20230612_databricks_unity_catalog_deltalivetables_04.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_04.png)
@@ -276,7 +276,7 @@ Details of the DLT pipeline:
 
 ## Setting up a dataset
 
-The dataset will be build of two batches in order to run two executions and put data refreshment into practice.
+The dataset will be built from two batches in order to run two executions and put data refresh into practice.
 
 Dataset for batch n°1 (first execution of the DLT pipeline) :  
 Content of the file `ref_clients_20230501.csv` : 
@@ -340,7 +340,7 @@ COMMENT 'Schema to store the dlt demo objects';
 ```
 
 
-## Creation of the python script containing the objects definition for the DLT framework
+## Creation of the Python script containing the objects definition for the DLT framework
 
 The script is named `dlt_pipeline.py` and will be copied to the Databricks Workspace (it will be used by the DLT pipeline).
 
@@ -661,10 +661,10 @@ Example of the tab containing the event logs of the second execution of the DLT 
 [![schema_11](/blog/web/20230612_databricks_unity_catalog_deltalivetables_11.png)](/blog/web/20230612_databricks_unity_catalog_deltalivetables_11.png)
 
 
-Oberservation :
+Observation :
 - The DLT pipeline graph makes it very easy to visualize the lineage of the data as well as the number of records processed (or deleted) during each step (object)
-- When we click on an object, we can have metrics on the object (number of records written and deleted, number of records violating a constraint, schema of the object, date and time of execution, duration, . ..)
-- At the bottom of the screen, we have access to all the event logs of the execution of the DLT pipeline and it is possible to filter them on the options "All", "Info", "Warning" and " Error" or on the description of the events.
+- When we click on an object, we can have metrics on the object (number of records written and deleted, number of records violating a constraint, schema of the object, date and time of execution, duration, ...)
+- At the bottom of the screen, we have access to all the event logs of the execution of the DLT pipeline and it is possible to filter them on the options "All", "Info", "Warning" and "Error" or on the description of the events.
 - It is possible to choose the execution you want to view by selecting it from the drop-down list (by execution timestamp and containing the last execution status).
 
 

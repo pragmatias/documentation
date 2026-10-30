@@ -114,7 +114,7 @@ id_trx,ts_trx,id_product,id_shop,id_client,quantity
 8,2023-04-10 18:30:00,3,1,2,2
 ```
 
-Réalisation de la copie des données vers le répertoire `demo`de la ressource AWS S3 nommée `s3-demo-data-uc` avec l'outil AWS CLI:
+Réalisation de la copie des données vers le répertoire `demo` de la ressource AWS S3 nommée `s3-demo-data-uc` avec l'outil AWS CLI:
 ```bash
 aws s3 cp ref_products.csv s3://s3-demo-data-uc/demo/ref_products.csv 
 aws s3 cp fct_transactions.csv s3://s3-demo-data-uc/demo/fct_transactions.csv 
@@ -182,7 +182,7 @@ Dans le cadre de la gestion des accès avec Unity Catalog, les recommandations s
 - Il est recommandé de toujours appliquer des droits au niveau des groupes et non pas des utilisateurs pour faciliter la gestion des droits dans le temps
     - Vous pouvez gérer des groupes sur plusieurs niveaux pour organiser les droits et les utilisateurs
 - Lors de l'import (création) d'un groupe au niveau du Workspace Databricks, l'administrateur du Workspace doit définir les droits (Entitlements) du groupe sur le Workspace Databricks
-- Si vous voulez donner les même droits que l'utilisateur `john.do.dbx@gmail.com` à un autre utilisateur, il suffira d'ajouter cet autre utilisateur dans les mêmes groupes que l'utilisateur `john.do.dbx@gmail.com`
+- Si vous voulez donner les mêmes droits que l'utilisateur `john.do.dbx@gmail.com` à un autre utilisateur, il suffira d'ajouter cet autre utilisateur dans les mêmes groupes que l'utilisateur `john.do.dbx@gmail.com`
 
 Concernant la suppression d'un  groupe : 
 - Si vous supprimez le groupe du Workspace Databricks, il existera toujours au niveau de l'Account Databricks
@@ -196,7 +196,7 @@ Pré-requis :
 - Avoir un compte ayant le rôle/droit d'administration du Workspace Databricks
 - Avoir un SQL Warehouse existant sur le Workspace Databricks (pour que les utilisateurs puissent exécuter des requêtes SQL sur Databricks)
 
-Pour la création du groupe et de l'utilisateur, il faut réaler les actions suivantes au niveau de l'Account Databricks :
+Pour la création du groupe et de l'utilisateur, il faut réaliser les actions suivantes au niveau de l'Account Databricks :
 1. Création d'un utilisateur nommé `john.do.dbx@gmail.com`
 2. Création d'un groupe nommé `grp_demo` et ajout de l'utilisateur `john.do.dbx@gmail.com` dans le groupe `grp_demo`
 
@@ -229,7 +229,7 @@ Détail des actions à réaliser :
 
 Si vous voulez donner l'accès à un SQL Warehouse à un groupe, il faut suivre les étapes suivantes : 
 1. Allez sur `Workspace page > SQL > SQL Warehouses`
-2. Cliquez sur le bouton sous forme de 3 points and choisissez l'option `Permissions`
+2. Cliquez sur le bouton sous forme de 3 points et choisissez l'option `Permissions`
 3. Ajoutez le groupe et choisissez  l'option `Can use`
 
 
@@ -324,7 +324,7 @@ GRANT CREATE EXTERNAL LOCATION ON STORAGE CREDENTIAL `sc-demo-data-uc` TO grp_de
 
 
 
-Exemple de requête permettant de récupérer l'ensemble des droits données au groupe `grp_demo` sur les objets des catalogues `ctg_ipp`et `ctg_ext` :
+Exemple de requête permettant de récupérer l'ensemble des droits donnés au groupe `grp_demo` sur les objets des catalogues `ctg_ipp` et `ctg_ext` :
 ```sql
 -- How to get all the existing privileges for a group ?
 -- Get privileges from Catalog
@@ -415,8 +415,8 @@ Concernant les tables externes (External Table) :
 - Lors de la suppression de la table, uniquement les métadonnées sont supprimées. Les données (fichiers) ne sont pas impactées par la suppression.
 - Quelques restrictions :
     - Si la table se source à partir d'un fichier csv, aucune autre action que la lecture ne sera permise
-    - Si la table se source à partir des données (fichiers) de type CSV (ou autres format hors Delta) (écrit par un traitement spark par exemple), il sera possible de faire des insertions mais pas de mise à jour ou de suppression
-    - Si la table se source à partir des données au format Delta alors il sera possible de faire exactement les mêmes actions qu'avec une Managed Table
+    - Si la table se source à partir des données (fichiers) de type CSV (ou autres formats hors Delta) (écrits par un traitement spark par exemple), il sera possible de faire des insertions mais pas de mise à jour ou de suppression
+    - Si la table se source à partir des données au format Delta, alors il sera possible de faire exactement les mêmes actions qu'avec une Managed Table
     - Il n'est pas possible de définir deux tables externes différentes utilisant exactement les mêmes fichiers de données comme stockage externe
 
 
@@ -473,7 +473,7 @@ COPY INTO ctg_ipp.sch_bronze.fct_transactions
 
 Exemple d'erreur lors de la mise à jour des données d'une External Table basée sur un fichier CSV
 4. Mise à jour des données de la table `ref_products` en erreur
-5. Suppression d'une données de la table `ref_products` en erreur
+5. Suppression d'une donnée de la table `ref_products` en erreur
 
 ```sql
 -- 4. Error : Try to update the data in the ref_products table
@@ -640,7 +640,7 @@ Si l'on souhaite mettre en place un fonctionnement ouvert des données en minimi
 
 Néanmoins, si l'on souhaite utiliser la solution Unity Catalog, il est fortement recommandé de centraliser l'ensemble de la gouvernance des données afin de pouvoir gérer l'ensemble des accès au sein de la solution Unity Catalog.
 
-A partir de la solution Unity Catalog, il est possible d'accéder aux données en utilisant des Clusters, des SQL Warehouse ou la fonctionnalité de Delta Sharing pour multiplier les usages possibles des données.
+À partir de la solution Unity Catalog, il est possible d'accéder aux données en utilisant des Clusters, des SQL Warehouses ou la fonctionnalité de Delta Sharing pour multiplier les usages possibles des données.
 
 
 

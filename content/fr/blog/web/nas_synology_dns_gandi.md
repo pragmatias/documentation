@@ -1,7 +1,7 @@
 ---
 Categories : ["NAS","Synology","DNS"]
 Tags : ["NAS","Synology","DNS"]
-title : "Mise a jour des DNS de Gandi.net et utilisation d'un Proxy inversé avec un NAS Synology"
+title : "Mise à jour des DNS de Gandi.net et utilisation d'un proxy inversé avec un NAS Synology"
 date : 2024-04-19
 draft : false
 toc: true
@@ -18,11 +18,11 @@ Vous trouverez dans cet article, l'ensemble des éléments permettant de mettre 
 Nous souhaitons utiliser un nom de domaine personnel de [Gandi.net](https://www.gandi.net/en) nommé `testing.com` pour pouvoir accéder aux différents services existant derrière un accès (Routeur Livebox) internet personnel en fonction des sous-domaines définis.
 
 Nous avons un réseau local contenant les équipements suivants :
-- Routeur Livebox avec l'adresse local 192.10.10.1 _(Adresse publique : 90.125.62.14)_
-- NAS Synology avec l'adresse local 192.10.10.2
-- Serveur local n°1 pour héberger le service VPN avec l'adresse local 192.10.10.10
-- Serveur local n°2 pour héberger le service GAME avec l'adresse local 192.10.10.20
-- Serveur local n°3 pour héberger le service TODO avec l'adresse local 192.10.10.30
+- Routeur Livebox avec l'adresse locale 192.10.10.1 _(Adresse publique : 90.125.62.14)_
+- NAS Synology avec l'adresse locale 192.10.10.2
+- Serveur local n°1 pour héberger le service VPN avec l'adresse locale 192.10.10.10
+- Serveur local n°2 pour héberger le service GAME avec l'adresse locale 192.10.10.20
+- Serveur local n°3 pour héberger le service TODO avec l'adresse locale 192.10.10.30
 
 Nous avons un nom de domaine `testing.com` actif chez [Gandi.net](https://www.gandi.net/en).
 
@@ -40,10 +40,10 @@ Le routeur Livebox ne permet de gérer que l'IPv4, l'adresse IP publique n'est p
 
 ## Usage
 
-- Lorsqu'un utilisateur souhaite accéder à l'url `https://vpn.testing.com` alors il doit être redirigé automatiquement vers le serveur local n°1.
-- Lorsqu'un utilisateur souhaite accéder à l'url `http://game.testing.com` alors il doit être redirigé automatiquement vers le serveur local n°2.
-- Lorsqu'un utilisateur souhaite accéder à l'url `http://todo.testing.com` alors il doit être redirigé automatiquement vers le serveur local n°3.
-- Lorsqu'un utilisateur souhaite accéder à l'url `https://share.testing.com` alors il doit être redirigé automatiquement vers le NAS Synology.
+- Lorsqu'un utilisateur souhaite accéder à l'url `https://vpn.testing.com`, alors il doit être redirigé automatiquement vers le serveur local n°1.
+- Lorsqu'un utilisateur souhaite accéder à l'url `http://game.testing.com`, alors il doit être redirigé automatiquement vers le serveur local n°2.
+- Lorsqu'un utilisateur souhaite accéder à l'url `http://todo.testing.com`, alors il doit être redirigé automatiquement vers le serveur local n°3.
+- Lorsqu'un utilisateur souhaite accéder à l'url `https://share.testing.com`, alors il doit être redirigé automatiquement vers le NAS Synology.
 
 
 Schéma : 
@@ -75,8 +75,8 @@ Démarche pour créer le jeton d'accès :
 [![Token - Step n°2](/blog/web/20240419_nas_synology_dns_gandi_02.png)](/blog/web/20240419_nas_synology_dns_gandi_02.png)
 
 5. Dans la partie `Personal Access Token (PAT)`, cliquez sur le bouton `Create a token`
-6. Renseigner les différents éléments nécesssaires
-    1. Renseigner le nom du jeton  (ex : `testing_dns_pat`)
+6. Renseignez les différents éléments nécessaires :
+    1. Renseignez le nom du jeton  (ex : `testing_dns_pat`)
     2. Sélectionnez la durée de validité du jeton comprise entre 7 jours et 1 an (ex : `7 days`)
     3. Cochez la case `Restrict to selected products` et sélectionnez le domaine souhaité (ex : `testing.com`)
     4. Cochez la case `See and renew domain names`
@@ -85,7 +85,7 @@ Démarche pour créer le jeton d'accès :
 
 [![Token - Step n°3](/blog/web/20240419_nas_synology_dns_gandi_03.png)](/blog/web/20240419_nas_synology_dns_gandi_03.png)
 
-7. Copier le Jeton d'accès créé dans un endroit sécurisé car il ne sera plus accessible
+7. Copiez le Jeton d'accès créé dans un endroit sécurisé, car il ne sera plus accessible
 
 [![Token - Step n°4](/blog/web/20240419_nas_synology_dns_gandi_04.png)](/blog/web/20240419_nas_synology_dns_gandi_04.png)
 
@@ -120,7 +120,7 @@ Démarche pour configurer la box internet :
 
 
 
-# Creation et mise à jour des DNS Gandi.net 
+# Création et mise à jour des DNS Gandi.net 
 
 _Attention : la prise en compte d'un changement de DNS peut mettre plusieurs heures en fonction de sa configuration._
 
@@ -143,7 +143,7 @@ Nous définissons les paramètres important du script au début :
 - Le nom du domaine sera dans la variable : `DOMAIN_GANDI`
 - La liste des sous domaines à mettre à jour seront dans la variable : `RECORDS_GANDI`
 
-A partir de ces informations, nous allons pouvoir mettre en place le script suivant :
+À partir de ces informations, nous allons pouvoir mettre en place le script suivant :
 ```bash
 #!/bin/sh
 
@@ -215,7 +215,7 @@ Les grandes étapes sont les suivantes :
 1. `curl -s -4 ifconfig.co/ip` (résultat : `90.125.62.14`) : Récupération de notre adresse IP publique actuelle
 2. `curl -X GET "https://api.gandi.net/v5/livedns/domains/${DOMAIN_GANDI}/nameservers" -H "authorization: Bearer ${TOKEN_GANDI}" | jq '.[0]' | sed 's/"//g'` : Récupération du `nameserver` principal de [Gandi.net](https://www.gandi.net/en) pour notre domaine `testing.com`
 3.  `/var/packages/DNSServer/target/bin/dig +short ${RECORD_GANDI}.${DOMAIN_GANDI} @${NS_GANDI}` : Récupération de l'adresse IP publique enregistrée dans le DNS de [Gandi.net](https://www.gandi.net/en) pour le domaine `testing.com`
-4. Dans le cas où l'adresse IP publique actuelle est différente de l'adresse IP publique enregistrée dans le DNS de Gandi.net alors on met à jour l'information pour chaque sous domaine renseigné.
+4. Dans le cas où l'adresse IP publique actuelle est différente de l'adresse IP publique enregistrée dans le DNS de Gandi.net, alors on met à jour l'information pour chaque sous-domaine renseigné.
 
 
 ## Automatisation de l'exécution du script **Gandi_Update_DNS.sh**
@@ -231,7 +231,7 @@ Pour exécuter automatiquement un script sur le NAS Synology, les étapes sont l
         1. Cochez la case `Send run details by email`
         2. Cochez la case `Send run details only when the scrip terminates abnormally`
         3. Renseignez votre mail pour recevoir les informations en cas d'erreur du script
-        4. Renseignez la commande a exécuter dans `User-defined script`. La commande est `bash <script path>/Gandi_Update_DNS.sh`
+        4. Renseignez la commande à exécuter dans `User-defined script`. La commande est `bash <script path>/Gandi_Update_DNS.sh`
     4. Cliquez sur le bouton `OK`
 5. Vérifiez que la case est bien cochée pour le script ajouté dans l'écran récapitulatif
 
